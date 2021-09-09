@@ -80,6 +80,7 @@ namespace Trero.ClientBase.UIBase
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Invalidate();
         }
 
         Font df = new Font(FontFamily.GenericSansSerif, 12f);
@@ -90,12 +91,20 @@ namespace Trero.ClientBase.UIBase
 
             e.Graphics.DrawString("Trero Template", df, Brushes.Orange, new PointF(0, 0));
 
+            if (Game.screenData.StartsWith("start_screen"))
+            {
+                /*e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)),
+                    new Rectangle(Size.Width / 2 - (int)(e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Width / 2), Size.Width / 18,
+                    (int)e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Width + (int)(Size.Width * 1.5f),
+                    (int)e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Height + (int)(Size.Height * 1.5f)));*/
+                e.Graphics.DrawString("Trero Edition", new Font(FontFamily.GenericSansSerif, Size.Width / 24f), Brushes.Orange,
+                    new PointF(Size.Width - (int)(e.Graphics.MeasureString("Trero Edition", new Font(FontFamily.GenericSansSerif, Size.Width / 24f)).Width) * 2, Size.Height / 4));
+            }
+
             e.Graphics.DrawString("ClientInstance: " + Game.clientInstance.ToString("X"), df, Brushes.Orange, new PointF(0, Size.Height - 6 - (4 * 14)));
             e.Graphics.DrawString("Pos: " + Game.position, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (3 * 14)));
             e.Graphics.DrawString("Players: " + Game.getPlayers().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (2 * 14)));
             e.Graphics.DrawString("Entities: " + Game.getEntites().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (1 * 14)));
-
-            //e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)), new Rectangle(0, 0, Size.Width, Size.Height));
         }
     }
 }

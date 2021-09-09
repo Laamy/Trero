@@ -211,6 +211,10 @@ namespace Trero.ClientBase
         {
             get => MCM.readString(localPlayer + VersionClass.getData("username"), 32);
         } // Username
+        public static string screenData
+        {
+            get => MCM.readString(MCM.baseEvaluatePointer(HexHandler.toULong(VersionClass.getData("screenT+1")), new ulong[] { VersionClass.getData("screenT+2") }), 128);
+        } // Username
         public static string type
         {
             get => MCM.readString(localPlayer + VersionClass.getData("entityType"), 32);

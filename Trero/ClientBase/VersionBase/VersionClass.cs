@@ -46,6 +46,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x988,
                 0x98C,
                 0x990,
+                0x040A41F8, 0x814,
             }), // MCBE 1.17.11
             new IVersion(new object[]
             {
@@ -82,6 +83,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x980,
                 0x984,
                 0x988,
+                0x040A41F8, 0x814,
             }), // MCBE 1.17.2
             new IVersion(new object[]
             {
@@ -118,6 +120,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x980,
                 0x984,
                 0x988,
+                0x040A41F8, 0x814,
             }), // MCBE 1.17.2
         };
         public static IVersion versionStruct = new IVersion(new object[]
@@ -156,6 +159,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 "SelectedBlock",
                 "LookingAtBlock",
                 "SideSelect",
+                "screenT+1", "screenT+2",
             });
         public static ulong getData(string data)
         {
