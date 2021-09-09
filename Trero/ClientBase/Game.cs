@@ -263,6 +263,32 @@ namespace Trero.ClientBase
             set => MCM.writeInt(localPlayer + VersionClass.getData("worldAge"), value);
         } // Current world age
 
+        // Level
+        public static int isLookingAtBlock
+        {
+            get
+            {
+                return MCM.readInt(localPlayer + VersionClass.getData("LookingAtBlock"));
+            }
+            set => MCM.writeInt(localPlayer + VersionClass.getData("LookingAtBlock"), value);
+        }
+        public static int SelectedBlock
+        {
+            get
+            {
+                return MCM.readInt(localPlayer + VersionClass.getData("SelectedBlock"));
+            }
+            set => MCM.writeInt(localPlayer + VersionClass.getData("SelectedBlock"), value);
+        }
+        public static int SideSelect
+        {
+            get
+            {
+                return MCM.readInt(localPlayer + VersionClass.getData("SideSelect"));
+            }
+            set => MCM.writeInt(localPlayer + VersionClass.getData("SideSelect"), value);
+        }
+
         // EntityList
         public static List<Actor> getTypeEntities(string type)
         {

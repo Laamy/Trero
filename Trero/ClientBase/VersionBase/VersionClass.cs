@@ -43,6 +43,9 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x378,
                 0x58, 0x68, // Full entity list size
                 0x0, // 0x95F4
+                0x980,
+                0x984,
+                0x988,
             }), // MCBE 1.17.11
             new IVersion(new object[]
             {
@@ -76,6 +79,9 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x378,
                 0x58, 0x68, // Full entity list size
                 0x0,
+                0x980,
+                0x984,
+                0x988,
             }), // MCBE 1.17.2
             new IVersion(new object[]
             {
@@ -109,40 +115,10 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x378,
                 0x58, 0x68, // Full entity list size
                 0x0,
+                0x980,
+                0x984,
+                0x988,
             }), // MCBE 1.17.2
-
-            // JAVA 1.8
-            new IVersion(new object[]
-            {
-                "JAVA-1.17.10",
-                0x0, 0x0, 0x0, 0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0 + 16,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0, 0x0,
-                0x0,
-                0x0 + 28,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0,
-                0x0, 0x0,
-            }) // JAVA 1.8.9
         };
         public static IVersion versionStruct = new IVersion(new object[]
             {
@@ -176,7 +152,10 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 "level",
                 "entitylist+1",
                 "entitylist+2",
-                "lookingAtBlock"
+                "lookingAtBlock",
+                "SelectedBlock",
+                "LookingAtBlock",
+                "SideSelect",
             });
         public static ulong getData(string data)
         {
