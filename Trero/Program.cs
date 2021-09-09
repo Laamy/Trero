@@ -104,12 +104,16 @@ namespace Trero
         {
             ; // Keymap Handler
 
-            /*if (e.vkey == vKeyCodes.KeyHeld && e.key == Keys.R)
+            if (e.vkey == vKeyCodes.KeyHeld && e.key == Keys.LControlKey)
             {
                 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
-            }*/
+            }
+            if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.R)
+            {
+                Game.velocity = Base.Vec3();
+            }
 
-            if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.G)
+            /*if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.G)
             {
                 // 0x892A45 => "89 41"
                 MCM.writeBaseBytes(0x892A47, MCM.ceByte2Bytes("18")); // Restore with original assembly code
@@ -121,11 +125,11 @@ namespace Trero
 
                 MCM.writeBaseBytes(0x892A47, MCM.ceByte2Bytes("90")); // Nop assembly code
                 MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
-            }
+            }*/
 
             if (e.vkey == vKeyCodes.KeyDown || e.vkey == vKeyCodes.KeyUp)
                 if (Overlay.handle != null)
-                    Overlay.handle.Validate();
+                    Overlay.handle.Invalidate();
 
             if (e.vkey == vKeyCodes.KeyDown)
                 {
