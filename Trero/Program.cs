@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.EntityBase;
@@ -19,6 +20,9 @@ namespace Trero
     class Program
     {
         public static bool quit = false;
+
+        public static bool scaffolding = false;
+
         public static List<Module> modules = new List<Module>();
 
         static void Main(string[] args)
@@ -100,9 +104,23 @@ namespace Trero
         {
             ; // Keymap Handler
 
-            if (e.vkey == vKeyCodes.KeyHeld && e.key == Keys.R)
+            /*if (e.vkey == vKeyCodes.KeyHeld && e.key == Keys.R)
             {
                 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
+            }*/
+
+            if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.G)
+            {
+                // 0x892A45 => "89 41"
+                MCM.writeBaseBytes(0x892A47, MCM.ceByte2Bytes("18")); // Restore with original assembly code
+                MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("C7 40 18 03 00 00 00"));
+            }
+            if (e.vkey == vKeyCodes.KeyDown && e.key == Keys.G)
+            {
+                Game.isLookingAtBlock = 0;
+
+                MCM.writeBaseBytes(0x892A47, MCM.ceByte2Bytes("90")); // Nop assembly code
+                MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
             }
 
             if (e.vkey == vKeyCodes.KeyDown || e.vkey == vKeyCodes.KeyUp)
@@ -123,22 +141,7 @@ namespace Trero
                 
             }
 
-            if (e.vkey == vKeyCodes.KeyUp)
-            {
-                if (e.key == Keys.I)
-                {
-                    Vector3 pos = Game.position;
-
-                    Vector3 specialPos = Game.position;
-                    specialPos.x += 0.6f;
-                    specialPos.y += -1.8f;
-                    specialPos.z += 0.6f;
-
-                    AABB newAABB = new AABB(pos, specialPos);
-
-                    Game.teleport(newAABB); // Noclip(No colliding full stop)
-                }
-            }
+            // Fixed noclip on run
 
             if (e.vkey == vKeyCodes.KeyHeld) // broken
             {
@@ -232,9 +235,8 @@ namespace Trero
                 }
                 else if (e.key == Keys.G)
                 {
-
                     Game.isLookingAtBlock = 0;
-                    Game.SideSelect = 2; // most likely wont work just testing all possible tricks
+                    Game.SideSelect = 1;
                     Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
                     Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
