@@ -100,7 +100,7 @@ namespace Trero
         {
             ; // Keymap Handler
 
-            if (e.vkey == vKeyCodes.KeyDown && e.key == Keys.G)
+            if (e.vkey == vKeyCodes.KeyHeld && e.key == Keys.R)
             {
                 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
             }
@@ -125,10 +125,6 @@ namespace Trero
 
             if (e.vkey == vKeyCodes.KeyUp)
             {
-                if (e.key == Keys.R)
-                {
-                    Game.velocity = Base.Vec3();
-                }
                 if (e.key == Keys.I)
                 {
                     Vector3 pos = Game.position;
@@ -230,19 +226,18 @@ namespace Trero
                 else if (e.key == Keys.V)
                 {
                     Game.velocity = Base.Vec3();
-
                     Vector3 newPos = Game.position;
                     newPos.y += -0.01f;
                     Game.position = newPos;
                 }
                 else if (e.key == Keys.G)
                 {
-                    Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
-                    Game.velocity = Base.Vec3();
+
                     Game.isLookingAtBlock = 0;
-                    
+                    Game.SideSelect = 2; // most likely wont work just testing all possible tricks
+                    Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
-
+                    Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
                 }
                 else if (e.key == Keys.Y)
                 {

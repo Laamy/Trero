@@ -43,9 +43,9 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x378,
                 0x58, 0x68, // Full entity list size
                 0x0, // 0x95F4
-                0x980,
-                0x984,
                 0x988,
+                0x98C,
+                0x990,
             }), // MCBE 1.17.11
             new IVersion(new object[]
             {
