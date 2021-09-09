@@ -55,7 +55,7 @@ namespace Trero.ClientBase
             get => MCM.readInt(localPlayer) != 0;
         } // isValid
 
-        public static void teleport(AABB advancedAxis) // More advanced axis teleportation
+        public static void teleport(AABB advancedAxis)
         {
             MCM.writeFloat(localPlayer + (ulong)VersionClass.getData("positionX"), advancedAxis.x.x);
             MCM.writeFloat(localPlayer + (ulong)VersionClass.getData("positionX") + 4, advancedAxis.x.y);
@@ -69,10 +69,10 @@ namespace Trero.ClientBase
         {
             teleport(new AABB(Base.Vec3(x, y, z), Base.Vec3(x + .6f, y + 1.8f, z + .6f)));
         } // Teleportation
-        public static void teleport(Vector3 _Vec3) // Teleportation
+        public static void teleport(Vector3 _Vec3)
         {
             teleport(_Vec3.x, _Vec3.y, _Vec3.z);
-        }
+        } // Teleportation
 
         public static Vector3 position
         {

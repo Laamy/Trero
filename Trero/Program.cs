@@ -100,8 +100,17 @@ namespace Trero
         {
             ; // Keymap Handler
 
-            if (e.vkey == vKeyCodes.KeyDown)
+            if (e.vkey == vKeyCodes.KeyDown && e.key == Keys.G)
             {
+                Keymap.SendKey((int)Keymap.Keymap_MouseKeys.LeftClick);
+            }
+
+            if (e.vkey == vKeyCodes.KeyDown || e.vkey == vKeyCodes.KeyUp)
+                if (Overlay.handle != null)
+                    Overlay.handle.Validate();
+
+            if (e.vkey == vKeyCodes.KeyDown)
+                {
                 if (e.key == Keys.Tab)
                 {
                     ; // Toggle console
