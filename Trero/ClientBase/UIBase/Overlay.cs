@@ -34,16 +34,9 @@ namespace Trero.ClientBase.UIBase
         private void Overlay_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawString("Trero Template", new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (0 * 14)));
-            if (Game.velocity.y != 0f)
-            {
-                e.Graphics.DrawString(Game.velocity.ToString(), new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (1 * 14)));
-                e.Graphics.DrawString(Game.position.ToString(), new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (2 * 14)));
-                e.Graphics.DrawString(Game.rotation.ToString(), new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (3 * 14)));
-            }
-            else
-            {
-                e.Graphics.DrawString("Awaiting toast screen...", new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (1 * 14)));
-            }
+            e.Graphics.DrawString(Game.velocity.ToString(), new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (1 * 14)));
+            e.Graphics.DrawString(Game.position.ToString(), new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (2 * 14)));
+            e.Graphics.DrawString(Game.rotation.ToString(), new Font(FontFamily.GenericSansSerif, 12f), Brushes.Orange, new PointF(10, 36 + (3 * 14)));
         }
     }
 }
