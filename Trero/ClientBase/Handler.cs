@@ -53,7 +53,6 @@ namespace Trero.ClientBase
 
     class Base
     {
-
         public static Vector3 Vec3(float _ = 0, float v = 0, float c = 0)
         {
             Vector3 tempVec = new Vector3(_, v, c);
@@ -62,6 +61,12 @@ namespace Trero.ClientBase
         public static Vector3 Vec3(string v)
         {
             Vector3 tempVec = new Vector3(v);
+            return tempVec;
+        }
+
+        public static iVector3 iVec3(int _ = 0, int v = 0, int c = 0)
+        {
+            iVector3 tempVec = new iVector3(_, v, c);
             return tempVec;
         }
 

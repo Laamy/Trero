@@ -271,15 +271,26 @@ namespace Trero.ClientBase
                 return MCM.readInt(level + VersionClass.getData("LookingAtBlock"));
             }
             set => MCM.writeInt(level + VersionClass.getData("LookingAtBlock"), value);
-        }
-        public static int SelectedBlock
+        } // isLookingAtBlock
+        public static iVector3 SelectedBlock
         {
             get
             {
-                return MCM.readInt(level + VersionClass.getData("SelectedBlock"));
+                iVector3 vec = Base.iVec3();
+
+                vec.x = MCM.readInt(level + VersionClass.getData("SelectedBlock"));
+                vec.y = MCM.readInt(level + VersionClass.getData("SelectedBlock") + 4);
+                vec.z = MCM.readInt(level + VersionClass.getData("SelectedBlock") + 8);
+
+                return vec;
             }
-            set => MCM.writeInt(level + VersionClass.getData("SelectedBlock"), value);
-        }
+            set
+            {
+                MCM.writeInt(level + VersionClass.getData("SelectedBlock"), value.x);
+                MCM.writeInt(level + VersionClass.getData("SelectedBlock") + 4, value.y);
+                MCM.writeInt(level + VersionClass.getData("SelectedBlock") + 8, value.z);
+            }
+        } // SelectedBlock
         public static int SideSelect
         {
             get
@@ -287,7 +298,7 @@ namespace Trero.ClientBase
                 return MCM.readInt(level + VersionClass.getData("SideSelect"));
             }
             set => MCM.writeInt(level + VersionClass.getData("SideSelect"), value);
-        }
+        } // SideSelect
 
         // EntityList
         public static List<Actor> getTypeEntities(string type)
@@ -430,6 +441,23 @@ namespace Trero.ClientBase
             float diff_x = x - _Vec3.x, diff_y = y - _Vec3.y, diff_z = z - _Vec3.z;
             return (float)Math.Sqrt(diff_x * diff_x + diff_y * diff_y + diff_z * diff_z);
         } // messy distance i just neve cleaned up plz ignore ;-;
+        public override string ToString()
+        {
+            return x + "," + y + "," + z;
+        }
+    }
+
+    public struct iVector3
+    {
+        public int x;
+        public int y;
+        public int z;
+        public iVector3(int x, int y, int z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
         public override string ToString()
         {
             return x + "," + y + "," + z;
