@@ -268,25 +268,25 @@ namespace Trero.ClientBase
         {
             get
             {
-                return MCM.readInt(localPlayer + VersionClass.getData("LookingAtBlock"));
+                return MCM.readInt(level + VersionClass.getData("LookingAtBlock"));
             }
-            set => MCM.writeInt(localPlayer + VersionClass.getData("LookingAtBlock"), value);
+            set => MCM.writeInt(level + VersionClass.getData("LookingAtBlock"), value);
         }
         public static int SelectedBlock
         {
             get
             {
-                return MCM.readInt(localPlayer + VersionClass.getData("SelectedBlock"));
+                return MCM.readInt(level + VersionClass.getData("SelectedBlock"));
             }
-            set => MCM.writeInt(localPlayer + VersionClass.getData("SelectedBlock"), value);
+            set => MCM.writeInt(level + VersionClass.getData("SelectedBlock"), value);
         }
         public static int SideSelect
         {
             get
             {
-                return MCM.readInt(localPlayer + VersionClass.getData("SideSelect"));
+                return MCM.readInt(level + VersionClass.getData("SideSelect"));
             }
-            set => MCM.writeInt(localPlayer + VersionClass.getData("SideSelect"), value);
+            set => MCM.writeInt(level + VersionClass.getData("SideSelect"), value);
         }
 
         // EntityList
@@ -302,7 +302,6 @@ namespace Trero.ClientBase
             }
             return entityList;
         }
-
         public static List<Actor> getTypeEntities_Antibot(string type, string[] antibotSettings)
         {
             List<Actor> entityList = new List<Actor>();
@@ -324,7 +323,6 @@ namespace Trero.ClientBase
             }
             return entityList;
         }
-
         public static List<Actor> getEntites()
         {
             List<Actor> entityList = new List<Actor>();
@@ -336,7 +334,6 @@ namespace Trero.ClientBase
             }
             return entityList;
         }
-
         public static Actor getClosestEntity()
         {
             Actor vEntity = null;
@@ -349,7 +346,6 @@ namespace Trero.ClientBase
             }
             return vEntity;
         }
-
         public static Actor getClosestTypeEntity(string Type)
         {
             Actor vEntity = null;
@@ -363,7 +359,6 @@ namespace Trero.ClientBase
             }
             return vEntity;
         }
-
         public static List<Actor> getPlayers() => getTypeEntities("player");
         public static Actor getClosestPlayer() => getClosestTypeEntity("player");
     }
