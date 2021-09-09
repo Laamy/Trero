@@ -225,20 +225,71 @@ namespace Trero
                     newPos.y += -0.01f;
                     Game.position = newPos;
                 }
-                else if (e.key == Keys.T)
+                else if (e.key == Keys.G)
                 {
-                    ; // Move forwards one block
+                    Game.velocity = Base.Vec3();
+                    Game.isLookingAtBlock = 0;
+                    
+
+
+                }
+                else if (e.key == Keys.Y)
+                {
+                    foreach (var entity in Game.getPlayers())
+                    {
+                        entity.hitbox = Base.Vec2(0.6f, 1.8f);
+                    }
+                    foreach (var entity in Game.getTypeEntities_Antibot("player", new string[] {
+                        "shop", "buy", "\r", "\n", /* Extra */
+                        "tap to open", "tap to play", /*Mineplex antibot*/
+                        "right click", "item shop", "squads", "upgrades"/*Nethergames antibot*/
+                    }))
+                    {
+                        entity.hitbox = Base.Vec2(7, 7);
+                    }
+                }
+                else if (e.key == Keys.X)
+                {
+                    Game.onGround = true;
+
+                    Game.velocity = Base.Vec3();
 
                     Vector3 newVel = Base.Vec3();
 
                     float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
 
-                    newVel.x = (float)Math.Cos(cy) * (4 / 9f);
-                    newVel.y = 0;
-                    newVel.z = (float)Math.Sin(cy) * (4 / 9f);
+                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
+                        newVel.z = (float)Math.Sin(cy) * (8 / 9f); ///Working Fly With No Height 
 
+
+                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
+                        newVel.x = (float)Math.Cos(cy) * (8 / 9f);
                     Game.velocity = newVel;
-                }
+                }///No Y Fly
+
+                else if (e.key == Keys.T)
+                {
+                    Game.onGround = true;
+
+                    Game.velocity = Base.Vec3();
+
+                    Vector3 newVel = Base.Vec3();
+
+                    float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
+
+
+                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
+                        newVel.z = (float)Math.Sin(cy) * (12 / 16f);
+                    if (Keymap.GetAsyncKeyState((char)(Keys.Space)))
+                        newVel.y += 0.89f;
+                    if (Keymap.GetAsyncKeyState((char)(Keys.LShiftKey))) ///Working Fly 
+                        newVel.y -= 0.89f;
+
+                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
+                        newVel.x = (float)Math.Cos(cy) * (12 / 16f);
+                    Game.velocity = newVel;
+                    Game.velocity = newVel;
+                }  ///Fly
             }
         }
     }
