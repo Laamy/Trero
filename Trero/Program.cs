@@ -237,6 +237,7 @@ namespace Trero
                 }
                 else if (e.key == Keys.G)
                 {
+                    Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
                     Game.velocity = Base.Vec3();
                     Game.isLookingAtBlock = 0;
                     
