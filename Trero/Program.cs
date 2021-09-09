@@ -209,6 +209,7 @@ namespace Trero
                 else if (e.key == Keys.S)
                 {
                     Actor entity = Game.getClosestPlayer();
+                    if (entity != null)
                     Console.WriteLine(entity.username);
 
                     /*Vector3 pos = entity.position;
