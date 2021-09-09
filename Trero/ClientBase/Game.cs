@@ -363,10 +363,14 @@ namespace Trero.ClientBase
             for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
             {
                 if (i == EntityListStart) continue;
-                Actor entity = new Actor(MCM.readInt64(i));
-                if { (position.Distance(entity.position) < position.Distance(vEntity.position))}
-                    if (entity.type == type && entity.username.Length > 3)
-                        vEntity = entity;
+                try
+                {
+                    Actor entity = new Actor(MCM.readInt64(i));
+                    if (position.Distance(entity.position) < position.Distance(vEntity.position))
+                        if (entity.type == type && entity.username.Length > 3)
+                            vEntity = entity;
+                }
+                catch { }
             }
             return vEntity;
         }
