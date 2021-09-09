@@ -366,7 +366,7 @@ namespace Trero.ClientBase
                 try
                 {
                     Actor entity = new Actor(MCM.readInt64(i));
-                    if (position.Distance(entity.position) < position.Distance(vEntity.position))
+                    if (entity != null && position.Distance(entity.position) < position.Distance(vEntity.position))
                         if (entity.type == type && entity.username.Length > 3)
                             vEntity = entity;
                 }
