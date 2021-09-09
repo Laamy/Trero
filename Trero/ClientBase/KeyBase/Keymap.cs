@@ -17,13 +17,6 @@ namespace Trero.ClientBase.KeyBase
         [DllImport("user32.dll")] static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
         [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
 
-        public static void SendKey(int k) => SendKeys.SendWait($"{k}");
-        public static void SendKey(Keys k) => SendKeys.SendWait($"{k}");
-        public static void SendKey(char k) => SendKeys.SendWait($"{k}");
-
-        public enum Keymap_MouseKeys
-        { LeftClick, RightClick }
-
         public static int e = 0;
         public static bool isMinecraftFocused()
         {

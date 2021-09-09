@@ -102,7 +102,7 @@ namespace Trero
 
             if (e.vkey == vKeyCodes.KeyDown && e.key == Keys.G)
             {
-                Keymap.SendKey((int)Keymap.Keymap_MouseKeys.LeftClick);
+                Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
             }
 
             if (e.vkey == vKeyCodes.KeyDown || e.vkey == vKeyCodes.KeyUp)

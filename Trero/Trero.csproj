@@ -69,6 +69,7 @@
     <Compile Include="ClientBase\Game.cs" />
     <Compile Include="ClientBase\Handler.cs" />
     <Compile Include="ClientBase\KeyBase\Keymap.cs" />
+    <Compile Include="ClientBase\KeyBase\Mouse.cs" />
     <Compile Include="ClientBase\MCM.cs" />
     <Compile Include="ClientBase\UIBase\Overlay.cs">
       <SubType>Form</SubType>
