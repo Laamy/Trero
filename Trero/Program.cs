@@ -38,6 +38,7 @@ namespace Trero
             modules.Add(new TPAura());
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
+            modules.Add(new TriggerBot());
 
             modules.Sort((c1, c2) => c1.name.CompareTo(c2.name));
 
@@ -59,6 +60,7 @@ namespace Trero
 
             while (true) // freeze
             {
+                Thread.Sleep(1);
                 foreach (Module mod in modules)
                     mod.onLoop();
             }

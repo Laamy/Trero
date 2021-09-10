@@ -178,6 +178,15 @@ namespace Trero.ClientBase
                 else MCM.writeInt(localPlayer + VersionClass.getData("onGround"), 0);
             }
         } // onGround
+        public static bool isLookingAtEntity
+        {
+            get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId")) != -1;
+        } // lookingEntity
+        public static int lookingEntityId
+        {
+            get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId"));
+            set => MCM.writeInt(localPlayer + VersionClass.getData("lookingEntityId"), value);
+        }
         public static bool onGround2
         {
             get => MCM.readInt(localPlayer + VersionClass.getData("onGround2")) != 0;

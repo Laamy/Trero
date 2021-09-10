@@ -160,6 +160,8 @@
             this.panel1.Size = new System.Drawing.Size(150, 200);
             this.panel1.TabIndex = 3;
             this.panel1.Visible = false;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // panel5
             // 

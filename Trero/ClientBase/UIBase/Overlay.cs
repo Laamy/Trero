@@ -76,13 +76,20 @@ namespace Trero.ClientBase.UIBase
             string list = "";
             try
             {
-                foreach (Actor plr in Game.getPlayers())
+                var vList = Game.getPlayers();
+                list = "Players : " + vList.Count + "\r\n";
+                foreach (Actor plr in vList)
                 {
-                    list += plr.username + " | " + Game.position.Distance(plr.position) + "\r\n";
+                    list += (int)Game.position.Distance(plr.position) + "b " + plr.username + "\r\n";
                 }
             }
             catch { }
-            playerList.Text = "No players";
+            if (list != "")
+                playerList.Text = list;
+            else
+            {
+                playerList.Text = "No players";
+            }
 
             try
             {
@@ -144,7 +151,6 @@ namespace Trero.ClientBase.UIBase
         }
 
         private Point MouseDownLocation;
-        private Point MouseDownLocation2;
 
         private void panel2_MouseDown_1(object sender, MouseEventArgs e)
         {
@@ -199,6 +205,7 @@ namespace Trero.ClientBase.UIBase
             }
         }
 
+        private Point MouseDownLocation2;
         private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -217,5 +224,23 @@ namespace Trero.ClientBase.UIBase
         }
 
         private void ClonableButton_Click(object sender, EventArgs e) { }
+
+        private Point MouseDownLocation3;
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation3 = e.Location;
+            }
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel1.Left = e.X + panel1.Left - MouseDownLocation3.X;
+                panel1.Top = e.Y + panel1.Top - MouseDownLocation3.Y;
+            }
+        }
     }
 }
