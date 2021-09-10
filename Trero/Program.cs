@@ -104,11 +104,6 @@ namespace Trero
                     Process.GetProcessesByName("ApplicationFrameHost")[0].Kill();
                     Process.GetProcessesByName("Minecraft.Windows")[0].Kill();
                 }///Terminate Process
-                else if (e.key == Keys.Y)
-                {
-                    foreach (var entity in Game.getPlayers())
-                        entity.hitbox = Base.Vec2(10, 10);
-                }///Hitboxes 
                 else if (e.key == Keys.C)
                 {
                     Game.velocity = Base.Vec3();
