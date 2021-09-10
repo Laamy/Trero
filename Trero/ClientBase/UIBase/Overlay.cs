@@ -175,12 +175,63 @@ namespace Trero.ClientBase.UIBase
             {
                 Button moduleButton = ClonableButton.Clone();
                 moduleButton.Visible = true;
+                moduleButton.Name = mod.name;
                 moduleButton.Text = mod.name;
+                if (mod.keybind != 0x07)
+                    moduleButton.Text += " (" + (Keys)mod.keybind + ")";
                 moduleButton.Click += moduleActivated;
+                moduleButton.MouseDown += keybindActivated;
                 moduleButton.FlatAppearance.BorderSize = 0;
                 moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
             }
         }
+
+        private void keybindActivated(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Middle)
+            {
+                Button btn = (Button)sender;
+                if (btn == null) return;
+
+                btn.Text += " (...)";
+
+                vMod = btn.Name;
+
+                btn.KeyDown += catchKeybind;
+            }
+        }
+
+        private void catchKeybind(object sender, KeyEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete)
+            {
+                btn.KeyDown -= catchKeybind;
+                btn.Text = btn.Name;
+                foreach (Module mod in Program.modules)
+                {
+                    if (mod.name == btn.Name)
+                    {
+                        mod.keybind = (char)0x07;
+                    }
+                }
+                return;
+            }
+
+            foreach (Module mod in Program.modules)
+            {
+                if (mod.name == btn.Name)
+                {
+                    mod.keybind = (char)(int)(e.KeyCode);
+                }
+            }
+
+            btn.Text = btn.Name + " (" + e.KeyCode + ")";
+
+            btn.KeyDown -= catchKeybind;
+        }
+
+        public string vMod = null;
 
         private void moduleActivated(object sender, EventArgs e)
         {
@@ -189,7 +240,7 @@ namespace Trero.ClientBase.UIBase
 
             foreach (Module mod in Program.modules)
             {
-                if (mod.name == btn.Text)
+                if (mod.name == btn.Name)
                 {
                     if (mod.enabled)
                     {
