@@ -154,11 +154,11 @@ namespace Trero
                     float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
 
                     if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.z = (float)Math.Sin(cy) * (8 / 9f); ///Working Fly With No Height 
+                        newVel.z = (float)Math.Sin(cy) * (4 / 5f); ///Working Fly With No Height 
 
 
                     if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.x = (float)Math.Cos(cy) * (8 / 9f);
+                        newVel.x = (float)Math.Cos(cy) * (4 / 5f);
                     Game.velocity = newVel;
                 }///No Y Fly
                 else if (e.key == Keys.T)
