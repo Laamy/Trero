@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase.TreroUILibrary;
+using Trero.Modules;
 
 namespace Trero.ClientBase.UIBase
 {
@@ -72,6 +73,16 @@ namespace Trero.ClientBase.UIBase
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            string list = "";
+            try
+            {
+                foreach (Actor plr in Game.getPlayers())
+                {
+                    list += plr.username + " | " + Game.position.Distance(plr.position) + "\r\n";
+                }
+            }
+            catch { }
+            playerList.Text = "No players";
 
             try
             {
@@ -154,7 +165,38 @@ namespace Trero.ClientBase.UIBase
 
         private void Overlay_Load(object sender, EventArgs e)
         {
+            foreach (Module mod in Program.modules)
+            {
+                Button moduleButton = ClonableButton.Clone();
+                moduleButton.Visible = true;
+                moduleButton.Text = mod.name;
+                moduleButton.Click += moduleActivated;
+                moduleButton.FlatAppearance.BorderSize = 0;
+                moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
+            }
+        }
 
+        private void moduleActivated(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn == null) return;
+
+            foreach (Module mod in Program.modules)
+            {
+                if (mod.name == btn.Text)
+                {
+                    if (mod.enabled)
+                    {
+                        mod.onDisable();
+                        btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                    }
+                    else
+                    {
+                        mod.onEnable();
+                        btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                    }
+                }
+            }
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
@@ -173,5 +215,7 @@ namespace Trero.ClientBase.UIBase
                 panel3.Top = e.Y + panel3.Top - MouseDownLocation2.Y;
             }
         }
+
+        private void ClonableButton_Click(object sender, EventArgs e) { }
     }
 }

@@ -50,9 +50,14 @@ namespace Trero.ClientBase
             }
         } // entitylistend
 
-        public static bool isValid
+        public static bool isNull
         {
-            get => MCM.readInt(localPlayer) != 0;
+            get
+            {
+                if (screenData.StartsWith("toast_screen"))
+                    return false;
+                return true;
+            }
         } // isValid
 
         public static void teleport(AABB advancedAxis)

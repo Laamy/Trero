@@ -35,6 +35,11 @@ namespace Trero
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
             modules.Add(new AirJump());
+            modules.Add(new TPAura());
+            modules.Add(new ClosestPlayerDisplay());
+            modules.Add(new PlayerDisplay());
+
+            modules.Sort((c1, c2) => c1.name.CompareTo(c2.name));
 
             VersionClass.setVersion(VersionClass.versions[0]);
 
@@ -50,13 +55,12 @@ namespace Trero
             Console.WriteLine("C - PhaseUp(ServerBypass)");
             Console.WriteLine("V - PhaseDown(ServerBypass)");
 
-            Console.WriteLine(Game.level.ToString("X"));
+            // Console.WriteLine(Game.level.ToString("X"));
 
             while (true) // freeze
             {
-                if (!Game.isValid) return;
-
-                ToggleLoop();
+                foreach (Module mod in modules)
+                    mod.onLoop();
             }
         }
 
@@ -77,31 +81,6 @@ namespace Trero
             }
         }
 
-        public static bool toggled_1 = false; // i would make a class for this then list them but i wont rn
-        public static Keys toggled_1_KeyBind = Keys.Z;
-
-        public static bool toggled_2 = false;
-        public static Keys toggled_2_KeyBind = Keys.X;
-
-        public static bool toggled_3 = false;
-        public static Keys toggled_3_KeyBind = Keys.C;
-
-        private static void ToggleLoop()
-        {
-            if (toggled_1) // if toggled_1 has been enabled
-            {
-
-            }
-            if (toggled_2) // if toggled_2 has been enabled
-            {
-
-            }
-            if (toggled_3) // if toggled_3 has been enabled
-            {
-
-            }
-        }
-
         private static void keyParse(object sender, KeyEvent e)
         {
             ; // Keymap Handler
@@ -110,6 +89,7 @@ namespace Trero
             {
                 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
             }*/
+
             if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.R)
             {
                 Game.velocity = Base.Vec3();
@@ -129,22 +109,10 @@ namespace Trero
                 MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
             }*/
 
-            if (e.vkey == vKeyCodes.KeyDown || e.vkey == vKeyCodes.KeyUp)
-                if (Overlay.handle != null)
-                    Overlay.handle.Invalidate();
-
             if (e.vkey == vKeyCodes.KeyDown)
                 {
                 if (e.key == Keys.Tab)
-                {
-                    ; // Toggle console
-
                     ShowWindow(GetConsoleWindow(), t);
-                }
-                if (e.key == toggled_1_KeyBind) toggled_1 = !toggled_1;
-                if (e.key == toggled_2_KeyBind) toggled_1 = !toggled_2;
-                if (e.key == toggled_3_KeyBind) toggled_1 = !toggled_3;
-                
             }
 
             // Fixed noclip on run
@@ -200,22 +168,6 @@ namespace Trero
                 {
                     foreach (var entity in Game.getPlayers())
                         entity.hitbox = Base.Vec2(10, 10);
-                }
-                else if (e.key == Keys.S)
-                {
-                    var ent = Game.getClosestPlayer();
-                    Vector3 pos = ent.position;
-                    if (Game.position.Distance(pos) < 4)
-                    {
-                        pos.y += 2;
-
-                        if (ent.hitbox.x > 0.6f) pos.x -= ent.hitbox.x / 2;
-                        if (ent.hitbox.y > 1.8f) pos.x -= ent.hitbox.y / 3;
-
-                        Game.position = pos;
-
-                        Game.velocity = Base.Vec3();
-                    }
                 }
                 else if (e.key == Keys.C)
                 {

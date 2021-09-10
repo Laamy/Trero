@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace Trero.ClientBase
 {
@@ -89,7 +91,7 @@ namespace Trero.ClientBase
         }
     }
 
-    static class Ext
+    public static class Ext
     {
         public static int ClosestTo(this IEnumerable<int> collection, int target)
         {
@@ -106,6 +108,24 @@ namespace Trero.ClientBase
             }
 
             return closest;
+        }
+        public static T Clone<T>(this T controlToClone)
+            where T : Control
+        {
+            PropertyInfo[] controlProperties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            T instance = Activator.CreateInstance<T>();
+
+            foreach (PropertyInfo propInfo in controlProperties)
+            {
+                if (propInfo.CanWrite)
+                {
+                    if (propInfo.Name != "WindowTarget")
+                        propInfo.SetValue(instance, propInfo.GetValue(controlToClone, null), null);
+                }
+            }
+
+            return instance;
         }
     }
 }

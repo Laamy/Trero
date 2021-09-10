@@ -80,7 +80,9 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
-    <Compile Include="Modules\Sexaura.cs" />
+    <Compile Include="Modules\ClosestPlayerDisplay.cs" />
+    <Compile Include="Modules\PlayerDisplay.cs" />
+    <Compile Include="Modules\TPAura.cs" />
     <Compile Include="Modules\AirJump.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Program.cs" />

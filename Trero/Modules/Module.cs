@@ -13,8 +13,8 @@ namespace Trero.Modules
         public bool enabled = false;
         public string name;
         public string category;
-        public int keybind;
-        public Module(string name, int keybind, string category = "TestCategory")
+        public char keybind;
+        public Module(string name, char keybind, string category = "TestCategory")
         {
             this.name = name;
             this.keybind = keybind;
@@ -37,6 +37,10 @@ namespace Trero.Modules
         public virtual void onDisable() => enabled = false;
 
         public virtual void onTick() { }
-        public virtual void onLoop() { }
+        public virtual void onLoop()
+        {
+            if (enabled)
+                onTick();
+        }
     }
 }
