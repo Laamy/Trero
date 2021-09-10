@@ -295,5 +295,10 @@ namespace Trero.ClientBase.UIBase
                 panel1.Top = e.Y + panel1.Top - MouseDownLocation3.Y;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
