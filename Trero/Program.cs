@@ -50,6 +50,8 @@ namespace Trero
             Console.WriteLine("C - PhaseUp(ServerBypass)");
             Console.WriteLine("V - PhaseDown(ServerBypass)");
 
+            Console.WriteLine(Game.level.ToString("X"));
+
             while (true) // freeze
             {
                 if (!Game.isValid) return;
@@ -113,19 +115,19 @@ namespace Trero
                 Game.velocity = Base.Vec3();
             }
 
-            if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.G)
+            /*if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.G)
             {
                 // 0x892A45 => "89 41"
-                //MCM.writeBaseBytes(0x892A45, MCM.ceByte2Bytes("89 41 18")); // Restore with original assembly code
+                MCM.writeBaseBytes(0x892A45, MCM.ceByte2Bytes("89 41 18")); // Restore with original assembly code
                 MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("C7 40 18 03 00 00 00"));
             }
             if (e.vkey == vKeyCodes.KeyDown && e.key == Keys.G)
             {
                 Game.isLookingAtBlock = 0;
 
-                //MCM.writeBaseBytes(0x892A45, MCM.ceByte2Bytes("90 90 90")); // Nop assembly code
+                MCM.writeBaseBytes(0x892A45, MCM.ceByte2Bytes("90 90 90")); // Nop assembly code
                 MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
-            }
+            }*/
 
             if (e.vkey == vKeyCodes.KeyDown || e.vkey == vKeyCodes.KeyUp)
                 if (Overlay.handle != null)
@@ -197,23 +199,10 @@ namespace Trero
                 else if (e.key == Keys.Y)
                 {
                     foreach (var entity in Game.getPlayers())
-                    {
-                        entity.hitbox = Base.Vec2(0.6f, 1.8f);
-                    }
-                    foreach (var entity in Game.getTypeEntities_Antibot("player", new string[] {
-                        "shop", "buy", "\r", "\n", /* Extra */
-                        "tap to open", "tap to play", /*Mineplex antibot*/
-                        "right click", "item shop", "squads", "upgrades"/*Nethergames antibot*/
-                    }))
-                    {
-                        entity.hitbox = Base.Vec2(7, 7);
-                    }
+                        entity.hitbox = Base.Vec2(10, 10);
                 }
                 else if (e.key == Keys.S)
                 {
-                    Actor entity = Game.getClosestPlayer();
-                    if (entity != null)
-                    Console.WriteLine(entity.username);
 
                     /*Vector3 pos = entity.position;
                     if (Game.position.Distance(pos) < 4)

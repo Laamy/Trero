@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -24,6 +25,8 @@ namespace Trero.ClientBase
         static extern IntPtr GetForegroundWindow();
         [DllImport("user32.dll", SetLastError = true)]
         static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool GetWindowRect(IntPtr hWnd, out Rectangle lpRect);
         [DllImport("user32.dll", SetLastError = true)]
         static extern bool GetWindow(IntPtr hWnd, uint uCmd);
         [DllImport("user32.dll", SetLastError = true)]
@@ -102,6 +105,13 @@ namespace Trero.ClientBase
         public static RECT getMinecraftRect()
         {
             RECT rectMC = new RECT();
+            GetWindowRect(mcWinHandle, out rectMC);
+            return rectMC;
+        }
+
+        public static Rectangle getMinecraftvRect()
+        {
+            Rectangle rectMC = new Rectangle();
             GetWindowRect(mcWinHandle, out rectMC);
             return rectMC;
         }

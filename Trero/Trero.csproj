@@ -77,8 +77,10 @@
     <Compile Include="ClientBase\UIBase\Overlay.Designer.cs">
       <DependentUpon>Overlay.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\Sexaura.cs" />
     <Compile Include="Modules\AirJump.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Program.cs" />
@@ -92,5 +94,6 @@
       <DependentUpon>Overlay.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

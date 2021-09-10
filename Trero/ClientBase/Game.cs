@@ -157,7 +157,7 @@ namespace Trero.ClientBase
             get
             {
                 Vector2 vec = rotation;
-                
+
                 vec.y = (new float[] { 1, 2, 3, 4 }).OrderBy(v => Math.Abs((long)v - ((vec.y + 180f) / 90f))).First();
                 vec.x = (new float[] { 1, 2, 3, 4 }).OrderBy(v => Math.Abs((long)v - ((vec.x + 90f) / 180f))).First();
 
@@ -305,26 +305,26 @@ namespace Trero.ClientBase
         } // SideSelect
 
         // EntityList
-        public static List<Actor> getTypeEntities(string type)
+        public static List<Actor> getTypeEntities(string Type)
         {
             List<Actor> entityList = new List<Actor>();
             for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
             {
                 if (i == EntityListStart) continue;
                 Actor entity = new Actor(MCM.readInt64(i));
-                if (entity.type == type && entity.username.Length > 3)
+                if (entity.type == Type && entity.username.Length > 3)
                     entityList.Add(entity);
             }
             return entityList;
         }
-        public static List<Actor> getTypeEntities_Antibot(string type, string[] antibotSettings)
+        public static List<Actor> getTypeEntities_Antibot(string Type, string[] antibotSettings)
         {
             List<Actor> entityList = new List<Actor>();
             for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
             {
                 if (i == EntityListStart) continue;
                 Actor entity = new Actor(MCM.readInt64(i));
-                if (entity.type == type && entity.username.Length > 3) // Antibot so we dont hit npcs
+                if (entity.type == Type && entity.username.Length > 3) // Antibot so we dont hit npcs
                 {
                     bool allow = true;
                     foreach (string str in antibotSettings)
@@ -349,37 +349,93 @@ namespace Trero.ClientBase
             }
             return entityList;
         }
+        public static List<Actor> parseEntities(List<Actor> list)
+        {
+            List<Actor> validEnts = new List<Actor>();
+            char[] validCharacters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 §".ToCharArray(); // § because some servers change usernames
+            foreach (var ent in list)
+            {
+                bool valid = true;
+                foreach (char chr in ent.username.Substring(0, 5).ToCharArray())
+                {
+                    bool validChr = false;
+                    foreach (char vChr in validCharacters)
+                    {
+                        if (chr == vChr)
+                            validChr = true;
+                    }
+                    if (!validChr)
+                        valid = false;
+                }
+                if (valid)
+                    validEnts.Add(ent);
+            }
+            return validEnts;
+        }
         public static Actor getClosestEntity()
         {
             Actor vEntity = null;
-            for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
-            {
-                if (i == EntityListStart) continue;
-                Actor entity = new Actor(MCM.readInt64(i));
-                if (position.Distance(entity.position) < position.Distance(vEntity.position))
-                    vEntity = entity;
-            }
+            List<Actor> ents = Game.getEntites();
+            ents.ForEach((Actor ent) => {
+                if (vEntity == null)
+                    vEntity = ent;
+                else
+                {
+                    float dis1 = position.Distance(ent.position);
+                    float dis2 = position.Distance(vEntity.position);
+
+                    if (dis1 < dis2)
+                        vEntity = ent;
+                }
+            });
             return vEntity;
         }
         public static Actor getClosestTypeEntity(string Type)
         {
             Actor vEntity = null;
-            for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
-            {
-                if (i == EntityListStart) continue;
-                try
+            List<Actor> ents = Game.getTypeEntities(Type);
+            ents.ForEach((Actor ent) => {
+                if (vEntity == null)
+                    vEntity = ent;
+                else
                 {
-                    Actor entity = new Actor(MCM.readInt64(i));
-                    if (entity != null && position.Distance(entity.position) < position.Distance(vEntity.position))
-                        if (entity.type == type && entity.username.Length > 3)
-                            vEntity = entity;
+                    float dis1 = position.Distance(ent.position);
+                    float dis2 = position.Distance(vEntity.position);
+
+                    if (dis1 < dis2)
+                        vEntity = ent;
                 }
-                catch { }
-            }
+            });
             return vEntity;
         }
-        public static List<Actor> getPlayers() => getTypeEntities("player");
-        public static Actor getClosestPlayer() => getClosestTypeEntity("player");
+        public static List<Actor> getPlayers()
+        {
+            List<Actor> entityList = new List<Actor>();
+            foreach (Actor ent in parseEntities(getEntites()))
+            {
+                if (ent.type == "player")
+                    entityList.Add(ent);
+            }
+            return entityList;
+        }
+        public static Actor getClosestPlayer()
+        {
+            Actor vEntity = null;
+            List<Actor> ents = parseEntities(getPlayers());
+            ents.ForEach((Actor ent) => {
+                if (vEntity == null)
+                    vEntity = ent;
+                else
+                {
+                    float dis1 = position.Distance(ent.position);
+                    float dis2 = position.Distance(vEntity.position);
+
+                    if (dis1 < dis2)
+                        vEntity = ent;
+                }
+            });
+            return vEntity;
+        }
     }
 
     // Struct Defines

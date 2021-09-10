@@ -3,7 +3,9 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.KeyBase;
+using Trero.ClientBase.UIBase.TreroUILibrary;
 
 namespace Trero.ClientBase.UIBase
 {
@@ -15,8 +17,13 @@ namespace Trero.ClientBase.UIBase
             handle = this;
 
             new Thread(() => {
+                Thread.Sleep(100);
+                Invoke((MethodInvoker)delegate {
+                    Focus();
+                });
                 while (!Program.quit)
                 {
+                    // Thread.Sleep(1);
                     try
                     {
                         Invoke((MethodInvoker)delegate {
@@ -33,31 +40,16 @@ namespace Trero.ClientBase.UIBase
                                 vE = 8;
                                 vA = 2;
 
-                                vB = 9; // these have extra because of the windows shadow effect
+                                vB = 9; // these have extra because of the windows shadow effect (Not exactly required but oh well)
                                 vC = 3;
                             }
 
                             Location = new Point(rect.Left + 9 + vA, rect.Top + 35 + vE); // Title bar is 32 pixels high
                             Size = new Size(rect.Right - rect.Left - 18 - vC, rect.Bottom - rect.Top - 44 - vB);
-
-                            if (MCM.isMinecraftFocused() && !TopMost)
-                                TopMost = true;
-                            if (!MCM.isMinecraftFocused() && TopMost)
-                            {
-                                TopMost = false;
-                                SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
-                            }
                         });
                     }
                     catch { }
                 }
-            }).Start();
-            
-            new Thread(() => { // Auto focus
-                Thread.Sleep(10);
-                Invoke((MethodInvoker)delegate {
-                    Focus();
-                });
             }).Start();
         }
 
@@ -80,31 +72,106 @@ namespace Trero.ClientBase.UIBase
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Invalidate();
+
+            try
+            {
+                Actor ent = Game.getClosestPlayer();
+
+                if (ent == null)
+                {
+                    label2.Text = "None";
+                    label2.Text = "";
+                    label3.Text = "";
+                    return;
+                }
+
+                var vec = Base.Vec3((int)ent.position.x, (int)ent.position.y, (int)ent.position.z);
+
+                label1.Text = ent.username;
+                label2.Text = vec.ToString();
+                label3.Text = Game.position.Distance(vec) + "b";
+
+                if (MCM.isMinecraftFocused() && !TopMost)
+                    TopMost = true;
+                if (!MCM.isMinecraftFocused() && TopMost)
+                {
+                    if (ActiveForm != this)
+                    {
+                        TopMost = false;
+                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
+                        Console.WriteLine(GetForegroundWindow());
+                    }
+                }
+            }
+            catch { }
         }
 
         Font df = new Font(FontFamily.GenericSansSerif, 12f);
 
         private void Overlay_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)), new Rectangle(0, Size.Height - 2 - (4 * 16), (int)e.Graphics.MeasureString("ClientInstance: " + Game.clientInstance.ToString("X"), new Font(FontFamily.GenericSansSerif, 12f)).Width + 4, Size.Height - (4 * 16)));
+            /*
+            
+            // e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)), new Rectangle(0, Size.Height - 2 - (6 * (int)df.Size + 4 * DrawingUtils.screenSize), (int)e.Graphics.MeasureString("ClientInstance: " + Game.clientInstance.ToString("X"), df).Width + 4, Size.Height - (4 * (int)df.Size + 4 * DrawingUtils.screenSize)));
 
-            e.Graphics.DrawString("Trero Template", df, Brushes.Orange, new PointF(0, 0));
+            //e.Graphics.DrawString("Trero Template", df, Brushes.Orange, new PointF(0, 0));
 
             if (Game.screenData.StartsWith("start_screen"))
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)),
-                    new Rectangle(Size.Width / 2 - (int)(e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Width / 2), Size.Width / 18,
-                    (int)(Math.PI / Size.Width),
-                    Size.Height / 4));
-                e.Graphics.DrawString("Trero Edition", new Font(FontFamily.GenericSansSerif, Size.Width / 24f), Brushes.Orange,
-                    new PointF(Size.Width - (int)(e.Graphics.MeasureString("Trero Edition", new Font(FontFamily.GenericSansSerif, Size.Width / 24f)).Width) * 2, Size.Height / 4));
+                e.Graphics.DrawString("Tretard Edition", new Font(FontFamily.GenericSansSerif, 10f * DrawingUtils.screenSize), Brushes.Orange, // Size.Width / 24f
+                    new PointF(DrawingUtils.screenCenter.x - (int)(e.Graphics.MeasureString("Tretard Edition", new Font(FontFamily.GenericSansSerif, 10f * DrawingUtils.screenSize)).Width / 2), DrawingUtils.LogoVCenter.y));
             }
 
-            e.Graphics.DrawString("ClientInstance: " + Game.clientInstance.ToString("X"), df, Brushes.Orange, new PointF(0, Size.Height - 6 - (4 * 14)));
-            e.Graphics.DrawString("Pos: " + Game.position, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (3 * 14)));
-            e.Graphics.DrawString("Players: " + Game.getPlayers().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (2 * 14)));
-            e.Graphics.DrawString("Entities: " + Game.getEntites().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (1 * 14)));
+            e.Graphics.DrawString("screenCenter: " + DrawingUtils.screenCenter, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (6 * 14 * DrawingUtils.screenSize)));
+            e.Graphics.DrawString("screenSize: " + DrawingUtils.screenSize, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (5 * 14 * DrawingUtils.screenSize)));
+            e.Graphics.DrawString("ClientInstance: " + Game.clientInstance.ToString("X"), df, Brushes.Orange, new PointF(0, Size.Height - 6 - (4 * 14 * DrawingUtils.screenSize)));
+            e.Graphics.DrawString("Pos: " + Game.position, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (3 * 14 * DrawingUtils.screenSize)));
+            e.Graphics.DrawString("Players: " + Game.getPlayers().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (2 * 14 * DrawingUtils.screenSize)));
+            e.Graphics.DrawString("Entities: " + Game.getEntites().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (1 * 14 * DrawingUtils.screenSize)));
+
+            */
+        }
+
+        private Point MouseDownLocation;
+        private Point MouseDownLocation2;
+
+        private void panel2_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void panel2_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel2.Left = e.X + panel2.Left - MouseDownLocation.X;
+                panel2.Top = e.Y + panel2.Top - MouseDownLocation.Y;
+            }
+        }
+
+        private void Overlay_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation2 = e.Location;
+            }
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel3.Left = e.X + panel3.Left - MouseDownLocation2.X;
+                panel3.Top = e.Y + panel3.Top - MouseDownLocation2.Y;
+            }
         }
     }
 }
