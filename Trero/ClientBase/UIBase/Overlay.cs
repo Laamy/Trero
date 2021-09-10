@@ -195,7 +195,7 @@ namespace Trero.ClientBase.UIBase
                 Button btn = (Button)sender;
                 if (btn == null) return;
 
-                btn.Text += " (...)";
+                btn.Text = btn.Name + " (...)";
 
                 vMod = btn;
 
