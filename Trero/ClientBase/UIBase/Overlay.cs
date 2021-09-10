@@ -300,5 +300,23 @@ namespace Trero.ClientBase.UIBase
         {
 
         }
+
+        private Point MouseDownLocation4;
+        private void panel6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation4 = e.Location;
+            }
+        }
+
+        private void panel6_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel6.Left = e.X + panel6.Left - MouseDownLocation4.X;
+                panel6.Top = e.Y + panel6.Top - MouseDownLocation4.Y;
+            }
+        }
     }
 }
