@@ -111,15 +111,15 @@ namespace Trero.ClientBase.UIBase
                 label2.Text = vec.ToString();
                 label3.Text = Game.position.Distance(vec) + "b";
 
-                if (MCM.isMinecraftFocused() && Opacity == 1)
-                    Opacity = 0;
-                if (!MCM.isMinecraftFocused() && Opacity == 0)
+                if (MCM.isMinecraftFocused() && TopMost == false)
+                    TopMost = true;
+                if (!MCM.isMinecraftFocused() && TopMost == true)
                 {
                     if (ActiveForm != this)
                     {
                         Opacity = 1;
-                        //TopMost = false;
-                        // SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
+                        TopMost = false;
+                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
                     }
                 }
             }

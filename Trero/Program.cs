@@ -35,11 +35,13 @@ namespace Trero
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
             modules.Add(new AirJump());
+            modules.Add(new AirStuck());
             modules.Add(new TPAura());
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
             modules.Add(new TriggerBot());
             modules.Add(new Fly());
+            modules.Add(new BulkFly());
 
             modules.Sort((c1, c2) => c1.name.CompareTo(c2.name));
 
