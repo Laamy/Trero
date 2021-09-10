@@ -75,6 +75,22 @@ namespace Trero.ClientBase.UIBase
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            try // fixed
+            {
+                if (MCM.isMinecraftFocused() && TopMost == false)
+                    TopMost = true;
+                if (!MCM.isMinecraftFocused() && TopMost == true)
+                {
+                    if (ActiveForm != this)
+                    {
+                        Opacity = 1;
+                        TopMost = false;
+                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
+                    }
+                }
+            }
+            catch { }
+
             string list = "";
             try
             {
@@ -110,18 +126,6 @@ namespace Trero.ClientBase.UIBase
                 label1.Text = ent.username;
                 label2.Text = vec.ToString();
                 label3.Text = Game.position.Distance(vec) + "b";
-
-                if (MCM.isMinecraftFocused() && TopMost == false)
-                    TopMost = true;
-                if (!MCM.isMinecraftFocused() && TopMost == true)
-                {
-                    if (ActiveForm != this)
-                    {
-                        Opacity = 1;
-                        TopMost = false;
-                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
-                    }
-                }
             }
             catch { }
         }
@@ -187,7 +191,7 @@ namespace Trero.ClientBase.UIBase
                 moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
             }
         }
-
+        
         private void keybindActivated(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
