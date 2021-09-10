@@ -408,7 +408,7 @@ namespace Trero.ClientBase
             });
             return vEntity;
         }
-        public static List<Actor> getPlayers() => getTypeEntities("player");
+        public static List<Actor> getPlayers() => parseEntities(getTypeEntities("player"));
         public static Actor getClosestPlayer()
         {
             Actor vEntity = null;
