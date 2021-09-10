@@ -70,7 +70,7 @@ namespace Trero.ClientBase.KeyBase
                                 {
                                     if (MCM.isMinecraftFocused())
                                         keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
-                                    globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
+                                    //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
                                 }
                                 // ++e;
                                 noKey[c] = false;
@@ -83,7 +83,7 @@ namespace Trero.ClientBase.KeyBase
                                     {
                                         if (MCM.isMinecraftFocused())
                                             keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
-                                        globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
+                                        //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
                                     }
                                     // ++e;
                                 }
@@ -101,7 +101,7 @@ namespace Trero.ClientBase.KeyBase
                                     {
                                         if (MCM.isMinecraftFocused())
                                             keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
-                                        globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
+                                        //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
                                     }
                                     // ++e;
                                 }

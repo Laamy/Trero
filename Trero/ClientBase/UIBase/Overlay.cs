@@ -199,40 +199,38 @@ namespace Trero.ClientBase.UIBase
 
                 vMod = btn;
 
-                Keymap.globalKeyEvent += catchKeybind;
+                btn.KeyDown += catchKeybind;
+                btn.Select();
             }
         }
 
-        private void catchKeybind(object sender, KeyEvent e)
+        private void catchKeybind(object sender, KeyEventArgs e)
         {
-            if (e.vkey == vKeyCodes.KeyDown && e.key.ToString() != "MButton")
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete)
             {
-                if (e.key == Keys.Escape || e.key == Keys.Delete)
-                {
-                    Keymap.globalKeyEvent -= catchKeybind;
-                    vMod.Text = vMod.Name;
-                    foreach (Module mod in Program.modules)
-                    {
-                        if (mod.name == vMod.Name)
-                        {
-                            mod.keybind = (char)0x07;
-                        }
-                    }
-                    return;
-                }
-
+                vMod.KeyDown -= catchKeybind;
+                vMod.Text = vMod.Name;
                 foreach (Module mod in Program.modules)
                 {
                     if (mod.name == vMod.Name)
                     {
-                        mod.keybind = (char)(int)(e.key);
+                        mod.keybind = (char)0x07;
                     }
                 }
-
-                vMod.Text = vMod.Name + " (" + e.key + ")";
-
-                Keymap.globalKeyEvent -= catchKeybind;
+                return;
             }
+
+            foreach (Module mod in Program.modules)
+            {
+                if (mod.name == vMod.Name)
+                {
+                    mod.keybind = (char)(int)(e.KeyCode);
+                }
+            }
+
+            vMod.Text = vMod.Name + " (" + e.KeyCode + ")";
+
+            vMod.KeyDown -= catchKeybind;
         }
 
         public Button vMod = null;

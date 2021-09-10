@@ -67,23 +67,6 @@ namespace Trero
             }
         }
 
-        static float speed = 12f; // 5.6f
-        static int flicker = 0;
-
-        static bool hidden = false;
-
-        [DllImport("kernel32.dll")] static extern IntPtr GetConsoleWindow();
-        [DllImport("user32.dll")] static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        static int t
-        {
-            get
-            {
-                hidden = !hidden;
-                return (hidden ? 0 : 5);
-            }
-        }
-
         private static void keyParse(object sender, KeyEvent e)
         {
             ; // Keymap Handler
@@ -112,57 +95,11 @@ namespace Trero
                 MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
             }*/
 
-            if (e.vkey == vKeyCodes.KeyDown)
-                {
-                if (e.key == Keys.Tab)
-                    ShowWindow(GetConsoleWindow(), t);
-            }
-
             // Fixed noclip on run
 
             if (e.vkey == vKeyCodes.KeyHeld) // broken
             {
-                if (e.key == Keys.R)
-                {
-                    flicker++;
-
-                    Vector3 newVel = Base.Vec3();
-
-                    float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
-                    newVel.x = (float)Math.Cos(cy) * (speed / 9f);
-
-                    newVel.y = -0.05f;
-                    if (flicker == 360 / 32)
-                    {
-                        Vector3 newPos = Game.position;
-                        newPos.y += 0.005f;
-                        newPos.z += 0.003f;
-                        newPos.x += 0.003f;
-
-                        if (Keymap.GetAsyncKeyState((char)(Keys.LShiftKey)))
-                            newPos.y -= 0.05f;
-                        if (Keymap.GetAsyncKeyState((char)(Keys.Space)))
-                            newPos.y += 0.08f;
-
-                        Game.position = newPos;
-                    }
-                    if (flicker == (360/16))
-                    {
-                        Vector3 newPos = Game.position;
-                        newPos.y -= 0.003f;
-                        newPos.z -= 0.003f;
-                        newPos.x -= 0.003f;
-                        Game.position = newPos;
-                    }
-
-                    if (flicker == 360/32)
-                        flicker = 0;
-
-                    newVel.z = (float)Math.Sin(cy) * (speed / 9f);
-
-                    Game.velocity = newVel;
-                }
-                else if (e.key == Keys.P)
+                if (e.key == Keys.P)
                 {
                     Process.GetProcessesByName("ApplicationFrameHost")[0].Kill();
                     Process.GetProcessesByName("Minecraft.Windows")[0].Kill();
@@ -201,11 +138,7 @@ namespace Trero
                     {
                         entity.hitbox = Base.Vec2(0.6f, 1.8f);
                     }
-                    foreach (var entity in Game.getTypeEntities_Antibot("player", new string[] {
-                        "shop", "buy", "\r", "\n", /* Extra */
-                        "tap to open", "tap to play", /*Mineplex antibot*/
-                        "right click", "item shop", "squads", "upgrades"/*Nethergames antibot*/
-                    }))
+                    foreach (var entity in Game.getPlayers())
                     {
                         entity.hitbox = Base.Vec2(7, 7);
                     }
