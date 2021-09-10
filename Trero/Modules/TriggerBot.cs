@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
@@ -21,7 +22,7 @@ namespace Trero.Modules
             if (MCM.isMinecraftFocused() && Game.isLookingAtEntity) // TODO: antibot
             {
                 if (Game.position.Distance(Game.getClosestPlayer().position) < 7f)
-                    Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
+                    new Thread(() => Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN)).Start();
             }
         }
     }
