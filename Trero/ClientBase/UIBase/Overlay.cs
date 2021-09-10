@@ -93,10 +93,10 @@ namespace Trero.ClientBase.UIBase
 
             if (Game.screenData.StartsWith("start_screen"))
             {
-                /*e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)),
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)),
                     new Rectangle(Size.Width / 2 - (int)(e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Width / 2), Size.Width / 18,
-                    (int)e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Width + (int)(Size.Width * 1.5f),
-                    (int)e.Graphics.MeasureString(" Trero Template Client ", new Font(FontFamily.GenericSansSerif, 32f)).Height + (int)(Size.Height * 1.5f)));*/
+                    (int)(Math.PI / Size.Width),
+                    Size.Height / 4));
                 e.Graphics.DrawString("Trero Edition", new Font(FontFamily.GenericSansSerif, Size.Width / 24f), Brushes.Orange,
                     new PointF(Size.Width - (int)(e.Graphics.MeasureString("Trero Edition", new Font(FontFamily.GenericSansSerif, Size.Width / 24f)).Width) * 2, Size.Height / 4));
             }
