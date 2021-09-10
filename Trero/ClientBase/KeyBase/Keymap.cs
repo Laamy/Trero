@@ -27,6 +27,7 @@ namespace Trero.ClientBase.KeyBase
 
         public static Keymap handle;
         public static EventHandler<KeyEvent> keyEvent;
+        public static EventHandler<KeyEvent> globalKeyEvent;
 
         Dictionary<char, uint> dBuff = new Dictionary<char, uint>();
         Dictionary<char, bool> noKey = new Dictionary<char, bool>();
@@ -58,49 +59,58 @@ namespace Trero.ClientBase.KeyBase
                     // ++e;
                     try
                     {
-                        if (isMinecraftFocused())
+                        // ++e;
+                        for (char c = (char)0; c < 0xFF; c++)
                         {
-                            // ++e;
-                            for (char c = (char)0; c < 0xFF; c++)
+                            noKey[c] = true;
+                            yesKey[c] = false;
+                            if (GetAsyncKeyState(c))
                             {
-                                noKey[c] = true;
-                                yesKey[c] = false;
-                                if (GetAsyncKeyState(c))
+                                if (keyEvent != null)
+                                {
+                                    if (MCM.isMinecraftFocused())
+                                        keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
+                                    globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
+                                }
+                                // ++e;
+                                noKey[c] = false;
+                                if (dBuff[c] > 0)
+                                    continue;
+                                dBuff[c]++;
+                                try
                                 {
                                     if (keyEvent != null)
-                                        keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
-                                    // ++e;
-                                    noKey[c] = false;
-                                    if (dBuff[c] > 0)
-                                        continue;
-                                    dBuff[c]++;
-                                    try
                                     {
-                                        if (keyEvent != null)
+                                        if (MCM.isMinecraftFocused())
                                             keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
-                                        // ++e;
+                                        globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
                                     }
-                                    catch { }
+                                    // ++e;
                                 }
-                                else
-                                {
-                                    yesKey[c] = true;
-                                    if (rBuff[c] > 0)
-                                        continue;
-                                    rBuff[c]++;
-                                    try
-                                    {
-                                        if (keyEvent != null)
-                                            keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
-                                        // ++e;
-                                    }
-                                    catch { }
-                                }
-                                if (noKey[c])
-                                    dBuff[c] = 0;
-                                if (!yesKey[c])
-                                    rBuff[c] = 0;
+                                catch { }
                             }
+                            else
+                            {
+                                yesKey[c] = true;
+                                if (rBuff[c] > 0)
+                                    continue;
+                                rBuff[c]++;
+                                try
+                                {
+                                    if (keyEvent != null)
+                                    {
+                                        if (MCM.isMinecraftFocused())
+                                            keyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
+                                        globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
+                                    }
+                                    // ++e;
+                                }
+                                catch { }
+                            }
+                            if (noKey[c])
+                                dBuff[c] = 0;
+                            if (!yesKey[c])
+                                rBuff[c] = 0;
                         }
                     }
                     catch { }

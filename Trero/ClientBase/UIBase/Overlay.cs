@@ -195,43 +195,45 @@ namespace Trero.ClientBase.UIBase
 
                 btn.Text += " (...)";
 
-                vMod = btn.Name;
+                vMod = btn;
 
-                btn.KeyDown += catchKeybind;
+                Keymap.globalKeyEvent += catchKeybind;
             }
         }
 
-        private void catchKeybind(object sender, KeyEventArgs e)
+        private void catchKeybind(object sender, KeyEvent e)
         {
-            Button btn = (Button)sender;
-            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete)
+            if (e.vkey == vKeyCodes.KeyDown && e.key.ToString() != "MButton")
             {
-                btn.KeyDown -= catchKeybind;
-                btn.Text = btn.Name;
+                if (e.key == Keys.Escape || e.key == Keys.Delete)
+                {
+                    Keymap.globalKeyEvent -= catchKeybind;
+                    vMod.Text = vMod.Name;
+                    foreach (Module mod in Program.modules)
+                    {
+                        if (mod.name == vMod.Name)
+                        {
+                            mod.keybind = (char)0x07;
+                        }
+                    }
+                    return;
+                }
+
                 foreach (Module mod in Program.modules)
                 {
-                    if (mod.name == btn.Name)
+                    if (mod.name == vMod.Name)
                     {
-                        mod.keybind = (char)0x07;
+                        mod.keybind = (char)(int)(e.key);
                     }
                 }
-                return;
+
+                vMod.Text = vMod.Name + " (" + e.key + ")";
+
+                Keymap.globalKeyEvent -= catchKeybind;
             }
-
-            foreach (Module mod in Program.modules)
-            {
-                if (mod.name == btn.Name)
-                {
-                    mod.keybind = (char)(int)(e.KeyCode);
-                }
-            }
-
-            btn.Text = btn.Name + " (" + e.KeyCode + ")";
-
-            btn.KeyDown -= catchKeybind;
         }
 
-        public string vMod = null;
+        public Button vMod = null;
 
         private void moduleActivated(object sender, EventArgs e)
         {

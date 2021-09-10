@@ -19,6 +19,8 @@ namespace Trero.Modules
 
             var ent = Game.getClosestPlayer();
 
+            if (ent == null) return; // Returns if entity doesnt exist
+
             Vector3 pos = ent.position;
 
             if (Game.position.Distance(pos) < 6)
