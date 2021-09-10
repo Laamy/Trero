@@ -39,6 +39,7 @@ namespace Trero
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
             modules.Add(new TriggerBot());
+            modules.Add(new Fly());
 
             modules.Sort((c1, c2) => c1.name.CompareTo(c2.name));
 
@@ -165,12 +166,12 @@ namespace Trero
                 {
                     Process.GetProcessesByName("ApplicationFrameHost")[0].Kill();
                     Process.GetProcessesByName("Minecraft.Windows")[0].Kill();
-                }
+                }///Terminate Process
                 else if (e.key == Keys.Y)
                 {
                     foreach (var entity in Game.getPlayers())
                         entity.hitbox = Base.Vec2(10, 10);
-                }
+                }///Hitboxes 
                 else if (e.key == Keys.C)
                 {
                     Game.velocity = Base.Vec3();
@@ -178,14 +179,14 @@ namespace Trero
                     Vector3 newPos = Game.position;
                     newPos.y += 0.01f;
                     Game.position = newPos;
-                }
+                }///Phase Up    
                 else if (e.key == Keys.V)
                 {
                     Game.velocity = Base.Vec3();
                     Vector3 newPos = Game.position;
                     newPos.y += -0.01f;
                     Game.position = newPos;
-                }
+                }///No Clip 
                 else if (e.key == Keys.G)
                 {
                     Game.isLookingAtBlock = 0;
@@ -193,7 +194,7 @@ namespace Trero
                     Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
                     Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
-                }
+                }///Scaffold (Broken)
                 else if (e.key == Keys.Y)
                 {
                     foreach (var entity in Game.getPlayers())
@@ -208,7 +209,7 @@ namespace Trero
                     {
                         entity.hitbox = Base.Vec2(7, 7);
                     }
-                }
+                }///Hitboxes 
                 else if (e.key == Keys.X)
                 {
                     Game.onGround = true;
@@ -227,9 +228,10 @@ namespace Trero
                         newVel.x = (float)Math.Cos(cy) * (8 / 9f);
                     Game.velocity = newVel;
                 }///No Y Fly
-
                 else if (e.key == Keys.T)
                 {
+
+                    
                     Game.onGround = true;
 
                     Game.velocity = Base.Vec3();
@@ -250,7 +252,7 @@ namespace Trero
                         newVel.x = (float)Math.Cos(cy) * (12 / 16f);
                     Game.velocity = newVel;
                     Game.velocity = newVel;
-                }  ///Fly
+                }///Fly
             }
         }
     }

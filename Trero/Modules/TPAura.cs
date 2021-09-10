@@ -18,6 +18,7 @@ namespace Trero.Modules
             if (Game.isNull) return;
 
             var ent = Game.getClosestPlayer();
+            if (ent == null) return;
 
             Vector3 pos = ent.position;
 
