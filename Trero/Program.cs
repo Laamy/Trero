@@ -203,13 +203,19 @@ namespace Trero
                 }
                 else if (e.key == Keys.S)
                 {
-
-                    /*Vector3 pos = entity.position;
+                    var ent = Game.getClosestPlayer();
+                    Vector3 pos = ent.position;
                     if (Game.position.Distance(pos) < 4)
                     {
-                        pos.y += 3;
+                        pos.y += 2;
+
+                        if (ent.hitbox.x > 0.6f) pos.x -= ent.hitbox.x / 2;
+                        if (ent.hitbox.y > 1.8f) pos.x -= ent.hitbox.y / 3;
+
                         Game.position = pos;
-                    }*/
+
+                        Game.velocity = Base.Vec3();
+                    }
                 }
                 else if (e.key == Keys.C)
                 {
