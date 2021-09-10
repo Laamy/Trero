@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     class TriggerBot : Module
     {
-        public TriggerBot() : base("TriggerBot", (char)0x07) { } // Not defined
+        public TriggerBot() : base("TriggerBot", (char)0x07, "Combat") { } // Not defined
 
         public override void onTick()
         {

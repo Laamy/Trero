@@ -38,13 +38,14 @@ namespace Trero
             modules.Add(new AirStuck());
             modules.Add(new BulkFly());
             modules.Add(new Fly());
-
             modules.Add(new AirJump());
             modules.Add(new TPAura());
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
             modules.Add(new TriggerBot());
             modules.Add(new Debug());
+            modules.Add(new Hitbox());
+            modules.Add(new FlickerExample());
 
             modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
 
@@ -132,17 +133,6 @@ namespace Trero
 
                     Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
                 }///Scaffold (Broken)
-                else if (e.key == Keys.Y)
-                {
-                    foreach (var entity in Game.getPlayers())
-                    {
-                        entity.hitbox = Base.Vec2(0.6f, 1.8f);
-                    }
-                    foreach (var entity in Game.getPlayers())
-                    {
-                        entity.hitbox = Base.Vec2(7, 7);
-                    }
-                }///Hitboxes 
                 else if (e.key == Keys.X)
                 {
                     Game.onGround = true;

@@ -191,6 +191,14 @@ namespace Trero.ClientBase.UIBase
                 moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
                 if (mod.category == "Flies")
                     panel7.Controls.Add(moduleButton);
+                if (mod.category == "Visual")
+                    panel14.Controls.Add(moduleButton);
+                if (mod.category == "Exploits")
+                    panel12.Controls.Add(moduleButton);
+                if (mod.category == "World")
+                    panel8.Controls.Add(moduleButton);
+                if (mod.category == "Combat")
+                    panel10.Controls.Add(moduleButton);
             }
         }
         
@@ -322,6 +330,78 @@ namespace Trero.ClientBase.UIBase
             {
                 panel6.Left = e.X + panel6.Left - MouseDownLocation4.X;
                 panel6.Top = e.Y + panel6.Top - MouseDownLocation4.Y;
+            }
+        }
+
+        private Point MouseDownLocation5;
+        private void panel14_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation5 = e.Location;
+            }
+        }
+
+        private void panel14_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel14.Left = e.X + panel14.Left - MouseDownLocation5.X;
+                panel14.Top = e.Y + panel14.Top - MouseDownLocation5.Y;
+            }
+        }
+
+        private Point MouseDownLocation6;
+        private void panel8_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation6 = e.Location;
+            }
+        }
+
+        private void panel8_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel8.Left = e.X + panel8.Left - MouseDownLocation6.X;
+                panel8.Top = e.Y + panel8.Top - MouseDownLocation6.Y;
+            }
+        }
+
+        private Point MouseDownLocation7;
+        private void panel10_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation7 = e.Location;
+            }
+        }
+
+        private void panel10_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel10.Left = e.X + panel10.Left - MouseDownLocation7.X;
+                panel10.Top = e.Y + panel10.Top - MouseDownLocation7.Y;
+            }
+        }
+
+        private Point MouseDownLocation8;
+        private void panel12_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation8 = e.Location;
+            }
+        }
+
+        private void panel12_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel12.Left = e.X + panel12.Left - MouseDownLocation8.X;
+                panel12.Top = e.Y + panel12.Top - MouseDownLocation8.Y;
             }
         }
     }

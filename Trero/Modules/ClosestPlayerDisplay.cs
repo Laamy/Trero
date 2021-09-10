@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     class ClosestPlayerDisplay : Module
     {
-        public ClosestPlayerDisplay() : base("ClosestPlayerDisplay", (char)0x07) { } // Not defined
+        public ClosestPlayerDisplay() : base("ClosestPlayerDisplay", (char)0x07, "Visual") { } // Not defined
         public override void onEnable()
         {
             base.onEnable();
