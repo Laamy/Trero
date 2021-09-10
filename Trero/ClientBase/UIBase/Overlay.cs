@@ -192,13 +192,13 @@ namespace Trero.ClientBase.UIBase
                 if (mod.category == "Flies")
                     panel7.Controls.Add(moduleButton);
                 if (mod.category == "Visual")
-                    panel14.Controls.Add(moduleButton);
+                    panel15.Controls.Add(moduleButton);
                 if (mod.category == "Exploits")
-                    panel12.Controls.Add(moduleButton);
+                    panel13.Controls.Add(moduleButton);
                 if (mod.category == "World")
-                    panel8.Controls.Add(moduleButton);
+                    panel9.Controls.Add(moduleButton);
                 if (mod.category == "Combat")
-                    panel10.Controls.Add(moduleButton);
+                    panel11.Controls.Add(moduleButton);
             }
         }
         
