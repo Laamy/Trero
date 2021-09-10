@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     class Fly : Module
     {
-        public Fly() : base("Fly", (char)0x07) { } // 0x07 = no keybind
+        public Fly() : base("Fly", (char)0x07, "Flies") { } // 0x07 = no keybind
 
         public override void onTick()
         {

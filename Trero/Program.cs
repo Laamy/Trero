@@ -13,6 +13,7 @@ using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
+using Debug = Trero.Modules.Debug;
 using Module = Trero.Modules.Module;
 
 namespace Trero
@@ -34,16 +35,18 @@ namespace Trero
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
-            modules.Add(new AirJump());
             modules.Add(new AirStuck());
+            modules.Add(new BulkFly());
+            modules.Add(new Fly());
+
+            modules.Add(new AirJump());
             modules.Add(new TPAura());
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
             modules.Add(new TriggerBot());
-            modules.Add(new Fly());
-            modules.Add(new BulkFly());
+            modules.Add(new Debug());
 
-            modules.Sort((c1, c2) => c1.name.CompareTo(c2.name));
+            modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
 
             VersionClass.setVersion(VersionClass.versions[0]);
 

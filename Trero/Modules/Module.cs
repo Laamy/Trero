@@ -14,7 +14,7 @@ namespace Trero.Modules
         public string name;
         public string category;
         public char keybind;
-        public Module(string name, char keybind, string category = "TestCategory")
+        public Module(string name, char keybind, string category = "Other")
         {
             this.name = name;
             this.keybind = keybind;

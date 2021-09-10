@@ -13,7 +13,7 @@ namespace Trero.Modules
     {
         static float speed = 12f; // 5.6f
         static int flicker = 0;
-        public BulkFly() : base("BulkFly", (char)0x07) { } // 0x07 = no keybind
+        public BulkFly() : base("BulkFly", (char)0x07, "Flies") { } // 0x07 = no keybind
 
         public override void onTick()
         {

@@ -189,6 +189,8 @@ namespace Trero.ClientBase.UIBase
                 moduleButton.MouseDown += keybindActivated;
                 moduleButton.FlatAppearance.BorderSize = 0;
                 moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
+                if (mod.category == "Flies")
+                    panel7.Controls.Add(moduleButton);
             }
         }
         
