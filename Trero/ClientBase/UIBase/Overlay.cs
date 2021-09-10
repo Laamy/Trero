@@ -51,6 +51,8 @@ namespace Trero.ClientBase.UIBase
                     }
                     catch { }
                 }
+
+                TopMost = true;
             }).Start();
         }
 
@@ -109,15 +111,15 @@ namespace Trero.ClientBase.UIBase
                 label2.Text = vec.ToString();
                 label3.Text = Game.position.Distance(vec) + "b";
 
-                if (MCM.isMinecraftFocused() && !TopMost)
-                    TopMost = true;
-                if (!MCM.isMinecraftFocused() && TopMost)
+                if (MCM.isMinecraftFocused() && Opacity == 1)
+                    Opacity = 0;
+                if (!MCM.isMinecraftFocused() && Opacity == 0)
                 {
                     if (ActiveForm != this)
                     {
-                        TopMost = false;
-                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
-                        Console.WriteLine(GetForegroundWindow());
+                        Opacity = 1;
+                        //TopMost = false;
+                        // SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
                     }
                 }
             }
