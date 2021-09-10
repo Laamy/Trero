@@ -305,26 +305,26 @@ namespace Trero.ClientBase
         } // SideSelect
 
         // EntityList
-        public static List<Actor> getTypeEntities(string Type)
+        public static List<Actor> getTypeEntities(string type)
         {
             List<Actor> entityList = new List<Actor>();
             for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
             {
                 if (i == EntityListStart) continue;
                 Actor entity = new Actor(MCM.readInt64(i));
-                if (entity.type == Type && entity.username.Length > 3)
+                if (entity.type == type && entity.username.Length > 3)
                     entityList.Add(entity);
             }
             return entityList;
         }
-        public static List<Actor> getTypeEntities_Antibot(string Type, string[] antibotSettings)
+        public static List<Actor> getTypeEntities_Antibot(string type, string[] antibotSettings)
         {
             List<Actor> entityList = new List<Actor>();
             for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
             {
                 if (i == EntityListStart) continue;
                 Actor entity = new Actor(MCM.readInt64(i));
-                if (entity.type == Type && entity.username.Length > 3) // Antibot so we dont hit npcs
+                if (entity.type == type && entity.username.Length > 3) // Antibot so we dont hit npcs
                 {
                     bool allow = true;
                     foreach (string str in antibotSettings)
@@ -356,7 +356,7 @@ namespace Trero.ClientBase
             foreach (var ent in list)
             {
                 bool valid = true;
-                foreach (char chr in ent.username.Substring(0, 5).ToCharArray())
+                foreach (char chr in ent.username.Substring(0,5).ToCharArray())
                 {
                     bool validChr = false;
                     foreach (char vChr in validCharacters)
@@ -408,16 +408,7 @@ namespace Trero.ClientBase
             });
             return vEntity;
         }
-        public static List<Actor> getPlayers()
-        {
-            List<Actor> entityList = new List<Actor>();
-            foreach (Actor ent in parseEntities(getEntites()))
-            {
-                if (ent.type == "player")
-                    entityList.Add(ent);
-            }
-            return entityList;
-        }
+        public static List<Actor> getPlayers() => getTypeEntities("player");
         public static Actor getClosestPlayer()
         {
             Actor vEntity = null;
