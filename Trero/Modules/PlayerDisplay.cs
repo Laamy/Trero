@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     class PlayerDisplay : Module
     {
-        public PlayerDisplay() : base("PlayerDisplay", (char)0x07) { } // Not defined
+        public PlayerDisplay() : base("PlayerDisplay", (char)0x07, "Visual") { } // Not defined
         public override void onEnable()
         {
             base.onEnable();

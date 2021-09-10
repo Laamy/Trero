@@ -80,6 +80,8 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\FlickerExample.cs" />
+    <Compile Include="Modules\Hitbox.cs" />
     <Compile Include="Modules\Debug.cs" />
     <Compile Include="Modules\AirStuck.cs" />
     <Compile Include="Modules\BulkFly.cs" />

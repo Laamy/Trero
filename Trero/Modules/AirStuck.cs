@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     class AirStuck : Module
     {
-        public AirStuck() : base("AirStuck", (char)0x07, "Flies") { } // 0x07 = no keybind
+        public AirStuck() : base("AirStuck", (char)0x07, "World") { } // 0x07 = no keybind
 
         public override void onTick()
         {

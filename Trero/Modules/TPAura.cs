@@ -11,7 +11,8 @@ namespace Trero.Modules
 {
     class TPAura : Module
     {
-        public TPAura() : base("TPAura", (char)0x07) { } // Not defined
+        public TPAura() : base("TPAura", (char)0x07, "Exploits") { } // Not defined
+
 
         public override void onTick()
         {
