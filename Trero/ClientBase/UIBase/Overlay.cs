@@ -51,9 +51,8 @@ namespace Trero.ClientBase.UIBase
                     }
                     catch { }
                 }
-
-                TopMost = true;
             }).Start();
+            TopMost = true;
         }
 
         [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();

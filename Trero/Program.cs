@@ -38,23 +38,23 @@ namespace Trero
             modules.Add(new Debug());
             modules.Add(new AirStuck());
             modules.Add(new BulkFly());
-            modules.Add(new Fly());
+            modules.Add(new AboveAura());
             modules.Add(new AirJump());
-            //modules.Add(new TPAura());
+            modules.Add(new TPAura());
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
             modules.Add(new TriggerBot());
             modules.Add(new Hitbox());
-            //modules.Add(new FlickerExample());
+            modules.Add(new FlickerExample());
             modules.Add(new ClickGUI());
             modules.Add(new Phase());
             modules.Add(new Noclip());
-            //modules.Add(new NoYFly());
+            modules.Add(new NoYFly());
             modules.Add(new PhaseDown());
             modules.Add(new PhaseUp());
             modules.Add(new KillGame());
-            //modules.Add(new Sexaura());
-            modules.Add(new AboveAura());
+            modules.Add(new Sexaura());
+            modules.Add(new Fly());
 
             //modules[0].onDisable();
 
@@ -62,7 +62,7 @@ namespace Trero
 
             VersionClass.setVersion(VersionClass.versions[0]);
 
-            Keymap.keyEvent += keyParse;
+            // Keymap.keyEvent += keyParse;
 
             Console.WriteLine("--- Trero Terminal ---");
             Console.WriteLine("Welcome to the trero terminal");
@@ -80,94 +80,18 @@ namespace Trero
             {
                 Thread.Sleep(1);
                 foreach (Module mod in modules)
-                    mod.onLoop();
+                    if (mod.enabled)
+                        mod.onTick();
             }
         }
-
-        private static void keyParse(object sender, KeyEvent e)
-        {
-            ; // Keymap Handler
-
-            /*if (e.vkey == vKeyCodes.KeyHeld && e.key == Keys.LControlKey)
-            {
-                Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
-            }*/
-
-            if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.R)
-            {
-                Game.velocity = Base.Vec3();
-            }
-
-            /*if (e.vkey == vKeyCodes.KeyUp && e.key == Keys.G)
-            {
-                // 0x892A45 => "89 41"
-                MCM.writeBaseBytes(0x892A45, MCM.ceByte2Bytes("89 41 18")); // Restore with original assembly code
-                MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("C7 40 18 03 00 00 00"));
-            }
-            if (e.vkey == vKeyCodes.KeyDown && e.key == Keys.G)
-            {
-                Game.isLookingAtBlock = 0;
-
-                MCM.writeBaseBytes(0x892A45, MCM.ceByte2Bytes("90 90 90")); // Nop assembly code
-                MCM.writeBaseBytes(0x898385, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
-            }*/
-
-            // Fixed noclip on run
-
-            if (e.vkey == vKeyCodes.KeyHeld) // broken
-            {
-                if (e.key == Keys.G)
-                {
-                    Game.isLookingAtBlock = 0;
+        /*
+         
+        Game.isLookingAtBlock = 0;
                     Game.SideSelect = 1;
                     Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
                     Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
-                }///Scaffold (Broken)
-                else if (e.key == Keys.X)
-                {
-                    Game.onGround = true;
 
-                    Game.velocity = Base.Vec3();
-
-                    Vector3 newVel = Base.Vec3();
-
-                    float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
-
-                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.z = (float)Math.Sin(cy) * (4 / 5f); ///Working Fly With No Height 
-
-
-                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.x = (float)Math.Cos(cy) * (4 / 5f);
-                    Game.velocity = newVel;
-                }///No Y Fly
-                else if (e.key == Keys.T)
-                {
-
-                    
-                    Game.onGround = true;
-
-                    Game.velocity = Base.Vec3();
-
-                    Vector3 newVel = Base.Vec3();
-
-                    float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
-
-
-                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.z = (float)Math.Sin(cy) * (12 / 16f);
-                    if (Keymap.GetAsyncKeyState((char)(Keys.Space)))
-                        newVel.y += 0.89f;
-                    if (Keymap.GetAsyncKeyState((char)(Keys.LShiftKey))) ///Working Fly 
-                        newVel.y -= 0.89f;
-
-                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.x = (float)Math.Cos(cy) * (12 / 16f);
-                    Game.velocity = newVel;
-                    Game.velocity = newVel;
-                }///Fly
-            }
-        }
+         */
     }
 }

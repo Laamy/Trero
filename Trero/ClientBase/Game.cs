@@ -365,11 +365,11 @@ namespace Trero.ClientBase
         }
         public static List<Actor> parseEntities(List<Actor> list)
         {
-            try
+            List<Actor> validEnts = new List<Actor>();
+            char[] validCharacters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 §".ToCharArray(); // § because some servers change usernames
+            foreach (var ent in list)
             {
-                List<Actor> validEnts = new List<Actor>();
-                char[] validCharacters = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 §".ToCharArray(); // § because some servers change usernames
-                foreach (var ent in list)
+                try
                 {
                     bool valid = true;
                     foreach (char chr in ent.username.Substring(0, 5).ToCharArray())
@@ -386,12 +386,12 @@ namespace Trero.ClientBase
                     if (valid)
                         validEnts.Add(ent);
                 }
-                return validEnts;
+                catch
+                {
+                    validEnts.Add(ent);
+                }
             }
-            catch
-            {
-                return parseEntities(list);
-            }
+            return validEnts;
         }
         public static Actor getClosestEntity()
         {

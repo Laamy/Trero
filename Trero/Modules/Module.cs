@@ -35,12 +35,6 @@ namespace Trero.Modules
 
         public virtual void onEnable() => enabled = true;
         public virtual void onDisable() => enabled = false;
-
         public virtual void onTick() { }
-        public virtual void onLoop()
-        {
-            if (enabled)
-                onTick();
-        }
     }
 }
