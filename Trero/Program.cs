@@ -68,6 +68,7 @@ namespace Trero
             // TpBypass (Hive maybe a little to much for you rn though to learn how that works so ignore this if you want 2)
 
             // Note that these are all possible but might not be added/changed just ideas ill slowly filter through over time
+            // also rather do things i can think of ways to actually do externally so dont ask for anything else if you 100% know its impossible :(
             // for yaammi to do list :penisve:
             // Jetpack
             // Glide
