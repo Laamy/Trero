@@ -138,7 +138,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(1201, 565);
+            this.panel3.Location = new System.Drawing.Point(634, 216);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(150, 100);
             this.panel3.TabIndex = 2;
@@ -196,7 +196,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel1.Controls.Add(this.panel5);
-            this.panel1.Location = new System.Drawing.Point(1201, 359);
+            this.panel1.Location = new System.Drawing.Point(634, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 200);
             this.panel1.TabIndex = 3;
@@ -431,7 +431,7 @@
             this.Watermark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Watermark.Font = new System.Drawing.Font("Segoe Script", 20.25F, System.Drawing.FontStyle.Italic);
             this.Watermark.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Watermark.Location = new System.Drawing.Point(577, 424);
+            this.Watermark.Location = new System.Drawing.Point(845, 513);
             this.Watermark.Name = "Watermark";
             this.Watermark.Size = new System.Drawing.Size(115, 65);
             this.Watermark.TabIndex = 4;
