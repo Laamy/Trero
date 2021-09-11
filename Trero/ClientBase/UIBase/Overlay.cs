@@ -91,6 +91,7 @@ namespace Trero.ClientBase.UIBase
             catch { }
 
             string list = "";
+
             try
             {
                 var vList = Game.getPlayers();
@@ -101,12 +102,19 @@ namespace Trero.ClientBase.UIBase
                 }
             }
             catch { }
-            if (list != "")
-                playerList.Text = list;
-            else
+
+            if (list == "")
+                list = "No players";
+
+            SizeF calclist = TextRenderer.MeasureText(list, playerList.Font);
+
+            if (panel5.Size != new Size((int)calclist.Width, (int)calclist.Height + 20))
             {
-                playerList.Text = "No players";
+                panel1.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + 4);
+                panel5.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + -20);
             }
+
+            playerList.Text = list;
 
             try
             {
@@ -227,8 +235,8 @@ namespace Trero.ClientBase.UIBase
                 if (mod.category == "Other")
                 {
                     TestCategory.Controls.Add(moduleButton);
-                    TestCategory.Size = new Size(0, TestCategory.Controls.Count - 1 * 32);
-                    panel2.Size = new Size(panel2.Size.Width, TestCategory.Controls.Count - 1 * 32 + 24);
+                    TestCategory.Size = new Size(0, (TestCategory.Controls.Count - 1) * 32);
+                    panel2.Size = new Size(panel2.Size.Width, (TestCategory.Controls.Count - 1) * 32 + 24);
                 }
             }
         }
