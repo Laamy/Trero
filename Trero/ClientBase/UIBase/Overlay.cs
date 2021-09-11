@@ -163,6 +163,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation = e.Location;
+                panel2.BringToFront();
             }
         }
 
@@ -201,7 +202,7 @@ namespace Trero.ClientBase.UIBase
                     panel11.Controls.Add(moduleButton);
             }
         }
-        
+
         private void keybindActivated(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
@@ -278,6 +279,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation2 = e.Location;
+                panel3.BringToFront();
             }
         }
 
@@ -298,6 +300,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation3 = e.Location;
+                panel1.BringToFront();
             }
         }
 
@@ -321,6 +324,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation4 = e.Location;
+                panel6.BringToFront();
             }
         }
 
@@ -339,6 +343,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation5 = e.Location;
+                panel14.BringToFront();
             }
         }
 
@@ -357,6 +362,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation6 = e.Location;
+                panel8.BringToFront();
             }
         }
 
@@ -375,6 +381,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation7 = e.Location;
+                panel10.BringToFront();
             }
         }
 
@@ -393,6 +400,7 @@ namespace Trero.ClientBase.UIBase
             if (e.Button == MouseButtons.Left)
             {
                 MouseDownLocation8 = e.Location;
+                panel12.BringToFront();
             }
         }
 
