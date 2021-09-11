@@ -82,7 +82,6 @@ namespace Trero
             // Killaura (Some kind of isLookingAtEntityId edit else Aimbot/TriggerBot
             // FastUse (Haven't put much thought into this so idk if its possible externally probs is)
             // AutoFish (Seems pretty simple and wont need pointers tbh)
-            // InventoryMove
             // Commands
             // Aimbot
             // NoHurtCam

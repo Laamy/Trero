@@ -56,6 +56,7 @@ namespace Trero.ClientBase.KeyBase
             new Thread(() => {
                 while (!Program.quit)
                 {
+                    Thread.Sleep(1);
                     // ++e;
                     try
                     {

@@ -22,6 +22,7 @@ namespace Trero.ClientBase.UIBase
                 });
                 while (!Program.quit)
                 {
+                    Thread.Sleep(1);
                     // Thread.Sleep(1);
                     try
                     {
