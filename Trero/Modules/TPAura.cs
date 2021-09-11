@@ -11,25 +11,26 @@ namespace Trero.Modules
 {
     class TPAura : Module
     {
+        int flicker = 0;
         public TPAura() : base("TPAura", (char)0x07, "Exploits") { } // Not defined
         Random ran = new Random();
 
         public override void onTick()
         {
             if (Game.isNull) return;
+            flicker++;
 
-            var ent = Game.getClosestPlayer();
-            if (ent == null) return; // Returns if entity doesnt exist
-
-            Vector3 pos = ent.position;
-
-            if (Game.position.Distance(pos) < 6)
+            if (flicker == 4)
             {
-                pos.x += (float)(ran.NextDouble() * (0.6 - -0.6) + -0.6);
-                pos.z += (float)(ran.NextDouble() * (0.6 - -0.6) + -0.6);
+                flicker = 0;
+                if (Game.isNull) return;
+                flicker++;
 
-                Game.position = pos;
-                Game.velocity = Base.Vec3(0, -0.01f, 0);
+                if (flicker == 300)
+                {
+                    flicker = 0;
+                    Game.onGround = false;
+                }
             }
         }
     }

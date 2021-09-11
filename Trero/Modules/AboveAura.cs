@@ -11,6 +11,7 @@ namespace Trero.Modules
 {
     class AboveAura : Module
     {
+        int flicker = 0;
         public AboveAura() : base("AboveAura", (char)0x07, "Exploits") { } // Not defined
 
 
@@ -18,19 +19,26 @@ namespace Trero.Modules
         {
             if (Game.isNull) return;
 
-            var ent = Game.getClosestPlayer();
-            if (ent == null) return;
 
-            if (ent == null) return; // Returns if entity doesnt exist
+            flicker++;
 
-            Vector3 pos = ent.position;
-
-            if (Game.position.Distance(pos) < 6)
+            if (flicker == 4)
             {
-                pos.y += 2;
+                flicker = 0;
+                var ent = Game.getClosestPlayer();
+                if (ent == null) return;
 
-                Game.position = pos;
-                Game.velocity = Base.Vec3(0, -0.01f, 0);
+                if (ent == null) return; // Returns if entity doesnt exist
+
+                Vector3 pos = ent.position;
+
+                if (Game.position.Distance(pos) < 6)
+                {
+                    pos.y += 2;
+
+                    Game.position = pos;
+                    Game.velocity = Base.Vec3(0, -0.01f, 0);
+                }
             }
         }
     }

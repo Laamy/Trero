@@ -15,24 +15,11 @@ namespace Trero.Modules
         int flicker = 0;
         public Sexaura() : base("Sexaura", (char)0x07, "World") { } // Not defined
 
-
         public override void onTick()
         {
             if (Game.isNull) return;
 
-            /*flicker++;
-
-            if (flicker == 5)
-            {
-                new Thread(() => {
-                    if (MCM.isMinecraftFocused())
-                        SendKeys.SendWait("{+}");
-                }).Start();
-            }*/
-
             var ent = Game.getClosestPlayer();
-            if (ent == null) return;
-
             if (ent == null) return; // Returns if entity doesnt exist
 
             Vector3 pos = ent.position;

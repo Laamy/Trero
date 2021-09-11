@@ -40,20 +40,20 @@ namespace Trero
             modules.Add(new BulkFly());
             modules.Add(new Fly());
             modules.Add(new AirJump());
-            modules.Add(new TPAura());
+            //modules.Add(new TPAura());
             modules.Add(new ClosestPlayerDisplay());
             modules.Add(new PlayerDisplay());
             modules.Add(new TriggerBot());
             modules.Add(new Hitbox());
-            modules.Add(new FlickerExample());
+            //modules.Add(new FlickerExample());
             modules.Add(new ClickGUI());
             modules.Add(new Phase());
             modules.Add(new Noclip());
-            modules.Add(new NoYFly());
+            //modules.Add(new NoYFly());
             modules.Add(new PhaseDown());
             modules.Add(new PhaseUp());
             modules.Add(new KillGame());
-            modules.Add(new Sexaura());
+            //modules.Add(new Sexaura());
             modules.Add(new AboveAura());
 
             //modules[0].onDisable();
