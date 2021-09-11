@@ -13,11 +13,16 @@ namespace Trero.Modules
     {
         public Step() : base("Step", (char)0x07, "Player") { } // 0x07 = no keybind
 
-        public override void onTick()
+        public override void onEnable()
         {
-            if (Game.isNull) return;
-
+            base.onEnable();
             Game.stepHeight = 2f;
+        }
+
+        public override void onDisable()
+        {
+            base.onDisable();
+            Game.stepHeight = .5f;
         }
     }
 }
