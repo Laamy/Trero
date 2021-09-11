@@ -11,6 +11,7 @@ namespace Trero.Modules
         {
             Process.GetProcessesByName("ApplicationFrameHost")[0].Kill();
             Process.GetProcessesByName("Minecraft.Windows")[0].Kill();
+            Program.quit = true;
         }
     }
 }

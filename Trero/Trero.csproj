@@ -80,6 +80,7 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\SlimeWall.cs" />
     <Compile Include="Modules\ClickGUI.cs" />
     <Compile Include="Modules\FlickerExample.cs" />
     <Compile Include="Modules\Hitbox.cs" />
@@ -89,8 +90,12 @@
     <Compile Include="Modules\BulkFly.cs" />
     <Compile Include="Modules\Fly.cs" />
     <Compile Include="Modules\ClosestPlayerDisplay.cs" />
+    <Compile Include="Modules\Eject.cs" />
+    <Compile Include="Modules\Bhop.cs" />
+    <Compile Include="Modules\Speed.cs" />
     <Compile Include="Modules\PlayerDisplay.cs" />
     <Compile Include="Modules\AboveAura.cs" />
+    <Compile Include="Modules\Jetpack.cs" />
     <Compile Include="Modules\TriggerBot.cs" />
     <Compile Include="Modules\TPAura.cs" />
     <Compile Include="Modules\Phase.cs" />

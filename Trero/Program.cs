@@ -21,9 +21,6 @@ namespace Trero
     class Program
     {
         public static bool quit = false;
-
-        public static bool scaffolding = false;
-
         public static List<Module> modules = new List<Module>();
 
         static void Main(string[] args)
@@ -55,6 +52,11 @@ namespace Trero
             modules.Add(new KillGame());
             modules.Add(new Sexaura());
             modules.Add(new Fly());
+            modules.Add(new Jetpack());
+            modules.Add(new Eject());
+            modules.Add(new Speed());
+            modules.Add(new Bhop());
+            modules.Add(new SlimeWall());
 
             // Step (stepHeight)
             // PlayerTp (Teleportation)
@@ -70,15 +72,12 @@ namespace Trero
             // Note that these are all possible but might not be added/changed just ideas ill slowly filter through over time
             // also rather do things i can think of ways to actually do externally so dont ask for anything else if you 100% know its impossible :(
             // for yaammi to do list :penisve:
-            // Jetpack
             // Glide
             // CubeCraftFly
-            // MineplexFly
+            // MineplexFly - probs dont need this tbh
             // Killaura (Some kind of isLookingAtEntityId edit else Aimbot/TriggerBot
             // FastUse (Haven't put much thought into this so idk if its possible externally probs is)
             // AutoFish (Seems pretty simple and wont need pointers tbh)
-            // Bhop
-            // Speed
             // InventoryMove
             // Commands
             // Aimbot
@@ -97,7 +96,6 @@ namespace Trero
             // CustomTablist
             // Nuker
             // Antibot
-            // Spider
             // BlockFly (Cant do this without scaffold so...)
             // Im never doing fightbot so fuck up
             // BowAimbot
@@ -146,9 +144,9 @@ namespace Trero
 
             // Console.WriteLine(Game.level.ToString("X"));
 
-            while (true) // freeze
+            while (quit == false) // freeze
             {
-                Thread.Sleep(1);
+                //Thread.Sleep(1);
                 foreach (Module mod in modules)
                     if (mod.enabled)
                         mod.onTick();

@@ -187,16 +187,16 @@ namespace Trero.ClientBase
             get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId"));
             set => MCM.writeInt(localPlayer + VersionClass.getData("lookingEntityId"), value);
         }
-        public static bool onGround2
+        public static int touchingFloor
         {
-            get => MCM.readInt(localPlayer + VersionClass.getData("onGround2")) != 0;
+            get => MCM.readInt(localPlayer + VersionClass.getData("onGround2"));
         } // onGround2
         public static float stepHeight
         {
             get => MCM.readFloat(localPlayer + VersionClass.getData("stepHeight"));
             set => MCM.writeFloat(localPlayer + VersionClass.getData("stepHeight"), value);
         } // stepHeight
-        public static Vector3 dirVect(float x, float y)
+        public static Vector3 dirVect(float x, float y) // pretty sure this is fine wtf
         {
             Vector3 tempVec = Base.Vec3(); // create empty vector
 
@@ -212,7 +212,7 @@ namespace Trero.ClientBase
             {
                 Vector3 tempVec;
 
-                float cYaw = rotation.y + 89.9f * (float)Math.PI / 178f;
+                float cYaw = (rotation.y + 89.9f) * (float)Math.PI / 178f;
                 float cPitch = rotation.x * (float)Math.PI / 178f;
 
                 tempVec = dirVect(cYaw, cPitch);

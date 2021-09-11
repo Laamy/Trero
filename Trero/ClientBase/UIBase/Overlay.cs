@@ -51,12 +51,13 @@ namespace Trero.ClientBase.UIBase
                     }
                     catch { }
                 }
+                Application.Exit();
             }).Start();
             TopMost = true;
         }
 
         [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
-        [DllImportAttribute("User32.dll")]  static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+        [DllImportAttribute("User32.dll")] static extern IntPtr SetForegroundWindow(IntPtr hWnd);
         [DllImport("user32.dll")] static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
         [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] static extern bool GetWindowPlacement(IntPtr hWnd, ref Placement lpwndpl);
 
@@ -199,6 +200,8 @@ namespace Trero.ClientBase.UIBase
                     panel9.Controls.Add(moduleButton);
                 if (mod.category == "Combat")
                     panel11.Controls.Add(moduleButton);
+                if (mod.category == "Player")
+                    panel17.Controls.Add(moduleButton);
             }
         }
 
@@ -409,6 +412,25 @@ namespace Trero.ClientBase.UIBase
             {
                 panel12.Left = e.X + panel12.Left - MouseDownLocation8.X;
                 panel12.Top = e.Y + panel12.Top - MouseDownLocation8.Y;
+            }
+        }
+
+        private Point MouseDownLocation9;
+        private void panel16_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MouseDownLocation9 = e.Location;
+                panel16.BringToFront();
+            }
+        }
+
+        private void panel16_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                panel16.Left = e.X + panel16.Left - MouseDownLocation9.X;
+                panel16.Top = e.Y + panel16.Top - MouseDownLocation9.Y;
             }
         }
     }
