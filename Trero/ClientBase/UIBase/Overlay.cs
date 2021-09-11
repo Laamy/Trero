@@ -155,7 +155,6 @@ namespace Trero.ClientBase.UIBase
         }
 
         private Point MouseDownLocation;
-
         private void panel2_MouseDown_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -273,12 +272,11 @@ namespace Trero.ClientBase.UIBase
             }
         }
 
-        private Point MouseDownLocation2;
         private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation2 = e.Location;
+                MouseDownLocation = e.Location;
                 panel3.BringToFront();
             }
         }
@@ -287,19 +285,18 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel3.Left = e.X + panel3.Left - MouseDownLocation2.X;
-                panel3.Top = e.Y + panel3.Top - MouseDownLocation2.Y;
+                panel3.Left = e.X + panel3.Left - MouseDownLocation.X;
+                panel3.Top = e.Y + panel3.Top - MouseDownLocation.Y;
             }
         }
 
         private void ClonableButton_Click(object sender, EventArgs e) { }
 
-        private Point MouseDownLocation3;
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation3 = e.Location;
+                MouseDownLocation = e.Location;
                 panel1.BringToFront();
             }
         }
@@ -308,8 +305,8 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel1.Left = e.X + panel1.Left - MouseDownLocation3.X;
-                panel1.Top = e.Y + panel1.Top - MouseDownLocation3.Y;
+                panel1.Left = e.X + panel1.Left - MouseDownLocation.X;
+                panel1.Top = e.Y + panel1.Top - MouseDownLocation.Y;
             }
         }
 
@@ -318,12 +315,11 @@ namespace Trero.ClientBase.UIBase
 
         }
 
-        private Point MouseDownLocation4;
         private void panel6_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation4 = e.Location;
+                MouseDownLocation = e.Location;
                 panel6.BringToFront();
             }
         }
@@ -332,17 +328,16 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel6.Left = e.X + panel6.Left - MouseDownLocation4.X;
-                panel6.Top = e.Y + panel6.Top - MouseDownLocation4.Y;
+                panel6.Left = e.X + panel6.Left - MouseDownLocation.X;
+                panel6.Top = e.Y + panel6.Top - MouseDownLocation.Y;
             }
         }
 
-        private Point MouseDownLocation5;
         private void panel14_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation5 = e.Location;
+                MouseDownLocation = e.Location;
                 panel14.BringToFront();
             }
         }
@@ -351,17 +346,16 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel14.Left = e.X + panel14.Left - MouseDownLocation5.X;
-                panel14.Top = e.Y + panel14.Top - MouseDownLocation5.Y;
+                panel14.Left = e.X + panel14.Left - MouseDownLocation.X;
+                panel14.Top = e.Y + panel14.Top - MouseDownLocation.Y;
             }
         }
 
-        private Point MouseDownLocation6;
         private void panel8_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation6 = e.Location;
+                MouseDownLocation = e.Location;
                 panel8.BringToFront();
             }
         }
@@ -370,17 +364,16 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel8.Left = e.X + panel8.Left - MouseDownLocation6.X;
-                panel8.Top = e.Y + panel8.Top - MouseDownLocation6.Y;
+                panel8.Left = e.X + panel8.Left - MouseDownLocation.X;
+                panel8.Top = e.Y + panel8.Top - MouseDownLocation.Y;
             }
         }
 
-        private Point MouseDownLocation7;
         private void panel10_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation7 = e.Location;
+                MouseDownLocation = e.Location;
                 panel10.BringToFront();
             }
         }
@@ -389,17 +382,16 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel10.Left = e.X + panel10.Left - MouseDownLocation7.X;
-                panel10.Top = e.Y + panel10.Top - MouseDownLocation7.Y;
+                panel10.Left = e.X + panel10.Left - MouseDownLocation.X;
+                panel10.Top = e.Y + panel10.Top - MouseDownLocation.Y;
             }
         }
 
-        private Point MouseDownLocation8;
         private void panel12_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation8 = e.Location;
+                MouseDownLocation = e.Location;
                 panel12.BringToFront();
             }
         }
@@ -408,17 +400,16 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel12.Left = e.X + panel12.Left - MouseDownLocation8.X;
-                panel12.Top = e.Y + panel12.Top - MouseDownLocation8.Y;
+                panel12.Left = e.X + panel12.Left - MouseDownLocation.X;
+                panel12.Top = e.Y + panel12.Top - MouseDownLocation.Y;
             }
         }
 
-        private Point MouseDownLocation9;
         private void panel16_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation9 = e.Location;
+                MouseDownLocation = e.Location;
                 panel16.BringToFront();
             }
         }
@@ -427,8 +418,8 @@ namespace Trero.ClientBase.UIBase
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel16.Left = e.X + panel16.Left - MouseDownLocation9.X;
-                panel16.Top = e.Y + panel16.Top - MouseDownLocation9.Y;
+                panel16.Left = e.X + panel16.Left - MouseDownLocation.X;
+                panel16.Top = e.Y + panel16.Top - MouseDownLocation.Y;
             }
         }
     }
