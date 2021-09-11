@@ -47,6 +47,13 @@ namespace Trero
             modules.Add(new Hitbox());
             modules.Add(new FlickerExample());
             modules.Add(new ClickGUI());
+            modules.Add(new Phase());
+            modules.Add(new Noclip());
+            modules.Add(new NoYFly());
+            modules.Add(new PhaseDown());
+            modules.Add(new PhaseUp());
+            modules.Add(new KillGame());
+            modules.Add(new Sexaura());
 
             //modules[0].onDisable();
 
@@ -108,27 +115,7 @@ namespace Trero
 
             if (e.vkey == vKeyCodes.KeyHeld) // broken
             {
-                if (e.key == Keys.P)
-                {
-                    Process.GetProcessesByName("ApplicationFrameHost")[0].Kill();
-                    Process.GetProcessesByName("Minecraft.Windows")[0].Kill();
-                }///Terminate Process
-                else if (e.key == Keys.C)
-                {
-                    Game.velocity = Base.Vec3();
-
-                    Vector3 newPos = Game.position;
-                    newPos.y += 0.01f;
-                    Game.position = newPos;
-                }///Phase Up    
-                else if (e.key == Keys.V)
-                {
-                    Game.velocity = Base.Vec3();
-                    Vector3 newPos = Game.position;
-                    newPos.y += -0.01f;
-                    Game.position = newPos;
-                }///No Clip 
-                else if (e.key == Keys.G)
+                if (e.key == Keys.G)
                 {
                     Game.isLookingAtBlock = 0;
                     Game.SideSelect = 1;
