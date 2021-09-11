@@ -12,7 +12,6 @@ namespace Trero.Modules
 {
     class Sexaura : Module
     {
-        int flicker = 0;
         public Sexaura() : base("Sexaura", (char)0x07, "World") { } // Not defined
 
         public override void onTick()

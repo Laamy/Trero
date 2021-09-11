@@ -13,7 +13,6 @@ namespace Trero.Modules
 {
     class Jetpack : Module
     {
-        int flicker = 0;
         public Jetpack() : base("Jetpack", (char)0x07, "Flies") {
             Keymap.keyEvent += keyvE;
         } // Not defined

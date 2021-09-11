@@ -18,7 +18,7 @@ namespace Trero.Modules
             base.onEnable();
             foreach (Control ct in Overlay.handle.Controls)
             {
-                if (ct.Tag == "Category")
+                if (ct.Tag.ToString() == "Category")
                     ct.Visible = true;
             }
         }
@@ -27,7 +27,7 @@ namespace Trero.Modules
             base.onDisable();
             foreach (Control ct in Overlay.handle.Controls)
             {
-                if (ct.Tag == "Category")
+                if (ct.Tag.ToString() == "Category")
                     ct.Visible = false;
             }
         }

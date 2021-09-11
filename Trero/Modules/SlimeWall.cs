@@ -8,7 +8,6 @@ namespace Trero.Modules
 {
     class SlimeWall : Module
     {
-        float speed = 0.7f;
         public SlimeWall() : base("SlimeWall", (char)0x07, "Player") { } // Not defined
         public override void onTick()
         {
