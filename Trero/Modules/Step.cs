@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     class Step : Module
     {
-        public Step() : base("Step", (char)0x07, "Step") { } // 0x07 = no keybind
+        public Step() : base("Step", (char)0x07, "Player") { } // 0x07 = no keybind
 
         public override void onTick()
         {

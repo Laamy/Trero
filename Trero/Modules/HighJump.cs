@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     class HighJump : Module
     {
-        public HighJump() : base("HighJump", (char)0x07, "HighJump") { } // 0x07 = no keybind
+        public HighJump() : base("HighJump", (char)0x07, "Player") { } // 0x07 = no keybind
 
         public override void onTick()
         {

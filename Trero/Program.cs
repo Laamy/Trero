@@ -61,6 +61,7 @@ namespace Trero
             modules.Add(new Gamemode());
             modules.Add(new Teleport());
             modules.Add(new Step());
+            modules.Add(new HighJump());
             //modules.Add(new TestModule());
 
             // PlayerTp (Teleportation) -- im gonna do this if you dont ;-;
