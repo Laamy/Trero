@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
@@ -19,13 +20,15 @@ namespace Trero.Modules
         {
             if (Game.isNull) return;
 
-            flicker++;
+            /*flicker++;
 
-            if (flicker == 50)
+            if (flicker == 5)
             {
-                if (MCM.isMinecraftFocused())
-                    SendKeys.SendWait("{+}");
-            }
+                new Thread(() => {
+                    if (MCM.isMinecraftFocused())
+                        SendKeys.SendWait("{+}");
+                }).Start();
+            }*/
 
             var ent = Game.getClosestPlayer();
             if (ent == null) return;
