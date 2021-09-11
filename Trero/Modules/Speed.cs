@@ -12,6 +12,8 @@ namespace Trero.Modules
         public Speed() : base("Speed", (char)0x07, "Player") { } // Not defined
         public override void onTick()
         {
+            if (Game.inInventory || Game.isNull) return;
+
             var plrYaw = Game.rotation.y; // yaw
 
             if (Keymap.GetAsyncKeyState(Keys.W))
@@ -42,8 +44,6 @@ namespace Trero.Modules
                 float calYaw = (plrYaw) * ((float)Math.PI / 180f);
 
                 MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity"), (float)Math.Cos(calYaw) * speed);
-                /*if (Game.onGround2 == 257 && Keymap.GetAsyncKeyState(Keys.Space)) // jump for bhop
-                    MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity") + 4, 0.3f);*/
                 MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity") + 8, (float)Math.Sin(calYaw) * speed);
             }
         }

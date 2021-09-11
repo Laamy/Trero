@@ -178,6 +178,10 @@ namespace Trero.ClientBase
                 else MCM.writeInt(localPlayer + VersionClass.getData("onGround"), 0);
             }
         } // onGround
+        public static bool inInventory
+        {
+            get => MCM.readInt(localPlayer + VersionClass.getData("inInventory")) != 1;
+        } // inInventory
         public static bool isLookingAtEntity
         {
             get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId")) != -1;
@@ -187,7 +191,7 @@ namespace Trero.ClientBase
             get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId"));
             set => MCM.writeInt(localPlayer + VersionClass.getData("lookingEntityId"), value);
         }
-        public static int touchingFloor
+        public static int touchingObject
         {
             get => MCM.readInt(localPlayer + VersionClass.getData("onGround2"));
         } // onGround2

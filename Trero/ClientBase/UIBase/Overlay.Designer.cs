@@ -108,7 +108,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.TestCategory);
-            this.panel2.Location = new System.Drawing.Point(321, 246);
+            this.panel2.Location = new System.Drawing.Point(478, 254);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(150, 300);
             this.panel2.TabIndex = 1;
@@ -232,7 +232,7 @@
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Location = new System.Drawing.Point(165, 222);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(150, 221);
+            this.panel6.Size = new System.Drawing.Size(150, 267);
             this.panel6.TabIndex = 2;
             this.panel6.Tag = "Category";
             this.panel6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseDown);
@@ -255,7 +255,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(0, 24);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(150, 197);
+            this.panel7.Size = new System.Drawing.Size(150, 243);
             this.panel7.TabIndex = 0;
             // 
             // Watermark
@@ -350,7 +350,7 @@
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Location = new System.Drawing.Point(322, 10);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(150, 230);
+            this.panel12.Size = new System.Drawing.Size(150, 262);
             this.panel12.TabIndex = 7;
             this.panel12.Tag = "Category";
             this.panel12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel12_MouseDown);
@@ -373,7 +373,7 @@
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel13.Location = new System.Drawing.Point(0, 24);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(150, 206);
+            this.panel13.Size = new System.Drawing.Size(150, 238);
             this.panel13.TabIndex = 0;
             // 
             // panel14

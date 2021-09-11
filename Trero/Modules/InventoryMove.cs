@@ -6,13 +6,13 @@ using Trero.ClientBase.VersionBase;
 
 namespace Trero.Modules
 {
-    class Bhop : Module
+    class InventoryMove : Module
     {
-        float speed = 0.7f;
-        public Bhop() : base("Bhop", (char)0x07, "Exploits") { } // Not defined
+        float speed = 0.25f;
+        public InventoryMove() : base("InventoryMove", (char)0x07, "Exploits") { } // Not defined
         public override void onTick()
         {
-            if (Game.inInventory || Game.isNull) return;
+            if (!Game.inInventory || Game.isNull) return;
 
             var plrYaw = Game.rotation.y; // yaw
 
@@ -44,9 +44,8 @@ namespace Trero.Modules
                 float calYaw = (plrYaw) * ((float)Math.PI / 180f);
 
                 MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity"), (float)Math.Cos(calYaw) * speed);
-                if (Game.touchingObject == 1) // jump for bhop
+                if (Game.touchingObject == 257 && Keymap.GetAsyncKeyState(Keys.Space)) // jump for bhop
                     MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity") + 4, 0.3f);
-                //Console.WriteLine(Game.onGround2);
                 MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity") + 8, (float)Math.Sin(calYaw) * speed);
             }
         }

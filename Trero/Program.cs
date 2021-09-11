@@ -62,17 +62,16 @@ namespace Trero
             modules.Add(new Teleport());
             modules.Add(new Step());
             modules.Add(new HighJump());
+            modules.Add(new InventoryMove());
             //modules.Add(new TestModule());
 
             // PlayerTp (Teleportation) -- im gonna do this if you dont ;-;
             // ClickTP (Teleportation)
             // CreativeFly (isFlying)
-            // HighJump (Velocity)
             // Jesus (inWater & velocity)
             // NoSwing (swingAn)
             // Recall (Teleportation)
             // Tower (Veloicty & getKey)
-            // TpBypass (Hive maybe a little to much for you rn though to learn how that works so ignore this if you want 2)
 
             // Note that these are all possible but might not be added/changed just ideas ill slowly filter through over time
             // also rather do things i can think of ways to actually do externally so dont ask for anything else if you 100% know its impossible :(
@@ -164,6 +163,6 @@ namespace Trero
 
         Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
 
-         */
+        */
     }
 }

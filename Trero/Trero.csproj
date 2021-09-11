@@ -99,6 +99,7 @@
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
     <Compile Include="Modules\HighJump.cs" />
+    <Compile Include="Modules\InventoryMove.cs" />
     <Compile Include="Modules\Step.cs" />
     <Compile Include="Modules\TestModule.cs" />
     <Compile Include="Modules\Teleport.cs" />
