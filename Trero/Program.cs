@@ -60,9 +60,9 @@ namespace Trero
             modules.Add(new LBSH());
             modules.Add(new Gamemode());
             modules.Add(new Teleport());
+            modules.Add(new Step());
             //modules.Add(new TestModule());
 
-            // Step (stepHeight)
             // PlayerTp (Teleportation) -- im gonna do this if you dont ;-;
             // ClickTP (Teleportation)
             // CreativeFly (isFlying)

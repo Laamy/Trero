@@ -45,7 +45,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Watermark = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -258,24 +258,24 @@
             this.panel7.Size = new System.Drawing.Size(150, 197);
             this.panel7.TabIndex = 0;
             // 
-            // button2
+            // Watermark
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe Script", 20.25F, System.Drawing.FontStyle.Italic);
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(1248, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 65);
-            this.button2.TabIndex = 4;
-            this.button2.TabStop = false;
-            this.button2.Text = "Trero";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Watermark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Watermark.BackColor = System.Drawing.Color.Transparent;
+            this.Watermark.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.Watermark.FlatAppearance.BorderSize = 0;
+            this.Watermark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Watermark.Font = new System.Drawing.Font("Segoe Script", 20.25F, System.Drawing.FontStyle.Italic);
+            this.Watermark.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Watermark.Location = new System.Drawing.Point(1248, 1);
+            this.Watermark.Name = "Watermark";
+            this.Watermark.Size = new System.Drawing.Size(115, 65);
+            this.Watermark.TabIndex = 4;
+            this.Watermark.TabStop = false;
+            this.Watermark.Text = "Trero";
+            this.Watermark.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.Watermark.UseVisualStyleBackColor = false;
+            this.Watermark.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel8
             // 
@@ -453,7 +453,7 @@
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Watermark);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -509,7 +509,7 @@
         private System.Windows.Forms.Label playerList;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Watermark;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel8;
