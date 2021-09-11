@@ -56,7 +56,7 @@ namespace Trero
             modules.Add(new Sexaura());
             modules.Add(new Fly());
 
-            //modules[0].onDisable();
+            modules[0].onDisable();
 
             modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
 
