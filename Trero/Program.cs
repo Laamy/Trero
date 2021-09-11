@@ -56,6 +56,56 @@ namespace Trero
             modules.Add(new Sexaura());
             modules.Add(new Fly());
 
+            // Step (stepHeight)
+            // PlayerTp (Teleportation)
+            // ClickTP (Teleportation)
+            // CreativeFly (isFlying)
+            // HighJump (Velocity)
+            // Jesus (inWater & velocity)
+            // NoSwing (swingAn)
+            // Recall (Teleportation)
+            // Tower (Veloicty & getKey)
+            // TpBypass (Hive maybe a little to much for you rn though to learn how that works so ignore this if you want 2)
+
+
+            // for yaammi to do list :penisve:
+            // Jetpack
+            // Glide
+            // CubeCraftFly
+            // MineplexFly
+            // Bhop
+            // Speed
+            // InventoryMove
+            // Aimbot
+            // AutoWalk
+            // Gamemode
+            // Reach
+            // Antibot
+            // BowAimbot
+            // ChestAura
+            // CompassDisplay
+            // FullBright
+            // Zoom (FovPointer needed for world2screen)
+            // WorldToScreen (GameFunc)
+            // NoFriends
+            // Commands
+            // NoHurtCam
+            // Rader (Already possible btw as we have entitylist)
+            // Fix scaffold
+            // Spider
+            // Tracers (W2S Required)
+            // ArrowTracers (W2S Required)
+            // Noknockback
+            // Waypoints (W2S Required)
+            // 
+
+            // TODO: Commands
+            // tp
+            // gm
+            // eject
+            // bind
+            // toggle
+
             modules[0].onDisable();
 
             modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
