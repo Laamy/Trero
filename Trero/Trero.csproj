@@ -53,6 +53,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -80,6 +81,8 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\Teleport.cs" />
+    <Compile Include="Modules\Gamemode.cs" />
     <Compile Include="Modules\SlimeWall.cs" />
     <Compile Include="Modules\ClickGUI.cs" />
     <Compile Include="Modules\FlickerExample.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="Modules\ClosestPlayerDisplay.cs" />
     <Compile Include="Modules\Eject.cs" />
     <Compile Include="Modules\Bhop.cs" />
+    <Compile Include="Modules\LBSF.cs" />
     <Compile Include="Modules\Speed.cs" />
     <Compile Include="Modules\PlayerDisplay.cs" />
     <Compile Include="Modules\AboveAura.cs" />

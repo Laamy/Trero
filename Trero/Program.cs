@@ -57,9 +57,12 @@ namespace Trero
             modules.Add(new Speed());
             modules.Add(new Bhop());
             modules.Add(new SlimeWall());
+            modules.Add(new LBSH());
+            modules.Add(new Gamemode());
+            modules.Add(new Teleport());
 
             // Step (stepHeight)
-            // PlayerTp (Teleportation)
+            // PlayerTp (Teleportation) -- im gonna do this if you dont ;-;
             // ClickTP (Teleportation)
             // CreativeFly (isFlying)
             // HighJump (Velocity)
@@ -90,7 +93,6 @@ namespace Trero
             // Waypoints (W2S Required)
             // ArrowTracers (W2S Required)
             // AutoWalk
-            // Gamemode
             // Reach
             // FastWater
             // CustomTablist
