@@ -67,7 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientBase\EntityBase\Actor.cs" />
-    <Compile Include="ClientBase\FakePacket.cs" />
+    <Compile Include="ClientBase\Faketernal.cs" />
+    <Compile Include="ClientBase\FaketernalBase\MessageObj.cs" />
     <Compile Include="ClientBase\Game.cs" />
     <Compile Include="ClientBase\Handler.cs" />
     <Compile Include="ClientBase\KeyBase\Keymap.cs" />
