@@ -158,10 +158,10 @@ namespace Trero
         /*
          
         Game.isLookingAtBlock = 0;
-                    Game.SideSelect = 1;
-                    Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
+        Game.SideSelect = 1;
+        Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
-                    Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
+        Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
 
          */
     }

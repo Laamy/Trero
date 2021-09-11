@@ -11,7 +11,8 @@ namespace Trero.Modules
         public TestModule() : base("TestModule", (char)0x07, "Other") { } // Not defined
         public override void onTick()
         {
-            FakePacket.createClientObj(); // tellraw externally
+            FakePacket.ClientObj.createClientObj(); // tellraw externally
+            FakePacket.ClientObj.setClientObj("[Atani1.17]: sex");
         }
     }
 }
