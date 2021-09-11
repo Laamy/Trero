@@ -111,10 +111,10 @@ namespace Trero.ClientBase
             get
             {
                 int gamemode = -1;
-                gamemode = (int)(MCM.readInt64(localPlayer + VersionClass.getData("positionX")) / 4294967296);
+                gamemode = (int)(MCM.readInt64(localPlayer + VersionClass.getData("gamemode")) / 4294967296);
                 return gamemode;
             }
-            set => MCM.writeInt64(localPlayer + VersionClass.getData("positionX"), (ulong)(value * 4294967296));
+            set => MCM.writeInt64(localPlayer + VersionClass.getData("gamemode"), (ulong)(value * 4294967296));
         } // Gamemode
         public static int isFalling
         {
@@ -124,7 +124,7 @@ namespace Trero.ClientBase
                 value = (int)(MCM.readInt64(localPlayer + VersionClass.getData("JumpForBHop")));
                 return value;
             }
-            set => MCM.writeInt64(localPlayer + VersionClass.getData("positionX"), (ulong)(value * 4294967296));
+            set => MCM.writeInt(localPlayer + VersionClass.getData("JumpForBHop"), value);
         }
         public static Vector3 velocity
         {
@@ -177,6 +177,10 @@ namespace Trero.ClientBase
                 if (value) MCM.writeInt(localPlayer + VersionClass.getData("onGround"), 16777473);
                 else MCM.writeInt(localPlayer + VersionClass.getData("onGround"), 0);
             }
+        } // onGround
+        public static bool inWater
+        {
+            get => MCM.readInt(localPlayer + VersionClass.getData("inWater")) != 0;
         } // onGround
         public static bool inInventory
         {
