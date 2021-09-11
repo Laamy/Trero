@@ -4,8 +4,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using Trero.ClientBase.EntityBase;
-using Trero.ClientBase.KeyBase;
-using Trero.ClientBase.UIBase.TreroUILibrary;
 using Trero.Modules;
 
 namespace Trero.ClientBase.UIBase

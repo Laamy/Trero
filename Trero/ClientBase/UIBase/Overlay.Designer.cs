@@ -113,7 +113,6 @@
             this.panel2.Size = new System.Drawing.Size(150, 300);
             this.panel2.TabIndex = 1;
             this.panel2.Tag = "Category";
-            this.panel2.Visible = false;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown_1);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove_1);
             // 
@@ -236,7 +235,6 @@
             this.panel6.Size = new System.Drawing.Size(150, 221);
             this.panel6.TabIndex = 2;
             this.panel6.Tag = "Category";
-            this.panel6.Visible = false;
             this.panel6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseDown);
             this.panel6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseMove);
             // 
@@ -289,7 +287,6 @@
             this.panel8.Size = new System.Drawing.Size(150, 196);
             this.panel8.TabIndex = 5;
             this.panel8.Tag = "Category";
-            this.panel8.Visible = false;
             this.panel8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel8_MouseDown);
             this.panel8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel8_MouseMove);
             // 
@@ -323,7 +320,6 @@
             this.panel10.Size = new System.Drawing.Size(150, 196);
             this.panel10.TabIndex = 6;
             this.panel10.Tag = "Category";
-            this.panel10.Visible = false;
             this.panel10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseDown);
             this.panel10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseMove);
             // 
@@ -357,7 +353,6 @@
             this.panel12.Size = new System.Drawing.Size(150, 230);
             this.panel12.TabIndex = 7;
             this.panel12.Tag = "Category";
-            this.panel12.Visible = false;
             this.panel12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel12_MouseDown);
             this.panel12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel12_MouseMove);
             // 
@@ -391,7 +386,6 @@
             this.panel14.Size = new System.Drawing.Size(150, 196);
             this.panel14.TabIndex = 8;
             this.panel14.Tag = "Category";
-            this.panel14.Visible = false;
             this.panel14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel14_MouseDown);
             this.panel14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel14_MouseMove);
             // 
@@ -425,7 +419,6 @@
             this.panel16.Size = new System.Drawing.Size(150, 230);
             this.panel16.TabIndex = 8;
             this.panel16.Tag = "Category";
-            this.panel16.Visible = false;
             this.panel16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel16_MouseDown);
             this.panel16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel16_MouseMove);
             // 
