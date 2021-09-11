@@ -47,6 +47,12 @@ namespace Trero
             modules.Add(new Hitbox());
             modules.Add(new FlickerExample());
             modules.Add(new ClickGUI());
+            modules.Add(new Phase());
+            modules.Add(new Noclip());
+            modules.Add(new NoYFly());
+            modules.Add(new PhaseDown());
+            modules.Add(new PhaseUp());
+            modules.Add(new KillGame());
 
             //modules[0].onDisable();
 
@@ -108,27 +114,7 @@ namespace Trero
 
             if (e.vkey == vKeyCodes.KeyHeld) // broken
             {
-                if (e.key == Keys.P)
-                {
-                    Process.GetProcessesByName("ApplicationFrameHost")[0].Kill();
-                    Process.GetProcessesByName("Minecraft.Windows")[0].Kill();
-                }///Terminate Process
-                else if (e.key == Keys.C)
-                {
-                    Game.velocity = Base.Vec3();
-
-                    Vector3 newPos = Game.position;
-                    newPos.y += 0.01f;
-                    Game.position = newPos;
-                }///Phase Up    
-                else if (e.key == Keys.V)
-                {
-                    Game.velocity = Base.Vec3();
-                    Vector3 newPos = Game.position;
-                    newPos.y += -0.01f;
-                    Game.position = newPos;
-                }///No Clip 
-                else if (e.key == Keys.G)
+                if (e.key == Keys.G)
                 {
                     Game.isLookingAtBlock = 0;
                     Game.SideSelect = 1;
@@ -136,24 +122,6 @@ namespace Trero
 
                     Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
                 }///Scaffold (Broken)
-                else if (e.key == Keys.X)
-                {
-                    Game.onGround = true;
-
-                    Game.velocity = Base.Vec3();
-
-                    Vector3 newVel = Base.Vec3();
-
-                    float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
-
-                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.z = (float)Math.Sin(cy) * (8 / 9f); ///Working Fly With No Height 
-
-
-                    if (Keymap.GetAsyncKeyState((char)(Keys.W)))
-                        newVel.x = (float)Math.Cos(cy) * (8 / 9f);
-                    Game.velocity = newVel;
-                }///No Y Fly
                 else if (e.key == Keys.T)
                 {
 

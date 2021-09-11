@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
+﻿using System.Windows.Forms;
 using Trero.ClientBase.UIBase;
 
 namespace Trero.Modules
 {
     class ClickGUI : Module
     {
-        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual") { } // Not defined
+        public ClickGUI() : base("ClickGUI", (char)(int)Keys.P, "Visual") { } // Not defined
         public override void onEnable()
         {
             base.onEnable();

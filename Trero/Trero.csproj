@@ -80,6 +80,12 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\KillGame.cs" />
+    <Compile Include="Modules\Noclip.cs" />
+    <Compile Include="Modules\PhaseDown.cs" />
+    <Compile Include="Modules\PhaseUp.cs" />
+    <Compile Include="Modules\NoYFly.cs" />
+    <Compile Include="Modules\Phase.cs" />
     <Compile Include="Modules\ClickGUI.cs" />
     <Compile Include="Modules\FlickerExample.cs" />
     <Compile Include="Modules\Hitbox.cs" />
