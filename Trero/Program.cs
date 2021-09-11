@@ -53,6 +53,7 @@ namespace Trero
             modules.Add(new PhaseDown());
             modules.Add(new PhaseUp());
             modules.Add(new KillGame());
+            modules.Add(new Sexaura());
 
             //modules[0].onDisable();
 

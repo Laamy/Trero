@@ -95,6 +95,7 @@
     <Compile Include="Modules\Fly.cs" />
     <Compile Include="Modules\ClosestPlayerDisplay.cs" />
     <Compile Include="Modules\PlayerDisplay.cs" />
+    <Compile Include="Modules\Sexaura.cs" />
     <Compile Include="Modules\TriggerBot.cs" />
     <Compile Include="Modules\TPAura.cs" />
     <Compile Include="Modules\AirJump.cs" />
