@@ -111,7 +111,7 @@ namespace Trero.ClientBase.UIBase
             if (panel5.Size != new Size((int)calclist.Width, (int)calclist.Height + 20))
             {
                 panel1.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + 4);
-                panel5.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + -20);
+                panel5.Size = new Size((int)calclist.Width + 20, (int)calclist.Height);
             }
 
             playerList.Text = list;
