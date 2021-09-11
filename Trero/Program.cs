@@ -67,44 +67,63 @@ namespace Trero
             // Tower (Veloicty & getKey)
             // TpBypass (Hive maybe a little to much for you rn though to learn how that works so ignore this if you want 2)
 
-
+            // Note that these are all possible but might not be added/changed just ideas ill slowly filter through over time
             // for yaammi to do list :penisve:
             // Jetpack
             // Glide
             // CubeCraftFly
             // MineplexFly
+            // Killaura (Some kind of isLookingAtEntityId edit else Aimbot/TriggerBot
+            // FastUse (Haven't put much thought into this so idk if its possible externally probs is)
+            // AutoFish (Seems pretty simple and wont need pointers tbh)
             // Bhop
             // Speed
             // InventoryMove
+            // Commands
             // Aimbot
+            // NoHurtCam
+            // InventoryDisplay // need local player inventory proxey
+            // Zoom (FovPointer needed for W2S)
+            // WorldToScreen/W2S (GameFunc)
+            // Rader (Already possible btw as we have entitylist) // 100% adding these W2S ones btw
+            // Tracers (W2S Required)
+            // Waypoints (W2S Required)
+            // ArrowTracers (W2S Required)
             // AutoWalk
             // Gamemode
             // Reach
+            // FastWater
+            // CustomTablist
+            // Nuker
             // Antibot
+            // Spider
+            // BlockFly (Cant do this without scaffold so...)
+            // Im never doing fightbot so fuck up
             // BowAimbot
             // ChestAura
-            // CompassDisplay
+            // CompassDisplay // when i get around to it i want to add waypoints into this aswell
             // FullBright
-            // Zoom (FovPointer needed for world2screen)
-            // WorldToScreen (GameFunc)
             // NoFriends
-            // Commands
-            // NoHurtCam
-            // Rader (Already possible btw as we have entitylist)
             // Fix scaffold
-            // Spider
-            // Tracers (W2S Required)
-            // ArrowTracers (W2S Required)
             // Noknockback
-            // Waypoints (W2S Required)
-            // 
 
-            // TODO: Commands
-            // tp
-            // gm
+            // TODO: Commands -- i think ill do all the commands in about aweek if i get a good idea on where to put them
+            // tp (x) (y) (z)
+            // gm (registeryId)
             // eject
-            // bind
-            // toggle
+            // bind (module) (key)
+            // unbind (module)
+            // toggle (module)
+            // friend (add/remove) (plr)
+            // draw (module) (true/false) - Show or hide module from array list
+            // coords
+            // vclip (number)
+            // waypoint (add/remove/list/tp) (waypointName)
+            // rename (module) (name)
+            // modules
+            // block (plr) - ill replace there messages in chat to [Message deleted] x1(etc) using chat pointer
+            // unblock
+            // durability
 
             modules[0].onDisable();
 
