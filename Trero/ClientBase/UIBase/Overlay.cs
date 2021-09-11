@@ -189,17 +189,47 @@ namespace Trero.ClientBase.UIBase
                 moduleButton.FlatAppearance.BorderSize = 0;
                 moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
                 if (mod.category == "Flies")
+                {
                     panel7.Controls.Add(moduleButton);
+                    panel7.Size = new Size(0, panel7.Controls.Count * 32);
+                    panel6.Size = new Size(panel6.Size.Width, panel7.Controls.Count * 32 + 24);
+                }
                 if (mod.category == "Visual")
+                {
                     panel15.Controls.Add(moduleButton);
+                    panel15.Size = new Size(0, panel15.Controls.Count * 32);
+                    panel14.Size = new Size(panel14.Size.Width, panel15.Controls.Count * 32 + 24);
+                }
                 if (mod.category == "Exploits")
+                {
                     panel13.Controls.Add(moduleButton);
+                    panel13.Size = new Size(0, panel13.Controls.Count * 32);
+                    panel12.Size = new Size(panel12.Size.Width, panel13.Controls.Count * 32 + 24);
+                }
                 if (mod.category == "World")
+                {
                     panel9.Controls.Add(moduleButton);
+                    panel9.Size = new Size(0, panel9.Controls.Count * 32);
+                    panel8.Size = new Size(panel8.Size.Width, panel9.Controls.Count * 32 + 24);
+                }
                 if (mod.category == "Combat")
+                {
                     panel11.Controls.Add(moduleButton);
+                    panel11.Size = new Size(0, panel11.Controls.Count * 32);
+                    panel10.Size = new Size(panel10.Size.Width, panel11.Controls.Count * 32 + 24);
+                }
                 if (mod.category == "Player")
+                {
                     panel17.Controls.Add(moduleButton);
+                    panel17.Size = new Size(0, panel17.Controls.Count * 32);
+                    panel16.Size = new Size(panel16.Size.Width, panel17.Controls.Count * 32 + 24);
+                }
+                if (mod.category == "Other")
+                {
+                    TestCategory.Controls.Add(moduleButton);
+                    TestCategory.Size = new Size(0, TestCategory.Controls.Count - 1 * 32);
+                    panel2.Size = new Size(panel2.Size.Width, TestCategory.Controls.Count - 1 * 32 + 24);
+                }
             }
         }
 

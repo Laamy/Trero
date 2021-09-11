@@ -49,7 +49,6 @@ namespace Trero
             modules.Add(new NoYFly());
             modules.Add(new PhaseDown());
             modules.Add(new PhaseUp());
-            modules.Add(new KillGame());
             modules.Add(new Sexaura());
             modules.Add(new Fly());
             modules.Add(new Jetpack());
@@ -63,6 +62,7 @@ namespace Trero
             modules.Add(new Step());
             modules.Add(new HighJump());
             modules.Add(new InventoryMove());
+            modules.Add(new KillGame());
             //modules.Add(new TestModule());
 
             // PlayerTp (Teleportation) -- im gonna do this if you dont ;-;
