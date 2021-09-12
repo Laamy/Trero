@@ -34,6 +34,8 @@ namespace Trero
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
+            Console.WriteLine("Registering modules...");
+
             modules.Add(new ClickGUI()); // i enable these after displaying them via overlay.cs
             modules.Add(new Antibot());
 
@@ -73,6 +75,11 @@ namespace Trero
             modules.Add(new PlayerTP());
             modules.Add(new ClickTP());
             modules.Add(new Glide());
+
+
+            Console.WriteLine("Registered modules!");
+
+
             //modules.Add(new TestModule());
 
             // Recall (Teleportation)
@@ -130,8 +137,6 @@ namespace Trero
             // unblock
             // durability
 
-            modules[0].onDisable();
-
             modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
 
             VersionClass.setVersion(VersionClass.versions[0]);
@@ -150,15 +155,24 @@ namespace Trero
 
             // Console.WriteLine(Game.level.ToString("X"));
 
-            while (quit == false) // freeze
+            int tickc = 0;
+            new Thread(() => // Improved ticking modules
             {
-                if (Overlay.handle == null) return;
+                while (quit == false) // freeze
+                {
+                    Thread.Sleep(1);
+                    //if (Overlay.handle == null) return;
+                    tickc++;
+                    //Console.WriteLine("Tick " + tickc);
 
-                //Thread.Sleep(1);
-                foreach (Module mod in modules)
-                    if (mod.enabled)
-                        mod.onTick();
-            }
+                    //Thread.Sleep(1);
+                    foreach (Module mod in modules)
+                        if (mod.enabled)
+                            mod.onTick();
+                }
+            }).Start();
+
+            while (quit == false) { }
         }
         /*
          
