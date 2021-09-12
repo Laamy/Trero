@@ -136,6 +136,7 @@ namespace Trero
             // block (plr) - ill replace there messages in chat to [Message deleted] x1(etc) using chat pointer
             // unblock
             // durability
+            // nametags - pref if you added armor and in hand display above their head
 
             modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
 
