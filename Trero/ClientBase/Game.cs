@@ -65,7 +65,6 @@ namespace Trero.ClientBase
                 return true;
             }
         } // isValid
-
         public static void teleport(AABB advancedAxis)
         {
             MCM.writeFloat(localPlayer + (ulong)VersionClass.getData("positionX"), advancedAxis.x.x);
@@ -84,6 +83,21 @@ namespace Trero.ClientBase
         {
             teleport(_Vec3.x, _Vec3.y, _Vec3.z);
         } // Teleportation
+        public static void SexActor(Actor actor)
+        {
+            Vector3 pos = actor.position;
+
+            pos.x += Faketernal.Utils.NextFloat(-0.3f, 0.3f);
+            pos.y += 1;
+            pos.z += Faketernal.Utils.NextFloat(-0.3f, 0.3f);
+
+            teleport(pos);
+        } // Teleportation
+        public static void Attack(Actor actor)
+        {
+
+        } // Attack
+        public static Random ran = new Random();
 
         public static Vector3 position
         {

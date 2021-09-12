@@ -10,9 +10,9 @@ using Trero.ClientBase.EntityBase;
 
 namespace Trero.Modules
 {
-    class Rapeaura : Module
+    class Sexaura : Module
     {
-        public Rapeaura() : base("Rapeaura", (char)0x07, "Combat") { } // Not defined
+        public Sexaura() : base("Sexaura", (char)0x07, "World") { } // Not defined
 
         public override void onTick()
         {
@@ -20,10 +20,7 @@ namespace Trero.Modules
 
             Actor plr = Game.getClosestPlayer();
             if (Game.position.Distance(plr.position) < 6f)
-            {
                 Game.SexActor(plr);
-                Game.Attack(plr);
-            }
         }
     }
 }
