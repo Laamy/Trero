@@ -76,6 +76,8 @@ namespace Trero
             modules.Add(new ClickTP());
             modules.Add(new Glide());
             modules.Add(new Tower());
+            modules.Add(new AntiImmoblie());
+            modules.Add(new Reach());
 
 
             Console.WriteLine("Registered modules!");
