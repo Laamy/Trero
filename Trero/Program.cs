@@ -32,6 +32,9 @@ namespace Trero
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
+            modules.Add(new ClickGUI()); // i enable these after displaying them via overlay.cs
+            modules.Add(new Antibot());
+
             modules.Add(new Debug());
             modules.Add(new AirStuck());
             modules.Add(new BulkFly());
@@ -43,7 +46,6 @@ namespace Trero
             modules.Add(new TriggerBot());
             modules.Add(new Hitbox());
             modules.Add(new FlickerExample());
-            modules.Add(new ClickGUI());
             modules.Add(new Phase());
             modules.Add(new Noclip());
             modules.Add(new NoYFly());
@@ -63,20 +65,20 @@ namespace Trero
             modules.Add(new HighJump());
             modules.Add(new InventoryMove());
             modules.Add(new KillGame());
+            modules.Add(new Jesus());
+            modules.Add(new NoSwing());
+            modules.Add(new CreativeFly());
+            modules.Add(new PlayerTP());
+            modules.Add(new ClickTP());
+            modules.Add(new Glide());
             //modules.Add(new TestModule());
 
-            // PlayerTp (Teleportation) -- im gonna do this if you dont ;-;
-            // ClickTP (Teleportation)
-            // CreativeFly (isFlying)
-            // Jesus (inWater & velocity)
-            // NoSwing (swingAn)
             // Recall (Teleportation)
             // Tower (Veloicty & getKey)
 
             // Note that these are all possible but might not be added/changed just ideas ill slowly filter through over time
             // also rather do things i can think of ways to actually do externally so dont ask for anything else if you 100% know its impossible :(
             // for yaammi to do list :penisve:
-            // Glide
             // CubeCraftFly
             // MineplexFly - probs dont need this tbh
             // Killaura (Some kind of isLookingAtEntityId edit else Aimbot/TriggerBot
@@ -148,6 +150,8 @@ namespace Trero
 
             while (quit == false) // freeze
             {
+                if (Overlay.handle == null) return;
+
                 //Thread.Sleep(1);
                 foreach (Module mod in modules)
                     if (mod.enabled)

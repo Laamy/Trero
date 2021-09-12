@@ -8,6 +8,12 @@ namespace Trero.ClientBase
 {
     class Game
     {
+        public static class CustomDefines
+        {
+            public static bool antibot = true;
+        }
+
+        // Actor Structor
         public static ulong clientInstance
         {
             get
@@ -178,10 +184,15 @@ namespace Trero.ClientBase
                 else MCM.writeInt(localPlayer + VersionClass.getData("onGround"), 0);
             }
         } // onGround
+        public static bool isFlying
+        {
+            get => MCM.readInt(localPlayer + VersionClass.getData("isFlying")) != 0;
+            set => MCM.writeInt(localPlayer + VersionClass.getData("isFlying"), value ? 0 : 1);
+        } // onGround
         public static bool inWater
         {
             get => MCM.readInt(localPlayer + VersionClass.getData("inWater")) != 0;
-        } // onGround
+        } // inWater
         public static bool inInventory
         {
             get => MCM.readInt(localPlayer + VersionClass.getData("inInventory")) != 1;
@@ -241,7 +252,7 @@ namespace Trero.ClientBase
         {
             get => MCM.readString(localPlayer + VersionClass.getData("entityType"), 32);
         } // Type
-        public int heldItemCount
+        public static int heldItemCount
         {
             get
             {
@@ -250,7 +261,7 @@ namespace Trero.ClientBase
                 return value;
             }
         } // Held item count
-        public int holdItem
+        public static int holdItem
         {
             get
             {
@@ -259,7 +270,7 @@ namespace Trero.ClientBase
                 return value;
             }
         } // Are you holding an item?
-        public int holdItemId
+        public static int holdItemId
         {
             get
             {
@@ -268,7 +279,7 @@ namespace Trero.ClientBase
                 return value;
             }
         } // Whats the id of the item your holding?
-        public int swingAn
+        public static int swingAn
         {
             get
             {
@@ -278,7 +289,7 @@ namespace Trero.ClientBase
             }
             set => MCM.writeInt(localPlayer + VersionClass.getData("swingAn"), value);
         } // Current swing animation point (0-4?)
-        public int worldAge
+        public static int worldAge
         {
             get
             {
@@ -437,11 +448,22 @@ namespace Trero.ClientBase
             });
             return vEntity;
         }
-        public static List<Actor> getPlayers() => parseEntities(getTypeEntities("player"));
+        public static List<Actor> getPlayers()
+        {
+            if (CustomDefines.antibot)
+                return parseEntities(getTypeEntities("player"));
+            return getTypeEntities("player");
+        }
         public static Actor getClosestPlayer()
         {
             Actor vEntity = null;
-            List<Actor> ents = parseEntities(getPlayers());
+            List<Actor> ents = new List<Actor>();
+
+            if (CustomDefines.antibot)
+                ents = parseEntities(getPlayers());
+            else
+                ents = getPlayers();
+
             ents.ForEach((Actor ent) => {
                 if (vEntity == null)
                     vEntity = ent;

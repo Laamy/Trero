@@ -82,7 +82,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 "level",
                 "entitylist+1",
                 "entitylist+2",
-                "lookingAtBlock",
+                "lookingAtBlock", // why is this defiend two times i wonder...
                 "SelectedBlock",
                 "LookingAtBlock",
                 "SideSelect",

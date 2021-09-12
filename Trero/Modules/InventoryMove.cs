@@ -9,7 +9,7 @@ namespace Trero.Modules
     class InventoryMove : Module
     {
         float speed = 0.25f;
-        public InventoryMove() : base("InventoryMove", (char)0x07, "Exploits") { } // Not defined
+        public InventoryMove() : base("InventoryMove", (char)0x07, "Player") { } // Not defined
         public override void onTick()
         {
             if (!Game.inInventory || Game.isNull) return;

@@ -12,23 +12,29 @@ namespace Trero.Modules
 {
     class ClickGUI : Module
     {
-        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual") { } // Not defined
+        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual", true) { } // Not defined
         public override void onEnable()
         {
             base.onEnable();
-            foreach (Control ct in Overlay.handle.Controls)
+            if (Overlay.handle != null)
             {
-                if (ct.Tag.ToString() == "Category")
-                    ct.Visible = true;
+                foreach (Control ct in Overlay.handle.Controls)
+                {
+                    if (Overlay.handle == null && ct.Tag.ToString() == "Category")
+                        ct.Visible = true;
+                }
             }
         }
         public override void onDisable()
         {
             base.onDisable();
-            foreach (Control ct in Overlay.handle.Controls)
+            if (Overlay.handle != null)
             {
-                if (ct.Tag.ToString() == "Category")
-                    ct.Visible = false;
+                foreach (Control ct in Overlay.handle.Controls)
+                {
+                    if (Overlay.handle == null && ct.Tag.ToString() == "Category")
+                        ct.Visible = false;
+                }
             }
         }
     }

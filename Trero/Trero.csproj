@@ -98,9 +98,16 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\Antibot.cs" />
+    <Compile Include="Modules\Glide.cs" />
     <Compile Include="Modules\HighJump.cs" />
     <Compile Include="Modules\InventoryMove.cs" />
+    <Compile Include="Modules\CreativeFly.cs" />
+    <Compile Include="Modules\ClickTP.cs" />
+    <Compile Include="Modules\NoSwing.cs" />
+    <Compile Include="Modules\Jesus.cs" />
     <Compile Include="Modules\Step.cs" />
+    <Compile Include="Modules\PlayerTP.cs" />
     <Compile Include="Modules\TestModule.cs" />
     <Compile Include="Modules\Teleport.cs" />
     <Compile Include="Modules\Gamemode.cs" />
