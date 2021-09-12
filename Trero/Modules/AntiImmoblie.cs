@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     class AntiImmoblie : Module
     {
-        public AntiImmoblie() : base("AntiImmoblie", (char)(int)Keys.Insert, "Exploits", true) { } // Not defined
+        public AntiImmoblie() : base("AntiImmoblie", (char)0x07, "Exploits") { } // Not defined
         public override void onEnable()
         {
             MCM.writeBaseBytes(0x1CAEB90, MCM.ceByte2Bytes("90 90")); // nop anti immobile address

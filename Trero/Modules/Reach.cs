@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     class Reach : Module
     {
-        public Reach() : base("Reach", (char)(int)Keys.Insert, "Combat", true) { } // Not defined
+        public Reach() : base("Reach", (char)0x07, "Combat") { } // Not defined
         public override void onEnable()
         {
             MCM.writeBaseFloat(0x1CAEB90, 7);
