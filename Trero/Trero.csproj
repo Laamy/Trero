@@ -108,6 +108,7 @@
     <Compile Include="Modules\Jesus.cs" />
     <Compile Include="Modules\Step.cs" />
     <Compile Include="Modules\PlayerTP.cs" />
+    <Compile Include="Modules\Tower.cs" />
     <Compile Include="Modules\TestModule.cs" />
     <Compile Include="Modules\Teleport.cs" />
     <Compile Include="Modules\Gamemode.cs" />
