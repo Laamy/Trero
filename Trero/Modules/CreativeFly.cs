@@ -18,7 +18,7 @@ namespace Trero.Modules
 
         public override void onTick()
         {
-            if (Game.isNull) return;
+            // if (Game.isNull) return;
 
             Game.isFlying = true; // need to define 
         }

@@ -30,6 +30,8 @@ namespace Trero
 
             new Keymap();
 
+            //Console.WriteLine(Game.screenData);
+
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
             modules.Add(new ClickGUI()); // i enable these after displaying them via overlay.cs

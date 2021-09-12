@@ -60,7 +60,7 @@ namespace Trero.ClientBase
         {
             get
             {
-                if (screenData.StartsWith("toast_screen"))
+                if (screenData.StartsWith("toast_screen")) // screenData.StartsWith("toast_screen")
                     return false;
                 return true;
             }
