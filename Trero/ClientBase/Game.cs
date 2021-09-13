@@ -492,6 +492,8 @@ namespace Trero.ClientBase
             });
             return vEntity;
         }
+
+       
     }
 
     // Struct Defines
@@ -564,6 +566,11 @@ namespace Trero.ClientBase
         public override string ToString()
         {
             return x + "," + y + "," + z;
+        }
+
+        internal float Distance(object postion)
+        {
+            throw new NotImplementedException();
         }
     }
 

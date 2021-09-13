@@ -75,7 +75,7 @@ namespace Trero
             modules.Add(new PlayerTP());
             modules.Add(new ClickTP());
             modules.Add(new Glide());
-            modules.Add(new Tower());
+            modules.Add(new Killaura());
             modules.Add(new AntiImmoblie());
             modules.Add(new Reach());
 
