@@ -34,7 +34,7 @@ namespace Trero
 
             Console.WriteLine("Registering modules...");
 
-            modules.Add(new ClickGUI()); // i enable these after displaying them via overlay.cs
+            modules.Add(new ClickGUI());
             modules.Add(new Antibot());
 
             modules.Add(new Debug());
@@ -76,10 +76,10 @@ namespace Trero
             modules.Add(new Killaura());
             modules.Add(new AntiImmoblie());
             modules.Add(new Reach());
-
             modules.Add(new Limiter()); // CPU saver
-
             modules.Add(new Unlimiter()); // Remove safty
+            modules.Add(new Friends());
+            modules.Add(new Nofriends());
 
             Console.WriteLine("Registered modules!");
 
@@ -172,7 +172,7 @@ namespace Trero
                     if (!Unlimiter)
                     Thread.Sleep(1);
 
-                    tickc++;
+                    //tickc++;
                     foreach (Module mod in modules)
                         if (mod.enabled)
                             mod.onTick();

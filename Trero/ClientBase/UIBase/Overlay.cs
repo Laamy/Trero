@@ -75,37 +75,6 @@ namespace Trero.ClientBase.UIBase
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            try // fixed
-            {
-                foreach (Module mod in Program.modules)
-                {
-                    foreach (Button btn in TestCategory.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel7.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel17.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel15.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel9.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel11.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel13.Controls) updateModule(mod, btn);
-                }
-            }
-            catch { }
-
-            try // fixed
-            {
-                if (MCM.isMinecraftFocused() && TopMost == false)
-                    TopMost = true;
-                if (!MCM.isMinecraftFocused() && TopMost == true)
-                {
-                    if (ActiveForm != this)
-                    {
-                        Opacity = 1;
-                        TopMost = false;
-                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
-                    }
-                }
-            }
-            catch { }
-
             string list = "";
 
             try
@@ -494,6 +463,43 @@ namespace Trero.ClientBase.UIBase
                 panel16.Left = e.X + panel16.Left - MouseDownLocation.X;
                 panel16.Top = e.Y + panel16.Top - MouseDownLocation.Y;
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            try // fixed
+            {
+                foreach (Module mod in Program.modules)
+                {
+                    foreach (Button btn in TestCategory.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel7.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel17.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel15.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel9.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel11.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel13.Controls) updateModule(mod, btn);
+                }
+            }
+            catch { }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            try // fixed
+            {
+                if (MCM.isMinecraftFocused() && TopMost == false)
+                    TopMost = true;
+                if (!MCM.isMinecraftFocused() && TopMost == true)
+                {
+                    if (ActiveForm != this)
+                    {
+                        Opacity = 1;
+                        TopMost = false;
+                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
+                    }
+                }
+            }
+            catch { }
         }
     }
 }

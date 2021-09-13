@@ -12,6 +12,8 @@ namespace Trero.ClientBase
         public static class CustomDefines
         {
             public static bool antibot = true;
+            public static bool nofriends = false;
+            public static List<string> friends = new List<string> {"FootlongTrero"};
         }
 
         // Actor Structor
@@ -361,29 +363,11 @@ namespace Trero.ClientBase
             {
                 if (i == EntityListStart) continue;
                 Actor entity = new Actor(MCM.readInt64(i));
+                foreach (string str in CustomDefines.friends)
+                    if (str.ToLower() == entity.username.ToLower() && CustomDefines.nofriends == false)
+                        continue;
                 if (entity.type == type && entity.username.Length > 3)
                     entityList.Add(entity);
-            }
-            return entityList;
-        }
-        public static List<Actor> getTypeEntities_Antibot(string type, string[] antibotSettings)
-        {
-            List<Actor> entityList = new List<Actor>();
-            for (ulong i = EntityListStart; i < EntityListEnd; i += 0x8)
-            {
-                if (i == EntityListStart) continue;
-                Actor entity = new Actor(MCM.readInt64(i));
-                if (entity.type == type && entity.username.Length > 3) // Antibot so we dont hit npcs
-                {
-                    bool allow = true;
-                    foreach (string str in antibotSettings)
-                    {
-                        if (entity.username.ToLower().Contains(str.ToLower()))
-                            allow = false;
-                    }
-                    if (allow)
-                        entityList.Add(entity);
-                }
             }
             return entityList;
         }
@@ -481,6 +465,9 @@ namespace Trero.ClientBase
                 ents = getPlayers();
 
             ents.ForEach((Actor ent) => {
+                foreach (string str in CustomDefines.friends)
+                    if (str.ToLower() == ent.username.ToLower() && CustomDefines.nofriends == false)
+                        continue;
                 if (vEntity == null)
                     vEntity = ent;
                 else

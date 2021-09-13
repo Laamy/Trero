@@ -98,6 +98,8 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\Nofriends.cs" />
+    <Compile Include="Modules\Friends.cs" />
     <Compile Include="Modules\Unlimiter.cs" />
     <Compile Include="Modules\Limiter.cs" />
     <Compile Include="Modules\Antibot.cs" />
