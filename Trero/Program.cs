@@ -17,6 +17,8 @@ namespace Trero
     class Program
     {
         public static bool quit = false;
+        public static bool Limiter = false;
+        public static bool Unlimiter = false;
         public static List<Module> modules = new List<Module>();
 
         static void Main(string[] args)
@@ -74,6 +76,10 @@ namespace Trero
             modules.Add(new Killaura());
             modules.Add(new AntiImmoblie());
             modules.Add(new Reach());
+
+            modules.Add(new Limiter()); // CPU saver
+
+            modules.Add(new Unlimiter()); // Remove safty
 
             Console.WriteLine("Registered modules!");
 
@@ -160,12 +166,13 @@ namespace Trero
             {
                 while (quit == false) // freeze
                 {
-                    Thread.Sleep(1);
-                    //if (Overlay.handle == null) return;
-                    tickc++;
-                    //Console.WriteLine("Tick " + tickc);
+                    if (Limiter && !Unlimiter)
+                        Thread.Sleep(1);
 
-                    //Thread.Sleep(1);
+                    if (!Unlimiter)
+                    Thread.Sleep(1);
+
+                    tickc++;
                     foreach (Module mod in modules)
                         if (mod.enabled)
                             mod.onTick();
