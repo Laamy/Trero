@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
+using Trero.Modules.vModuleExtra;
 
 namespace Trero.Modules
 {
@@ -15,7 +16,8 @@ namespace Trero.Modules
         public string name;
         public string category;
 
-        public List<float> moduleSettings = new List<float>();
+        public List<FloatSlider> moduleFloatSettings = new List<FloatSlider>();
+        public List<vCheckBox> moduleCheckboxSettings = new List<vCheckBox>();
 
         public char keybind;
         public Module(string name, char keybind, string category = "Other", bool enabled = false)

@@ -6,9 +6,9 @@ using Trero.ClientBase.VersionBase;
 
 namespace Trero.Modules
 {
-    class MineplexFly : Module // in theory Infinite
+    class MineplexFly : Module
     {
-        static float speed = 5.6f; // 5.6f
+        static float speed = 6.3f; // 5.6f best value
         static float flicker = 0;
         public MineplexFly() : base("MineplexFly", (char)0x07, "Flies") { } // Not defined
         public override void onEnable()
