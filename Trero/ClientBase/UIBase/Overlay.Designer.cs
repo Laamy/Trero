@@ -60,7 +60,6 @@
             this.panel16 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.Watermark = new System.Windows.Forms.Button();
             this.TestCategory.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -139,7 +138,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(1201, 218);
+            this.panel3.Location = new System.Drawing.Point(1201, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(150, 100);
             this.panel3.TabIndex = 2;
@@ -197,7 +196,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel1.Controls.Add(this.panel5);
-            this.panel1.Location = new System.Drawing.Point(1201, 12);
+            this.panel1.Location = new System.Drawing.Point(1201, 116);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 200);
             this.panel1.TabIndex = 3;
@@ -424,25 +423,6 @@
             this.panel17.Size = new System.Drawing.Size(150, 206);
             this.panel17.TabIndex = 0;
             // 
-            // Watermark
-            // 
-            this.Watermark.BackColor = System.Drawing.Color.Transparent;
-            this.Watermark.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.Watermark.FlatAppearance.BorderSize = 0;
-            this.Watermark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Watermark.Font = new System.Drawing.Font("Segoe Script", 20.25F, System.Drawing.FontStyle.Italic);
-            this.Watermark.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Watermark.Location = new System.Drawing.Point(845, 513);
-            this.Watermark.Name = "Watermark";
-            this.Watermark.Size = new System.Drawing.Size(115, 65);
-            this.Watermark.TabIndex = 4;
-            this.Watermark.TabStop = false;
-            this.Watermark.Text = "Trero";
-            this.Watermark.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.Watermark.UseVisualStyleBackColor = false;
-            this.Watermark.Visible = false;
-            this.Watermark.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,7 +434,6 @@
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel8);
-            this.Controls.Add(this.Watermark);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -527,6 +506,5 @@
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.Button Watermark;
     }
 }
