@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     class Nofriends : Module
     {
-        public Nofriends() : base("Nofriends", (char)0x07, "Other", true) { } 
+        public Nofriends() : base("Nofriends", (char)0x07, "Other") { } 
 
         public override void onEnable()
         {

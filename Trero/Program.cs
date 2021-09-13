@@ -77,9 +77,10 @@ namespace Trero
             modules.Add(new AntiImmoblie());
             modules.Add(new Reach());
             modules.Add(new Limiter()); // CPU saver
-            modules.Add(new Unlimiter()); // Remove safty
+            modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
             modules.Add(new Friends());
             modules.Add(new Nofriends());
+            modules.Add(new MineplexFly());
 
             Console.WriteLine("Registered modules!");
 

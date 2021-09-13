@@ -14,6 +14,9 @@ namespace Trero.Modules
         public bool enabled = false;
         public string name;
         public string category;
+
+        public List<float> moduleSettings = new List<float>();
+
         public char keybind;
         public Module(string name, char keybind, string category = "Other", bool enabled = false)
         {
@@ -23,6 +26,10 @@ namespace Trero.Modules
             this.enabled = enabled;
 
             Keymap.keyEvent += onKeypress;
+        }
+
+        public void addSetting()
+        {
         }
 
         private void onKeypress(object sender, KeyEvent e) // Cant be overridden 

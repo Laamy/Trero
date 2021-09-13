@@ -98,6 +98,7 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\MineplexFly.cs" />
     <Compile Include="Modules\Nofriends.cs" />
     <Compile Include="Modules\Friends.cs" />
     <Compile Include="Modules\Unlimiter.cs" />
@@ -146,6 +147,8 @@
     <Compile Include="Modules\KillGame.cs" />
     <Compile Include="Modules\Sexaura.cs" />
     <Compile Include="Modules\Module.cs" />
+    <Compile Include="Modules\vModuleExtra\FloatSlider.cs" />
+    <Compile Include="Modules\vModuleExtra\vCheckBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
