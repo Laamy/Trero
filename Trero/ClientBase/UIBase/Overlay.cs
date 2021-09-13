@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -76,6 +77,21 @@ namespace Trero.ClientBase.UIBase
         {
             try // fixed
             {
+                foreach (Module mod in Program.modules)
+                {
+                    foreach (Button btn in TestCategory.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel7.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel17.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel15.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel9.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel11.Controls) updateModule(mod, btn);
+                    foreach (Button btn in panel13.Controls) updateModule(mod, btn);
+                }
+            }
+            catch { }
+
+            try // fixed
+            {
                 if (MCM.isMinecraftFocused() && TopMost == false)
                     TopMost = true;
                 if (!MCM.isMinecraftFocused() && TopMost == true)
@@ -110,7 +126,7 @@ namespace Trero.ClientBase.UIBase
 
             if (panel5.Size != new Size((int)calclist.Width, (int)calclist.Height + 20))
             {
-                panel1.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + 4);
+                panel1.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + 24);
                 panel5.Size = new Size((int)calclist.Width + 20, (int)calclist.Height);
             }
 
@@ -135,6 +151,21 @@ namespace Trero.ClientBase.UIBase
                 label3.Text = Game.position.Distance(vec) + "b";
             }
             catch { }
+        }
+
+        void updateModule(Module mod, Button btn)
+        {
+            if (mod.name == btn.Name)
+            {
+                if (mod.enabled && btn.BackColor != Color.FromArgb(255, 39, 39, 39))
+                {
+                    btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                }
+                else if (!mod.enabled && btn.BackColor == Color.FromArgb(255, 39, 39, 39))
+                {
+                    btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                }
+            }
         }
 
         Font df = new Font(FontFamily.GenericSansSerif, 12f);

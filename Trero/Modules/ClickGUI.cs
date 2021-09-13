@@ -17,13 +17,11 @@ namespace Trero.Modules
         {
             if (Overlay.handle != null)
             {
-                Overlay.handle.Invoke((MethodInvoker)delegate {
-                    foreach (Control ct in Overlay.handle.Controls)
-                    {
-                        if (Overlay.handle == null && ct.Tag.ToString() == "Category")
-                            ct.Visible = true;
-                    }
-                });
+                foreach (Control ct in Overlay.handle.Controls)
+                {
+                    if (Overlay.handle == null && ct.Tag.ToString() == "Category")
+                        ct.Visible = true;
+                }
             }
             base.onEnable();
         }
@@ -31,13 +29,11 @@ namespace Trero.Modules
         {
             if (Overlay.handle != null)
             {
-                Overlay.handle.Invoke((MethodInvoker)delegate {
-                    foreach (Control ct in Overlay.handle.Controls)
-                    {
-                        if (Overlay.handle == null && ct.Tag.ToString() == "Category")
-                            ct.Visible = false;
-                    }
-                });
+                foreach (Control ct in Overlay.handle.Controls)
+                {
+                    if (Overlay.handle == null && ct.Tag.ToString() == "Category")
+                        ct.Visible = false;
+                }
             }
             base.onDisable();
         }
