@@ -1,14 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
 using Trero.ClientBase.VersionBase;
@@ -79,9 +75,9 @@ namespace Trero
             modules.Add(new AntiImmoblie());
             modules.Add(new Reach());
 
-
             Console.WriteLine("Registered modules!");
 
+            //Console.WriteLine("LookingEntityID Address: " + (Game.localPlayer + 0x0).ToString("X"));
 
             //modules.Add(new TestModule());
 

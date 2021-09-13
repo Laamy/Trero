@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Trero.ClientBase.EntityBase;
+using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.VersionBase;
 
 namespace Trero.ClientBase
@@ -95,7 +96,8 @@ namespace Trero.ClientBase
         } // Teleportation
         public static void Attack(Actor actor)
         {
-
+            lookingEntityId = actor.addr;
+            Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
         } // Attack
         public static Random ran = new Random();
 
@@ -215,10 +217,10 @@ namespace Trero.ClientBase
         {
             get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId")) != -1;
         } // lookingEntity
-        public static int lookingEntityId
+        public static ulong lookingEntityId
         {
-            get => MCM.readInt(localPlayer + VersionClass.getData("lookingEntityId"));
-            set => MCM.writeInt(localPlayer + VersionClass.getData("lookingEntityId"), value);
+            get => MCM.readInt64(localPlayer + VersionClass.getData("lookingEntityId"));
+            set => MCM.writeInt64(localPlayer + VersionClass.getData("lookingEntityId"), value);
         }
         public static int touchingObject
         {
