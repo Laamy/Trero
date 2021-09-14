@@ -1,30 +1,31 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using Trero.ClientBase.UIBase;
+﻿#region
+
+using System.Linq;
+using System.Threading;
 using Microsoft.VisualBasic;
 using Trero.ClientBase;
-using System.Threading;
-using Trero.ClientBase.EntityBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class PlayerTP : Module
+    internal class PlayerTP : Module
     {
-        public PlayerTP() : base("PlayerTP", (char)0x07, "Exploits") { } // Not defined
-        public override void onEnable()
+        public PlayerTP() : base("PlayerTP", (char)0x07, "Exploits")
         {
-            new Thread(() => {
-                string username = Interaction.InputBox("Please enter player username", "Trero (PlayerTP)").ToLower();
+        } // Not defined
 
-                foreach (Actor entity in Game.getPlayers())
+        public override void OnEnable()
+        {
+            new Thread(() =>
+            {
+                var username = Interaction.InputBox("Please enter player username", "Trero (PlayerTP)").ToLower();
+
+                foreach (var entity in Game.getPlayers().Where(entity => entity.username.ToLower().Contains(username)))
                 {
-                    if (entity.username.ToLower().Contains(username))
-                    {
-                        Game.position = entity.position;
-                        break;
-                    }
+                    Game.position = entity.position;
+                    break;
                 }
-
             }).Start();
         }
     }

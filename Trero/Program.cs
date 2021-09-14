@@ -1,88 +1,90 @@
-﻿
+﻿#region
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
-using Debug = Trero.Modules.Debug;
-using Module = Trero.Modules.Module;
+
+#endregion
 
 namespace Trero
 {
-    class Program
+    internal static class Program
     {
-        public static bool quit = false;
-        public static bool Limiter = false;
-        public static bool Unlimiter = false;
-        public static List<Module> modules = new List<Module>();
+        public static bool quit;
+        public static bool limiter;
+        public static bool unlimiter;
+        public static readonly List<Module> Modules = new List<Module>();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             MCM.openGame();
             MCM.openWindowHost();
 
+            // ReSharper disable once ObjectCreationAsStatement
             new Keymap();
 
             //Console.WriteLine(Game.screenData);
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
-            Console.WriteLine("Registering modules...");
+            Console.WriteLine(@"Registering modules...");
 
-            modules.Add(new ClickGUI());
-            modules.Add(new Antibot());
+            Modules.Add(new ClickGUI());
+            Modules.Add(new Antibot());
 
-            modules.Add(new Debug());
-            modules.Add(new AirStuck());
-            modules.Add(new BulkFly());
-            modules.Add(new AboveAura());
-            modules.Add(new AirJump());
-            modules.Add(new TPAura());
-            modules.Add(new ClosestPlayerDisplay());
-            modules.Add(new PlayerDisplay());
-            modules.Add(new TriggerBot());
-            modules.Add(new Hitbox());
-            modules.Add(new FlickerExample());
-            modules.Add(new Phase());
-            modules.Add(new Noclip());
-            modules.Add(new NoYFly());
-            modules.Add(new PhaseDown());
-            modules.Add(new PhaseUp());
-            modules.Add(new Sexaura());
-            modules.Add(new Fly());
-            modules.Add(new Jetpack());
-            modules.Add(new Eject());
-            modules.Add(new Speed());
-            modules.Add(new Bhop());
-            modules.Add(new SlimeWall());
-            modules.Add(new LBSH());
-            modules.Add(new Gamemode());
-            modules.Add(new Teleport());
-            modules.Add(new Step());
-            modules.Add(new HighJump());
-            modules.Add(new InventoryMove());
-            modules.Add(new KillGame());
-            modules.Add(new Jesus());
-            modules.Add(new NoSwing());
-            modules.Add(new CreativeFly());
-            modules.Add(new PlayerTP());
-            modules.Add(new ClickTP());
-            modules.Add(new Glide());
-            modules.Add(new Killaura());
-            modules.Add(new AntiImmoblie());
-            modules.Add(new Reach());
-            modules.Add(new Limiter()); // CPU saver
-            modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
-            modules.Add(new Friends());
-            modules.Add(new Nofriends());
-            modules.Add(new MineplexFly());
+            Modules.Add(new Debug());
+            Modules.Add(new AirStuck());
+            Modules.Add(new BulkFly());
+            Modules.Add(new AboveAura());
+            Modules.Add(new AirJump());
+            Modules.Add(new TPAura());
+            Modules.Add(new ClosestPlayerDisplay());
+            Modules.Add(new PlayerDisplay());
+            Modules.Add(new TriggerBot());
+            Modules.Add(new Hitbox());
+            Modules.Add(new FlickerExample());
+            Modules.Add(new Phase());
+            Modules.Add(new Noclip());
+            Modules.Add(new NoYFly());
+            Modules.Add(new PhaseDown());
+            Modules.Add(new PhaseUp());
+            Modules.Add(new Sexaura());
+            Modules.Add(new Fly());
+            Modules.Add(new Jetpack());
+            Modules.Add(new Eject());
+            Modules.Add(new Speed());
+            Modules.Add(new Bhop());
+            Modules.Add(new SlimeWall());
+            Modules.Add(new LBSH());
+            Modules.Add(new Gamemode());
+            Modules.Add(new Teleport());
+            Modules.Add(new Step());
+            Modules.Add(new HighJump());
+            Modules.Add(new InventoryMove());
+            Modules.Add(new KillGame());
+            Modules.Add(new Jesus());
+            Modules.Add(new NoSwing());
+            Modules.Add(new CreativeFly());
+            Modules.Add(new PlayerTP());
+            Modules.Add(new ClickTP());
+            Modules.Add(new Glide());
+            Modules.Add(new Killaura());
+            Modules.Add(new AntiImmoblie());
+            Modules.Add(new Reach());
+            Modules.Add(new Limiter()); // CPU saver
+            Modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
+            Modules.Add(new Friends());
+            Modules.Add(new Nofriends());
+            Modules.Add(new MineplexFly());
 
-            Console.WriteLine("Registered modules!");
+            Console.WriteLine(@"Registered modules!");
 
             //Console.WriteLine("LookingEntityID Address: " + (Game.localPlayer + 0x0).ToString("X"));
 
@@ -144,43 +146,43 @@ namespace Trero
             // durability
             // nametags - pref if you added armor and in hand display above their head
 
-            modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
+            Modules.Sort((c1, c2) => string.Compare(c2.name, c1.name, StringComparison.Ordinal)); // ABC Order
 
             VersionClass.setVersion(VersionClass.versions[0]);
 
             // Keymap.keyEvent += keyParse;
 
-            Console.WriteLine("--- Trero Terminal ---");
-            Console.WriteLine("Welcome to the trero terminal");
-            Console.WriteLine("");
-            Console.WriteLine("--- Trero Keybinds ---");
-            Console.WriteLine("R - ClampJet");
-            Console.WriteLine("P - Terminate Process");
-            Console.WriteLine("Y - Hitboxes");
-            Console.WriteLine("C - PhaseUp(ServerBypass)");
-            Console.WriteLine("V - PhaseDown(ServerBypass)");
+            Console.WriteLine(@"--- Trero Terminal ---");
+            Console.WriteLine(@"Welcome to the trero terminal");
+            Console.WriteLine(@"");
+            Console.WriteLine(@"--- Trero Keybinds ---");
+            Console.WriteLine(@"R - ClampJet");
+            Console.WriteLine(@"P - Terminate Process");
+            Console.WriteLine(@"Y - Hitboxes");
+            Console.WriteLine(@"C - PhaseUp(ServerBypass)");
+            Console.WriteLine(@"V - PhaseDown(ServerBypass)");
 
             // Console.WriteLine(Game.level.ToString("X"));
 
-            int tickc = 0;
             new Thread(() => // Improved ticking modules
             {
                 while (quit == false) // freeze
                 {
-                    if (Limiter && !Unlimiter)
+                    if (limiter && !unlimiter)
                         Thread.Sleep(1);
 
-                    if (!Unlimiter)
-                    Thread.Sleep(1);
+                    if (!unlimiter)
+                        Thread.Sleep(1);
 
                     //tickc++;
-                    foreach (Module mod in modules)
-                        if (mod.enabled)
-                            mod.onTick();
+                    foreach (var mod in Modules.Where(mod => mod.enabled))
+                        mod.OnTick();
                 }
             }).Start();
 
-            while (quit == false) { }
+            while (quit == false)
+            {
+            }
         }
         /*
          

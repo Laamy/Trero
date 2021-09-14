@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Sexaura : Module
+    internal class Sexaura : Module
     {
-        public Sexaura() : base("Sexaura", (char)0x07, "World") { } // Not defined
+        public Sexaura() : base("Sexaura", (char)0x07, "World")
+        {
+        } // Not defined
 
-        public override void onTick()
+        public override void OnTick()
         {
             if (Game.isNull) return;
 
-            Actor plr = Game.getClosestPlayer();
+            var plr = Game.getClosestPlayer();
             if (Game.position.Distance(plr.position) < 6f)
                 Game.SexActor(plr);
         }

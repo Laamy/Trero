@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Trero.ClientBase.UIBase.TreroUILibrary
+﻿namespace Trero.ClientBase.UIBase.TreroUILibrary
 {
-    class DrawingUtils
+    internal class DrawingUtils
     {
         public static Vector2 screenCenter
         {
             get
             {
-                Vector2 temp = Base.Vec2();
+                var temp = Base.Vec2();
 
                 temp.x = Overlay.handle.Size.Width / 2;
                 temp.y = Overlay.handle.Size.Height / 2;
@@ -20,11 +14,12 @@ namespace Trero.ClientBase.UIBase.TreroUILibrary
                 return temp;
             }
         }
-        public static Vector2 LogoVCenter
+
+        public static Vector2 logoVCenter
         {
             get
             {
-                Vector2 temp = Base.Vec2();
+                var temp = Base.Vec2();
 
                 temp.x = Overlay.handle.Size.Width / 2;
                 temp.y = Overlay.handle.Size.Height / 4;
@@ -32,11 +27,12 @@ namespace Trero.ClientBase.UIBase.TreroUILibrary
                 return temp;
             }
         }
-        public static Vector2 LogoCenter
+
+        public static Vector2 logoCenter
         {
             get
             {
-                Vector2 temp = Base.Vec2();
+                var temp = Base.Vec2();
 
                 temp.x = Overlay.handle.Size.Width / 2;
                 temp.y = Overlay.handle.Size.Height / 5;
@@ -44,22 +40,21 @@ namespace Trero.ClientBase.UIBase.TreroUILibrary
                 return temp;
             }
         }
-        public static int screenSize    
+
+        public static int screenSize
         {
             get
             {
                 if (Overlay.handle == null)
                     return 0;
 
-                int size = 1;
-                int sizeIncr = 200; // ill modify 300 later
+                var size = 1;
+                var sizeIncr = 200; // ill modify 300 later
 
-                for (int i = 1; i < 0xFF; ++i)
-                {
-                    if (Overlay.handle.Size.Width > (i * sizeIncr) && Overlay.handle.Size.Height > (i * sizeIncr))
+                for (var i = 1; i < 0xFF; ++i)
+                    if (Overlay.handle.Size.Width > i * sizeIncr && Overlay.handle.Size.Height > i * sizeIncr)
                         size++;
                     else break;
-                }
 
                 return size;
             }

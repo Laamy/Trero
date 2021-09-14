@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
-using Trero.ClientBase.KeyBase;
-using Trero.ClientBase.VersionBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class NoSwing : Module
+    internal class NoSwing : Module
     {
-        public NoSwing() : base("NoSwing", (char)0x07, "Visual") { } // Not defined
+        public NoSwing() : base("NoSwing", (char)0x07, "Visual")
+        {
+        } // Not defined
 
-        public override void onTick()
+        public override void OnTick()
         {
             if (Game.isNull) return;
 

@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
-using Trero.ClientBase.KeyBase;
-using Trero.ClientBase.VersionBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class CreativeFly : Module
+    internal class CreativeFly : Module
     {
-        public CreativeFly() : base("CreativeFly", (char)0x07, "Player") { } // Not defined
-
-        public override void onTick()
+        public CreativeFly() : base("CreativeFly", (char)0x07, "Player")
         {
-            // if (Game.isNull) return;
+        } // Not defined
 
-            Game.isFlying = true; // need to define 
+        public override void OnTick()
+        {
+            Game.isFlying = true;
         }
     }
 }

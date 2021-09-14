@@ -1,45 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class AboveAura : Module
+    internal class AboveAura : Module
     {
-        int flicker = 0;
-        public AboveAura() : base("AboveAura", (char)0x07, "Exploits") { } // Not defined
+        private int _flicker;
+
+        public AboveAura() : base("AboveAura", (char)0x07, "Exploits")
+        {
+        } // Not defined
 
 
-        public override void onTick()
+        public override void OnTick()
         {
             if (Game.isNull) return;
+            _flicker++;
+            if (_flicker != 4) return;
+            _flicker = 0;
+            var ent = Game.getClosestPlayer();
+            if (ent == null) return;
 
+            var pos = ent.position;
 
-            flicker++;
+            if (!(Game.position.Distance(pos) < 6)) return;
+            pos.y += 2;
 
-            if (flicker == 4)
-            {
-                flicker = 0;
-                var ent = Game.getClosestPlayer();
-                if (ent == null) return;
-
-                if (ent == null) return; // Returns if entity doesnt exist
-
-                Vector3 pos = ent.position;
-
-                if (Game.position.Distance(pos) < 6)
-                {
-                    pos.y += 2;
-
-                    Game.position = pos;
-                    Game.velocity = Base.Vec3(0, -0.01f, 0);
-                }
-            }
+            Game.position = pos;
+            Game.velocity = Base.Vec3(0, -0.01f);
         }
     }
 }

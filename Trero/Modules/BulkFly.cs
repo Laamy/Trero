@@ -1,56 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region
+
+using System;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
 
+#endregion
+
 namespace Trero.Modules
 {
-    class BulkFly : Module
+    internal class BulkFly : Module
     {
-        static float speed = 12f; // 5.6f
-        static int flicker = 0;
-        public BulkFly() : base("BulkFly", (char)0x07, "Flies") { } // 0x07 = no keybind
+        private static readonly float speed = 12f;
+        private static int _flicker;
 
-        public override void onTick()
+        public BulkFly() : base("BulkFly", (char)0x07, "Flies")
+        {
+        } // 0x07 = no keybind
+
+        public override void OnTick()
         {
             if (Game.isNull) return;
-            flicker++;
+            _flicker++;
 
-            Vector3 newVel = Base.Vec3();
+            var newVel = Base.Vec3();
 
-            float cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
+            var cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
             newVel.x = (float)Math.Cos(cy) * (speed / 9f);
 
             newVel.y = -0.05f;
-            if (flicker == 360 / 32)
+            switch (_flicker)
             {
-                Vector3 newPos = Game.position;
-                newPos.y += 0.005f;
-                newPos.z += 0.003f;
-                newPos.x += 0.003f;
+                case 360 / 32:
+                {
+                    var newPos = Game.position;
+                    newPos.y += 0.005f;
+                    newPos.z += 0.003f;
+                    newPos.x += 0.003f;
 
-                if (Keymap.GetAsyncKeyState((char)(Keys.LShiftKey)))
-                    newPos.y -= 0.05f;
-                if (Keymap.GetAsyncKeyState((char)(Keys.Space)))
-                    newPos.y += 0.08f;
+                    if (Keymap.GetAsyncKeyState((char)Keys.LShiftKey))
+                        newPos.y -= 0.05f;
+                    if (Keymap.GetAsyncKeyState((char)Keys.Space))
+                        newPos.y += 0.08f;
 
-                Game.position = newPos;
+                    Game.position = newPos;
+                    break;
+                }
+                case 360 / 16:
+                {
+                    var newPos = Game.position;
+                    newPos.y -= 0.003f;
+                    newPos.z -= 0.003f;
+                    newPos.x -= 0.003f;
+                    Game.position = newPos;
+                    break;
+                }
             }
-            if (flicker == (360 / 16))
-            {
-                Vector3 newPos = Game.position;
-                newPos.y -= 0.003f;
-                newPos.z -= 0.003f;
-                newPos.x -= 0.003f;
-                Game.position = newPos;
-            }
 
-            if (flicker == 360 / 32)
-                flicker = 0;
+            if (_flicker == 360 / 32)
+                _flicker = 0;
 
             newVel.z = (float)Math.Sin(cy) * (speed / 9f);
 

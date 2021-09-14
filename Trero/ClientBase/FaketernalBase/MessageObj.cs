@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Trero.ClientBase.FaketernalBase
+﻿namespace Trero.ClientBase.FaketernalBase
 {
-    class MessageObj
+    internal class MessageObj
     {
         public ulong addr;
-        public MessageObj(ulong addr) => this.addr = addr;
+
+        public MessageObj(ulong addr)
+        {
+            this.addr = addr;
+        }
 
         public string message // message offset is 0x0
         {
