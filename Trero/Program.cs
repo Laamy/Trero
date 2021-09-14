@@ -1,41 +1,43 @@
-﻿
+﻿#region
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
-using Debug = Trero.Modules.Debug;
-using Module = Trero.Modules.Module;
+
+#endregion
 
 namespace Trero
 {
-    class Program
+    internal static class Program
     {
-        public static bool quit = false;
-        public static bool Limiter = false;
-        public static bool Unlimiter = false;
-        public static List<Module> modules = new List<Module>();
+        public static bool quit;
+        public static bool limiter;
+        public static bool unlimiter;
+        public static readonly List<Module> Modules = new List<Module>();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             MCM.openGame();
             MCM.openWindowHost();
 
+            // ReSharper disable once ObjectCreationAsStatement
             new Keymap();
 
             //Console.WriteLine(Game.screenData);
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
-            Console.WriteLine("Registering modules...");
+            Console.WriteLine(@"Registering modules...");
 
-            modules.Add(new ClickGUI());
-            modules.Add(new Antibot());
+            Modules.Add(new ClickGUI());
+            Modules.Add(new Antibot());
 
             modules.Add(new Debug());
             modules.Add(new AirStuck());
@@ -83,7 +85,7 @@ namespace Trero
             modules.Add(new MineplexFly());
             modules.Add(new LongJump());
 
-            Console.WriteLine("Registered modules!");
+            Console.WriteLine(@"Registered modules!");
 
             //Console.WriteLine("LookingEntityID Address: " + (Game.localPlayer + 0x0).ToString("X"));
 
@@ -143,43 +145,43 @@ namespace Trero
             // durability
             // nametags - if possible add armor and in hand display above their head
 
-            modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
+            Modules.Sort((c1, c2) => string.Compare(c2.name, c1.name, StringComparison.Ordinal)); // ABC Order
 
             VersionClass.setVersion(VersionClass.versions[0]);
 
             // Keymap.keyEvent += keyParse;
 
-            Console.WriteLine("--- Trero Terminal ---");
-            Console.WriteLine("Welcome to the trero terminal");
-            Console.WriteLine("");
-            Console.WriteLine("--- Trero Keybinds ---");
-            Console.WriteLine("R - ClampJet");
-            Console.WriteLine("P - Terminate Process");
-            Console.WriteLine("Y - Hitboxes");
-            Console.WriteLine("C - PhaseUp(ServerBypass)");
-            Console.WriteLine("V - PhaseDown(ServerBypass)");
+            Console.WriteLine(@"--- Trero Terminal ---");
+            Console.WriteLine(@"Welcome to the trero terminal");
+            Console.WriteLine(@"");
+            Console.WriteLine(@"--- Trero Keybinds ---");
+            Console.WriteLine(@"R - ClampJet");
+            Console.WriteLine(@"P - Terminate Process");
+            Console.WriteLine(@"Y - Hitboxes");
+            Console.WriteLine(@"C - PhaseUp(ServerBypass)");
+            Console.WriteLine(@"V - PhaseDown(ServerBypass)");
 
             // Console.WriteLine(Game.level.ToString("X"));
 
-            int tickc = 0;
             new Thread(() => // Improved ticking modules
             {
                 while (quit == false) // freeze
                 {
-                    if (Limiter && !Unlimiter)
+                    if (limiter && !unlimiter)
                         Thread.Sleep(1);
 
-                    if (!Unlimiter)
-                    Thread.Sleep(1);
+                    if (!unlimiter)
+                        Thread.Sleep(1);
 
                     //tickc++;
-                    foreach (Module mod in modules)
-                        if (mod.enabled)
-                            mod.onTick();
+                    foreach (var mod in Modules.Where(mod => mod.enabled))
+                        mod.OnTick();
                 }
             }).Start();
 
-            while (quit == false) { }
+            while (quit == false)
+            {
+            }
         }
         /*
          

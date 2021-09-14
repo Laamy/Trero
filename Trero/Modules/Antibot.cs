@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Antibot : Module
+    internal class Antibot : Module
     {
-        public Antibot() : base("Antibot", (char)0x07, "Other", true) { } 
-
-        public override void onEnable()
+        public Antibot() : base("Antibot", (char)0x07, "Other", true)
         {
-            Game.CustomDefines.antibot = true;
-            base.onEnable();
         }
 
-        public override void onDisable()
+        public override void OnEnable()
+        {
+            Game.CustomDefines.antibot = true;
+            base.OnEnable();
+        }
+
+        public override void OnDisable()
         {
             Game.CustomDefines.antibot = false;
-            base.onDisable();
+            base.OnDisable();
         }
     }
 }

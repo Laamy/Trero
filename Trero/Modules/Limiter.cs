@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Trero.ClientBase;
-
-namespace Trero.Modules
+﻿namespace Trero.Modules
 {
-    class Unlimiter : Module
+    internal class Unlimiter : Module
     {
-        public Unlimiter() : base("Unlimiter", (char)0x07, "Other") { } 
-
-        public override void onEnable()
+        public Unlimiter() : base("Unlimiter", (char)0x07)
         {
-            Program.Unlimiter = true;
-            base.onEnable();
         }
 
-        public override void onDisable()
+        public override void OnEnable()
         {
-            Program.Unlimiter = false;
-            base.onDisable();
+            Program.unlimiter = true;
+            base.OnEnable();
+        }
+
+        public override void OnDisable()
+        {
+            Program.unlimiter = false;
+            base.OnDisable();
         }
     }
 }

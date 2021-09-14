@@ -1,34 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.KeyBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Jetpack : Module
+    internal class Jetpack : Module
     {
-        public Jetpack() : base("Jetpack", (char)0x07, "Flies") {
-            Keymap.keyEvent += keyvE;
+        public Jetpack() : base("Jetpack", (char)0x07, "Flies")
+        {
+            Keymap.keyEvent += KeyvE;
         } // Not defined
 
-        private void keyvE(object sender, KeyEvent e)
+        private void KeyvE(object sender, KeyEvent e)
         {
-            if (e.vkey == vKeyCodes.KeyUp)
-            {
-                if ((char)(int)e.key == keybind)
-                {
-                    onDisable(); // Disable module when keybind has been let go
-                }
-            }
+            if (e.vkey != VKeyCodes.KeyUp) return;
+            if ((char)(int)e.key == keybind) OnDisable(); // Disable module when keybind has been let go
         }
 
-        public override void onTick()
+        public override void OnTick()
         {
             if (Game.isNull) return;
 

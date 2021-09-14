@@ -1,12 +1,17 @@
-﻿using System.Linq;
+﻿#region
+
+using System.Linq;
+
+#endregion
 
 namespace Trero.ClientBase.VersionBase
 {
-    class IVersion // version template
+    internal class IVersion // version template
     {
         public string name;
         public object[] sdk;
 
+        //This is retarded ngl
         public IVersion(object[] list)
         {
             name = list[0].ToString();

@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Nofriends : Module
+    internal class Nofriends : Module
     {
-        public Nofriends() : base("Nofriends", (char)0x07, "Other") { } 
-
-        public override void onEnable()
+        public Nofriends() : base("Nofriends", (char)0x07)
         {
-            Game.CustomDefines.nofriends = true;
-            base.onEnable();
         }
 
-        public override void onDisable()
+        public override void OnEnable()
+        {
+            Game.CustomDefines.nofriends = true;
+            base.OnEnable();
+        }
+
+        public override void OnDisable()
         {
             Game.CustomDefines.nofriends = false;
-            base.onDisable();
+            base.OnDisable();
         }
     }
 }

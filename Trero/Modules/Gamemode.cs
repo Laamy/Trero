@@ -1,18 +1,26 @@
-﻿using Trero.ClientBase;
+﻿#region
+
+using Trero.ClientBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Gamemode : Module
+    internal class Gamemode : Module
     {
-        public Gamemode() : base("Gamemode", (char)0x07, "Exploits") { } // 0x07 = no keybind
-        public override void onEnable()
+        public Gamemode() : base("Gamemode", (char)0x07, "Exploits")
         {
-            base.onEnable();
+        } // 0x07 = no keybind
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
             Game.gamemode = 1;
         }
-        public override void onDisable ()
+
+        public override void OnDisable()
         {
-            base.onEnable();
+            base.OnEnable();
             Game.gamemode = 0;
         }
     }

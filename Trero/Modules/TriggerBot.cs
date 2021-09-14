@@ -1,29 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region
+
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.KeyBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class TriggerBot : Module
+    internal class TriggerBot : Module
     {
-        public TriggerBot() : base("TriggerBot", (char)0x07, "Combat") { } // Not defined
+        public TriggerBot() : base("TriggerBot", (char)0x07, "Combat")
+        {
+        } // Not defined
 
-        public override void onTick()
+        public override void OnTick()
         {
             if (Game.isNull) return;
 
-            if (MCM.isMinecraftFocused() && Game.isLookingAtEntity) // TODO: antibot
-            {
-                if (Game.position.Distance(Game.getClosestPlayer().position) < 7f)
-                    new Thread(() => Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN)).Start();
-            }
+            if (!MCM.isMinecraftFocused() || !Game.isLookingAtEntity) return;
+            if (Game.position.Distance(Game.getClosestPlayer().position) < 7f)
+                new Thread(() => Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN)).Start();
         }
     }
 }

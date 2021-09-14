@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
-using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.VersionBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Jesus : Module
+    internal class Jesus : Module
     {
-        public Jesus() : base("Jesus", (char)0x07, "Player") { } // Not defined
+        public Jesus() : base("Jesus", (char)0x07, "Player")
+        {
+        } // Not defined
 
-        public override void onTick()
+        public override void OnTick()
         {
             if (Game.isNull) return;
 
             if (Game.inWater)
-                MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity") + 4, 0.01f);
+                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.01f);
         }
     }
 }

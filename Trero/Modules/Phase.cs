@@ -1,25 +1,31 @@
-﻿using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.UIBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Phase : Module
+    internal class Phase : Module
     {
-        public Phase() : base("Phase", (char)0x07, "Exploits") { } // Not defined
-        public override void onTick()
+        public Phase() : base("Phase", (char)0x07, "Exploits")
         {
-            Vector3 pos = Game.position;
-            Vector3 pos2 = Game.position;
+        } // Not defined
+
+        public override void OnTick()
+        {
+            var pos = Game.position;
+            var pos2 = Game.position;
 
             pos2.x += 0.6f;
             pos2.z += 0.6f;
 
             Game.teleport(new AABB(pos, pos2));
         }
-        public override void onDisable()
+
+        public override void OnDisable()
         {
-            base.onDisable();
+            base.OnDisable();
             Game.teleport(Game.position);
         }
     }

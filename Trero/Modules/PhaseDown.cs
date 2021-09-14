@@ -1,17 +1,22 @@
-﻿using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.UIBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class PhaseDown : Module
+    internal class PhaseDown : Module
     {
-        public PhaseDown() : base("PhaseDown", (char)0x07, "Flies") { } // Not defined
-        public override void onTick()
+        public PhaseDown() : base("PhaseDown", (char)0x07, "Flies")
+        {
+        } // Not defined
+
+        public override void OnTick()
         {
             Game.velocity = Base.Vec3();
 
-            Vector3 newPos = Game.position;
+            var newPos = Game.position;
             newPos.y -= 0.01f;
             Game.position = newPos;
         }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
+﻿namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
 {
-    class VersionClass // versions
+    internal class VersionClass // versions
     {
-        public static IVersion[] versions = new IVersion[] { // All 1.17 versions supported
+        public static IVersion[] versions =
+        {
+            // All 1.17 versions supported
 
             // MCBE 1.17
             new IVersion(new object[]
@@ -47,73 +43,65 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                 0x98C,
                 0x990,
                 0x040A41F8, 0x814,
-                0x04120400, 0x8, 0x48, 0xA0, 0x128,
-            }), // MCBE 1.17.11
+                0x04120400, 0x8, 0x48, 0xA0, 0x128
+            }) // MCBE 1.17.11
         };
+
         public static IVersion versionStruct = new IVersion(new object[]
-            {
-                "version",
-                "baseOffset", "baseOffset+1", "baseOffset+2", "baseOffset+3", // BaseOffsets
-                "onGround",
-                "onGround2",
-                "stepHeight",
-                "worldAge",
-                "gamemode",
-                "isFlying",
-                "blocksTraveled_Ex",
-                "blocksTraveled",
-                "helditemCount",
-                "holdingItem",
-                "holdingItemId",
-                "selectedHotbarId",
-                "viewCreativeItems",
-                "viewCreativeItemsSelectedCategory",
-                "entityType",
-                "inInventory",
-                "username",
-                "gameDim", "gameDim+1",
-                "positionX",
-                "hitbox",
-                "velocity",
-                "swingAn",
-                "lookingEntityId",
-                "inWater",
-                "bodyRots",
-                "level",
-                "entitylist+1",
-                "entitylist+2",
-                "lookingAtBlock", // why is this defiend two times i wonder...
-                "SelectedBlock",
-                "LookingAtBlock",
-                "SideSelect",
-                "screenT+1", "screenT+2",
-                "chatBase", "chatBase+1", "chatBase+2", "chatBase+3", "chatBase+4"
-            });
-        public static ulong getData(string data)
         {
-            for (int i = 0; i < versionStruct.sdk.Length; ++i)
-            {
+            "version",
+            "baseOffset", "baseOffset+1", "baseOffset+2", "baseOffset+3", // BaseOffsets
+            "onGround",
+            "onGround2",
+            "stepHeight",
+            "worldAge",
+            "gamemode",
+            "isFlying",
+            "blocksTraveled_Ex",
+            "blocksTraveled",
+            "helditemCount",
+            "holdingItem",
+            "holdingItemId",
+            "selectedHotbarId",
+            "viewCreativeItems",
+            "viewCreativeItemsSelectedCategory",
+            "entityType",
+            "inInventory",
+            "username",
+            "gameDim", "gameDim+1",
+            "positionX",
+            "hitbox",
+            "velocity",
+            "swingAn",
+            "lookingEntityId",
+            "inWater",
+            "bodyRots",
+            "level",
+            "entitylist+1",
+            "entitylist+2",
+            "lookingAtBlock", // why is this defiend two times i wonder...
+            "SelectedBlock",
+            "LookingAtBlock",
+            "SideSelect",
+            "screenT+1", "screenT+2",
+            "chatBase", "chatBase+1", "chatBase+2", "chatBase+3", "chatBase+4"
+        });
+
+        private static IVersion _cv;
+
+        public static IVersion currentVersion => _cv ?? (_cv = versions[0]);
+
+        public static ulong GetData(string data)
+        {
+            for (var i = 0; i < versionStruct.sdk.Length; ++i)
                 if (versionStruct.sdk[i].ToString() == data)
-                {
-                    return HexHandler.toULong(currentVersion.sdk[i]);
-                }
-            }
+                    return HexHandler.ToULong(currentVersion.sdk[i]);
             return 0x0;
         }
-        private static IVersion cv = null;
-        public static IVersion currentVersion
-        {
-            get
-            {
-                if (cv == null)
-                    cv = versions[0]; // set to latest version supported
-                return cv;
 
-            }
-        }
         public static void setVersion(IVersion version)
         {
-            cv = version;
+            _cv = version;
         }
     }
 }

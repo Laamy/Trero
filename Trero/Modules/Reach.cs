@@ -1,27 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
-using Trero.ClientBase.UIBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Reach : Module
+    internal class Reach : Module
     {
-        public Reach() : base("Reach", (char)0x07, "Combat") { } // Not defined
-        public override void onEnable()
+        public Reach() : base("Reach", (char)0x07, "Combat")
+        {
+        } // Not defined
+
+        public override void OnEnable()
         {
             MCM.writeBaseFloat(0x1CAEB90, 7);
-            base.onEnable();
+            base.OnEnable();
         }
-        public override void onDisable()
+
+        public override void OnDisable()
         {
             MCM.writeBaseFloat(0x1CAEB90, 3);
-            base.onDisable();
+            base.OnDisable();
         }
     }
 }

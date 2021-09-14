@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.KeyBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class AirStuck : Module
+    internal class AirStuck : Module
     {
-        public AirStuck() : base("AirStuck", (char)0x07, "Player") { } // 0x07 = no keybind
-
-        public override void onTick()
+        public AirStuck() : base("AirStuck", (char)0x07, "Player")
         {
-            if (Game.isNull) return;
-            Game.velocity = Base.Vec3();
+        } // 0x07 = no keybind
+
+        public override void OnTick()
+        {
+            if (!Game.isNull) Game.velocity = Base.Vec3();
         }
     }
 }
