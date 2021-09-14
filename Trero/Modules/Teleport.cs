@@ -1,18 +1,25 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using Trero.ClientBase.UIBase;
+﻿#region
+
+using System.Threading;
 using Microsoft.VisualBasic;
 using Trero.ClientBase;
-using System.Threading;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Teleport : Module
+    internal class Teleport : Module
     {
-        public Teleport() : base("Teleport", (char)0x07, "World") { } // Not defined
-        public override void onEnable()
+        public Teleport() : base("Teleport", (char)0x07, "World")
         {
-            new Thread(() => Game.teleport(Base.Vec3(Interaction.InputBox("Please enter your new position", "Trero (Teleport)")))).Start();
+        } // Not defined
+
+        public override void OnEnable()
+        {
+            new Thread(() =>
+                    Game.teleport(
+                        Base.Vec3(Interaction.InputBox("Please enter your new position", "Trero (Teleport)"))))
+                .Start();
         }
     }
 }

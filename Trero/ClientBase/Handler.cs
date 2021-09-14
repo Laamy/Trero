@@ -1,93 +1,92 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
+#endregion
+
 namespace Trero.ClientBase
 {
     public class HexHandler
     {
-        public static string toHex(int value)
+        public static string ToHex(int value)
         {
-            string outp = value.ToString("X");
+            var outp = value.ToString("X");
             return outp;
         }
 
-        public static int toInt(string value)
+        public static int ToInt(string value)
         {
-            int hexString = int.Parse(value, NumberStyles.HexNumber);
+            var hexString = int.Parse(value, NumberStyles.HexNumber);
             return hexString;
         }
 
-        public static long toLong(string value)
+        public static long ToLong(string value)
         {
-            long outp = Convert.ToInt64(value, 16);
+            var outp = Convert.ToInt64(value, 16);
             return outp;
         }
 
-        public static ulong toULong(object value)
+        public static ulong ToULong(object value)
         {
-            ulong outp = Convert.ToUInt64(value);
+            var outp = Convert.ToUInt64(value);
             return outp;
         }
 
-        public static string addBytes(string hexString, int bytes)
+        public static string AddBytes(string hexString, int bytes)
         {
-            var f = toInt(hexString) + bytes; // Convert hexString to int then plus x amount of bytes to it
+            var f = ToInt(hexString) + bytes; // Convert hexString to int then plus x amount of bytes to it
 
-            string outp = toHex(f); // Convert back to hexString
+            var outp = ToHex(f); // Convert back to hexString
 
             return outp;
         }
 
-        public static Vector2 compassClamp(float[] array, Vector2 c)
+        public static Vector2 CompassClamp(float[] array, Vector2 c)
         {
-            Vector2 vec = c;
+            var vec = c;
 
-            vec.y = array.OrderBy(v => Math.Abs((long)v - ((vec.y + 180f) / (360f / array.Length)))).First();
-            vec.x = array.OrderBy(v => Math.Abs((long)v - ((vec.x + 90f) / (180f / array.Length)))).First();
+            vec.y = array.OrderBy(v => Math.Abs((long)v - (vec.y + 180f) / (360f / array.Length))).First();
+            vec.x = array.OrderBy(v => Math.Abs((long)v - (vec.x + 90f) / (180f / array.Length))).First();
 
             return vec;
         }
     }
 
-    class Base
+    internal static class Base
     {
         public static Vector3 Vec3(float _ = 0, float v = 0, float c = 0)
         {
-            Vector3 tempVec = new Vector3(_, v, c);
-            return tempVec;
-        }
-        public static Vector3 Vec3(string v)
-        {
-            Vector3 tempVec = new Vector3(v);
-            return tempVec;
+            return new Vector3(_, v, c);
         }
 
-        public static iVector3 iVec3(int _ = 0, int v = 0, int c = 0)
+        public static Vector3 Vec3(string v)
         {
-            iVector3 tempVec = new iVector3(_, v, c);
-            return tempVec;
+            return new Vector3(v);
+        }
+
+        public static iVector3 IVec3(int _ = 0, int v = 0, int c = 0)
+        {
+            return new iVector3(_, v, c);
         }
 
         public static Vector2 Vec2(float _ = 0f, float v = 0f)
         {
-            Vector2 tempVec = new Vector2(_, v);
-            return tempVec;
+            return new Vector2(_, v);
         }
+
         public static Vector2 Vec2(string v)
         {
-            Vector2 tempVec = new Vector2(v);
-            return tempVec;
+            return new Vector2(v);
         }
 
         public static ulong ToAddr(object v)
         {
-            ulong addr = 0x0;
-            addr = (ulong)v;
-            return addr;
+            return (ulong)v;
         }
     }
 
@@ -100,33 +99,29 @@ namespace Trero.ClientBase
             foreach (var element in collection)
             {
                 var difference = Math.Abs((long)element - target);
-                if (minDifference > difference)
-                {
-                    minDifference = (int)difference;
-                    closest = element;
-                }
+                if (minDifference <= difference) continue;
+                minDifference = (int)difference;
+                closest = element;
             }
 
             return closest;
         }
+
         public static T Clone<T>(this T controlToClone)
             where T : Control
         {
-            PropertyInfo[] controlProperties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var controlProperties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            T instance = Activator.CreateInstance<T>();
+            var instance = Activator.CreateInstance<T>();
 
-            foreach (PropertyInfo propInfo in controlProperties)
-            {
+            foreach (var propInfo in controlProperties)
                 if (propInfo.CanWrite)
-                {
                     if (propInfo.Name != "WindowTarget")
                         propInfo.SetValue(instance, propInfo.GetValue(controlToClone, null), null);
-                }
-            }
 
             return instance;
         }
+
         public static IEnumerable<Control> GetAllChildren(this Control root)
         {
             var stack = new Stack<Control>();

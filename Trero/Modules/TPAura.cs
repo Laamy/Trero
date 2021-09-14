@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class TPAura : Module
+    internal class TPAura : Module
     {
-        int flicker = 0;
-        public TPAura() : base("TPAura", (char)0x07, "Exploits") { } // Not defined
-        Random ran = new Random();
+        private int _flicker;
 
-        public override void onTick()
+        public TPAura() : base("TPAura", (char)0x07, "Exploits")
+        {
+        } // Not defined
+
+        public override void OnTick()
         {
             if (Game.isNull) return;
-            flicker++;
+            _flicker++;
 
-            if (flicker == 4)
-            {
-                flicker = 0;
-                if (Game.isNull) return;
-                flicker++;
+            if (_flicker != 4) return;
+            _flicker = 0;
+            if (Game.isNull) return;
+            _flicker++;
 
-                if (flicker == 300)
-                {
-                    flicker = 0;
-                    Game.onGround = false;
-                }
-            }
+            if (_flicker != 300) return;
+            _flicker = 0;
+            Game.onGround = false;
         }
     }
 }

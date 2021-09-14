@@ -1,53 +1,69 @@
-﻿using System;
+﻿#region
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
 using Trero.Modules.vModuleExtra;
 
+#endregion
+
 namespace Trero.Modules
 {
-    class Module
+    internal class Module
     {
-        public bool enabled = false;
-        public string name;
-        public string category;
-
-        public List<FloatSlider> moduleFloatSettings = new List<FloatSlider>();
-        public List<vCheckBox> moduleCheckboxSettings = new List<vCheckBox>();
+        public readonly string category;
+        public readonly string name;
+        public bool enabled;
 
         public char keybind;
-        public Module(string name, char keybind, string category = "Other", bool enabled = false)
+        public List<vCheckBox> moduleCheckboxSettings = new List<vCheckBox>();
+
+        public List<FloatSlider> moduleFloatSettings = new List<FloatSlider>();
+
+        protected Module(string name, char keybind, string category = "Other", bool enabled = false)
         {
             this.name = name;
             this.keybind = keybind;
             this.category = category;
             this.enabled = enabled;
 
-            Keymap.keyEvent += onKeypress;
+            Keymap.keyEvent += OnKeypress;
         }
 
-        public void addSetting()
+        public void AddSetting()
         {
         }
 
-        private void onKeypress(object sender, KeyEvent e) // Cant be overridden 
+        private void OnKeypress(object sender, KeyEvent e) // Cant be overridden 
         {
             if (Overlay.handle == null) return;
 
-            if (e.vkey == vKeyCodes.KeyDown && (int)e.key == keybind)
+            if (e.vkey != VKeyCodes.KeyDown || (int)e.key != keybind) return;
+            enabled = !enabled;
+            //Slight performance improvement over two if statements
+            switch (enabled)
             {
-                enabled = !enabled;
-                if (enabled) onEnable();
-                if (!enabled) onDisable();
+                case true:
+                    OnEnable();
+                    break;
+                case false:
+                    OnDisable();
+                    break;
             }
         } // Enable/Disable Handler
 
-        public virtual void onEnable() => enabled = true;
-        public virtual void onDisable() => enabled = false;
-        public virtual void onTick() { }
+        public virtual void OnEnable()
+        {
+            enabled = true;
+        }
+
+        public virtual void OnDisable()
+        {
+            enabled = false;
+        }
+
+        public virtual void OnTick()
+        {
+        }
     }
 }

@@ -1,30 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿#region
+
+using System;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Trero.ClientBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class Debug : Module
+    internal class Debug : Module
     {
-        [DllImport("kernel32.dll")] static extern IntPtr GetConsoleWindow();
-        [DllImport("user32.dll")] static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        public Debug() : base("Debug", (char)0x07, "Other", true) { } // 0x07 = no keybind
+        public Debug() : base("Debug", (char)0x07, "Other", true)
+        {
+        } // 0x07 = no keybind
 
-        public override void onEnable()
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetConsoleWindow();
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        public override void OnEnable()
         {
             ShowWindow(GetConsoleWindow(), 5);
-            base.onEnable();
+            base.OnEnable();
         }
 
-        public override void onDisable()
+        public override void OnDisable()
         {
             ShowWindow(GetConsoleWindow(), 0);
-            base.onDisable();
+            base.OnDisable();
         }
     }
 }

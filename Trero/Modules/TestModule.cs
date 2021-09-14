@@ -1,21 +1,24 @@
-﻿using System;
-using System.Windows.Forms;
+﻿#region
+
+using System;
 using Trero.ClientBase;
-using Trero.ClientBase.FaketernalBase;
-using Trero.ClientBase.KeyBase;
-using Trero.ClientBase.VersionBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class TestModule : Module
+    internal class TestModule : Module
     {
-        public TestModule() : base("TestModule", (char)0x07, "Other") { } // Not defined
-        public override void onTick()
+        public TestModule() : base("TestModule", (char)0x07)
+        {
+        } // Not defined
+
+        public override void OnTick()
         {
             //Faketernal.ClientObj.createClientObj(); // tellraw externally
             //Faketernal.ClientObj.setClientObj(Faketernal.ClientObj.getMessageAt(0));
 
-            MessageObj obj = Faketernal.ClientObj.getMessageAt(0);
+            var obj = Faketernal.ClientObj.getMessageAt(0);
             //obj.message = "yes";
             Console.WriteLine(obj.addr.ToString("X"));
 

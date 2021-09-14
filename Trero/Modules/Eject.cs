@@ -1,13 +1,12 @@
-﻿using System.Diagnostics;
-using System.Windows.Forms;
-using Trero.ClientBase.UIBase;
-
-namespace Trero.Modules
+﻿namespace Trero.Modules
 {
-    class Eject : Module
+    internal class Eject : Module
     {
-        public Eject() : base("Eject", (char)0x07, "Other") { } // Not defined
-        public override void onEnable()
+        public Eject() : base("Eject", (char)0x07)
+        {
+        } // Not defined
+
+        public override void OnEnable()
         {
             Program.quit = true;
         }

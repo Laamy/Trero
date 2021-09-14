@@ -1,47 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region
+
 using System.Windows.Forms;
-using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.UIBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class ClickGUI : Module
+    internal class ClickGUI : Module
     {
-        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual", true) { } // Not defined
-        public override void onEnable()
+        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual", true)
+        {
+        } // Not defined
+
+        public override void OnEnable()
         {
             try
             {
-                Overlay.handle.Invoke((MethodInvoker)delegate {
+                Overlay.handle.Invoke((MethodInvoker)delegate
+                {
                     foreach (Control ct in Overlay.handle.Controls)
-                    {
-                        if (Overlay.handle != null && ct.Tag == "Category")
+                        if (Overlay.handle != null && (string)ct.Tag == "Category")
                             ct.Visible = true;
-                    }
                 });
             }
-            catch { }
-            base.onEnable();
+            catch
+            {
+                // ignored
+            }
+
+            base.OnEnable();
         }
-        public override void onDisable()
+
+        public override void OnDisable()
         {
             try
             {
-                Overlay.handle.Invoke((MethodInvoker)delegate {
+                Overlay.handle.Invoke((MethodInvoker)delegate
+                {
                     foreach (Control ct in Overlay.handle.Controls)
-                    {
-                        if (Overlay.handle != null && ct.Tag == "Category")
+                        if (Overlay.handle != null && (string)ct.Tag == "Category")
                             ct.Visible = false;
-                    }
                 });
             }
-            catch { }
-            base.onDisable();
+            catch
+            {
+                // ignored
+            }
+
+            base.OnDisable();
         }
     }
 }

@@ -1,35 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region
+
 using System.Windows.Forms;
-using Trero.ClientBase;
-using Trero.ClientBase.EntityBase;
 using Trero.ClientBase.UIBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class PlayerDisplay : Module
+    internal class PlayerDisplay : Module
     {
-        public PlayerDisplay() : base("PlayerDisplay", (char)0x07, "Visual") { } // Not defined
-        public override void onEnable()
+        public PlayerDisplay() : base("PlayerDisplay", (char)0x07, "Visual")
         {
-            base.onEnable();
+        } // Not defined
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
             foreach (Control ct in Overlay.handle.Controls)
-            {
                 if (ct.Name == "panel1")
                     ct.Visible = true;
-            }
         }
-        public override void onDisable()
+
+        public override void OnDisable()
         {
-            base.onDisable();
+            base.OnDisable();
             foreach (Control ct in Overlay.handle.Controls)
-            {
                 if (ct.Name == "panel1")
                     ct.Visible = false;
-            }
         }
     }
 }

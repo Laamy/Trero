@@ -1,28 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿#region
+
 using Trero.ClientBase;
+
+#endregion
 
 namespace Trero.Modules
 {
-    class FlickerExample : Module
+    internal class FlickerExample : Module
     {
-        int flicker = 0;
-        public FlickerExample() : base("FlickerExample", (char)0x07, "Other") { } // 0x07 = no keybind
+        private int _flicker;
 
-        public override void onTick()
+        public FlickerExample() : base("FlickerExample", (char)0x07)
+        {
+        } // 0x07 = no keybind
+
+        public override void OnTick()
         {
             if (Game.isNull) return;
-            flicker++;
+            _flicker++;
 
-            if (flicker == 300)
-            {
-                flicker = 0;
-                Game.onGround = false;
-            }
+            if (_flicker != 300) return;
+            _flicker = 0;
+            Game.onGround = false;
         }
     }
 }

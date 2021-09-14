@@ -1,41 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region
+
+using System;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using Trero.ClientBase.EntityBase;
 using Trero.Modules;
+
+#endregion
 
 namespace Trero.ClientBase.UIBase
 {
     public partial class Overlay : Form
     {
+        public static Overlay handle;
+
+        private Font _df = new Font(FontFamily.GenericSansSerif, 12f);
+
+        private Point _mouseDownLocation;
+
+        public Button vMod;
+
         public Overlay()
         {
             InitializeComponent();
             handle = this;
 
-            new Thread(() => {
+            new Thread(() =>
+            {
                 Thread.Sleep(100);
-                Invoke((MethodInvoker)delegate {
-                    Focus();
-                });
+                Invoke((MethodInvoker)delegate { Focus(); });
                 while (!Program.quit)
                 {
                     Thread.Sleep(1);
                     // Thread.Sleep(1);
                     try
                     {
-                        Invoke((MethodInvoker)delegate {
-                            MCM.RECT rect = MCM.getMinecraftRect();
+                        Invoke((MethodInvoker)delegate
+                        {
+                            var rect = MCM.getMinecraftRect();
 
-                            Placement e = new Placement();
-                            GetWindowPlacement(MCM.mcWinHandle, ref e); // Change window size if fullscreen to match extra offsets
-                            int vE = 0;
-                            int vA = 0;
-                            int vB = 0;
-                            int vC = 0;
+                            var e = new Placement();
+                            GetWindowPlacement(MCM.mcWinHandle,
+                                ref e); // Change window size if fullscreen to match extra offsets
+                            var vE = 0;
+                            var vA = 0;
+                            var vB = 0;
+                            var vC = 0;
                             if (e.showCmd == 3) // Perfect window offsets
                             {
                                 vE = 8;
@@ -49,61 +61,57 @@ namespace Trero.ClientBase.UIBase
                             Size = new Size(rect.Right - rect.Left - 18 - vC, rect.Bottom - rect.Top - 44 - vB);
                         });
                     }
-                    catch { }
+                    catch
+                    {
+                    }
                 }
+
                 Application.Exit();
             }).Start();
             TopMost = true;
         }
 
-        [DllImport("user32.dll")] static extern IntPtr GetForegroundWindow();
-        [DllImportAttribute("User32.dll")] static extern IntPtr SetForegroundWindow(IntPtr hWnd);
-        [DllImport("user32.dll")] static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-        [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] static extern bool GetWindowPlacement(IntPtr hWnd, ref Placement lpwndpl);
+        [DllImport("user32.dll")]
+        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy,
+            uint uFlags);
 
-        private struct Placement
-        {
-            public int length;
-            public int flags;
-            public int showCmd;
-            public Point ptMinPosition;
-            public Point ptMaxPosition;
-            public Rectangle rcNormalPosition;
-        }
-
-        public static Overlay handle;
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetWindowPlacement(IntPtr hWnd, ref Placement lpwndpl);
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string list = "";
+            var list = "";
 
             try
             {
                 var vList = Game.getPlayers();
                 list = "Players : " + vList.Count + "\r\n";
-                foreach (Actor plr in vList)
-                {
-                    list += (int)Game.position.Distance(plr.position) + "b " + plr.username + "\r\n";
-                }
+                list = vList.Aggregate(list,
+                    (current, plr) =>
+                        current + (int)Game.position.Distance(plr.position) + "b " + plr.username + "\r\n");
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
 
             if (list == "")
                 list = "No players";
 
-            SizeF calclist = TextRenderer.MeasureText(list, playerList.Font);
+            var calclist = TextRenderer.MeasureText(list, playerList.Font);
 
-            if (panel5.Size != new Size((int)calclist.Width, (int)calclist.Height + 20))
+            if (panel5.Size != new Size(calclist.Width, calclist.Height + 20))
             {
-                panel1.Size = new Size((int)calclist.Width + 20, (int)calclist.Height + 24);
-                panel5.Size = new Size((int)calclist.Width + 20, (int)calclist.Height);
+                panel1.Size = new Size(calclist.Width + 20, calclist.Height + 24);
+                panel5.Size = new Size(calclist.Width + 20, calclist.Height);
             }
 
             playerList.Text = list;
 
             try
             {
-                Actor ent = Game.getClosestPlayer();
+                var ent = Game.getClosestPlayer();
 
                 if (ent == null)
                 {
@@ -119,25 +127,24 @@ namespace Trero.ClientBase.UIBase
                 label2.Text = vec.ToString();
                 label3.Text = Game.position.Distance(vec) + "b";
             }
-            catch { }
-        }
-
-        void updateModule(Module mod, Button btn)
-        {
-            if (mod.name == btn.Name)
+            catch
             {
-                if (mod.enabled && btn.BackColor != Color.FromArgb(255, 39, 39, 39))
-                {
-                    btn.BackColor = Color.FromArgb(255, 39, 39, 39);
-                }
-                else if (!mod.enabled && btn.BackColor == Color.FromArgb(255, 39, 39, 39))
-                {
-                    btn.BackColor = Color.FromArgb(255, 44, 44, 44);
-                }
             }
         }
 
-        Font df = new Font(FontFamily.GenericSansSerif, 12f);
+        private void updateModule(Module mod, Button btn)
+        {
+            if (mod.name != btn.Name) return;
+            switch (mod.enabled)
+            {
+                case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
+                    btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                    break;
+                case false when btn.BackColor == Color.FromArgb(255, 39, 39, 39):
+                    btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                    break;
+            }
+        }
 
         private void Overlay_Paint(object sender, PaintEventArgs e)
         {
@@ -163,101 +170,100 @@ namespace Trero.ClientBase.UIBase
             */
         }
 
-        private Point MouseDownLocation;
         private void panel2_MouseDown_1(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel2.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel2.BringToFront();
         }
 
         private void panel2_MouseMove_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                panel2.Left = e.X + panel2.Left - MouseDownLocation.X;
-                panel2.Top = e.Y + panel2.Top - MouseDownLocation.Y;
+                panel2.Left = e.X + panel2.Left - _mouseDownLocation.X;
+                panel2.Top = e.Y + panel2.Top - _mouseDownLocation.Y;
             }
         }
 
         private void Overlay_Load(object sender, EventArgs e)
         {
-            foreach (Module mod in Program.modules)
+            foreach (var mod in Program.Modules)
             {
-                Button moduleButton = ClonableButton.Clone();
+                var moduleButton = ClonableButton.Clone();
                 moduleButton.Visible = true;
                 moduleButton.Name = mod.name;
                 moduleButton.Text = mod.name;
                 if (mod.keybind != 0x07)
-                    moduleButton.Text += " (" + (Keys)mod.keybind + ")";
+                    moduleButton.Text += @" (" + (Keys)mod.keybind + @")";
                 moduleButton.Click += moduleActivated;
                 moduleButton.MouseDown += keybindActivated;
                 moduleButton.FlatAppearance.BorderSize = 0;
                 moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
-                if (mod.category == "Flies")
+                switch (mod.category)
                 {
-                    panel7.Controls.Add(moduleButton);
-                    panel7.Size = new Size(0, panel7.Controls.Count * ClonableButton.Size.Height);
-                    panel6.Size = new Size(panel6.Size.Width, panel7.Controls.Count * ClonableButton.Size.Height + 24);
-                }
-                if (mod.category == "Visual")
-                {
-                    panel15.Controls.Add(moduleButton);
-                    panel15.Size = new Size(0, panel15.Controls.Count * ClonableButton.Size.Height);
-                    panel14.Size = new Size(panel14.Size.Width, panel15.Controls.Count * ClonableButton.Size.Height + 24);
-                }
-                if (mod.category == "Exploits")
-                {
-                    panel13.Controls.Add(moduleButton);
-                    panel13.Size = new Size(0, panel13.Controls.Count * ClonableButton.Size.Height);
-                    panel12.Size = new Size(panel12.Size.Width, panel13.Controls.Count * ClonableButton.Size.Height + 24);
-                }
-                if (mod.category == "World")
-                {
-                    panel9.Controls.Add(moduleButton);
-                    panel9.Size = new Size(0, panel9.Controls.Count * ClonableButton.Size.Height);
-                    panel8.Size = new Size(panel8.Size.Width, panel9.Controls.Count * ClonableButton.Size.Height + 24);
-                }
-                if (mod.category == "Combat")
-                {
-                    panel11.Controls.Add(moduleButton);
-                    panel11.Size = new Size(0, panel11.Controls.Count * ClonableButton.Size.Height);
-                    panel10.Size = new Size(panel10.Size.Width, panel11.Controls.Count * ClonableButton.Size.Height + 24);
-                }
-                if (mod.category == "Player")
-                {
-                    panel17.Controls.Add(moduleButton);
-                    panel17.Size = new Size(0, panel17.Controls.Count * ClonableButton.Size.Height);
-                    panel16.Size = new Size(panel16.Size.Width, panel17.Controls.Count * ClonableButton.Size.Height + 24);
-                }
-                if (mod.category == "Other")
-                {
-                    TestCategory.Controls.Add(moduleButton);
-                    TestCategory.Size = new Size(0, (TestCategory.Controls.Count - 1) * ClonableButton.Size.Height);
-                    panel2.Size = new Size(panel2.Size.Width, (TestCategory.Controls.Count - 1) * ClonableButton.Size.Height + 24);
+                    case "Flies":
+                        panel7.Controls.Add(moduleButton);
+                        panel7.Size = new Size(0, panel7.Controls.Count * ClonableButton.Size.Height);
+                        panel6.Size = new Size(panel6.Size.Width,
+                            panel7.Controls.Count * ClonableButton.Size.Height + 24);
+                        break;
+                    case "Visual":
+                        panel15.Controls.Add(moduleButton);
+                        panel15.Size = new Size(0, panel15.Controls.Count * ClonableButton.Size.Height);
+                        panel14.Size = new Size(panel14.Size.Width,
+                            panel15.Controls.Count * ClonableButton.Size.Height + 24);
+                        break;
+                    case "Exploits":
+                        panel13.Controls.Add(moduleButton);
+                        panel13.Size = new Size(0, panel13.Controls.Count * ClonableButton.Size.Height);
+                        panel12.Size = new Size(panel12.Size.Width,
+                            panel13.Controls.Count * ClonableButton.Size.Height + 24);
+                        break;
+                    case "World":
+                        panel9.Controls.Add(moduleButton);
+                        panel9.Size = new Size(0, panel9.Controls.Count * ClonableButton.Size.Height);
+                        panel8.Size = new Size(panel8.Size.Width,
+                            panel9.Controls.Count * ClonableButton.Size.Height + 24);
+                        break;
+                    case "Combat":
+                        panel11.Controls.Add(moduleButton);
+                        panel11.Size = new Size(0, panel11.Controls.Count * ClonableButton.Size.Height);
+                        panel10.Size = new Size(panel10.Size.Width,
+                            panel11.Controls.Count * ClonableButton.Size.Height + 24);
+                        break;
+                    case "Player":
+                        panel17.Controls.Add(moduleButton);
+                        panel17.Size = new Size(0, panel17.Controls.Count * ClonableButton.Size.Height);
+                        panel16.Size = new Size(panel16.Size.Width,
+                            panel17.Controls.Count * ClonableButton.Size.Height + 24);
+                        break;
+                    case "Other":
+                        TestCategory.Controls.Add(moduleButton);
+                        TestCategory.Size = new Size(0, (TestCategory.Controls.Count - 1) * ClonableButton.Size.Height);
+                        panel2.Size = new Size(panel2.Size.Width,
+                            (TestCategory.Controls.Count - 1) * ClonableButton.Size.Height + 24);
+                        break;
                 }
             }
-            foreach (Module mod in Program.modules)
+
+            foreach (var mod in Program.Modules)
                 if (mod.name == "Antibot" || mod.name == "ClickGUI")
-                    mod.onEnable();
+                    mod.OnEnable();
         }
 
         private void keybindActivated(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Middle)
-            {
-                Button btn = (Button)sender;
-                if (btn == null) return;
+            if (e.Button != MouseButtons.Middle) return;
+            var btn = (Button)sender;
+            if (btn == null) return;
 
-                btn.Text = btn.Name + " (...)";
+            btn.Text = btn.Name + @" (...)";
 
-                vMod = btn;
+            vMod = btn;
 
-                btn.KeyDown += catchKeybind;
-                btn.Select();
-            }
+            btn.KeyDown += catchKeybind;
+            btn.Select();
         }
 
         private void catchKeybind(object sender, KeyEventArgs e)
@@ -266,210 +272,168 @@ namespace Trero.ClientBase.UIBase
             {
                 vMod.KeyDown -= catchKeybind;
                 vMod.Text = vMod.Name;
-                foreach (Module mod in Program.modules)
-                {
+                foreach (var mod in Program.Modules)
                     if (mod.name == vMod.Name)
-                    {
                         mod.keybind = (char)0x07;
-                    }
-                }
                 return;
             }
 
-            foreach (Module mod in Program.modules)
-            {
+            foreach (var mod in Program.Modules)
                 if (mod.name == vMod.Name)
-                {
-                    mod.keybind = (char)(int)(e.KeyCode);
-                }
-            }
+                    mod.keybind = (char)(int)e.KeyCode;
 
-            vMod.Text = vMod.Name + " (" + e.KeyCode + ")";
+            vMod.Text = vMod.Name + @" (" + e.KeyCode + @")";
 
             vMod.KeyDown -= catchKeybind;
         }
 
-        public Button vMod = null;
-
         private void moduleActivated(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            var btn = (Button)sender;
             if (btn == null) return;
 
-            foreach (Module mod in Program.modules)
-            {
-                if (mod.name == btn.Name)
+            foreach (var mod in Program.Modules.Where(mod => mod.name == btn.Name))
+                if (mod.enabled)
                 {
-                    if (mod.enabled)
-                    {
-                        mod.onDisable();
-                        btn.BackColor = Color.FromArgb(255, 44, 44, 44);
-                    }
-                    else
-                    {
-                        mod.onEnable();
-                        btn.BackColor = Color.FromArgb(255, 39, 39, 39);
-                    }
+                    mod.OnDisable();
+                    btn.BackColor = Color.FromArgb(255, 44, 44, 44);
                 }
-            }
+                else
+                {
+                    mod.OnEnable();
+                    btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                }
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation = e.Location;
+                _mouseDownLocation = e.Location;
                 panel3.BringToFront();
             }
         }
 
         private void panel3_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel3.Left = e.X + panel3.Left - MouseDownLocation.X;
-                panel3.Top = e.Y + panel3.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel3.Left = e.X + panel3.Left - _mouseDownLocation.X;
+            panel3.Top = e.Y + panel3.Top - _mouseDownLocation.Y;
         }
 
-        private void ClonableButton_Click(object sender, EventArgs e) { }
+        private void ClonableButton_Click(object sender, EventArgs e)
+        {
+        }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel1.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel1.BringToFront();
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel1.Left = e.X + panel1.Left - MouseDownLocation.X;
-                panel1.Top = e.Y + panel1.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel1.Left = e.X + panel1.Left - _mouseDownLocation.X;
+            panel1.Top = e.Y + panel1.Top - _mouseDownLocation.Y;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void panel6_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel6.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel6.BringToFront();
         }
 
         private void panel6_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel6.Left = e.X + panel6.Left - MouseDownLocation.X;
-                panel6.Top = e.Y + panel6.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel6.Left = e.X + panel6.Left - _mouseDownLocation.X;
+            panel6.Top = e.Y + panel6.Top - _mouseDownLocation.Y;
         }
 
         private void panel14_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                MouseDownLocation = e.Location;
+                _mouseDownLocation = e.Location;
                 panel14.BringToFront();
             }
         }
 
         private void panel14_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel14.Left = e.X + panel14.Left - MouseDownLocation.X;
-                panel14.Top = e.Y + panel14.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel14.Left = e.X + panel14.Left - _mouseDownLocation.X;
+            panel14.Top = e.Y + panel14.Top - _mouseDownLocation.Y;
         }
 
         private void panel8_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel8.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel8.BringToFront();
         }
 
         private void panel8_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel8.Left = e.X + panel8.Left - MouseDownLocation.X;
-                panel8.Top = e.Y + panel8.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel8.Left = e.X + panel8.Left - _mouseDownLocation.X;
+            panel8.Top = e.Y + panel8.Top - _mouseDownLocation.Y;
         }
 
         private void panel10_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel10.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel10.BringToFront();
         }
 
         private void panel10_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel10.Left = e.X + panel10.Left - MouseDownLocation.X;
-                panel10.Top = e.Y + panel10.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel10.Left = e.X + panel10.Left - _mouseDownLocation.X;
+            panel10.Top = e.Y + panel10.Top - _mouseDownLocation.Y;
         }
 
         private void panel12_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel12.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel12.BringToFront();
         }
 
         private void panel12_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel12.Left = e.X + panel12.Left - MouseDownLocation.X;
-                panel12.Top = e.Y + panel12.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel12.Left = e.X + panel12.Left - _mouseDownLocation.X;
+            panel12.Top = e.Y + panel12.Top - _mouseDownLocation.Y;
         }
 
         private void panel16_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MouseDownLocation = e.Location;
-                panel16.BringToFront();
-            }
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel16.BringToFront();
         }
 
         private void panel16_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                panel16.Left = e.X + panel16.Left - MouseDownLocation.X;
-                panel16.Top = e.Y + panel16.Top - MouseDownLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left) return;
+            panel16.Left = e.X + panel16.Left - _mouseDownLocation.X;
+            panel16.Top = e.Y + panel16.Top - _mouseDownLocation.Y;
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             try // fixed
             {
-                foreach (Module mod in Program.modules)
+                foreach (var mod in Program.Modules)
                 {
                     foreach (Button btn in TestCategory.Controls) updateModule(mod, btn);
                     foreach (Button btn in panel7.Controls) updateModule(mod, btn);
@@ -480,7 +444,10 @@ namespace Trero.ClientBase.UIBase
                     foreach (Button btn in panel13.Controls) updateModule(mod, btn);
                 }
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -489,17 +456,26 @@ namespace Trero.ClientBase.UIBase
             {
                 if (MCM.isMinecraftFocused() && TopMost == false)
                     TopMost = true;
-                if (!MCM.isMinecraftFocused() && TopMost == true)
-                {
-                    if (ActiveForm != this)
-                    {
-                        Opacity = 1;
-                        TopMost = false;
-                        SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
-                    }
-                }
+                if (MCM.isMinecraftFocused() || !TopMost) return;
+                if (ActiveForm == this) return;
+                Opacity = 1;
+                TopMost = false;
+                SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        private struct Placement
+        {
+            public int length;
+            public int flags;
+            public int showCmd;
+            public Point ptMinPosition;
+            public Point ptMaxPosition;
+            public Rectangle rcNormalPosition;
         }
     }
 }
