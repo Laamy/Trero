@@ -501,5 +501,20 @@ namespace Trero.ClientBase.UIBase
             }
             catch { }
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

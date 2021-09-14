@@ -98,6 +98,7 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\LongJump.cs" />
     <Compile Include="Modules\MineplexFly.cs" />
     <Compile Include="Modules\Nofriends.cs" />
     <Compile Include="Modules\Friends.cs" />

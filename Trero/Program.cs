@@ -81,6 +81,7 @@ namespace Trero
             modules.Add(new Friends());
             modules.Add(new Nofriends());
             modules.Add(new MineplexFly());
+            modules.Add(new LongJump());
 
             Console.WriteLine("Registered modules!");
 
@@ -95,8 +96,6 @@ namespace Trero
             // also rather do things i can think of ways to actually do externally so dont ask for anything else if you 100% know its impossible :(
             // for yaammi to do list :penisve:
             // CubeCraftFly
-            // MineplexFly - probs dont need this tbh
-            // Killaura (Some kind of isLookingAtEntityId edit else Aimbot/TriggerBot
             // FastUse (Haven't put much thought into this so idk if its possible externally probs is)
             // AutoFish (Seems pretty simple and wont need pointers tbh)
             // Commands
@@ -142,7 +141,7 @@ namespace Trero
             // block (plr) - ill replace there messages in chat to [Message deleted] x1(etc) using chat pointer
             // unblock
             // durability
-            // nametags - pref if you added armor and in hand display above their head
+            // nametags - if possible add armor and in hand display above their head
 
             modules.Sort((c1, c2) => c2.name.CompareTo(c1.name)); // ABC Order
 
