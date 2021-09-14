@@ -24,9 +24,9 @@ namespace Trero.Modules
             {
                 if (Game.onGround == false)
                 {
-                    newVel.x *= 1.051f;
-                    newVel.y *= 1.063f;
-                    newVel.z *= 1.051f;
+                    newVel.x *= 1.0669f;
+                    newVel.y *= 1.038f;
+                    newVel.z *= 1.0669f;
                 }
             }
             Game.velocity = newVel;
