@@ -6,17 +6,17 @@ using Trero.ClientBase.VersionBase;
 
 namespace Trero.Modules
 {
-    class LongJump : Module
+    internal class LongJump : Module
     {
-        
+
         static float flicker = 0;
         public LongJump() : base("LongJump", (char)0x07, "Player") { } // Not defined
-        public override void onEnable()
+        public override void OnEnable()
         {
-            MCM.writeFloat(Game.localPlayer + VersionClass.getData("velocity") + 4, 0.5f);
-            base.onEnable();
+            MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.5f);
+            base.OnEnable();
         }
-        public override void onTick()
+        public override void OnTick()
         {
             Vector3 newVel = Game.velocity;
 
