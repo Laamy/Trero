@@ -190,80 +190,126 @@ namespace Trero.ClientBase.UIBase
         {
             foreach (var mod in Program.Modules)
             {
-                var moduleButton = ClonableButton.Clone();
+                var moduleButton = ClonablePanel.Clone();
+                Button btn = ClonableButton.Clone();
+                Label cLab = label13.Clone();
                 moduleButton.Visible = true;
-                moduleButton.Name = mod.name;
-                moduleButton.Text = mod.name;
+                btn.Visible = true;
+                btn.Name = mod.name;
+                btn.Text = mod.name;
                 if (mod.keybind != 0x07)
-                    moduleButton.Text += @" (" + (Keys)mod.keybind + @")";
-                moduleButton.Click += moduleActivated;
-                moduleButton.MouseDown += keybindActivated;
-                moduleButton.FlatAppearance.BorderSize = 0;
-                moduleButton.FlatAppearance.BorderColor = TestCategory.BackColor;
+                    btn.Text += @" (" + (Keys)mod.keybind + @")";
+                btn.MouseDown += keybindActivated;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.FlatAppearance.BorderColor = TestCategory.BackColor;
+
+                cLab.Text = "Keybind: None";
+                if (mod.keybind != 0x07)
+                    cLab.Text = "Keybind: " + (Keys)mod.keybind;
+                cLab.Visible = true;
+                cLab.Dock = DockStyle.Top;
+
+                moduleButton.Controls.Add(cLab);
+                moduleButton.Controls.Add(btn);
+
                 switch (mod.category)
                 {
                     case "Flies":
                         panel7.Controls.Add(moduleButton);
-                        panel7.Size = new Size(0, panel7.Controls.Count * ClonableButton.Size.Height);
-                        panel6.Size = new Size(panel6.Size.Width,
-                            panel7.Controls.Count * ClonableButton.Size.Height + 24);
                         break;
                     case "Visual":
                         panel15.Controls.Add(moduleButton);
-                        panel15.Size = new Size(0, panel15.Controls.Count * ClonableButton.Size.Height);
-                        panel14.Size = new Size(panel14.Size.Width,
-                            panel15.Controls.Count * ClonableButton.Size.Height + 24);
                         break;
                     case "Exploits":
                         panel13.Controls.Add(moduleButton);
-                        panel13.Size = new Size(0, panel13.Controls.Count * ClonableButton.Size.Height);
-                        panel12.Size = new Size(panel12.Size.Width,
-                            panel13.Controls.Count * ClonableButton.Size.Height + 24);
                         break;
                     case "World":
                         panel9.Controls.Add(moduleButton);
-                        panel9.Size = new Size(0, panel9.Controls.Count * ClonableButton.Size.Height);
-                        panel8.Size = new Size(panel8.Size.Width,
-                            panel9.Controls.Count * ClonableButton.Size.Height + 24);
                         break;
                     case "Combat":
                         panel11.Controls.Add(moduleButton);
-                        panel11.Size = new Size(0, panel11.Controls.Count * ClonableButton.Size.Height);
-                        panel10.Size = new Size(panel10.Size.Width,
-                            panel11.Controls.Count * ClonableButton.Size.Height + 24);
                         break;
                     case "Player":
                         panel17.Controls.Add(moduleButton);
-                        panel17.Size = new Size(0, panel17.Controls.Count * ClonableButton.Size.Height);
-                        panel16.Size = new Size(panel16.Size.Width,
-                            panel17.Controls.Count * ClonableButton.Size.Height + 24);
                         break;
                     case "Other":
                         TestCategory.Controls.Add(moduleButton);
-                        TestCategory.Size = new Size(0, (TestCategory.Controls.Count - 1) * ClonableButton.Size.Height);
-                        panel2.Size = new Size(panel2.Size.Width,
-                            (TestCategory.Controls.Count - 1) * ClonableButton.Size.Height + 24);
                         break;
                 }
             }
+
+            InvalidateCategories();
 
             foreach (var mod in Program.Modules)
                 if (mod.name == "Antibot" || mod.name == "ClickGUI")
                     mod.OnEnable();
         }
 
+        void InvalidateCategories()
+        {
+            cValidate(panel7, panel6);
+            cValidate(panel15, panel14);
+            cValidate(panel13, panel12);
+            cValidate(panel9, panel8);
+            cValidate(panel11, panel10);
+            cValidate(panel17, panel16);
+            cValidate(TestCategory, panel2);
+        }
+
+        void cValidate(Panel miniPanel, Panel titlePanel)
+        {
+            int categoryHeight = 0;
+            foreach (Control c in miniPanel.Controls)
+                if (c.Visible)
+                    categoryHeight += c.Height;
+            miniPanel.Size = new Size(0, categoryHeight);
+            titlePanel.Size = new Size(titlePanel.Size.Width, categoryHeight + 24);
+        }
+
         private void keybindActivated(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Middle) return;
-            var btn = (Button)sender;
-            if (btn == null) return;
+            if (e.Button == MouseButtons.Middle)
+            {
+                var btn = (Button)sender;
+                if (btn == null) return;
 
-            btn.Text = btn.Name + @" (...)";
+                btn.Text = btn.Name + @" (...)";
 
-            vMod = btn;
+                vMod = btn;
 
-            btn.KeyDown += catchKeybind;
-            btn.Select();
+                btn.KeyDown += catchKeybind;
+                btn.Select();
+            }
+
+            if (e.Button == MouseButtons.Left)
+            {
+                var btn = (Button)sender;
+                if (btn == null) return;
+
+                foreach (var mod in Program.Modules.Where(mod => mod.name == btn.Name))
+                    if (mod.enabled)
+                    {
+                        mod.OnDisable();
+                        btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                    }
+                    else
+                    {
+                        mod.OnEnable();
+                        btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                    }
+            }
+
+            if (e.Button == MouseButtons.Right)
+            {
+                var btn = (Button)sender;
+                if (btn == null) return;
+
+                if (btn.Parent.Height > 24)
+                    btn.Parent.Size = new Size(1, 24);
+                else
+                    btn.Parent.Size = new Size(1, 48);
+                InvalidateCategories();
+            }
         }
 
         private void catchKeybind(object sender, KeyEventArgs e)
@@ -285,24 +331,6 @@ namespace Trero.ClientBase.UIBase
             vMod.Text = vMod.Name + @" (" + e.KeyCode + @")";
 
             vMod.KeyDown -= catchKeybind;
-        }
-
-        private void moduleActivated(object sender, EventArgs e)
-        {
-            var btn = (Button)sender;
-            if (btn == null) return;
-
-            foreach (var mod in Program.Modules.Where(mod => mod.name == btn.Name))
-                if (mod.enabled)
-                {
-                    mod.OnDisable();
-                    btn.BackColor = Color.FromArgb(255, 44, 44, 44);
-                }
-                else
-                {
-                    mod.OnEnable();
-                    btn.BackColor = Color.FromArgb(255, 39, 39, 39);
-                }
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
