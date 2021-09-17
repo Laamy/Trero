@@ -29,7 +29,7 @@ namespace Trero.Modules
 
         public override void OnDisable()
         {
-            Game.setFieldOfView(1f);
+            Game.resetFieldOfView();
 
             base.OnDisable();
         }

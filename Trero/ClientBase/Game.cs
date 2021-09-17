@@ -98,11 +98,6 @@ namespace Trero.ClientBase
             set => MCM.writeInt64(localPlayer + VersionClass.GetData("gamemode"), (ulong)(value * 4294967296));
         } // Gamemode
 
-        public static void setFieldOfView(float v)
-        {
-            MCM.writeFloat(localPlayer + VersionClass.GetData("fieldOfView"), v);
-        }
-
         public static int isFalling
         {
             get
@@ -329,20 +324,30 @@ namespace Trero.ClientBase
             teleport(_Vec3.x, _Vec3.y, _Vec3.z);
         } // Teleportation
 
-        public static void SexActor(Actor actor)
+        public static void SexActor(Actor actor, float width = 0.3f, float height = 1f)
         {
             var pos = actor.position;
 
-            pos.x += Faketernal.Utils.NextFloat(-0.3f, 0.3f);
-            pos.y += 1;
-            pos.z += Faketernal.Utils.NextFloat(-0.3f, 0.3f);
+            pos.x += Faketernal.Utils.NextFloat(-width, width);
+            pos.y += height;
+            pos.z += Faketernal.Utils.NextFloat(-width, width);
 
             teleport(pos);
         } // Teleportation
 
+        public static void setFieldOfView(float v)
+        {
+            MCM.writeFloat(localPlayer + VersionClass.GetData("fieldOfView"), v);
+        }
+
+        public static void resetFieldOfView()
+        {
+            setFieldOfView(1f);
+        }
+
         public static void Attack(Actor actor)
         {
-            lookingEntityId = actor.addr;
+            lookingEntityId = actor.addr; // btw this has not been developed yet so shhh
             Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
         } // Attack
 
