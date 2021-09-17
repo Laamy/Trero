@@ -43,7 +43,8 @@
                 0x98C,
                 0x990,
                 0x040A41F8, 0x814,
-                0x04120400, 0x8, 0x48, 0xA0, 0x128
+                0x04120400, 0x8, 0x48, 0xA0, 0x128,
+                0x10F0
             }) // MCBE 1.17.11
         };
 
@@ -84,7 +85,8 @@
             "LookingAtBlock",
             "SideSelect",
             "screenT+1", "screenT+2",
-            "chatBase", "chatBase+1", "chatBase+2", "chatBase+3", "chatBase+4"
+            "chatBase", "chatBase+1", "chatBase+2", "chatBase+3", "chatBase+4",
+             "fieldOfView"
         });
 
         private static IVersion _cv;

@@ -84,6 +84,8 @@ namespace Trero
             Modules.Add(new Nofriends());
             Modules.Add(new MineplexFly());
             Modules.Add(new LongJump());
+            Modules.Add(new Zoom());
+            Modules.Add(new AutoWalk());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -104,25 +106,23 @@ namespace Trero
             // Aimbot
             // NoHurtCam
             // InventoryDisplay // need local player inventory proxey
-            // Zoom (FovPointer needed for W2S)
+            // Zoom - Turns out this is also in local player as FieldOfView so i still need fov pointer Oof
+            // Fov (FovPointer needed for W2S)
             // WorldToScreen/W2S (GameFunc)
             // Rader (Already possible btw as we have entitylist) // 100% adding these W2S ones btw
             // Tracers (W2S Required)
             // Waypoints (W2S Required)
             // ArrowTracers (W2S Required)
-            // AutoWalk
             // Reach
             // FastWater
             // CustomTablist
             // Nuker
-            // Antibot
             // BlockFly (Cant do this without scaffold so...)
             // Im never doing fightbot so fuck up
             // BowAimbot
             // ChestAura
             // CompassDisplay // when i get around to it i want to add waypoints into this aswell
             // FullBright
-            // NoFriends
             // Fix scaffold
             // Noknockback
 

@@ -98,6 +98,11 @@ namespace Trero.ClientBase
             set => MCM.writeInt64(localPlayer + VersionClass.GetData("gamemode"), (ulong)(value * 4294967296));
         } // Gamemode
 
+        public static void setFieldOfView(float v)
+        {
+            MCM.writeFloat(localPlayer + VersionClass.GetData("fieldOfView"), v);
+        }
+
         public static int isFalling
         {
             get

@@ -98,6 +98,8 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\AutoWalk.cs" />
+    <Compile Include="Modules\Zoom.cs" />
     <Compile Include="Modules\LongJump.cs" />
     <Compile Include="Modules\MineplexFly.cs" />
     <Compile Include="Modules\Nofriends.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Modules\Sexaura.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Modules\vModuleExtra\FloatSlider.cs" />
+    <Compile Include="Modules\vModuleExtra\BypassBox.cs" />
     <Compile Include="Modules\vModuleExtra\vCheckBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
