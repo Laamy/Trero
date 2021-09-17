@@ -116,7 +116,7 @@
     <Compile Include="Modules\ClickTP.cs" />
     <Compile Include="Modules\NoSwing.cs" />
     <Compile Include="Modules\Jesus.cs" />
-    <Compile Include="Modules\Rapeaura.cs" />
+    <Compile Include="Modules\Sexaura.cs" />
     <Compile Include="Modules\Step.cs" />
     <Compile Include="Modules\PlayerTP.cs" />
     <Compile Include="Modules\Killaura.cs" />
@@ -148,7 +148,7 @@
     <Compile Include="Modules\NoYFly.cs" />
     <Compile Include="Modules\Noclip.cs" />
     <Compile Include="Modules\KillGame.cs" />
-    <Compile Include="Modules\Sexaura.cs" />
+    <Compile Include="Modules\Rapeaura.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Modules\vModuleExtra\FloatSlider.cs" />
     <Compile Include="Modules\vModuleExtra\BypassBox.cs" />

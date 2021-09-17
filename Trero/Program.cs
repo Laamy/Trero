@@ -86,6 +86,7 @@ namespace Trero
             Modules.Add(new LongJump());
             Modules.Add(new Zoom());
             Modules.Add(new AutoWalk());
+            Modules.Add(new Rapeaura());
 
             Console.WriteLine(@"Registered modules!");
 

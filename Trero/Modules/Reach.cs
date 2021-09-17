@@ -14,13 +14,13 @@ namespace Trero.Modules
 
         public override void OnEnable()
         {
-            MCM.writeBaseFloat(0x1CAEB90, 7);
+            MCM.writeBaseFloat(0x1CAEB90, 7f);
             base.OnEnable();
         }
 
         public override void OnDisable()
         {
-            MCM.writeBaseFloat(0x1CAEB90, 3);
+            MCM.writeBaseFloat(0x1CAEB90, 3f);
             base.OnDisable();
         }
     }

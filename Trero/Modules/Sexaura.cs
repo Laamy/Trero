@@ -6,9 +6,9 @@ using Trero.ClientBase;
 
 namespace Trero.Modules
 {
-    internal class Rapeaura : Module
+    internal class Sexaura : Module
     {
-        public Rapeaura() : base("Rapeaura", (char)0x07, "Combat")
+        public Sexaura() : base("Sexaura", (char)0x07, "World")
         {
         } // Not defined
 
@@ -17,9 +17,8 @@ namespace Trero.Modules
             if (Game.isNull) return;
 
             var plr = Game.getClosestPlayer();
-            if (!(Game.position.Distance(plr.position) < 6f)) return;
-            Game.SexActor(plr);
-            Game.Attack(plr);
+            if (Game.position.Distance(plr.position) < 6f)
+                Game.SexActor(plr);
         }
     }
 }
