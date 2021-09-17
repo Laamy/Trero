@@ -396,10 +396,13 @@ namespace Trero.ClientBase
         public static List<Actor> parseEntities(List<Actor> list)
         {
             var validEnts = new List<Actor>();
+
             var validCharacters =
                 "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890 §"
                     .ToCharArray(); // § because some servers change usernames
+
             foreach (var ent in list)
+            {
                 try
                 {
                     var valid = true;
@@ -420,6 +423,18 @@ namespace Trero.ClientBase
                 {
                     validEnts.Add(ent);
                 }
+            }
+
+            return validEnts;
+        }
+
+        public static List<Actor> parseHitboxes(List<Actor> list)
+        {
+            var validEnts = new List<Actor>();
+
+            foreach (var ent in list)
+                if (ent.hitbox.ToString() == "0.6,1.8")
+                    validEnts.Add(ent);
 
             return validEnts;
         }
@@ -470,9 +485,18 @@ namespace Trero.ClientBase
 
         public static List<Actor> getPlayers()
         {
-            if (CustomDefines.antibot)
-                return parseEntities(getTypeEntities("player"));
-            return getTypeEntities("player");
+            var cList = getTypeEntities("player");
+
+            if (CustomDefines.antibot) // Antibot handler
+            {
+                if (CustomDefines.antibotStates[0])
+                    cList = parseEntities(cList);
+
+                if (CustomDefines.antibotStates[1])
+                    cList = parseHitboxes(cList);
+            }
+
+            return cList;
         }
 
         public static Actor getClosestPlayer()
@@ -480,10 +504,7 @@ namespace Trero.ClientBase
             Actor vEntity = null;
             var ents = new List<Actor>();
 
-            if (CustomDefines.antibot)
-                ents = parseEntities(getPlayers());
-            else
-                ents = getPlayers();
+            ents = getPlayers();
 
             ents.ForEach(ent =>
             {
@@ -509,9 +530,13 @@ namespace Trero.ClientBase
         public static class CustomDefines
         {
             public static bool antibot = true;
+            public static bool[] antibotStates = new bool[] { true, false };
             public static bool nofriends = false;
             public static List<string> friends = new List<string> { "FootlongTrero" };
         }
+
+        // Normal - true, false
+        // Hive - false, true
     }
 
     // Struct Defines

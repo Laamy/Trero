@@ -83,6 +83,23 @@
             this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
+            // label12
+            // 
+            label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            label12.AutoSize = true;
+            label12.BackColor = System.Drawing.Color.Transparent;
+            label12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            label12.Font = new System.Drawing.Font("Ink Free", 30F, System.Drawing.FontStyle.Italic);
+            label12.ForeColor = System.Drawing.Color.Silver;
+            label12.Location = new System.Drawing.Point(1231, 615);
+            label12.Name = "label12";
+            label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            label12.Size = new System.Drawing.Size(120, 49);
+            label12.TabIndex = 6;
+            label12.Text = "Trero";
+            label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            label12.Click += new System.EventHandler(this.label12_Click_1);
+            // 
             // TestCategory
             // 
             this.TestCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
@@ -103,7 +120,7 @@
             this.ClonableButton.ForeColor = System.Drawing.SystemColors.Control;
             this.ClonableButton.Location = new System.Drawing.Point(0, 0);
             this.ClonableButton.Name = "ClonableButton";
-            this.ClonableButton.Size = new System.Drawing.Size(150, 32);
+            this.ClonableButton.Size = new System.Drawing.Size(150, 24);
             this.ClonableButton.TabIndex = 4;
             this.ClonableButton.TabStop = false;
             this.ClonableButton.Tag = "ModuleButton";
@@ -127,6 +144,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -238,7 +256,7 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.panel7);
-            this.panel6.Location = new System.Drawing.Point(166, 376);
+            this.panel6.Location = new System.Drawing.Point(634, 10);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(150, 267);
             this.panel6.TabIndex = 2;
@@ -248,6 +266,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
@@ -273,7 +292,7 @@
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Location = new System.Drawing.Point(10, 10);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(150, 148);
+            this.panel8.Size = new System.Drawing.Size(150, 96);
             this.panel8.TabIndex = 5;
             this.panel8.Tag = "Category";
             this.panel8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel8_MouseDown);
@@ -281,6 +300,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(111)))), ((int)(((byte)(94)))));
@@ -294,9 +314,9 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 24);
+            this.panel9.Location = new System.Drawing.Point(0, 22);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(150, 124);
+            this.panel9.Size = new System.Drawing.Size(150, 74);
             this.panel9.TabIndex = 0;
             // 
             // panel10
@@ -304,7 +324,7 @@
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel10.Controls.Add(this.label7);
             this.panel10.Controls.Add(this.panel11);
-            this.panel10.Location = new System.Drawing.Point(166, 10);
+            this.panel10.Location = new System.Drawing.Point(10, 112);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(150, 101);
             this.panel10.TabIndex = 6;
@@ -314,6 +334,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Red;
@@ -347,6 +368,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -370,7 +392,7 @@
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel14.Controls.Add(this.label9);
             this.panel14.Controls.Add(this.panel15);
-            this.panel14.Location = new System.Drawing.Point(10, 164);
+            this.panel14.Location = new System.Drawing.Point(790, 10);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(150, 166);
             this.panel14.TabIndex = 8;
@@ -380,6 +402,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Yellow;
@@ -404,7 +427,7 @@
             this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel16.Controls.Add(this.label10);
             this.panel16.Controls.Add(this.panel17);
-            this.panel16.Location = new System.Drawing.Point(10, 376);
+            this.panel16.Location = new System.Drawing.Point(166, 10);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(150, 230);
             this.panel16.TabIndex = 8;
@@ -414,6 +437,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -448,7 +472,7 @@
             this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.panel18.Controls.Add(this.panel19);
-            this.panel18.Location = new System.Drawing.Point(900, 60);
+            this.panel18.Location = new System.Drawing.Point(975, 462);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(150, 100);
             this.panel18.TabIndex = 9;
@@ -456,9 +480,9 @@
             // 
             // panel19
             // 
-            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.panel19.Controls.Add(this.label11);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel19.Location = new System.Drawing.Point(0, 24);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(150, 76);
@@ -474,23 +498,6 @@
             this.label11.Size = new System.Drawing.Size(23, 16);
             this.label11.TabIndex = 5;
             this.label11.Text = "0b";
-            // 
-            // label12
-            // 
-            label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            label12.AutoSize = true;
-            label12.BackColor = System.Drawing.Color.Transparent;
-            label12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            label12.Font = new System.Drawing.Font("Ink Free", 30F, System.Drawing.FontStyle.Italic);
-            label12.ForeColor = System.Drawing.Color.Silver;
-            label12.Location = new System.Drawing.Point(1231, 615);
-            label12.Name = "label12";
-            label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            label12.Size = new System.Drawing.Size(120, 49);
-            label12.TabIndex = 6;
-            label12.Text = "Trero";
-            label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            label12.Click += new System.EventHandler(this.label12_Click_1);
             // 
             // Overlay
             // 

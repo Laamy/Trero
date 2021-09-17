@@ -339,10 +339,6 @@ namespace Trero.ClientBase.UIBase
             panel1.Top = e.Y + panel1.Top - _mouseDownLocation.Y;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void panel6_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
@@ -476,16 +472,6 @@ namespace Trero.ClientBase.UIBase
             public Point ptMinPosition;
             public Point ptMaxPosition;
             public Rectangle rcNormalPosition;
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label12_Click_1(object sender, EventArgs e)

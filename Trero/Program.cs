@@ -87,6 +87,7 @@ namespace Trero
             Modules.Add(new Zoom());
             Modules.Add(new AutoWalk());
             Modules.Add(new Rapeaura());
+            Modules.Add(new HiveAntibot());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -126,6 +127,9 @@ namespace Trero
             // FullBright
             // Fix scaffold
             // Noknockback
+
+            // TreroInternal - Modules List
+            // 
 
             // TODO: Commands -- i think ill do all the commands in about aweek if i get a good idea on where to put them
             // tp (x) (y) (z)

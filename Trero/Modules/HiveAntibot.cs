@@ -6,16 +6,16 @@ using Trero.ClientBase;
 
 namespace Trero.Modules
 {
-    internal class Antibot : Module
+    internal class HiveAntibot : Module
     {
-        public Antibot() : base("Antibot", (char)0x07, "Other", true)
+        public HiveAntibot() : base("HiveAntibot", (char)0x07, "Other", false)
         {
         }
 
         public override void OnEnable()
         {
             Game.CustomDefines.antibot = true;
-            Game.CustomDefines.antibotStates = new bool[] { true, false }; // default parser
+            Game.CustomDefines.antibotStates = new bool[] { false, true }; // hive parser
             base.OnEnable();
         }
 
