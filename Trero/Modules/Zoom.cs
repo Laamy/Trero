@@ -2,6 +2,7 @@
 
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
+using Trero.Modules.vModuleExtra;
 
 #endregion
 
@@ -11,6 +12,7 @@ namespace Trero.Modules
     {
         public Zoom() : base("Zoom", 'C', "Visual")
         {
+            addBypass(new BypassBox(new string[] { "Minus 0.8", "Minus 1" }));
             Keymap.keyEvent += KeyvE;
         } // Not defined
 
@@ -22,7 +24,10 @@ namespace Trero.Modules
 
         public override void OnEnable()
         {
-            Game.setFieldOfView(0.2f);
+            if (bypasses[0].curIndex == 0)
+                Game.setFieldOfView(0.2f);
+            if (bypasses[0].curIndex == 1)
+                Game.setFieldOfView(0f);
 
             base.OnEnable();
         }

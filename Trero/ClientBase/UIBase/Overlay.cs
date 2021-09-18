@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using Trero.Modules;
+using Trero.Modules.vModuleExtra;
 
 #endregion
 
@@ -275,8 +276,23 @@ namespace Trero.ClientBase.UIBase
             InvalidateCategories();
         }
 
-        private void actorPress(object sender, MouseEventArgs e)
+        private void actorPress(object sender, MouseEventArgs e) // did this while upset please ignore
         {
+            Module mod = Program.Modules[0]; // things we need to idfk at this point minds gone blank i might do this later
+            BypassBox bypassPressed;
+
+            foreach (Module vMod in Program.Modules)
+            {
+                if (vMod.name == ((Button)sender).Name)
+                    mod = vMod;
+            }
+
+            foreach (BypassBox vBypass in mod.bypasses)
+            {
+                if (vBypass.curIndex == (int)((Button)sender).Tag)
+                    bypassPressed = vBypass;
+            }
+
 
         }
 
@@ -313,8 +329,11 @@ namespace Trero.ClientBase.UIBase
             foreach (Control c in miniPanel.Controls)
                 if (c.Visible)
                     categoryHeight += c.Height;
-            miniPanel.Size = new Size(0, categoryHeight);
-            titlePanel.Size = new Size(titlePanel.Size.Width, categoryHeight + 24);
+            if (miniPanel.Height != categoryHeight)
+            {
+                miniPanel.Size = new Size(0, categoryHeight);
+                titlePanel.Size = new Size(titlePanel.Size.Width, categoryHeight + 24);
+            }
         }
 
         private void keybindActivated(object sender, MouseEventArgs e) // remove atani like keybind system

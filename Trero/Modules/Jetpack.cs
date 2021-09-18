@@ -2,6 +2,7 @@
 
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
+using Trero.Modules.vModuleExtra;
 
 #endregion
 
@@ -11,6 +12,7 @@ namespace Trero.Modules
     {
         public Jetpack() : base("Jetpack", (char)0x07, "Flies")
         {
+            addBypass(new BypassBox(new string[] { "Default", "Fast", "Hyper speed", "Slow" }));
             Keymap.keyEvent += KeyvE;
         } // Not defined
 
@@ -27,9 +29,20 @@ namespace Trero.Modules
             var vel = Base.Vec3();
             var dirVec = Game.lVector;
 
-            vel.x = 0.6f * dirVec.x;
-            vel.y = 0.6f * -dirVec.y;
-            vel.z = 0.6f * dirVec.z;
+            float speed = 0.8f;
+
+            if (bypasses[0].curIndex == 0)
+                speed = 0.8f;
+            if (bypasses[0].curIndex == 1)
+                speed = 1.2f;
+            if (bypasses[0].curIndex == 2)
+                speed = 12f;
+            if (bypasses[0].curIndex == 3)
+                speed = 0.4f;
+
+            vel.x = speed * dirVec.x;
+            vel.y = speed * -dirVec.y;
+            vel.z = speed * dirVec.z;
 
             Game.velocity = vel;
         }

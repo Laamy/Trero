@@ -2,6 +2,7 @@
 
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
+using Trero.Modules.vModuleExtra;
 
 #endregion
 
@@ -11,11 +12,15 @@ namespace Trero.Modules
     {
         public Killaura() : base("Killaura", (char)0x07, "Combat")
         {
+            addBypass(new BypassBox(new string[] { "Mobaura: False", "Mobaura: True" }));
         }
 
         public override void OnTick()
         {
-            foreach (var ent in Game.getPlayers())
+            var list = Game.getPlayers();
+            if (bypasses[0].curIndex == 1)
+                list = Game.getEntites();
+            foreach (var ent in list)
                 if (Game.position.Distance(ent.position) < 6f)
                     ent.hitbox = Base.Vec2(7f, 7f);
                 else ent.hitbox = Base.Vec2(0.6f, 1.8f);

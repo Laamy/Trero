@@ -20,7 +20,7 @@ namespace Trero.Modules
             if (!enabled) return;
             if (e.key.ToString() != "MButton") return;
             var ivec = Game.SelectedBlock;
-            var newPos = Base.Vec3(ivec.x, ivec.y, ivec.z);
+            var newPos = Base.Vec3(ivec.x, ivec.y + 1, ivec.z);
             Game.position = newPos;
         }
     }
