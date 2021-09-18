@@ -132,9 +132,10 @@ namespace Trero.ClientBase.UIBase
             }
         }
 
-        private void updateModule(Module mod, Button btn)
+        private void updateModule(Module mod, Control btn) // works
         {
             if (mod.name != btn.Name) return;
+            btn.Text = "sex";
             switch (mod.enabled)
             {
                 case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
@@ -245,7 +246,7 @@ namespace Trero.ClientBase.UIBase
                     mod.OnEnable();
         }
 
-        void InvalidateCategories()
+        void InvalidateCategories() // update category sizes depending on module sizes
         {
             cValidate(panel7, panel6);
             cValidate(panel15, panel14);
@@ -299,15 +300,22 @@ namespace Trero.ClientBase.UIBase
                     }
             }
 
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right) // i want to change the category size depending on its content so
             {
                 var btn = (Button)sender;
                 if (btn == null) return;
 
                 if (btn.Parent.Height > 24)
-                    btn.Parent.Size = new Size(1, 24);
+                    btn.Parent.Size = ClonableButton.Size;
                 else
-                    btn.Parent.Size = new Size(1, 48);
+                {
+                    //btn.Parent.Size = new Size(1, 48);
+                    int categoryHeight = 0;
+                    foreach (Control c in btn.Parent.Controls)
+                        if (c.Visible)
+                            categoryHeight += c.Height;
+                    btn.Parent.Size = new Size(0, categoryHeight);
+                }
                 InvalidateCategories();
             }
         }
@@ -455,17 +463,17 @@ namespace Trero.ClientBase.UIBase
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            try // fixed
+            try // requires fixing
             {
                 foreach (var mod in Program.Modules)
                 {
-                    foreach (Button btn in TestCategory.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel7.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel17.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel15.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel9.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel11.Controls) updateModule(mod, btn);
-                    foreach (Button btn in panel13.Controls) updateModule(mod, btn);
+                    foreach (Control btn in TestCategory.Controls) updateModule(mod, btn);
+                    foreach (Control btn in panel7.Controls) updateModule(mod, btn);
+                    foreach (Control btn in panel17.Controls) updateModule(mod, btn);
+                    foreach (Control btn in panel15.Controls) updateModule(mod, btn);
+                    foreach (Control btn in panel9.Controls) updateModule(mod, btn);
+                    foreach (Control btn in panel11.Controls) updateModule(mod, btn);
+                    foreach (Control btn in panel13.Controls) updateModule(mod, btn);
                 }
             }
             catch

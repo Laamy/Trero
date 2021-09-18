@@ -32,6 +32,10 @@
             System.Windows.Forms.Label label12;
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.TestCategory = new System.Windows.Forms.Panel();
+            this.ClonablePanel = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ClonableButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -64,12 +68,10 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.TestCategory = new System.Windows.Forms.Panel();
-            this.ClonablePanel = new System.Windows.Forms.Panel();
-            this.ClonableButton = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
+            this.TestCategory.SuspendLayout();
+            this.ClonablePanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,8 +84,6 @@
             this.panel16.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
-            this.TestCategory.SuspendLayout();
-            this.ClonablePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label12
@@ -127,6 +127,58 @@
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Other";
+            // 
+            // TestCategory
+            // 
+            this.TestCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.TestCategory.Controls.Add(this.ClonablePanel);
+            this.TestCategory.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TestCategory.Location = new System.Drawing.Point(0, 24);
+            this.TestCategory.Name = "TestCategory";
+            this.TestCategory.Size = new System.Drawing.Size(150, 276);
+            this.TestCategory.TabIndex = 0;
+            // 
+            // ClonablePanel
+            // 
+            this.ClonablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.ClonablePanel.Controls.Add(this.label13);
+            this.ClonablePanel.Controls.Add(this.ClonableButton);
+            this.ClonablePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ClonablePanel.Location = new System.Drawing.Point(0, 0);
+            this.ClonablePanel.Name = "ClonablePanel";
+            this.ClonablePanel.Size = new System.Drawing.Size(150, 24);
+            this.ClonablePanel.TabIndex = 5;
+            this.ClonablePanel.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label13.ForeColor = System.Drawing.SystemColors.Control;
+            this.label13.Location = new System.Drawing.Point(0, 24);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(75, 17);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Keybind: ?";
+            // 
+            // ClonableButton
+            // 
+            this.ClonableButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.ClonableButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ClonableButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.ClonableButton.FlatAppearance.BorderSize = 0;
+            this.ClonableButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClonableButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.ClonableButton.Location = new System.Drawing.Point(0, 0);
+            this.ClonableButton.Name = "ClonableButton";
+            this.ClonableButton.Size = new System.Drawing.Size(150, 24);
+            this.ClonableButton.TabIndex = 5;
+            this.ClonableButton.TabStop = false;
+            this.ClonableButton.Tag = "ModuleButton";
+            this.ClonableButton.Text = "TestModule";
+            this.ClonableButton.UseVisualStyleBackColor = false;
+            this.ClonableButton.Visible = false;
             // 
             // timer1
             // 
@@ -473,58 +525,6 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "0b";
             // 
-            // TestCategory
-            // 
-            this.TestCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.TestCategory.Controls.Add(this.ClonablePanel);
-            this.TestCategory.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TestCategory.Location = new System.Drawing.Point(0, 24);
-            this.TestCategory.Name = "TestCategory";
-            this.TestCategory.Size = new System.Drawing.Size(150, 276);
-            this.TestCategory.TabIndex = 0;
-            // 
-            // ClonablePanel
-            // 
-            this.ClonablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClonablePanel.Controls.Add(this.label13);
-            this.ClonablePanel.Controls.Add(this.ClonableButton);
-            this.ClonablePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ClonablePanel.Location = new System.Drawing.Point(0, 0);
-            this.ClonablePanel.Name = "ClonablePanel";
-            this.ClonablePanel.Size = new System.Drawing.Size(150, 24);
-            this.ClonablePanel.TabIndex = 5;
-            this.ClonablePanel.Visible = false;
-            // 
-            // ClonableButton
-            // 
-            this.ClonableButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClonableButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ClonableButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.ClonableButton.FlatAppearance.BorderSize = 0;
-            this.ClonableButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ClonableButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.ClonableButton.Location = new System.Drawing.Point(0, 0);
-            this.ClonableButton.Name = "ClonableButton";
-            this.ClonableButton.Size = new System.Drawing.Size(150, 24);
-            this.ClonableButton.TabIndex = 5;
-            this.ClonableButton.TabStop = false;
-            this.ClonableButton.Tag = "ModuleButton";
-            this.ClonableButton.Text = "TestModule";
-            this.ClonableButton.UseVisualStyleBackColor = false;
-            this.ClonableButton.Visible = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label13.ForeColor = System.Drawing.SystemColors.Control;
-            this.label13.Location = new System.Drawing.Point(0, 24);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 17);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Keybind: ?";
-            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,6 +555,9 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Overlay_Paint);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.TestCategory.ResumeLayout(false);
+            this.ClonablePanel.ResumeLayout(false);
+            this.ClonablePanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -576,9 +579,6 @@
             this.panel18.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
-            this.TestCategory.ResumeLayout(false);
-            this.ClonablePanel.ResumeLayout(false);
-            this.ClonablePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
