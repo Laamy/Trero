@@ -16,9 +16,7 @@ namespace Trero.Modules
         public bool enabled;
 
         public char keybind;
-        public List<vCheckBox> moduleCheckboxSettings = new List<vCheckBox>();
-
-        public List<FloatSlider> moduleFloatSettings = new List<FloatSlider>();
+        public List<BypassBox> bypasses = new List<BypassBox>();
 
         protected Module(string name, char keybind, string category = "Other", bool enabled = false)
         {
@@ -30,8 +28,9 @@ namespace Trero.Modules
             Keymap.keyEvent += OnKeypress;
         }
 
-        public void AddSetting()
+        public void addBypass(BypassBox v)
         {
+            bypasses.Add(v);
         }
 
         private void OnKeypress(object sender, KeyEvent e) // Cant be overridden 

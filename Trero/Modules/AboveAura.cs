@@ -12,7 +12,7 @@ namespace Trero.Modules
 
         public AboveAura() : base("AboveAura", (char)0x07, "Exploits")
         {
-        } // Not defined
+        } // this module isn't exactly required as sexaura has options to become this
 
 
         public override void OnTick()

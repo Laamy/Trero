@@ -151,9 +151,7 @@
     <Compile Include="Modules\KillGame.cs" />
     <Compile Include="Modules\Rapeaura.cs" />
     <Compile Include="Modules\Module.cs" />
-    <Compile Include="Modules\vModuleExtra\FloatSlider.cs" />
     <Compile Include="Modules\vModuleExtra\BypassBox.cs" />
-    <Compile Include="Modules\vModuleExtra\vCheckBox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

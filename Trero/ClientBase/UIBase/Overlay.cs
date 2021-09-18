@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -199,7 +200,27 @@ namespace Trero.ClientBase.UIBase
             {
                 var moduleButton = ClonablePanel.Clone();
                 Button btn = ClonableButton.Clone();
+
                 Label cLab = label13.Clone();
+
+                List<Label> vModules = new List<Label>();
+
+                int index = 0;
+                foreach (var bypass in mod.bypasses)
+                {
+                    Label tempTab = label13.Clone();
+
+                    tempTab.Text = bypass.list[0];
+                    tempTab.Visible = true;
+                    tempTab.Dock = DockStyle.Top;
+                    tempTab.Name = mod.name + ";"; // so their backcolors aren't updated by timer
+                    tempTab.Tag = index;
+                    tempTab.MouseClick += actorPress;
+
+                    vModules.Add(tempTab);
+                    index++;
+                }
+
                 moduleButton.Visible = true;
                 btn.Visible = true;
                 btn.Name = mod.name;
@@ -218,7 +239,11 @@ namespace Trero.ClientBase.UIBase
                 cLab.Name = mod.name + ";"; // so their backcolors aren't updated by timer
                 cLab.MouseClick += actorBind;
 
+                foreach (var vMod in vModules)
+                    moduleButton.Controls.Add(vMod);
+
                 moduleButton.Controls.Add(cLab);
+
                 moduleButton.Controls.Add(btn);
 
                 switch (mod.category)
@@ -248,10 +273,11 @@ namespace Trero.ClientBase.UIBase
             }
 
             InvalidateCategories();
+        }
 
-            foreach (var mod in Program.Modules)
-                if (mod.name == "Antibot" || mod.name == "ClickGUI")
-                    mod.OnEnable();
+        private void actorPress(object sender, MouseEventArgs e)
+        {
+
         }
 
         private void actorBind(object sender, MouseEventArgs e)
@@ -270,7 +296,7 @@ namespace Trero.ClientBase.UIBase
             }
         }
 
-        void InvalidateCategories() // update category sizes depending on module sizes
+        void InvalidateCategories() // update category sizes depending on moduleList size
         {
             cValidate(panel7, panel6);
             cValidate(panel15, panel14);
