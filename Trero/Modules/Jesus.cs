@@ -18,7 +18,10 @@ namespace Trero.Modules
             if (Game.isNull) return;
 
             if (Game.inWater)
+            {
                 MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.01f);
+                Game.onGround = true;
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Trero.ClientBase.UIBase
         private Point _mouseDownLocation;
 
         public Button vMod;
+        public Label cMod;
 
         public Overlay()
         {
@@ -132,18 +133,23 @@ namespace Trero.ClientBase.UIBase
             }
         }
 
-        private void updateModule(Module mod, Control btn) // works
+        private void updateModule(Module mod, Panel c) // works
         {
-            if (mod.name != btn.Name) return;
-            btn.Text = "sex";
-            switch (mod.enabled)
+            foreach (var obj in c.Controls)
             {
-                case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
-                    btn.BackColor = Color.FromArgb(255, 39, 39, 39);
-                    break;
-                case false when btn.BackColor == Color.FromArgb(255, 39, 39, 39):
-                    btn.BackColor = Color.FromArgb(255, 44, 44, 44);
-                    break;
+                Button btn = (Button)obj;
+                Console.WriteLine(btn.Name);
+                if (mod.name != btn.Name) return;
+                btn.Text = "sex";
+                switch (mod.enabled)
+                {
+                    case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
+                        btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                        break;
+                    case false when btn.BackColor == Color.FromArgb(255, 39, 39, 39):
+                        btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                        break;
+                }
             }
         }
 
@@ -198,8 +204,8 @@ namespace Trero.ClientBase.UIBase
                 btn.Visible = true;
                 btn.Name = mod.name;
                 btn.Text = mod.name;
-                if (mod.keybind != 0x07)
-                    btn.Text += @" (" + (Keys)mod.keybind + @")";
+                /*if (mod.keybind != 0x07)
+                    btn.Text += @" (" + (Keys)mod.keybind + @")";*/
                 btn.MouseDown += keybindActivated;
                 btn.FlatAppearance.BorderSize = 0;
                 btn.FlatAppearance.BorderColor = TestCategory.BackColor;
@@ -209,6 +215,8 @@ namespace Trero.ClientBase.UIBase
                     cLab.Text = "Keybind: " + (Keys)mod.keybind;
                 cLab.Visible = true;
                 cLab.Dock = DockStyle.Top;
+                cLab.Name = mod.name + ";"; // so their backcolors aren't updated by timer
+                cLab.MouseClick += actorBind;
 
                 moduleButton.Controls.Add(cLab);
                 moduleButton.Controls.Add(btn);
@@ -246,6 +254,22 @@ namespace Trero.ClientBase.UIBase
                     mod.OnEnable();
         }
 
+        private void actorBind(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                var btn = (Label)sender;
+                if (btn == null) return;
+
+                btn.Text = @"Keybind: ...";
+
+                cMod = btn;
+
+                btn.KeyDown += vCatchKeybind;
+                btn.Select();
+            }
+        }
+
         void InvalidateCategories() // update category sizes depending on module sizes
         {
             cValidate(panel7, panel6);
@@ -267,9 +291,9 @@ namespace Trero.ClientBase.UIBase
             titlePanel.Size = new Size(titlePanel.Size.Width, categoryHeight + 24);
         }
 
-        private void keybindActivated(object sender, MouseEventArgs e)
+        private void keybindActivated(object sender, MouseEventArgs e) // remove atani like keybind system
         {
-            if (e.Button == MouseButtons.Middle)
+            /*if (e.Button == MouseButtons.Middle)
             {
                 var btn = (Button)sender;
                 if (btn == null) return;
@@ -280,7 +304,7 @@ namespace Trero.ClientBase.UIBase
 
                 btn.KeyDown += catchKeybind;
                 btn.Select();
-            }
+            }*/
 
             if (e.Button == MouseButtons.Left)
             {
@@ -300,7 +324,7 @@ namespace Trero.ClientBase.UIBase
                     }
             }
 
-            if (e.Button == MouseButtons.Right) // i want to change the category size depending on its content so
+            if (e.Button == MouseButtons.Right) // i want to change the category size depending on its contentSize so
             {
                 var btn = (Button)sender;
                 if (btn == null) return;
@@ -339,6 +363,27 @@ namespace Trero.ClientBase.UIBase
             vMod.Text = vMod.Name + @" (" + e.KeyCode + @")";
 
             vMod.KeyDown -= catchKeybind;
+        }
+
+        private void vCatchKeybind(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape || e.KeyCode == Keys.Delete)
+            {
+                cMod.KeyDown -= vCatchKeybind;
+                cMod.Text = "Keybind: None";
+                foreach (var mod in Program.Modules)
+                    if (mod.name + ";" == cMod.Name)
+                        mod.keybind = (char)0x07;
+                return;
+            }
+
+            foreach (var mod in Program.Modules)
+                if (mod.name + ";" == cMod.Name)
+                    mod.keybind = (char)(int)e.KeyCode;
+
+            cMod.Text = @"Keybind: " + e.KeyCode;
+
+            cMod.KeyDown -= vCatchKeybind;
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
@@ -463,17 +508,17 @@ namespace Trero.ClientBase.UIBase
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            try // requires fixing
+            try // OH I KNOW WHATS WRONG LMAO THIS BROKE BECAUSE IM USING PANELS INSTEAD OF BUTTONS!
             {
                 foreach (var mod in Program.Modules)
                 {
-                    foreach (Control btn in TestCategory.Controls) updateModule(mod, btn);
-                    foreach (Control btn in panel7.Controls) updateModule(mod, btn);
-                    foreach (Control btn in panel17.Controls) updateModule(mod, btn);
-                    foreach (Control btn in panel15.Controls) updateModule(mod, btn);
-                    foreach (Control btn in panel9.Controls) updateModule(mod, btn);
-                    foreach (Control btn in panel11.Controls) updateModule(mod, btn);
-                    foreach (Control btn in panel13.Controls) updateModule(mod, btn);
+                    foreach (var btn in TestCategory.Controls) updateModule(mod, (Panel)btn);
+                    foreach (var btn in panel7.Controls) updateModule(mod, (Panel)btn);
+                    foreach (var btn in panel17.Controls) updateModule(mod, (Panel)btn);
+                    foreach (var btn in panel15.Controls) updateModule(mod, (Panel)btn);
+                    foreach (var btn in panel9.Controls) updateModule(mod, (Panel)btn);
+                    foreach (var btn in panel11.Controls) updateModule(mod, (Panel)btn);
+                    foreach (var btn in panel13.Controls) updateModule(mod, (Panel)btn);
                 }
             }
             catch
