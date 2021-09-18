@@ -552,6 +552,8 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.Overlay_Load);
+            this.ResizeBegin += new System.EventHandler(this.Overlay_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.Overlay_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Overlay_Paint);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

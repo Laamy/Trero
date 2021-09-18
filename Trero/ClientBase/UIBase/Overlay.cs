@@ -274,6 +274,9 @@ namespace Trero.ClientBase.UIBase
             }
 
             InvalidateCategories();
+
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            UpdateStyles();
         }
 
         private void actorPress(object sender, MouseEventArgs e) // did this while upset please ignore
@@ -314,6 +317,7 @@ namespace Trero.ClientBase.UIBase
 
         void InvalidateCategories() // update category sizes depending on moduleList size
         {
+            SuspendLayout();
             cValidate(panel7, panel6);
             cValidate(panel15, panel14);
             cValidate(panel13, panel12);
@@ -321,6 +325,7 @@ namespace Trero.ClientBase.UIBase
             cValidate(panel11, panel10);
             cValidate(panel17, panel16);
             cValidate(TestCategory, panel2);
+            ResumeLayout();
         }
 
         void cValidate(Panel miniPanel, Panel titlePanel)
@@ -604,5 +609,9 @@ namespace Trero.ClientBase.UIBase
         {
 
         }
+
+        // not using hooks so this is useless
+        private void Overlay_ResizeBegin(object sender, EventArgs e) { }// => SuspendLayout();
+        private void Overlay_ResizeEnd(object sender, EventArgs e) { }//=> ResumeLayout();
     }
 }
