@@ -169,15 +169,29 @@ namespace Trero
 
             mainThread += moduleTick;
 
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true; // background thread handler for performance
+                while (quit == false)
+                {
+                    try // fixed any future errors here
+                    {
+                        if (limiter && !unlimiter)
+                            Thread.Sleep(1);
+
+                        if (!unlimiter)
+                            Thread.Sleep(1);
+
+                        mainThread.Invoke(null, new EventArgs());
+                    }
+                    catch
+                    {
+                    }
+                }
+            }).Start();
+
             while (quit == false)
             {
-                if (limiter && !unlimiter)
-                    Thread.Sleep(1);
-
-                if (!unlimiter)
-                    Thread.Sleep(1);
-
-                mainThread.Invoke(null, new EventArgs());
             }
         }
 

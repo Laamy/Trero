@@ -1,4 +1,6 @@
-﻿namespace Trero.Modules
+﻿using System.Windows.Forms;
+
+namespace Trero.Modules
 {
     internal class Eject : Module
     {
@@ -9,6 +11,7 @@
         public override void OnEnable()
         {
             Program.quit = true;
+            Application.Exit(); // ?
         }
     }
 }
