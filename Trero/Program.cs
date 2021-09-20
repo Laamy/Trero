@@ -20,6 +20,7 @@ namespace Trero
         public static bool quit;
         public static bool limiter;
         public static bool unlimiter;
+        public static EventHandler<EventArgs> mainThread;
         public static readonly List<Module> Modules = new List<Module>();
 
         private static void Main(string[] args)
@@ -166,36 +167,34 @@ namespace Trero
             Console.WriteLine(@"C - PhaseUp(ServerBypass)");
             Console.WriteLine(@"V - PhaseDown(ServerBypass)");
 
-            // Console.WriteLine(Game.level.ToString("X"));
-
-            new Thread(() => // Improved ticking modules
-            {
-                while (quit == false) // freeze
-                {
-                    if (limiter && !unlimiter)
-                        Thread.Sleep(1);
-
-                    if (!unlimiter)
-                        Thread.Sleep(1);
-
-                    //tickc++;
-                    foreach (var mod in Modules.Where(mod => mod.enabled))
-                        mod.OnTick();
-                }
-            }).Start();
+            mainThread += moduleTick;
 
             while (quit == false)
             {
+                if (limiter && !unlimiter)
+                    Thread.Sleep(1);
+
+                if (!unlimiter)
+                    Thread.Sleep(1);
+
+                mainThread.Invoke(null, new EventArgs());
             }
         }
+
+        private static void moduleTick(object sender, EventArgs e)
+        {
+            foreach (var mod in Modules.Where(mod => mod.enabled))
+                mod.OnTick();
+        }
+
         /*
-         
-        Game.isLookingAtBlock = 0;
-        Game.SideSelect = 1;
-        Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
-        Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
+Game.isLookingAtBlock = 0;
+Game.SideSelect = 1;
+Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, (int)Game.position.z);
 
-        */
+Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
+
+*/
     }
 }

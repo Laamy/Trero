@@ -30,48 +30,44 @@ namespace Trero.ClientBase.UIBase
             InitializeComponent();
             handle = this;
 
-            new Thread(() =>
-            {
-                Thread.Sleep(100);
-                Invoke((MethodInvoker)delegate { Focus(); });
-                while (!Program.quit)
-                {
-                    Thread.Sleep(1);
-                    // Thread.Sleep(1);
-                    try
-                    {
-                        Invoke((MethodInvoker)delegate
-                        {
-                            var rect = MCM.getMinecraftRect();
+            Focus();
 
-                            var e = new Placement();
-                            GetWindowPlacement(MCM.mcWinHandle,
-                                ref e); // Change window size if fullscreen to match extra offsets
-                            var vE = 0;
-                            var vA = 0;
-                            var vB = 0;
-                            var vC = 0;
-                            if (e.showCmd == 3) // Perfect window offsets
-                            {
-                                vE = 8;
-                                vA = 2;
+            Program.mainThread += uiTick;
 
-                                vB = 9; // these have extra because of the windows shadow effect (Not exactly required but oh well)
-                                vC = 3;
-                            }
-
-                            Location = new Point(rect.Left + 9 + vA, rect.Top + 35 + vE); // Title bar is 32 pixels high
-                            Size = new Size(rect.Right - rect.Left - 18 - vC, rect.Bottom - rect.Top - 44 - vB);
-                        });
-                    }
-                    catch
-                    {
-                    }
-                }
-
-                Application.Exit();
-            }).Start();
             TopMost = true;
+        }
+
+        private void uiTick(object sender, EventArgs e)
+        {
+            try
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    var rect = MCM.getMinecraftRect();
+
+                    var cvE = new Placement();
+                    GetWindowPlacement(MCM.mcWinHandle,
+                        ref cvE); // Change window size if fullscreen to match extra offsets
+                    var vE = 0;
+                    var vA = 0;
+                    var vB = 0;
+                    var vC = 0;
+                    if (cvE.showCmd == 3) // Perfect window offsets
+                    {
+                        vE = 8;
+                        vA = 2;
+
+                        vB = 9; // these have extra because of the windows shadow effect (Not exactly required but oh well)
+                        vC = 3;
+                    }
+
+                    Location = new Point(rect.Left + 9 + vA, rect.Top + 35 + vE); // Title bar is 32 pixels high
+                    Size = new Size(rect.Right - rect.Left - 18 - vC, rect.Bottom - rect.Top - 44 - vB);
+                });
+            }
+            catch
+            {
+            }
         }
 
         [DllImport("user32.dll")]
@@ -292,7 +288,7 @@ namespace Trero.ClientBase.UIBase
 
             foreach (BypassBox vBypass in mod.bypasses)
             {
-                if (vBypass.curIndex == (int)((Button)sender).Tag)
+                if (vBypass.curIndex == Convert.ToInt32(((Button)sender).Tag.ToString().Substring(0, 1)))
                     bypassPressed = vBypass;
             }
 

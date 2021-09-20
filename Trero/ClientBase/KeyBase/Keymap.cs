@@ -27,89 +27,78 @@ namespace Trero.ClientBase.KeyBase
 
         public Keymap()
         {
-            // ++e;
             handle = this;
-            // ++e;
             for (var c = (char)0; c < 0xFF; c++)
             {
                 _rBuff.Add(c, 0);
-                _noKey.Add(c, true);
-            }
-
-            // ++e;
-            for (var c = (char)0; c < 0xFF; c++)
-            {
                 _dBuff.Add(c, 0);
+                _noKey.Add(c, true);
                 _yesKey.Add(c, true);
             }
-            // ++e;
 
-            new Thread(() =>
+            Program.mainThread += keyTick;
+        }
+
+        private void keyTick(object sender, EventArgs e)
+        {
+            try
             {
-                while (!Program.quit)
+                // ++e;
+                for (var c = (char)0; c < 0xFF; c++)
                 {
-                    Thread.Sleep(1);
-                    // ++e;
-                    try
+                    _noKey[c] = true;
+                    _yesKey[c] = false;
+                    if (GetAsyncKeyState(c))
                     {
+                        if (keyEvent != null)
+                            if (MCM.isMinecraftFocused())
+                                keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyHeld));
+                        //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
                         // ++e;
-                        for (var c = (char)0; c < 0xFF; c++)
+                        _noKey[c] = false;
+                        if (_dBuff[c] > 0)
+                            continue;
+                        _dBuff[c]++;
+                        try
                         {
-                            _noKey[c] = true;
-                            _yesKey[c] = false;
-                            if (GetAsyncKeyState(c))
-                            {
-                                if (keyEvent != null)
-                                    if (MCM.isMinecraftFocused())
-                                        keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyHeld));
-                                //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
-                                // ++e;
-                                _noKey[c] = false;
-                                if (_dBuff[c] > 0)
-                                    continue;
-                                _dBuff[c]++;
-                                try
-                                {
-                                    if (keyEvent != null)
-                                        if (MCM.isMinecraftFocused())
-                                            keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyDown));
-                                    //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
-                                    // ++e;
-                                }
-                                catch
-                                {
-                                }
-                            }
-                            else
-                            {
-                                _yesKey[c] = true;
-                                if (_rBuff[c] > 0)
-                                    continue;
-                                _rBuff[c]++;
-                                try
-                                {
-                                    if (keyEvent != null)
-                                        if (MCM.isMinecraftFocused())
-                                            keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyUp));
-                                    //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
-                                    // ++e;
-                                }
-                                catch
-                                {
-                                }
-                            }
-
-                            if (_noKey[c])
-                                _dBuff[c] = 0;
-                            if (!_yesKey[c])
-                                _rBuff[c] = 0;
+                            if (keyEvent != null)
+                                if (MCM.isMinecraftFocused())
+                                    keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyDown));
+                            //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
+                            // ++e;
+                        }
+                        catch
+                        {
                         }
                     }
-                    catch
+                    else
                     {
+                        _yesKey[c] = true;
+                        if (_rBuff[c] > 0)
+                            continue;
+                        _rBuff[c]++;
+                        try
+                        {
+                            if (keyEvent != null)
+                                if (MCM.isMinecraftFocused())
+                                    keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyUp));
+                            //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
+                            // ++e;
+                        }
+                        catch
+                        {
+                        }
                     }
+
+                    if (_noKey[c])
+                        _dBuff[c] = 0;
+                    if (!_yesKey[c])
+                        _rBuff[c] = 0;
                 }
-            }).Start();
+            }
+            catch
+            {
+            }
         }
 
         [DllImport("user32.dll")]

@@ -89,6 +89,7 @@
     <Compile Include="ClientBase\KeyBase\Keymap.cs" />
     <Compile Include="ClientBase\KeyBase\Mouse.cs" />
     <Compile Include="ClientBase\MCM.cs" />
+    <Compile Include="ClientBase\PipeBase\PipeIO.cs" />
     <Compile Include="ClientBase\UIBase\Overlay.cs">
       <SubType>Form</SubType>
     </Compile>
