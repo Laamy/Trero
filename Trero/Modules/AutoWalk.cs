@@ -21,7 +21,7 @@ namespace Trero.Modules
         {
             var newVel = Game.velocity;
 
-            var cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
+            var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
 
             int speed = 4;
 

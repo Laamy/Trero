@@ -52,7 +52,7 @@ namespace Trero.ClientBase
         {
             get
             {
-                if (screenData.StartsWith("toast_screen")) // screenData.StartsWith("toast_screen")
+                if (position.ToString() != "0,0,0") // screenData.StartsWith("toast_screen")
                     return false;
                 return true;
             }
@@ -92,11 +92,22 @@ namespace Trero.ClientBase
             get
             {
                 var gamemode = -1;
+                gamemode = MCM.readInt(localPlayer + VersionClass.GetData("gamemode"));
+                return gamemode;
+            }
+            set => MCM.writeInt(localPlayer + VersionClass.GetData("gamemode"), value);
+        } // Gamemode
+
+        /*public static int gamemode
+        {
+            get
+            {
+                var gamemode = -1;
                 gamemode = (int)(MCM.readInt64(localPlayer + VersionClass.GetData("gamemode")) / 4294967296);
                 return gamemode;
             }
             set => MCM.writeInt64(localPlayer + VersionClass.GetData("gamemode"), (ulong)(value * 4294967296));
-        } // Gamemode
+        } // Gamemode*/
 
         public static int isFalling
         {
@@ -129,7 +140,7 @@ namespace Trero.ClientBase
             }
         } // Velocity
 
-        public static Vector2 rotation
+        public static Vector2 bodyRots
         {
             get
             {
@@ -140,13 +151,18 @@ namespace Trero.ClientBase
 
                 return vec;
             }
+            set
+            {
+                MCM.writeFloat(localPlayer + VersionClass.GetData("bodyRots"), value.x);
+                MCM.writeFloat(localPlayer + VersionClass.GetData("bodyRots") + 4, value.y);
+            }
         } // Rotations
 
         public static Vector2 compassRotations
         {
             get
             {
-                var vec = rotation;
+                var vec = bodyRots;
 
                 vec.y = new float[] { 1, 2, 3, 4 }.OrderBy(v => Math.Abs((long)v - (vec.y + 180f) / 90f)).First();
                 vec.x = new float[] { 1, 2, 3, 4 }.OrderBy(v => Math.Abs((long)v - (vec.x + 90f) / 180f)).First();
@@ -155,7 +171,7 @@ namespace Trero.ClientBase
             }
         } // CompassRotations
 
-        public static bool onGround
+        public static bool onGround // might move the version sdk into this game class...
         {
             get => MCM.readInt(localPlayer + VersionClass.GetData("onGround")) != 0;
             set
@@ -199,8 +215,8 @@ namespace Trero.ClientBase
             {
                 Vector3 tempVec;
 
-                var cYaw = (rotation.y + 89.9f) * (float)Math.PI / 178f;
-                var cPitch = rotation.x * (float)Math.PI / 178f;
+                var cYaw = (bodyRots.y + 89.9f) * (float)Math.PI / 178f;
+                var cPitch = bodyRots.x * (float)Math.PI / 178f;
 
                 tempVec = dirVect(cYaw, cPitch);
 
@@ -209,7 +225,11 @@ namespace Trero.ClientBase
             // set { }
         } // Looking Vector
 
-        public static string username => MCM.readString(localPlayer + VersionClass.GetData("username"), 32); // Username
+        public static string username
+        {
+            get => MCM.readString(localPlayer + VersionClass.GetData("username"), 32);
+            set => MCM.writeString(localPlayer + VersionClass.GetData("username"), value);
+        }// Username
 
         public static string screenData =>
             MCM.readString(
@@ -313,6 +333,11 @@ namespace Trero.ClientBase
             MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 16, advancedAxis.y.y);
             MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 20, advancedAxis.y.z);
         } // Teleportation
+
+        public static void swing()
+        {
+            swingAn = 1;
+        } // Fake a swing packet
 
         public static void teleport(float x, float y, float z)
         {

@@ -4,9 +4,53 @@
     {
         public static IVersion[] versions =
         {
-            // All 1.17 versions supported
-
-            // MCBE 1.17
+            // MCBE 1.17.30
+            new IVersion(new object[]
+            {
+                "MCBE-1.17.30",
+                0x04120F18, 0x0, 0x20, 0xC8,
+                0x1D8, // onground
+                0x1DC, // onground 2
+                0x238, // stepHeight
+                0x2A8, // worldAge
+                0x1E6C, // gamemode
+                0x9A0, // isFlying
+                0x0, // blocksTraveled_Ex
+                0x0, // blocksTraveled
+                0x2370, // helditemCount
+                0x0, // holdingItem
+                0x0, // holdingItemId
+                0x0, // selectedHotbarId
+                0x0, // viewCreativeItems
+                0x0, // viewCreativeItemsSelectedCategory
+                0x400, // entityType
+                0x0, // inInventory
+                0x900, // username
+                0x0, 0x0, // gameDim
+                0x4C0, // position
+                0x0, // hitbox - 0x4C0 + 24
+                0x4F8, // veloicty
+                0x7C0, // swingAn
+                0x0, // lookingEntityId
+                0x25D, // inWater
+                0x138, // bodyRots
+                0x0, // Level - 0x370
+                0x0, // entitylist+1 - 0x50
+                0x0, // entitylist+2 (BROKEN ON 1.17.30 once again!) - 0x68
+                0x0, // lookingAtBlock
+                0x0, // SelectedBlock
+                0x0, // LookingAtBlock
+                0x0, // SideSelect
+                0x0, // ScreenT+1
+                0x0, // ScreenT+2
+                0x0, // Chatbase shit
+                0x0, // Chatbase shit
+                0x0, // Chatbase shit
+                0x0, // Chatbase shit
+                0x0, // Chatbase shit
+                0x1140 // fieldOfView
+            }),
+            // MCBE 1.17.11
             new IVersion(new object[]
             {
                 "MCBE-1.17.11",
@@ -45,7 +89,7 @@
                 0x040A41F8, 0x814,
                 0x04120400, 0x8, 0x48, 0xA0, 0x128,
                 0x10F0
-            }) // MCBE 1.17.11
+            }),
         };
 
         public static IVersion versionStruct = new IVersion(new object[]

@@ -23,7 +23,7 @@ namespace Trero.Modules
 
             var newVel = Base.Vec3();
 
-            var cy = (Game.rotation.y + 89.9f) * ((float)Math.PI / 180F);
+            var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
 
             if (Keymap.GetAsyncKeyState(Keys.W))
             {

@@ -20,9 +20,9 @@ namespace Trero.Modules
 
         public override void OnTick()
         {
-            if (Game.inInventory || Game.isNull) return;
+            if (/* Game.inInventory || */ Game.isNull) return;
 
-            var plrYaw = Game.rotation.y; // yaw
+            var plrYaw = Game.bodyRots.y; // yaw
 
             if (Keymap.GetAsyncKeyState(Keys.W))
             {

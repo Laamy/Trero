@@ -136,9 +136,7 @@ namespace Trero.ClientBase.UIBase
             foreach (var obj in c.Controls)
             {
                 Button btn = (Button)obj;
-                Console.WriteLine(btn.Name);
                 if (mod.name != btn.Name) return;
-                btn.Text = "sex";
                 switch (mod.enabled)
                 {
                     case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
@@ -314,6 +312,15 @@ namespace Trero.ClientBase.UIBase
         void InvalidateCategories() // update category sizes depending on moduleList size
         {
             SuspendLayout();
+
+            panel7.SuspendLayout();
+            panel15.SuspendLayout();
+            panel13.SuspendLayout();
+            panel9.SuspendLayout();
+            panel11.SuspendLayout();
+            panel17.SuspendLayout();
+            TestCategory.SuspendLayout();
+
             cValidate(panel7, panel6);
             cValidate(panel15, panel14);
             cValidate(panel13, panel12);
@@ -321,6 +328,15 @@ namespace Trero.ClientBase.UIBase
             cValidate(panel11, panel10);
             cValidate(panel17, panel16);
             cValidate(TestCategory, panel2);
+
+            panel7.ResumeLayout();
+            panel15.ResumeLayout(); // these may be useless im just testing atm.
+            panel13.ResumeLayout();
+            panel9.ResumeLayout();
+            panel11.ResumeLayout();
+            panel17.ResumeLayout();
+            TestCategory.ResumeLayout();
+
             ResumeLayout();
         }
 

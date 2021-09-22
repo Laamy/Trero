@@ -1,5 +1,6 @@
 ﻿#region
 
+using System.Threading;
 using System.Windows.Forms;
 using Trero.ClientBase.UIBase;
 
@@ -19,9 +20,14 @@ namespace Trero.Modules
             {
                 Overlay.handle.Invoke((MethodInvoker)delegate
                 {
+
+                    Overlay.handle.SuspendLayout();
+
                     foreach (Control ct in Overlay.handle.Controls)
                         if (Overlay.handle != null && (string)ct.Tag == "Category")
                             ct.Visible = true;
+
+                    Overlay.handle.ResumeLayout();
                 });
             }
             catch
@@ -38,9 +44,13 @@ namespace Trero.Modules
             {
                 Overlay.handle.Invoke((MethodInvoker)delegate
                 {
+                    Overlay.handle.SuspendLayout();
+
                     foreach (Control ct in Overlay.handle.Controls)
                         if (Overlay.handle != null && (string)ct.Tag == "Category")
                             ct.Visible = false;
+
+                    Overlay.handle.ResumeLayout();
                 });
             }
             catch
