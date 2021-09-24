@@ -99,6 +99,8 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\MineplexFlyv2.cs" />
+    <Compile Include="Modules\Welcome.cs" />
     <Compile Include="Modules\Masturbator.cs" />
     <Compile Include="Modules\HiveAntibot.cs" />
     <Compile Include="Modules\AutoWalk.cs" />

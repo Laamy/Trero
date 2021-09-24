@@ -32,7 +32,7 @@ namespace Trero.Modules
             var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
 
             newVel.x = (float)Math.Cos(cy) * (Speed / 9f);
-            newVel.y = -0.15f;
+            newVel.y = -0.10f;
             newVel.z = (float)Math.Sin(cy) * (Speed / 9f);
 
             Game.velocity = newVel;
@@ -47,6 +47,9 @@ namespace Trero.Modules
             pos.y += 0.36f;
 
             Game.position = pos;
+
+            if (Game.touchingObject == 1)
+                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.3f);
         }
     }
 }

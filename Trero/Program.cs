@@ -31,9 +31,7 @@ namespace Trero
             // ReSharper disable once ObjectCreationAsStatement
             new Keymap();
 
-            Console.WriteLine(VersionClass.currentVersion.name);
-            Console.WriteLine(Game.localPlayer.ToString("X"));
-            Console.WriteLine();
+            Console.WriteLine("Trero v" + VersionClass.currentVersion.name);
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
@@ -93,6 +91,8 @@ namespace Trero
             //Modules.Add(new HiveAntibot());
             Modules.Add(new StreamMode());
             Modules.Add(new Masturbator());
+            Modules.Add(new Welcome());
+            Modules.Add(new MineplexFlyv2());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -157,25 +157,17 @@ namespace Trero
 
             Modules.Sort((c1, c2) => string.Compare(c2.name, c1.name, StringComparison.Ordinal)); // ABC Order
 
-            VersionClass.setVersion(VersionClass.versions[0]);
-
             // Keymap.keyEvent += keyParse;
 
             Console.WriteLine(@"--- Trero Terminal ---");
             Console.WriteLine(@"Welcome to the trero terminal");
             Console.WriteLine(@"");
-            Console.WriteLine(@"--- Trero Keybinds ---");
-            Console.WriteLine(@"R - ClampJet");
-            Console.WriteLine(@"P - Terminate Process");
-            Console.WriteLine(@"Y - Hitboxes");
-            Console.WriteLine(@"C - PhaseUp(ServerBypass)");
-            Console.WriteLine(@"V - PhaseDown(ServerBypass)");
 
             mainThread += moduleTick;
 
             new Thread(() =>
             {
-                Thread.CurrentThread.IsBackground = true; // background thread handler for performance
+                Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
                 while (quit == false)
                 {
                     try // fixed any future errors here
