@@ -596,7 +596,7 @@ namespace Trero.ClientBase.UIBase
         private void timer3_Tick(object sender, EventArgs e)
         {
             if (!Game.isNull)
-                UpdateLabel.Text = Game.username + "   |   " + VersionClass.currentVersion.name + "   |   " + Game.position.x + ", " + Game.position.y + ", " + Game.position.z;
+                UpdateLabel.Text = Game.localPlayer.ToString("X") + "   |   " + VersionClass.currentVersion.name + "   |   " + Game.position.x + ", " + Game.position.y + ", " + Game.position.z;
             else UpdateLabel.Text = "Not InGame";
 
             try // fixed

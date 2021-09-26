@@ -8,7 +8,7 @@
             new IVersion(new object[]
             {
                 "MCBE-1.17.30",
-                0x04112A40, 0x0, 0x50, 0x140,
+                0x04120F18, 0x0, 0x18, 0xB8,
                 0x1D8, // onground
                 0x1DC, // onground 2
                 0x238, // stepHeight
