@@ -143,6 +143,8 @@
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Other";
+            this.label6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label6_MouseDown);
+            this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label6_MouseMove);
             // 
             // TestCategory
             // 
@@ -317,6 +319,8 @@
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Flies";
+            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label5_MouseDown);
+            this.label5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label5_MouseMove);
             // 
             // panel7
             // 
@@ -351,6 +355,8 @@
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "World";
+            this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label4_MouseDown);
+            this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label4_MouseMove);
             // 
             // panel9
             // 
@@ -385,6 +391,8 @@
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 4;
             this.label7.Text = "Combat";
+            this.label7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label7_MouseDown);
+            this.label7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label7_MouseMove);
             // 
             // panel11
             // 
@@ -419,6 +427,8 @@
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Exploits";
+            this.label8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label8_MouseDown);
+            this.label8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label8_MouseMove);
             // 
             // panel13
             // 
@@ -454,6 +464,8 @@
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 4;
             this.label9.Text = "Visual";
+            this.label9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label9_MouseDown);
+            this.label9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label9_MouseMove);
             // 
             // panel15
             // 
@@ -488,6 +500,8 @@
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 4;
             this.label10.Text = "Player";
+            this.label10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label10_MouseDown);
+            this.label10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label10_MouseMove);
             // 
             // panel17
             // 

@@ -657,5 +657,26 @@ namespace Trero.ClientBase.UIBase
             panel18.Left = e.X + panel18.Left - _mouseDownLocation.X;
             panel18.Top = e.Y + panel18.Top - _mouseDownLocation.Y;
         }
+
+        private void label4_MouseDown(object sender, MouseEventArgs e) => panel8_MouseDown(sender, e); // worked
+        private void label4_MouseMove(object sender, MouseEventArgs e) => panel8_MouseMove(sender, e);
+
+        private void label10_MouseDown(object sender, MouseEventArgs e) => panel16_MouseDown(sender, e);
+        private void label10_MouseMove(object sender, MouseEventArgs e) => panel16_MouseMove(sender, e);
+
+        private void label8_MouseDown(object sender, MouseEventArgs e) => panel12_MouseDown(sender, e);
+        private void label8_MouseMove(object sender, MouseEventArgs e) => panel12_MouseMove(sender, e);
+
+        private void label6_MouseDown(object sender, MouseEventArgs e) => panel2_MouseDown_1(sender, e);
+        private void label6_MouseMove(object sender, MouseEventArgs e) => panel2_MouseMove_1(sender, e);
+
+        private void label5_MouseDown(object sender, MouseEventArgs e) => panel6_MouseDown(sender, e);
+        private void label5_MouseMove(object sender, MouseEventArgs e) => panel6_MouseMove(sender, e);
+
+        private void label9_MouseDown(object sender, MouseEventArgs e) => panel14_MouseDown(sender, e);
+        private void label9_MouseMove(object sender, MouseEventArgs e) => panel14_MouseMove(sender, e);
+
+        private void label7_MouseDown(object sender, MouseEventArgs e) => panel10_MouseDown(sender, e);
+        private void label7_MouseMove(object sender, MouseEventArgs e) => panel10_MouseMove(sender, e);
     }
 }
