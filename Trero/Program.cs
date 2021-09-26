@@ -94,6 +94,7 @@ namespace Trero
             Modules.Add(new Welcome());
             Modules.Add(new MineplexFlyv2());
             Modules.Add(new RainbowEffects());
+            Modules.Add(new Velocity()); // Anti-KB
 
             Console.WriteLine(@"Registered modules!");
 

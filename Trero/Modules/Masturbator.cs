@@ -11,7 +11,6 @@ namespace Trero.Modules
 {
     internal class Masturbator : Module
     {
-        private static readonly float speed = 12f;
         private static int _flicker;
 
         private static Random ran = new Random(); // dont wanna waste resources on random too much dont we lol

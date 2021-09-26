@@ -12,7 +12,6 @@ namespace Trero.Modules
 {
     internal class BulkFly : Module
     {
-        private static readonly float speed = 12f;
         private static int _flicker;
 
         public BulkFly() : base("BulkFly", (char)0x07, "Flies")
