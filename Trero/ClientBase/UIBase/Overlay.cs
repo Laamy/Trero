@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using Trero.ClientBase.VersionBase;
 using Trero.Modules;
 using Trero.Modules.vModuleExtra;
 
@@ -131,20 +132,23 @@ namespace Trero.ClientBase.UIBase
             }
         }
 
-        private void updateModule(Module mod, Panel c) // works
+        private void updateModule(Module mod, Panel c) // fixed a second time ;p
         {
             foreach (var obj in c.Controls)
             {
-                Button btn = (Button)obj;
-                if (mod.name != btn.Name) return;
-                switch (mod.enabled)
+                if (obj.GetType() == typeof(Button))
                 {
-                    case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
-                        btn.BackColor = Color.FromArgb(255, 39, 39, 39);
-                        break;
-                    case false when btn.BackColor == Color.FromArgb(255, 39, 39, 39):
-                        btn.BackColor = Color.FromArgb(255, 44, 44, 44);
-                        break;
+                    Button btn = (Button)obj;
+                    if (mod.name != btn.Name) return;
+                    switch (mod.enabled)
+                    {
+                        case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
+                            btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                            break;
+                        case false when btn.BackColor == Color.FromArgb(255, 39, 39, 39):
+                            btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                            break;
+                    }
                 }
             }
         }
@@ -591,6 +595,10 @@ namespace Trero.ClientBase.UIBase
 
         private void timer3_Tick(object sender, EventArgs e)
         {
+            if (!Game.isNull)
+                UpdateLabel.Text = Game.username + "   |   " + VersionClass.currentVersion.name + "   |   " + Game.position.x + ", " + Game.position.y + ", " + Game.position.z;
+            else UpdateLabel.Text = "Not InGame";
+
             try // fixed
             {
                 if (MCM.isMinecraftFocused() && TopMost == false)
@@ -625,5 +633,29 @@ namespace Trero.ClientBase.UIBase
         // not using hooks so this is useless
         private void Overlay_ResizeBegin(object sender, EventArgs e) { }// => SuspendLayout();
         private void Overlay_ResizeEnd(object sender, EventArgs e) { }//=> ResumeLayout();
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel18.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Game.teleport((int)numericUpDown1.Value, (int)numericUpDown2.Value, (int)numericUpDown3.Value);
+        }
+
+        private void panel18_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel18.BringToFront();
+        }
+
+        private void panel18_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            panel18.Left = e.X + panel18.Left - _mouseDownLocation.X;
+            panel18.Top = e.Y + panel18.Top - _mouseDownLocation.Y;
+        }
     }
 }

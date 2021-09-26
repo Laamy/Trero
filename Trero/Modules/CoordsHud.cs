@@ -10,9 +10,9 @@ using Trero.ClientBase.UIBase;
 
 namespace Trero.Modules
 {
-    internal class Teleport : Module
+    internal class CoordsHud : Module
     {
-        public Teleport() : base("Teleport", (char)0x07, "World")
+        public CoordsHud() : base("CoordsHud", (char)0x07, "Visual")
         {
         } // Not defined
 
@@ -26,7 +26,7 @@ namespace Trero.Modules
                     Overlay.handle.SuspendLayout();
 
                     foreach (Control ct in Overlay.handle.Controls)
-                        if (Overlay.handle != null && (string)ct.Tag == "TeleportUI")
+                        if (Overlay.handle != null && (string)ct.Tag == "CoordsHud")
                             ct.Visible = true;
 
                     Overlay.handle.ResumeLayout();
@@ -47,7 +47,7 @@ namespace Trero.Modules
                     Overlay.handle.SuspendLayout();
 
                     foreach (Control ct in Overlay.handle.Controls)
-                        if (Overlay.handle != null && (string)ct.Tag == "TeleportUI")
+                        if (Overlay.handle != null && (string)ct.Tag == "CoordsHud")
                             ct.Visible = false;
 
                     Overlay.handle.ResumeLayout();

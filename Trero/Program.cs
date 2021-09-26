@@ -38,25 +38,25 @@ namespace Trero
             Console.WriteLine(@"Registering modules...");
 
             Modules.Add(new ClickGUI());
-            //Modules.Add(new Antibot());
+            Modules.Add(new Antibot());
 
             Modules.Add(new Debug());
             Modules.Add(new AirStuck());
             Modules.Add(new BulkFly());
-            //Modules.Add(new AboveAura());
+            Modules.Add(new AboveAura());
             Modules.Add(new AirJump());
-            //Modules.Add(new TPAura());
-            //Modules.Add(new ClosestPlayerDisplay());
-            //Modules.Add(new PlayerDisplay());
-            //Modules.Add(new TriggerBot()); -- no longer in accessable lp area
-            //Modules.Add(new Hitbox());
+            Modules.Add(new TPAura());
+            Modules.Add(new ClosestPlayerDisplay());
+            Modules.Add(new PlayerDisplay());
+            Modules.Add(new TriggerBot()); // no longer in accessable lp area
+            Modules.Add(new Hitbox());
             Modules.Add(new FlickerExample());
             Modules.Add(new Phase());
             Modules.Add(new Noclip());
             Modules.Add(new NoYFly());
             Modules.Add(new PhaseDown());
             Modules.Add(new PhaseUp());
-            //Modules.Add(new Sexaura());
+            Modules.Add(new Sexaura());
             Modules.Add(new Fly());
             Modules.Add(new Jetpack());
             Modules.Add(new Eject());
@@ -73,22 +73,22 @@ namespace Trero
             Modules.Add(new Jesus());
             Modules.Add(new NoSwing());
             Modules.Add(new CreativeFly());
-            //Modules.Add(new PlayerTP());
+            Modules.Add(new PlayerTP());
             Modules.Add(new ClickTP());
             Modules.Add(new Glide());
-            //Modules.Add(new Killaura());
-            //Modules.Add(new AntiImmoblie());
-            //Modules.Add(new Reach());
+            Modules.Add(new Killaura());
+            Modules.Add(new AntiImmoblie());
+            Modules.Add(new Reach());
             Modules.Add(new Limiter()); // CPU saver
             Modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
-            //Modules.Add(new Friends());
-            //Modules.Add(new Nofriends());
+            Modules.Add(new Friends());
+            Modules.Add(new Nofriends());
             Modules.Add(new MineplexFly());
             Modules.Add(new LongJump());
             Modules.Add(new Zoom());
             Modules.Add(new AutoWalk());
-            //Modules.Add(new Rapeaura());
-            //Modules.Add(new HiveAntibot());
+            Modules.Add(new Rapeaura());
+            Modules.Add(new HiveAntibot());
             Modules.Add(new StreamMode());
             Modules.Add(new Masturbator());
             Modules.Add(new Welcome());

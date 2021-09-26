@@ -8,7 +8,7 @@
             new IVersion(new object[]
             {
                 "MCBE-1.17.30",
-                0x04120F18, 0x0, 0x20, 0xC8,
+                0x04112A40, 0x0, 0x50, 0x140,
                 0x1D8, // onground
                 0x1DC, // onground 2
                 0x238, // stepHeight
@@ -26,7 +26,7 @@
                 0x400, // entityType
                 0x0, // inInventory
                 0x900, // username
-                0x0, 0x0, // gameDim
+                0x360, 0x0, // gameDim
                 0x4C0, // position
                 0x0, // hitbox - 0x4C0 + 24
                 0x4F8, // veloicty
@@ -34,9 +34,9 @@
                 0x0, // lookingEntityId
                 0x25D, // inWater
                 0x138, // bodyRots
-                0x0, // Level - 0x370
-                0x0, // entitylist+1 - 0x50
-                0x0, // entitylist+2 (BROKEN ON 1.17.30 once again!) - 0x68
+                0x360, // Level - 0x370
+                0xA8, // entitylist+1 - 0x50
+                0xB0, // entitylist+2 (BROKEN ON 1.17.30 once again!) - 0x68
                 0x0, // lookingAtBlock
                 0x0, // SelectedBlock
                 0x0, // LookingAtBlock
