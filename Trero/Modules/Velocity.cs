@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class Velocity : Module
     {
-        public Velocity() : base("Velocity", (char)(int)Keys.Insert, "Player", true)
+        public Velocity() : base("Velocity", (char)0x07, "Player", false)
         {
         } // Not defined
 
