@@ -93,6 +93,7 @@ namespace Trero
             Modules.Add(new Masturbator());
             Modules.Add(new Welcome());
             Modules.Add(new MineplexFlyv2());
+            Modules.Add(new RainbowEffects());
 
             Console.WriteLine(@"Registered modules!");
 

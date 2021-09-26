@@ -8,7 +8,7 @@
             new IVersion(new object[]
             {
                 "MCBE-1.17.30",
-                0x04120F18, 0x0, 0x18, 0xB8,
+                0x04120F18, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
                 0x1D8, // onground
                 0x1DC, // onground 2
                 0x238, // stepHeight
@@ -48,7 +48,10 @@
                 0x0, // Chatbase shit
                 0x0, // Chatbase shit
                 0x0, // Chatbase shit
-                0x1140 // fieldOfView
+                0x1140, // fieldOfView
+                0x178, // EffectsClass
+                0x40, // EffectsSubClass
+                0x10 // EffectsColor
             }),
             // MCBE 1.17.11
             new IVersion(new object[]
@@ -88,7 +91,10 @@
                 0x990,
                 0x040A41F8, 0x814,
                 0x04120400, 0x8, 0x48, 0xA0, 0x128,
-                0x10F0
+                0x10F0,
+                0x0, // EffectsClass
+                0x0, // EffectsSubClass
+                0x0 // EffectsColor
             }),
         };
 
@@ -130,7 +136,10 @@
             "SideSelect",
             "screenT+1", "screenT+2",
             "chatBase", "chatBase+1", "chatBase+2", "chatBase+3", "chatBase+4",
-             "fieldOfView"
+            "fieldOfView",
+            "EffectsClass+1",
+            "EffectsClass+2",
+            "EffectsColor",
         });
 
         private static IVersion _cv;

@@ -102,6 +102,7 @@
     <Compile Include="ClientBase\UIBase\TreroUILibrary\DrawingUtils.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\RainbowEffects.cs" />
     <Compile Include="Modules\MineplexFlyv2.cs" />
     <Compile Include="Modules\CoordsHud.cs" />
     <Compile Include="Modules\Welcome.cs" />

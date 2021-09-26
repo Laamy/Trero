@@ -41,6 +41,8 @@ namespace Trero.ClientBase
         } // localPlayer
 
         public static ulong level => MCM.readInt64(localPlayer + VersionClass.GetData("level")); // level
+        public static ulong vEffectsClass => MCM.readInt64(localPlayer + VersionClass.GetData("EffectsClass+1")); // level
+        public static ulong effectsClass => MCM.readInt64(vEffectsClass + VersionClass.GetData("EffectsClass+2")); // level
 
         public static ulong EntityListStart =>
             MCM.readInt64(level + VersionClass.GetData("entitylist+1")); // entityliststart
@@ -71,6 +73,26 @@ namespace Trero.ClientBase
                 return vec;
             }
             set => teleport(value);
+        } // Position
+
+        public static iRGB effectsColor
+        {
+            get
+            {
+                var vec = new iRGB(0, 0, 0);
+
+                vec.R = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor"));
+                vec.G = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor") + 1);
+                vec.B = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor") + 2);
+
+                return vec;
+            }
+            set
+            {
+                MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor"), value.R);
+                MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor") + 1, value.G);
+                MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor" + 1), value.B);
+            }
         } // Position
 
         public static Vector3 lookingAtPosition
@@ -700,6 +722,25 @@ namespace Trero.ClientBase
         public override string ToString()
         {
             return x + "," + y;
+        }
+    }
+
+    public struct iRGB
+    {
+        public byte R;
+        public byte G;
+        public byte B;
+
+        public iRGB(byte R, byte G, byte B)
+        {
+            this.R = R;
+            this.G = G;
+            this.B = B;
+        }
+
+        public override string ToString()
+        {
+            return R + "," + G + "," + B;
         }
     }
 
