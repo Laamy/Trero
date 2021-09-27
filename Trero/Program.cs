@@ -2,12 +2,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
+using Trero.ClientBase.UIBase.TreroUILibrary;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
 
@@ -167,7 +170,7 @@ namespace Trero
 
             mainThread += moduleTick;
 
-            new Thread(() =>
+            Task.Run(() =>
             {
                 Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
                 while (quit == false)
@@ -187,13 +190,19 @@ namespace Trero
                     {
                     }
                 }
-            }).Start();
+            });
+
+            //RenderClass.CreateAction((g) => {
+            //    g.DrawString("Hello world!", font, Brushes.Blue, new PointF(100, 100));
+            //}, IntPtr.Zero);
 
             while (quit == false)
             {
                 Console.ReadKey();
             }
         }
+
+        public static Font font = new Font("Arial", 16, FontStyle.Regular);
 
         private static void moduleTick(object sender, EventArgs e)
         {

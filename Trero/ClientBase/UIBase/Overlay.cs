@@ -17,6 +17,12 @@ namespace Trero.ClientBase.UIBase
 {
     public partial class Overlay : Form
     {
+        [DllImport("User32.dll")]
+        private static extern int GetWindowLong(IntPtr hwnd, int nIndex);
+
+        [DllImport("User32.dll")]
+        private static extern int SetWindowLong(IntPtr hwnd, int nIndex, int dwNewLong);
+
         public static Overlay handle;
 
         private Font _df = new Font(FontFamily.GenericSansSerif, 12f);
@@ -35,40 +41,32 @@ namespace Trero.ClientBase.UIBase
 
             Program.mainThread += uiTick;
 
+            int initialStyle = GetWindowLong(this.Handle, -20);
+            SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);
+
             TopMost = true;
         }
 
         private void uiTick(object sender, EventArgs e)
         {
-            try
+            Invoke((MethodInvoker)delegate
             {
-                Invoke((MethodInvoker)delegate
+                var rect = MCM.getMinecraftRect();
+
+                var cvE = new Placement();
+                GetWindowPlacement(MCM.mcWinHandle,
+                    ref cvE); // Change window size if fullscreen to match extra offsets
+                var vE = 0;
+                var vA = 0;
+                if (cvE.showCmd == 3) // Perfect window offsets
                 {
-                    var rect = MCM.getMinecraftRect();
+                    vE = 8;
+                    vA = 2;
+                }
 
-                    var cvE = new Placement();
-                    GetWindowPlacement(MCM.mcWinHandle,
-                        ref cvE); // Change window size if fullscreen to match extra offsets
-                    var vE = 0;
-                    var vA = 0;
-                    var vB = 0;
-                    var vC = 0;
-                    if (cvE.showCmd == 3) // Perfect window offsets
-                    {
-                        vE = 8;
-                        vA = 2;
-
-                        vB = 9; // these have extra because of the windows shadow effect (Not exactly required but oh well)
-                        vC = 3;
-                    }
-
-                    Location = new Point(rect.Left + 9 + vA, rect.Top + 35 + vE); // Title bar is 32 pixels high
-                    Size = new Size(rect.Right - rect.Left - 18 - vC, rect.Bottom - rect.Top - 44 - vB);
-                });
-            }
-            catch
-            {
-            }
+                Location = new Point(rect.Left + 9 + vA, rect.Top + 35 + vE); // Title bar is 32 pixels high
+                Size = new Size(rect.Right - rect.Left - 18 - vA, rect.Bottom - rect.Top - 44 - vE);
+            });
         }
 
         [DllImport("user32.dll")]
@@ -85,7 +83,7 @@ namespace Trero.ClientBase.UIBase
 
             try
             {
-                var vList = Game.getPlayers();
+                var vList = Game.getEntites(); // getPlayers
                 list = "Players : " + vList.Count + "\r\n";
                 list = vList.Aggregate(list,
                     (current, plr) =>

@@ -430,9 +430,9 @@ namespace Trero.ClientBase
         public static List<Actor> getEntites()
         {
             var entityList = new List<Actor>();
-            for (var i = EntityListStart; i < EntityListEnd; i += 0x8)
+            for (var i = (EntityListStart - 8); i < (EntityListEnd); i += 0x8) // 0x8
             {
-                if (i == EntityListStart) continue;
+                //if (i == EntityListStart) continue;
                 var entity = new Actor(MCM.readInt64(i));
                 entityList.Add(entity);
             }

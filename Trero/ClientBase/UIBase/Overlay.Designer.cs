@@ -768,7 +768,7 @@
             this.Name = "Overlay";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Overlay";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
