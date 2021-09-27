@@ -18,10 +18,19 @@ namespace Trero.ClientBase.UIBase
     public partial class Overlay : Form
     {
         [DllImport("User32.dll")]
-        private static extern int GetWindowLong(IntPtr hwnd, int nIndex);
+        public static extern int GetWindowLong(IntPtr hwnd, int nIndex);
 
         [DllImport("User32.dll")]
-        private static extern int SetWindowLong(IntPtr hwnd, int nIndex, int dwNewLong);
+        public static extern int SetWindowLong(IntPtr hwnd, int nIndex, int dwNewLong);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc,
+            WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+
+        [DllImport("user32.dll")]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr voidProcessId);
+
+        public delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
 
         public static Overlay handle;
 
@@ -39,15 +48,17 @@ namespace Trero.ClientBase.UIBase
 
             Focus();
 
-            Program.mainThread += uiTick;
-
             int initialStyle = GetWindowLong(this.Handle, -20);
             SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);
 
+            overDel = new WinEventDelegate(adjust);
+
+            SetWinEventHook((uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, (uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, IntPtr.Zero, overDel, MCM.mcWinProcId, GetWindowThreadProcessId(MCM.mcWinHandle, IntPtr.Zero), (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
+            
             TopMost = true;
         }
 
-        private void uiTick(object sender, EventArgs e)
+        private void adjust(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -69,13 +80,15 @@ namespace Trero.ClientBase.UIBase
             });
         }
 
+        WinEventDelegate overDel;
+
         [DllImport("user32.dll")]
-        private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy,
+        public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy,
             uint uFlags);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool GetWindowPlacement(IntPtr hWnd, ref Placement lpwndpl);
+        static extern bool GetWindowPlacement(IntPtr hWnd, ref Placement lpwndpl);
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -611,16 +624,6 @@ namespace Trero.ClientBase.UIBase
             {
                 // ignored
             }
-        }
-
-        private struct Placement
-        {
-            public int length;
-            public int flags;
-            public int showCmd;
-            public Point ptMinPosition;
-            public Point ptMaxPosition;
-            public Rectangle rcNormalPosition;
         }
 
         private void label12_Click_1(object sender, EventArgs e)

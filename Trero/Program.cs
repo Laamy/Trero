@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -172,7 +173,6 @@ namespace Trero
 
             Task.Run(() =>
             {
-                Thread.CurrentThread.Priority = ThreadPriority.AboveNormal;
                 while (quit == false)
                 {
                     try // fixed any future errors here
@@ -192,15 +192,37 @@ namespace Trero
                 }
             });
 
-            //RenderClass.CreateAction((g) => {
-            //    g.DrawString("Hello world!", font, Brushes.Blue, new PointF(100, 100));
-            //}, IntPtr.Zero);
+            /*RenderClass.CreateAction((g) =>
+            {
+                Thread.Sleep(1);
+
+                var rect = MCM.getMinecraftRect();
+
+                var cvE = new Placement();
+                GetWindowPlacement(MCM.mcWinHandle,
+                    ref cvE);
+                var vE = 0;
+                var vA = 0;
+                if (cvE.showCmd == 3)
+                {
+                    vE = 8;
+                    vA = 2;
+                }
+
+                PointF hgfs = new PointF(rect.Left + 9 + vA, rect.Top + 35 + vE);
+
+                g.DrawString("Hello world!", font, Brushes.Blue, new PointF(0, 0)); // new PointF(0, 0)
+            }, MCM.mcProcHandle);*/
 
             while (quit == false)
             {
                 Console.ReadKey();
             }
         }
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowPlacement(IntPtr hWnd, ref Placement lpwndpl);
 
         public static Font font = new Font("Arial", 16, FontStyle.Regular);
 
@@ -219,5 +241,15 @@ Game.SelectedBlock = Base.iVec3((int)Game.position.x, (int)Game.position.y - 1, 
 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
 
 */
+    }
+
+    public struct Placement
+    {
+        public int length;
+        public int flags;
+        public int showCmd;
+        public Point ptMinPosition;
+        public Point ptMaxPosition;
+        public Rectangle rcNormalPosition;
     }
 }
