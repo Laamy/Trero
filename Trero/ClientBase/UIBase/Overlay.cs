@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using Trero.ClientBase.UIBase.TreroUILibrary;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
 using Trero.Modules.vModuleExtra;
@@ -54,30 +55,46 @@ namespace Trero.ClientBase.UIBase
             overDel = new WinEventDelegate(adjust);
 
             SetWinEventHook((uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, (uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, IntPtr.Zero, overDel, MCM.mcWinProcId, GetWindowThreadProcessId(MCM.mcWinHandle, IntPtr.Zero), (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
+            SetWinEventHook((uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, (uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, overDel, 0, 0, (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
             
             TopMost = true;
         }
 
         private void adjust(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
-            Invoke((MethodInvoker)delegate
+            var rect = MCM.getMinecraftRect();
+
+            var cvE = new Placement();
+            GetWindowPlacement(MCM.mcWinHandle,
+                ref cvE); // Change window size if fullscreen to match extra offsets
+            var vE = 0;
+            var vA = 0;
+            if (cvE.showCmd == 3) // Perfect window offsets
             {
-                var rect = MCM.getMinecraftRect();
+                vE = 8;
+                vA = 2;
+            }
 
-                var cvE = new Placement();
-                GetWindowPlacement(MCM.mcWinHandle,
-                    ref cvE); // Change window size if fullscreen to match extra offsets
-                var vE = 0;
-                var vA = 0;
-                if (cvE.showCmd == 3) // Perfect window offsets
-                {
-                    vE = 8;
-                    vA = 2;
-                }
+            int x = rect.Left + 9 + vA;
+            int y = rect.Top + 35 + vE;
+            int width = rect.Right - rect.Left - 18 - vA;
+            int height = rect.Bottom - rect.Top - 44 - vE;
+            SetWindowPos(Handle, MCM.isMinecraftFocusedInsert(), x, y, width, height, 0x0040);
 
-                Location = new Point(rect.Left + 9 + vA, rect.Top + 35 + vE); // Title bar is 32 pixels high
-                Size = new Size(rect.Right - rect.Left - 18 - vA, rect.Bottom - rect.Top - 44 - vE);
-            });
+            try // fixed
+            {
+                if (MCM.isMinecraftFocused() && TopMost == false)
+                    TopMost = true;
+                if (MCM.isMinecraftFocused() || !TopMost) return;
+                if (ActiveForm == this) return;
+                Opacity = 1;
+                TopMost = false;
+                SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
+            }
+            catch
+            {
+                // ignored
+            }
         }
 
         WinEventDelegate overDel;
@@ -304,8 +321,6 @@ namespace Trero.ClientBase.UIBase
                 if (vBypass.curIndex == Convert.ToInt32(((Button)sender).Tag.ToString().Substring(0, 1)))
                     bypassPressed = vBypass;
             }
-
-
         }
 
         private void actorBind(object sender, MouseEventArgs e)
@@ -610,20 +625,6 @@ namespace Trero.ClientBase.UIBase
                 UpdateLabel.Text = Game.username + "   |   " + VersionClass.currentVersion.name + "   |   " + Game.position.x + ", " + Game.position.y + ", " + Game.position.z;
             else UpdateLabel.Text = "Not InGame";
 
-            try // fixed
-            {
-                if (MCM.isMinecraftFocused() && TopMost == false)
-                    TopMost = true;
-                if (MCM.isMinecraftFocused() || !TopMost) return;
-                if (ActiveForm == this) return;
-                Opacity = 1;
-                TopMost = false;
-                SetWindowPos(Handle, new IntPtr(1), 0, 0, 0, 0, 2 | 1 | 10);
-            }
-            catch
-            {
-                // ignored
-            }
         }
 
         private void label12_Click_1(object sender, EventArgs e)

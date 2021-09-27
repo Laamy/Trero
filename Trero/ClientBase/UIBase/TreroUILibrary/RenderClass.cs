@@ -23,7 +23,7 @@ namespace Trero.ClientBase.UIBase.TreroUILibrary
             Task.Run(() => {
                 while (!destroy)
                 {
-                    backLb:
+                backLb:
                     try
                     {
                         using (Graphics g = Graphics.FromHdc(context))
@@ -33,6 +33,24 @@ namespace Trero.ClientBase.UIBase.TreroUILibrary
                 }
                 ReleaseDC(hwnd, context);
             });
+        }
+
+        public static void SingleAction(Action<Graphics> RenderAction, IntPtr hwnd)
+        {
+            var context = GetDC(hwnd);
+        backLb:
+            try
+            {
+                using (Graphics g = Graphics.FromHdc(context))
+                    RenderAction(g);
+            }
+            catch { goto backLb; }
+        }
+
+        public static void ReleaseAction(IntPtr hwnd)
+        {
+            var context = GetDC(hwnd);
+            ReleaseDC(hwnd, context);
         }
 
         public static void ClearActions()
