@@ -80,6 +80,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.TestCategory.SuspendLayout();
@@ -701,7 +702,7 @@
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Location = new System.Drawing.Point(946, 10);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(150, 101);
+            this.panel21.Size = new System.Drawing.Size(150, 183);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
             this.panel21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseDown);
@@ -724,13 +725,14 @@
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel22.Controls.Add(this.button6);
             this.panel22.Controls.Add(this.button5);
             this.panel22.Controls.Add(this.button3);
             this.panel22.Controls.Add(this.button4);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel22.Location = new System.Drawing.Point(0, 24);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(150, 77);
+            this.panel22.Size = new System.Drawing.Size(150, 159);
             this.panel22.TabIndex = 0;
             // 
             // button3
@@ -783,9 +785,27 @@
             this.button5.TabIndex = 8;
             this.button5.TabStop = false;
             this.button5.Tag = "ModuleButton";
-            this.button5.Text = "Slow Falling";
+            this.button5.Text = "Slowfalling";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(0, 72);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(150, 24);
+            this.button6.TabIndex = 9;
+            this.button6.TabStop = false;
+            this.button6.Tag = "ModuleButton";
+            this.button6.Text = "Speed";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Overlay
             // 
@@ -907,5 +927,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

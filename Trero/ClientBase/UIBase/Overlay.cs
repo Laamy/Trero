@@ -686,13 +686,43 @@ namespace Trero.ClientBase.UIBase
         {
             Faketernal.Potions.RunFakeEffect((i, c) => { // give slowness effect
 
-                if (Game.onGround == true)
+                if (Game.onGround == true) // Oof...
                 {
-                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), 0);
-                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, 0);
+                    var plrYaw = Game.bodyRots.y; // yaw
+
+                    if (Keymap.GetAsyncKeyState(Keys.W))
+                    {
+                        if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw += 90f;
+                        if (Keymap.GetAsyncKeyState(Keys.A))
+                            plrYaw += 45f;
+                        else if (Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw += 135f;
+                    }
+                    else if (Keymap.GetAsyncKeyState(Keys.S))
+                    {
+                        if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw -= 90f;
+                        if (Keymap.GetAsyncKeyState(Keys.A))
+                            plrYaw -= 45f;
+                        else if (Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw -= 135f;
+                    }
+                    else if (!Keymap.GetAsyncKeyState(Keys.W) && !Keymap.GetAsyncKeyState(Keys.S))
+                    {
+                        if (!Keymap.GetAsyncKeyState(Keys.A) && Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw += 180f;
+                    }
+
+                    if (!(Keymap.GetAsyncKeyState(Keys.W) | Keymap.GetAsyncKeyState(Keys.A) | Keymap.GetAsyncKeyState(Keys.S) |
+                          Keymap.GetAsyncKeyState(Keys.D))) return;
+                    var calYaw = plrYaw * ((float)Math.PI / 180f);
+
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * (0.05f / c));
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, (float)Math.Sin(calYaw) * (0.05f / c));
                 }
 
-            }, new iRGB(129, 108, 90), 30, 1, 0.75f);
+            }, new iRGB(129, 108, 90), 30, 1, 0.85f);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -730,6 +760,49 @@ namespace Trero.ClientBase.UIBase
 
         private void label11_MouseDown(object sender, MouseEventArgs e) => panel21_MouseDown(sender, e);
         private void label11_MouseMove(object sender, MouseEventArgs e) => panel21_MouseMove(sender, e);
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give slowness effect
+
+                if (Game.onGround == true) // Oof...
+                {
+                    var plrYaw = Game.bodyRots.y; // yaw
+
+                    if (Keymap.GetAsyncKeyState(Keys.W))
+                    {
+                        if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw += 90f;
+                        if (Keymap.GetAsyncKeyState(Keys.A))
+                            plrYaw += 45f;
+                        else if (Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw += 135f;
+                    }
+                    else if (Keymap.GetAsyncKeyState(Keys.S))
+                    {
+                        if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw -= 90f;
+                        if (Keymap.GetAsyncKeyState(Keys.A))
+                            plrYaw -= 45f;
+                        else if (Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw -= 135f;
+                    }
+                    else if (!Keymap.GetAsyncKeyState(Keys.W) && !Keymap.GetAsyncKeyState(Keys.S))
+                    {
+                        if (!Keymap.GetAsyncKeyState(Keys.A) && Keymap.GetAsyncKeyState(Keys.D))
+                            plrYaw += 180f;
+                    }
+
+                    if (!(Keymap.GetAsyncKeyState(Keys.W) | Keymap.GetAsyncKeyState(Keys.A) | Keymap.GetAsyncKeyState(Keys.S) |
+                          Keymap.GetAsyncKeyState(Keys.D))) return;
+                    var calYaw = plrYaw * ((float)Math.PI / 180f);
+
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * (0.25f * c));
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, (float)Math.Sin(calYaw) * (0.25f * c));
+                }
+
+            }, new iRGB(198, 175, 124), 30, 1, 2f);
+        }
     }
 }
 
