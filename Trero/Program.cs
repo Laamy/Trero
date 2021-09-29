@@ -12,7 +12,6 @@ using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
-using Trero.ClientBase.UIBase.TreroUILibrary;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
 using Debug = Trero.Modules.Debug;

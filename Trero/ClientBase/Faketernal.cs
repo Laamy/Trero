@@ -26,7 +26,7 @@ namespace Trero.ClientBase
             public static void ClearActions()
             {
                 destroy = true;
-                Thread.Sleep(5);
+                Thread.Sleep(10);
                 destroy = false;
             }
 
