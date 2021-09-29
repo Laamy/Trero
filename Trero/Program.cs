@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -14,6 +15,7 @@ using Trero.ClientBase.UIBase;
 using Trero.ClientBase.UIBase.TreroUILibrary;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
+using Debug = Trero.Modules.Debug;
 
 #endregion
 
@@ -29,6 +31,24 @@ namespace Trero
 
         private static void Main(string[] args)
         {
+            try
+            {
+                Process cProc = Process.GetProcessesByName("Minecraft.Windows")[0];
+            }
+            catch
+            {
+                try
+                {
+                    Process wProc = Process.GetProcessesByName("ApplicationFrameHost")[0];
+                    wProc.Kill();
+                }
+                catch { }
+            }
+
+            Process.Start("minecraft://");
+
+            //Thread.Sleep(1000);
+
             MCM.openGame();
             MCM.openWindowHost();
 
@@ -99,6 +119,7 @@ namespace Trero
             Modules.Add(new MineplexFlyv2());
             Modules.Add(new RainbowEffects());
             Modules.Add(new Velocity()); // Anti-KB
+            Modules.Add(new NoLagBack());
 
             Console.WriteLine(@"Registered modules!");
 

@@ -104,6 +104,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\NoLagBack.cs" />
     <Compile Include="Modules\Velocity.cs" />
     <Compile Include="Modules\RainbowEffects.cs" />
     <Compile Include="Modules\MineplexFlyv2.cs" />
