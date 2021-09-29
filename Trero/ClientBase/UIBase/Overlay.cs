@@ -803,6 +803,17 @@ namespace Trero.ClientBase.UIBase
 
             }, new iRGB(76, 255, 34), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give levitation effect
+
+                float speed = (0.10f * c);
+
+                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, speed);
+
+            }, new iRGB(255, 255, 206), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
+        }
     }
 }
 
@@ -813,6 +824,7 @@ SlowFalling - 209,239,255
 Speed - 198,175,124
 NightVision - 161,31,31
 JumpBoost - 76,255,34
+Levitation - 255,255,206
 
 TurtleMaster - 98,91,117
 Wither - 39,42,53

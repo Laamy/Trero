@@ -88,6 +88,7 @@
             this.panel24 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.PotionDiritation = new System.Windows.Forms.NumericUpDown();
+            this.button8 = new System.Windows.Forms.Button();
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.TestCategory.SuspendLayout();
@@ -738,6 +739,7 @@
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.panel22.Controls.Add(this.panel23);
             this.panel22.Controls.Add(this.panel24);
+            this.panel22.Controls.Add(this.button8);
             this.panel22.Controls.Add(this.button7);
             this.panel22.Controls.Add(this.button6);
             this.panel22.Controls.Add(this.button5);
@@ -877,7 +879,7 @@
             this.panel23.Controls.Add(this.label14);
             this.panel23.Controls.Add(this.PotionAmplifier);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel23.Location = new System.Drawing.Point(0, 141);
+            this.panel23.Location = new System.Drawing.Point(0, 165);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(150, 21);
             this.panel23.TabIndex = 12;
@@ -899,7 +901,7 @@
             this.panel24.Controls.Add(this.label15);
             this.panel24.Controls.Add(this.PotionDiritation);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel24.Location = new System.Drawing.Point(0, 120);
+            this.panel24.Location = new System.Drawing.Point(0, 144);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(150, 21);
             this.panel24.TabIndex = 13;
@@ -946,6 +948,24 @@
             0,
             0,
             0});
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.SystemColors.Control;
+            this.button8.Location = new System.Drawing.Point(0, 120);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(150, 24);
+            this.button8.TabIndex = 14;
+            this.button8.TabStop = false;
+            this.button8.Tag = "ModuleButton";
+            this.button8.Text = "Levitation";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Overlay
             // 
@@ -1081,5 +1101,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown PotionDiritation;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button8;
     }
 }
