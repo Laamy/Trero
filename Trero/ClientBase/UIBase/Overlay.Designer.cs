@@ -713,7 +713,7 @@
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Location = new System.Drawing.Point(946, 10);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(150, 255);
+            this.panel21.Size = new System.Drawing.Size(150, 189);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
             this.panel21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseDown);
@@ -736,17 +736,17 @@
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.panel22.Controls.Add(this.panel24);
             this.panel22.Controls.Add(this.panel23);
+            this.panel22.Controls.Add(this.panel24);
             this.panel22.Controls.Add(this.button7);
             this.panel22.Controls.Add(this.button6);
             this.panel22.Controls.Add(this.button5);
             this.panel22.Controls.Add(this.button3);
             this.panel22.Controls.Add(this.button4);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel22.Location = new System.Drawing.Point(0, 24);
+            this.panel22.Location = new System.Drawing.Point(0, 22);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(150, 231);
+            this.panel22.Size = new System.Drawing.Size(150, 167);
             this.panel22.TabIndex = 0;
             // 
             // button3
@@ -876,8 +876,8 @@
             this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.panel23.Controls.Add(this.label14);
             this.panel23.Controls.Add(this.PotionAmplifier);
-            this.panel23.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel23.Location = new System.Drawing.Point(0, 210);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel23.Location = new System.Drawing.Point(0, 141);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(150, 21);
             this.panel23.TabIndex = 12;
@@ -886,7 +886,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label14.Location = new System.Drawing.Point(3, 2);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 16);
@@ -898,8 +898,8 @@
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.panel24.Controls.Add(this.label15);
             this.panel24.Controls.Add(this.PotionDiritation);
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel24.Location = new System.Drawing.Point(0, 189);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel24.Location = new System.Drawing.Point(0, 120);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(150, 21);
             this.panel24.TabIndex = 13;
@@ -908,7 +908,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label15.Location = new System.Drawing.Point(3, 2);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 16);
