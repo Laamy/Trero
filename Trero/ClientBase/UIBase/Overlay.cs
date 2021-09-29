@@ -814,6 +814,18 @@ namespace Trero.ClientBase.UIBase
 
             }, new iRGB(255, 255, 206), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) =>
+            { // give levitation effect
+
+                float amp = (0.5f * (c + 1));
+
+                Game.stepHeight = amp;
+
+            }, new iRGB(220, 178, 238), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 1f, () => { Game.stepHeight = 0.5f; });
+        }
     }
 }
 

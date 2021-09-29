@@ -30,7 +30,7 @@ namespace Trero.ClientBase
                 destroy = false;
             }
 
-            public static void RunFakeEffect(Action<int, int> actionTick, iRGB effectColor, int time = 30, int strength = 1, float fov = 1)
+            public static void RunFakeEffect(Action<int, int> actionTick, iRGB effectColor, int time = 30, int strength = 1, float fov = 1, Action actionExit = null)
             {
                 bool effectActive = true;
                 int timeLeft = time;
@@ -44,6 +44,9 @@ namespace Trero.ClientBase
                     }
                     Game.effectsColor = new iRGB(0, 0, 0, 0);
                     Game.setFieldOfView(1f);
+
+                    if (actionExit != null)
+                        actionExit();
                 });
                 Task.Run(() => {
                     for (int i = 0; i < time; ++i)
