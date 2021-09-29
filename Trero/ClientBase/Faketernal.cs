@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Trero.ClientBase.FaketernalBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.VersionBase;
@@ -12,49 +14,45 @@ namespace Trero.ClientBase
 {
     internal class Faketernal
     {
-        public static class
-            ClientObj // most of this has been removed because i need to update the pointers and im to tired rn so
+        public static class ClientObj // most of this has been removed because i need to update the pointers and im to tired rn so
         {
-            public static ulong chatInstance
+            // removed code from here
+        }
+
+        public static class Potions
+        {
+            public static bool destroy = false;
+
+            public static void ClearActions()
             {
-                get // 0x04120400, 0x8, 0x48, 0xA0, 0x128
-                {
-                    return MCM.baseEvaluatePointer(HexHandler.ToULong(VersionClass.GetData("chatBase")), new[]
+                destroy = true;
+                Thread.Sleep(5);
+                destroy = false;
+            }
+
+            public static void RunFakeEffect(Action<int, int> actionTick, iRGB effectColor, int time = 30, int strength = 1, float fov = 1)
+            {
+                bool effectActive = true;
+                int timeLeft = time;
+                Game.effectsColor = effectColor;
+                Task.Run(() => {
+                    Game.setFieldOfView(fov);
+                    while (!destroy && effectActive)
                     {
-                        VersionClass.GetData("chatBase+1"),
-                        VersionClass.GetData("chatBase+2"),
-                        VersionClass.GetData("chatBase+3"),
-                        VersionClass.GetData("chatBase+4")
-                    });
-                }
-            }
-
-            public static List<MessageObj> chatMessages => null;
-
-            public static MessageObj getMessageAt(ulong index) // Get the minecraft message at index
-            {
-                MessageObj msg = null;
-
-                msg = new MessageObj(MCM.evaluatePointer(chatInstance, new ulong[]
-                {
-                    index + 1 * 0x28 + index + 1 * 0xD8,
-                    0x0
-                })); //MCM.readInt64(chatInstance + ((index + 1 * 0x28) + (index + 1 * 0xD8))));
-
-                return msg;
-            }
-
-            public static void createClientObj() // create a fake client sided message inside of mc
-            {
-                Game.isLookingAtBlock = 0;
-                Game.SideSelect = 1;
-
-                Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
-            }
-
-            public static void setClientObj(MessageObj v) // edit last fake message inside of mc
-            {
-                // getMessageAt
+                        actionTick(strength, strength);
+                        Game.effectsColor = effectColor; // so the effects flicker when mixed
+                    }
+                    Game.effectsColor = new iRGB(0, 0, 0, 0);
+                    Game.setFieldOfView(1f);
+                });
+                Task.Run(() => {
+                    for (int i = 0; i < time; ++i)
+                    {
+                        Thread.Sleep(1000); // delay a second
+                        timeLeft = i;
+                    }
+                    effectActive = false;
+                });
             }
         }
 

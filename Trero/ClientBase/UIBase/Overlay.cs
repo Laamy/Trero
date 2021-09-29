@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase.TreroUILibrary;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
@@ -680,5 +681,74 @@ namespace Trero.ClientBase.UIBase
 
         private void label7_MouseDown(object sender, MouseEventArgs e) => panel10_MouseDown(sender, e);
         private void label7_MouseMove(object sender, MouseEventArgs e) => panel10_MouseMove(sender, e);
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give slowness effect
+
+                if (Game.onGround == true)
+                {
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), 0);
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, 0);
+                }
+
+            }, new iRGB(129, 108, 90), 30, 1, 0.75f);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.ClearActions();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give slowfalling effect
+
+                float speed = -(0.10f / c);
+
+                if (Game.velocity.y < speed)
+                {
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, speed);
+                }
+
+            }, new iRGB(209, 239, 255), 30, 1);
+        }
+
+        private void panel21_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            _mouseDownLocation = e.Location;
+            panel21.BringToFront();
+        }
+
+        private void panel21_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            panel21.Left = e.X + panel21.Left - _mouseDownLocation.X;
+            panel21.Top = e.Y + panel21.Top - _mouseDownLocation.Y;
+        }
+
+        private void label11_MouseDown(object sender, MouseEventArgs e) => panel21_MouseDown(sender, e);
+        private void label11_MouseMove(object sender, MouseEventArgs e) => panel21_MouseMove(sender, e);
     }
 }
+
+/*
+
+Slowness - 129,108,90
+SlowFalling - 209,239,255
+Speed - 198,175,124
+NightVision - 161,31,31
+JumpBoost - 76,255,34
+
+TurtleMaster - 98,91,117
+Wither - 39,42,53
+Weakness - 72,77,72
+Posion - 49,147,78
+Strength - 35,36,147
+WaterBreathing - 153,82,46
+Regeneration - 171,92,205
+Invisibility - 146,131,127
+FireResistance - 58,154,228
+
+*/

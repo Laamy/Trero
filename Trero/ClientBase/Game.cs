@@ -84,6 +84,7 @@ namespace Trero.ClientBase
                 vec.R = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor"));
                 vec.G = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor") + 1);
                 vec.B = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor") + 2);
+                vec.A = MCM.readByte(effectsClass + VersionClass.GetData("EffectsColor") + 3);
 
                 return vec;
             }
@@ -91,7 +92,8 @@ namespace Trero.ClientBase
             {
                 MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor"), value.R);
                 MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor") + 1, value.G);
-                MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor" + 1), value.B);
+                MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor") + 2, value.B);
+                MCM.writeByte(effectsClass + VersionClass.GetData("EffectsColor") + 3, value.A);
             }
         } // Position
 
@@ -730,12 +732,14 @@ namespace Trero.ClientBase
         public byte R;
         public byte G;
         public byte B;
+        public byte A;
 
-        public iRGB(byte R, byte G, byte B)
+        public iRGB(byte R, byte G, byte B, byte A = 255)
         {
             this.R = R;
             this.G = G;
             this.B = B;
+            this.A = A;
         }
 
         public override string ToString()

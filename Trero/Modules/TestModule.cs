@@ -18,9 +18,9 @@ namespace Trero.Modules
             //Faketernal.ClientObj.createClientObj(); // tellraw externally
             //Faketernal.ClientObj.setClientObj(Faketernal.ClientObj.getMessageAt(0));
 
-            var obj = Faketernal.ClientObj.getMessageAt(0);
+            //var obj = Faketernal.ClientObj.getMessageAt(0);
             //obj.message = "yes";
-            Console.WriteLine(obj.addr.ToString("X"));
+            //Console.WriteLine(obj.addr.ToString("X"));
 
             //Console.WriteLine(Faketernal.ClientObj.chatInstance.ToString("X"));
         }

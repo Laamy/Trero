@@ -43,7 +43,7 @@ namespace Trero.Modules
 
         public override void OnDisable()
         {
-            Game.effectsColor = new iRGB(0, 0, 0);
+            Game.effectsColor = new iRGB(0, 0, 0, 0);
 
             base.OnDisable();
         }
