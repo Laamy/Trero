@@ -797,7 +797,7 @@ namespace Trero.ClientBase.UIBase
                 {
                     if (Keymap.GetAsyncKeyState(Keys.Space))
                     {
-                        MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 1f * (0.50f * c / c));
+                        MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.5f * (0.50f * c ));
                     }
                 }
 
