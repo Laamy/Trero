@@ -81,6 +81,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.PotionAmplifier = new System.Windows.Forms.NumericUpDown();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.PotionDiritation = new System.Windows.Forms.NumericUpDown();
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.TestCategory.SuspendLayout();
@@ -103,6 +110,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PotionAmplifier)).BeginInit();
+            this.panel23.SuspendLayout();
+            this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PotionDiritation)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -702,7 +713,7 @@
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Location = new System.Drawing.Point(946, 10);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(150, 183);
+            this.panel21.Size = new System.Drawing.Size(150, 255);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
             this.panel21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseDown);
@@ -725,6 +736,9 @@
             // panel22
             // 
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel22.Controls.Add(this.panel24);
+            this.panel22.Controls.Add(this.panel23);
+            this.panel22.Controls.Add(this.button7);
             this.panel22.Controls.Add(this.button6);
             this.panel22.Controls.Add(this.button5);
             this.panel22.Controls.Add(this.button3);
@@ -732,7 +746,7 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel22.Location = new System.Drawing.Point(0, 24);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(150, 159);
+            this.panel22.Size = new System.Drawing.Size(150, 231);
             this.panel22.TabIndex = 0;
             // 
             // button3
@@ -807,6 +821,132 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.SystemColors.Control;
+            this.button7.Location = new System.Drawing.Point(0, 96);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(150, 24);
+            this.button7.TabIndex = 10;
+            this.button7.TabStop = false;
+            this.button7.Tag = "ModuleButton";
+            this.button7.Text = "JumpBoost";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // PotionAmplifier
+            // 
+            this.PotionAmplifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.PotionAmplifier.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PotionAmplifier.Dock = System.Windows.Forms.DockStyle.Right;
+            this.PotionAmplifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PotionAmplifier.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.PotionAmplifier.Location = new System.Drawing.Point(76, 0);
+            this.PotionAmplifier.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.PotionAmplifier.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.PotionAmplifier.Name = "PotionAmplifier";
+            this.PotionAmplifier.Size = new System.Drawing.Size(74, 22);
+            this.PotionAmplifier.TabIndex = 11;
+            this.PotionAmplifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PotionAmplifier.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel23.Controls.Add(this.label14);
+            this.panel23.Controls.Add(this.PotionAmplifier);
+            this.panel23.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel23.Location = new System.Drawing.Point(0, 210);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(150, 21);
+            this.panel23.TabIndex = 12;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.label14.Location = new System.Drawing.Point(3, 2);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(60, 16);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Amplifier";
+            // 
+            // panel24
+            // 
+            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel24.Controls.Add(this.label15);
+            this.panel24.Controls.Add(this.PotionDiritation);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel24.Location = new System.Drawing.Point(0, 189);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(150, 21);
+            this.panel24.TabIndex = 13;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.label15.Location = new System.Drawing.Point(3, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 16);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Diritation";
+            // 
+            // PotionDiritation
+            // 
+            this.PotionDiritation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.PotionDiritation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PotionDiritation.Dock = System.Windows.Forms.DockStyle.Right;
+            this.PotionDiritation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PotionDiritation.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.PotionDiritation.Location = new System.Drawing.Point(76, 0);
+            this.PotionDiritation.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.PotionDiritation.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.PotionDiritation.Name = "PotionDiritation";
+            this.PotionDiritation.Size = new System.Drawing.Size(74, 22);
+            this.PotionDiritation.TabIndex = 11;
+            this.PotionDiritation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.PotionDiritation.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -871,6 +1011,12 @@
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             this.panel22.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PotionAmplifier)).EndInit();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PotionDiritation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -928,5 +1074,12 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.NumericUpDown PotionAmplifier;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown PotionDiritation;
+        private System.Windows.Forms.Label label14;
     }
 }

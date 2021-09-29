@@ -722,7 +722,7 @@ namespace Trero.ClientBase.UIBase
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, (float)Math.Sin(calYaw) * (0.05f / c));
                 }
 
-            }, new iRGB(129, 108, 90), 30, 1, 0.85f);
+            }, new iRGB(129, 108, 90), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 0.85f);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -741,7 +741,7 @@ namespace Trero.ClientBase.UIBase
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, speed);
                 }
 
-            }, new iRGB(209, 239, 255), 30, 1);
+            }, new iRGB(209, 239, 255), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
         }
 
         private void panel21_MouseDown(object sender, MouseEventArgs e)
@@ -763,7 +763,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give slowness effect
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give speed effect
 
                 if (Game.onGround == true) // Oof...
                 {
@@ -801,7 +801,22 @@ namespace Trero.ClientBase.UIBase
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, (float)Math.Sin(calYaw) * (0.25f * c));
                 }
 
-            }, new iRGB(198, 175, 124), 30, 1, 2f);
+            }, new iRGB(198, 175, 124), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 2f);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give jumpboost effect
+
+                if (Game.onGround == true) // Oof...
+                {
+                    if (Keymap.GetAsyncKeyState(Keys.Space))
+                    {
+                        MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.5f * (0.75f * c / c));
+                    }
+                }
+
+            }, new iRGB(76, 255, 34), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
         }
     }
 }
