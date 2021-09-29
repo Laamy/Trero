@@ -90,6 +90,7 @@
             this.PotionDiritation = new System.Windows.Forms.NumericUpDown();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.TestCategory.SuspendLayout();
@@ -740,6 +741,7 @@
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.panel22.Controls.Add(this.panel23);
             this.panel22.Controls.Add(this.panel24);
+            this.panel22.Controls.Add(this.button10);
             this.panel22.Controls.Add(this.button9);
             this.panel22.Controls.Add(this.button8);
             this.panel22.Controls.Add(this.button7);
@@ -881,7 +883,7 @@
             this.panel23.Controls.Add(this.label14);
             this.panel23.Controls.Add(this.PotionAmplifier);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel23.Location = new System.Drawing.Point(0, 189);
+            this.panel23.Location = new System.Drawing.Point(0, 213);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(150, 21);
             this.panel23.TabIndex = 12;
@@ -903,7 +905,7 @@
             this.panel24.Controls.Add(this.label15);
             this.panel24.Controls.Add(this.PotionDiritation);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel24.Location = new System.Drawing.Point(0, 168);
+            this.panel24.Location = new System.Drawing.Point(0, 192);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(150, 21);
             this.panel24.TabIndex = 13;
@@ -986,6 +988,24 @@
             this.button9.Text = "StepUp";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ForeColor = System.Drawing.SystemColors.Control;
+            this.button10.Location = new System.Drawing.Point(0, 168);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(150, 24);
+            this.button10.TabIndex = 16;
+            this.button10.TabStop = false;
+            this.button10.Tag = "ModuleButton";
+            this.button10.Text = "Weight";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Overlay
             // 
@@ -1123,5 +1143,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

@@ -817,14 +817,28 @@ namespace Trero.ClientBase.UIBase
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) =>
-            { // give levitation effect
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give custom effect
 
                 float amp = (0.5f * (c + 1));
 
                 Game.stepHeight = amp;
 
             }, new iRGB(220, 178, 238), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 1f, () => { Game.stepHeight = 0.5f; });
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give custom effect
+
+                if (Game.onGround == true)
+                {
+                    if (Keymap.GetAsyncKeyState(Keys.Space))
+                    {
+                        MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.25f / c);
+                    }
+                }
+
+            }, new iRGB(118, 141, 124), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
         }
     }
 }
