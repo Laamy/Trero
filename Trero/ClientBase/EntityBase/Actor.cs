@@ -169,13 +169,13 @@ namespace Trero.ClientBase.EntityBase
 
         public void Teleport(AABB advancedAxis)
         {
-            MCM.writeFloat(addr + VersionClass.GetData("positionX"), advancedAxis.x.x);
-            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 4, advancedAxis.x.y);
-            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 8, advancedAxis.x.z);
+            MCM.writeFloat(addr + VersionClass.GetData("positionX"), advancedAxis.lower.x);
+            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 4, advancedAxis.lower.y);
+            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 8, advancedAxis.lower.z);
 
-            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 12, advancedAxis.y.x);
-            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 16, advancedAxis.y.y);
-            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 20, advancedAxis.y.z);
+            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 12, advancedAxis.upper.x);
+            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 16, advancedAxis.upper.y);
+            MCM.writeFloat(addr + VersionClass.GetData("positionX") + 20, advancedAxis.upper.z);
         } // Teleportation
 
         public void Teleport(float x, float y, float z)

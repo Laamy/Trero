@@ -840,6 +840,32 @@ namespace Trero.ClientBase.UIBase
 
             }, new iRGB(118, 141, 124), (int)PotionDiritation.Value, (int)PotionAmplifier.Value);
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var pos = Game.position;
+
+            float skimmedBodyParts = .5f / (int)PotionAmplifier.Value;
+
+            //if (skimmedBodyParts < 0)
+                //skimmedBodyParts = 0.05f;
+
+            Game.teleport(new AABB(pos, new Vector3(pos.x + skimmedBodyParts, pos.y + 1.8f, pos.z + skimmedBodyParts)));
+
+            Faketernal.Potions.RunFakeEffect((i, c) => {}, new iRGB(169, 202, 207), (int)PotionDiritation.Value, 0, 1f, () => { Game.teleport(Game.position); });
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Faketernal.Potions.RunFakeEffect((i, c) => { // give custom effect
+
+                Game.stepHeight = (0.5f * (c + 1));
+                Game.onGround = true;
+                if (Game.inWater)
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.01f * c);
+
+            }, new iRGB(128, 76, 146), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 1f, () => { Game.stepHeight = 0.5f; });
+        }
     }
 }
 

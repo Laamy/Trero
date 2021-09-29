@@ -349,13 +349,13 @@ namespace Trero.ClientBase
 
         public static void teleport(AABB advancedAxis)
         {
-            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX"), advancedAxis.x.x);
-            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 4, advancedAxis.x.y);
-            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 8, advancedAxis.x.z);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX"), advancedAxis.lower.x);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 4, advancedAxis.lower.y);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 8, advancedAxis.lower.z);
 
-            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 12, advancedAxis.y.x);
-            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 16, advancedAxis.y.y);
-            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 20, advancedAxis.y.z);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 12, advancedAxis.upper.x);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 16, advancedAxis.upper.y);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 20, advancedAxis.upper.z);
         } // Teleportation
 
         public static void swing()
@@ -750,13 +750,13 @@ namespace Trero.ClientBase
 
     public struct AABB
     {
-        public Vector3 x;
-        public Vector3 y;
+        public Vector3 lower;
+        public Vector3 upper;
 
         public AABB(Vector3 x, Vector3 y)
         {
-            this.x = x;
-            this.y = y;
+            this.lower = x;
+            this.upper = y;
         }
     }
 }
