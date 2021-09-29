@@ -344,14 +344,6 @@ namespace Trero.ClientBase.UIBase
         {
             SuspendLayout();
 
-            panel7.SuspendLayout();
-            panel15.SuspendLayout();
-            panel13.SuspendLayout();
-            panel9.SuspendLayout();
-            panel11.SuspendLayout();
-            panel17.SuspendLayout();
-            TestCategory.SuspendLayout();
-
             cValidate(panel7, panel6);
             cValidate(panel15, panel14);
             cValidate(panel13, panel12);
@@ -359,14 +351,7 @@ namespace Trero.ClientBase.UIBase
             cValidate(panel11, panel10);
             cValidate(panel17, panel16);
             cValidate(TestCategory, panel2);
-
-            panel7.ResumeLayout();
-            panel15.ResumeLayout(); // these may be useless im just testing atm.
-            panel13.ResumeLayout();
-            panel9.ResumeLayout();
-            panel11.ResumeLayout();
-            panel17.ResumeLayout();
-            TestCategory.ResumeLayout();
+            cValidate(panel22, panel21);
 
             ResumeLayout();
         }

@@ -713,7 +713,7 @@
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Location = new System.Drawing.Point(946, 10);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(150, 189);
+            this.panel21.Size = new System.Drawing.Size(150, 359);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
             this.panel21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseDown);
@@ -744,9 +744,9 @@
             this.panel22.Controls.Add(this.button3);
             this.panel22.Controls.Add(this.button4);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel22.Location = new System.Drawing.Point(0, 22);
+            this.panel22.Location = new System.Drawing.Point(0, 24);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(150, 167);
+            this.panel22.Size = new System.Drawing.Size(150, 335);
             this.panel22.TabIndex = 0;
             // 
             // button3
