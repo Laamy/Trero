@@ -183,7 +183,7 @@
             this.ClonablePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ClonablePanel.Location = new System.Drawing.Point(0, 0);
             this.ClonablePanel.Name = "ClonablePanel";
-            this.ClonablePanel.Size = new System.Drawing.Size(150, 24);
+            this.ClonablePanel.Size = new System.Drawing.Size(150, 32);
             this.ClonablePanel.TabIndex = 5;
             this.ClonablePanel.Visible = false;
             // 
@@ -193,7 +193,7 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Top;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label13.ForeColor = System.Drawing.SystemColors.Control;
-            this.label13.Location = new System.Drawing.Point(0, 24);
+            this.label13.Location = new System.Drawing.Point(0, 32);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 17);
             this.label13.TabIndex = 6;
@@ -209,7 +209,7 @@
             this.ClonableButton.ForeColor = System.Drawing.SystemColors.Control;
             this.ClonableButton.Location = new System.Drawing.Point(0, 0);
             this.ClonableButton.Name = "ClonableButton";
-            this.ClonableButton.Size = new System.Drawing.Size(150, 24);
+            this.ClonableButton.Size = new System.Drawing.Size(150, 32);
             this.ClonableButton.TabIndex = 5;
             this.ClonableButton.TabStop = false;
             this.ClonableButton.Tag = "ModuleButton";
@@ -771,6 +771,7 @@
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(150, 21);
             this.panel23.TabIndex = 12;
+            this.panel23.Visible = false;
             // 
             // label14
             // 
@@ -820,6 +821,7 @@
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(150, 21);
             this.panel24.TabIndex = 13;
+            this.panel24.Visible = false;
             // 
             // label15
             // 
