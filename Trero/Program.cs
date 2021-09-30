@@ -101,7 +101,7 @@ namespace Trero
             Modules.Add(new Glide());
             Modules.Add(new Killaura());
             Modules.Add(new AntiImmoblie());
-            Modules.Add(new Reach());
+            //Modules.Add(new Reach());
             Modules.Add(new Limiter()); // CPU saver
             Modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
             Modules.Add(new Friends());
