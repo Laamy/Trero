@@ -183,7 +183,7 @@
             this.ClonablePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ClonablePanel.Location = new System.Drawing.Point(0, 0);
             this.ClonablePanel.Name = "ClonablePanel";
-            this.ClonablePanel.Size = new System.Drawing.Size(150, 32);
+            this.ClonablePanel.Size = new System.Drawing.Size(150, 28);
             this.ClonablePanel.TabIndex = 5;
             this.ClonablePanel.Visible = false;
             // 
@@ -193,7 +193,7 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Top;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label13.ForeColor = System.Drawing.SystemColors.Control;
-            this.label13.Location = new System.Drawing.Point(0, 32);
+            this.label13.Location = new System.Drawing.Point(0, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 17);
             this.label13.TabIndex = 6;
@@ -209,7 +209,7 @@
             this.ClonableButton.ForeColor = System.Drawing.SystemColors.Control;
             this.ClonableButton.Location = new System.Drawing.Point(0, 0);
             this.ClonableButton.Name = "ClonableButton";
-            this.ClonableButton.Size = new System.Drawing.Size(150, 32);
+            this.ClonableButton.Size = new System.Drawing.Size(150, 28);
             this.ClonableButton.TabIndex = 5;
             this.ClonableButton.TabStop = false;
             this.ClonableButton.Tag = "ModuleButton";
@@ -767,7 +767,7 @@
             this.panel23.Controls.Add(this.label14);
             this.panel23.Controls.Add(this.PotionAmplifier);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel23.Location = new System.Drawing.Point(0, 261);
+            this.panel23.Location = new System.Drawing.Point(0, 301);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(150, 21);
             this.panel23.TabIndex = 12;
@@ -817,7 +817,7 @@
             this.panel24.Controls.Add(this.label15);
             this.panel24.Controls.Add(this.PotionDiritation);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel24.Location = new System.Drawing.Point(0, 240);
+            this.panel24.Location = new System.Drawing.Point(0, 280);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(150, 21);
             this.panel24.TabIndex = 13;
@@ -870,9 +870,9 @@
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.ForeColor = System.Drawing.SystemColors.Control;
-            this.button12.Location = new System.Drawing.Point(0, 216);
+            this.button12.Location = new System.Drawing.Point(0, 252);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(150, 24);
+            this.button12.Size = new System.Drawing.Size(150, 28);
             this.button12.TabIndex = 18;
             this.button12.TabStop = false;
             this.button12.Tag = "ModuleButton";
@@ -888,9 +888,9 @@
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.SystemColors.Control;
-            this.button11.Location = new System.Drawing.Point(0, 192);
+            this.button11.Location = new System.Drawing.Point(0, 224);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(150, 24);
+            this.button11.Size = new System.Drawing.Size(150, 28);
             this.button11.TabIndex = 17;
             this.button11.TabStop = false;
             this.button11.Tag = "ModuleButton";
@@ -906,9 +906,9 @@
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.ForeColor = System.Drawing.SystemColors.Control;
-            this.button10.Location = new System.Drawing.Point(0, 168);
+            this.button10.Location = new System.Drawing.Point(0, 196);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(150, 24);
+            this.button10.Size = new System.Drawing.Size(150, 28);
             this.button10.TabIndex = 16;
             this.button10.TabStop = false;
             this.button10.Tag = "ModuleButton";
@@ -924,9 +924,9 @@
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.SystemColors.Control;
-            this.button9.Location = new System.Drawing.Point(0, 144);
+            this.button9.Location = new System.Drawing.Point(0, 168);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(150, 24);
+            this.button9.Size = new System.Drawing.Size(150, 28);
             this.button9.TabIndex = 15;
             this.button9.TabStop = false;
             this.button9.Tag = "ModuleButton";
@@ -942,9 +942,9 @@
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.ForeColor = System.Drawing.SystemColors.Control;
-            this.button8.Location = new System.Drawing.Point(0, 120);
+            this.button8.Location = new System.Drawing.Point(0, 140);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(150, 24);
+            this.button8.Size = new System.Drawing.Size(150, 28);
             this.button8.TabIndex = 14;
             this.button8.TabStop = false;
             this.button8.Tag = "ModuleButton";
@@ -960,9 +960,9 @@
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.SystemColors.Control;
-            this.button7.Location = new System.Drawing.Point(0, 96);
+            this.button7.Location = new System.Drawing.Point(0, 112);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(150, 24);
+            this.button7.Size = new System.Drawing.Size(150, 28);
             this.button7.TabIndex = 10;
             this.button7.TabStop = false;
             this.button7.Tag = "ModuleButton";
@@ -978,9 +978,9 @@
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.SystemColors.Control;
-            this.button6.Location = new System.Drawing.Point(0, 72);
+            this.button6.Location = new System.Drawing.Point(0, 84);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(150, 24);
+            this.button6.Size = new System.Drawing.Size(150, 28);
             this.button6.TabIndex = 9;
             this.button6.TabStop = false;
             this.button6.Tag = "ModuleButton";
@@ -996,9 +996,9 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.Control;
-            this.button5.Location = new System.Drawing.Point(0, 48);
+            this.button5.Location = new System.Drawing.Point(0, 56);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 24);
+            this.button5.Size = new System.Drawing.Size(150, 28);
             this.button5.TabIndex = 8;
             this.button5.TabStop = false;
             this.button5.Tag = "ModuleButton";
@@ -1014,9 +1014,9 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.Control;
-            this.button3.Location = new System.Drawing.Point(0, 24);
+            this.button3.Location = new System.Drawing.Point(0, 28);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 24);
+            this.button3.Size = new System.Drawing.Size(150, 28);
             this.button3.TabIndex = 6;
             this.button3.TabStop = false;
             this.button3.Tag = "ModuleButton";
@@ -1034,7 +1034,7 @@
             this.button4.ForeColor = System.Drawing.SystemColors.Control;
             this.button4.Location = new System.Drawing.Point(0, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 24);
+            this.button4.Size = new System.Drawing.Size(150, 28);
             this.button4.TabIndex = 7;
             this.button4.TabStop = false;
             this.button4.Tag = "ModuleButton";
