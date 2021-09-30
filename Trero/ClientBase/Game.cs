@@ -48,6 +48,32 @@ namespace Trero.ClientBase
         public static ulong speedSubClass => MCM.readInt64(speedClass + VersionClass.GetData("SpeedClass+2"));
         public static ulong speedSubSubClass => MCM.readInt64(speedSubClass + VersionClass.GetData("SpeedClass+3"));
 
+        public static ulong keyInfo
+        {
+            get
+            {
+                return MCM.baseEvaluatePointer(VersionClass.GetData("gameMap+1"), new[]
+                {
+                    VersionClass.GetData("gameMap+2"),
+                    VersionClass.GetData("gameMap+3"),
+                    VersionClass.GetData("gameMap+4"),
+                    VersionClass.GetData("gameMap+5"),
+                    VersionClass.GetData("gameMap+6")
+                });
+            }
+        } // keyInfo
+        public static ulong eKeyInfo
+        {
+            get
+            {
+                return MCM.evaluatePointer(keyInfo, new ulong[]
+                {
+                    VersionClass.GetData("gameMap+7"),
+                    0x0
+                });
+            }
+        } // keyInfo
+
         public static ulong EntityListStart =>
             MCM.readInt64(level + VersionClass.GetData("entitylist+1")); // entityliststart
 
@@ -208,6 +234,44 @@ namespace Trero.ClientBase
                 else MCM.writeInt(localPlayer + VersionClass.GetData("onGround"), 0);
             }
         } // onGround
+
+        public static byte inMenu // Might use this for clickgui!
+        {
+            get => MCM.readByte(eKeyInfo + VersionClass.GetData("inMenu"));
+            set => MCM.writeByte(eKeyInfo + VersionClass.GetData("inMenu"), value);
+        } // inMenu
+
+        public static byte Hitting
+        {
+            get => MCM.readByte(eKeyInfo + VersionClass.GetData("Hitting"));
+            set => MCM.writeByte(eKeyInfo + VersionClass.GetData("Hitting"), value);
+        } // Hitting
+
+        public static byte Placing
+        {
+            get => MCM.readByte(eKeyInfo + VersionClass.GetData("Placing"));
+            set => MCM.writeByte(eKeyInfo + VersionClass.GetData("Placing"), value);
+        } // Placing
+
+        public static byte Picking
+        {
+            get => MCM.readByte(eKeyInfo + VersionClass.GetData("Picking"));
+            set => MCM.writeByte(eKeyInfo + VersionClass.GetData("Picking"), value);
+        } // Picking 
+
+        public static short mouseX
+        {
+            get => MCM.readInt16(eKeyInfo + VersionClass.GetData("mouseX"));
+            set => MCM.writeInt16(eKeyInfo + VersionClass.GetData("mouseX"), value);
+        } // mouseX 
+
+        public static short mouseY
+        {
+            get => MCM.readInt16(eKeyInfo + VersionClass.GetData("mouseY"));
+            set => MCM.writeInt16(eKeyInfo + VersionClass.GetData("mouseY"), value);
+        } // mouseY
+
+        // Would define a eKeymap function here but i just dont need it yet lol
 
         public static bool isFlying
         {

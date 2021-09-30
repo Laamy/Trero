@@ -305,6 +305,13 @@ namespace Trero.ClientBase
             return (int)buffer;
         }
 
+        public static short readInt16(ulong address)
+        {
+            ulong buffer = 0;
+            ReadProcessMemory(mcProcHandle, address, ref buffer, sizeof(short), 0);
+            return (short)buffer;
+        }
+
         public static float readFloat(ulong address)
         {
             ulong buffer = 0;
@@ -353,6 +360,17 @@ namespace Trero.ClientBase
         }
 
         public static void writeInt(ulong address, int value)
+        {
+            var intByte = BitConverter.GetBytes(value);
+            var inc = 0;
+            foreach (var b in intByte)
+            {
+                writeByte(address + (ulong)inc, b);
+                inc++;
+            }
+        }
+
+        public static void writeInt16(ulong address, short value)
         {
             var intByte = BitConverter.GetBytes(value);
             var inc = 0;

@@ -57,7 +57,7 @@ namespace Trero
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
 
             // Debug shit here
-            // Console.WriteLine(Game.speed);
+            Console.WriteLine(Game.keyInfo.ToString("X"));
 
             Console.WriteLine(@"Registering modules...");
 
@@ -120,6 +120,8 @@ namespace Trero
             Modules.Add(new RainbowEffects());
             Modules.Add(new Velocity()); // Anti-KB
             //Modules.Add(new NoLagBack());
+            Modules.Add(new RapidHit());
+            Modules.Add(new RapidPlace());
 
             Console.WriteLine(@"Registered modules!");
 

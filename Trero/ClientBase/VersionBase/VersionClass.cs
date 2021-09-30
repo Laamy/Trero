@@ -56,49 +56,14 @@
                 0x18, // SpeedSubClass
                 0x2C0, // SpeedSubSubClass
                 0x9C, // SpeedValue
-            }),
-            // MCBE 1.17.11
-            new IVersion(new object[]
-            {
-                "MCBE-1.17.11",
-                0x041457D8, 0x0, 0x20, 0xC8,
-                0x1E0,
-                0x1E4,
-                0x240,
-                0x2B0,
-                0x1E08,
-                0x9C0,
-                0x250,
-                0x250 + 16,
-                0x228A,
-                0x2274,
-                0x0,
-                0x22F8,
-                0x9D8,
-                0x2370,
-                0x410,
-                0x11E0,
-                0x920,
-                0x370, 0x18,
-                0x4D0,
-                0x4D0 + 28,
-                0x50C,
-                0x7A0,
-                0x10B8,
-                0x265,
-                0x148,
-                0x378,
-                0x58, 0x68, // Full entity list size
-                0x0, // 0x95F4
-                0x988,
-                0x98C,
-                0x990,
-                0x040A41F8, 0x814,
-                0x04120400, 0x8, 0x48, 0xA0, 0x128,
-                0x10F0,
-                0x0, // EffectsClass
-                0x0, // EffectsSubClass
-                0x0 // EffectsColor
+                0x0410C178, 0x0, 0x28, 0x8, 0x120, 0x2E0, 0x8, // vKeyInfo
+                0x4B, // inMenu
+                0x50, // Hitting
+                0x51, // Placing
+                0x52, // Picking
+                0x138, // mouseX
+                0x13A, // mouseY
+                0x13E, // eKeymap
             }),
         };
 
@@ -148,6 +113,20 @@
             "SpeedClass+2",
             "SpeedClass+3",
             "SpeedValue",
+            "gameMap+1",
+            "gameMap+2",
+            "gameMap+3",
+            "gameMap+4",
+            "gameMap+5",
+            "gameMap+6",
+            "gameMap+7",
+            "inMenu",
+            "Hitting",
+            "Placing",
+            "Picking",
+            "mouseX",
+            "mouseY",
+            "eKeymap",
         });
 
         private static IVersion _cv;
