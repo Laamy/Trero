@@ -41,8 +41,12 @@ namespace Trero.ClientBase
         } // localPlayer
 
         public static ulong level => MCM.readInt64(localPlayer + VersionClass.GetData("level")); // level
-        public static ulong vEffectsClass => MCM.readInt64(localPlayer + VersionClass.GetData("EffectsClass+1")); // level
-        public static ulong effectsClass => MCM.readInt64(vEffectsClass + VersionClass.GetData("EffectsClass+2")); // level
+        public static ulong vEffectsClass => MCM.readInt64(localPlayer + VersionClass.GetData("EffectsClass+1"));
+        public static ulong effectsClass => MCM.readInt64(vEffectsClass + VersionClass.GetData("EffectsClass+2"));
+
+        public static ulong speedClass => MCM.readInt64(localPlayer + VersionClass.GetData("SpeedClass+1"));
+        public static ulong speedSubClass => MCM.readInt64(speedClass + VersionClass.GetData("SpeedClass+2"));
+        public static ulong speedSubSubClass => MCM.readInt64(speedSubClass + VersionClass.GetData("SpeedClass+3"));
 
         public static ulong EntityListStart =>
             MCM.readInt64(level + VersionClass.GetData("entitylist+1")); // entityliststart
@@ -231,6 +235,12 @@ namespace Trero.ClientBase
         {
             get => MCM.readFloat(localPlayer + VersionClass.GetData("stepHeight"));
             set => MCM.writeFloat(localPlayer + VersionClass.GetData("stepHeight"), value);
+        } // stepHeight
+
+        public static float speed
+        {
+            get => MCM.readFloat(speedSubSubClass + VersionClass.GetData("SpeedValue"));
+            set => MCM.writeFloat(speedSubSubClass + VersionClass.GetData("SpeedValue"), value);
         } // stepHeight
 
         public static Vector3 lVector

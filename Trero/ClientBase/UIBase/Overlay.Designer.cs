@@ -794,7 +794,7 @@
             0});
             this.PotionAmplifier.Location = new System.Drawing.Point(76, 0);
             this.PotionAmplifier.Maximum = new decimal(new int[] {
-            255,
+            256,
             0,
             0,
             0});

@@ -46,8 +46,6 @@ namespace Trero
 
             Process.Start("minecraft://");
 
-            //Thread.Sleep(1000);
-
             MCM.openGame();
             MCM.openWindowHost();
 
@@ -57,6 +55,9 @@ namespace Trero
             Console.WriteLine("Trero v" + VersionClass.currentVersion.name);
 
             new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
+
+            // Debug shit here
+            // Console.WriteLine(Game.speed);
 
             Console.WriteLine(@"Registering modules...");
 

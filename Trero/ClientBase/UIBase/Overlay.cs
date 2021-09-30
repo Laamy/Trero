@@ -750,43 +750,9 @@ namespace Trero.ClientBase.UIBase
         {
             Faketernal.Potions.RunFakeEffect((i, c) => { // give speed effect
 
-                if (Game.onGround == true) // Oof...
-                {
-                    var plrYaw = Game.bodyRots.y; // yaw
+                Game.speed = (c * 0.022f) + 0.1f; // Thanks javajar for this equation ;p
 
-                    if (Keymap.GetAsyncKeyState(Keys.W))
-                    {
-                        if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
-                            plrYaw += 90f;
-                        if (Keymap.GetAsyncKeyState(Keys.A))
-                            plrYaw += 45f;
-                        else if (Keymap.GetAsyncKeyState(Keys.D))
-                            plrYaw += 135f;
-                    }
-                    else if (Keymap.GetAsyncKeyState(Keys.S))
-                    {
-                        if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
-                            plrYaw -= 90f;
-                        if (Keymap.GetAsyncKeyState(Keys.A))
-                            plrYaw -= 45f;
-                        else if (Keymap.GetAsyncKeyState(Keys.D))
-                            plrYaw -= 135f;
-                    }
-                    else if (!Keymap.GetAsyncKeyState(Keys.W) && !Keymap.GetAsyncKeyState(Keys.S))
-                    {
-                        if (!Keymap.GetAsyncKeyState(Keys.A) && Keymap.GetAsyncKeyState(Keys.D))
-                            plrYaw += 180f;
-                    }
-
-                    if (!(Keymap.GetAsyncKeyState(Keys.W) | Keymap.GetAsyncKeyState(Keys.A) | Keymap.GetAsyncKeyState(Keys.S) |
-                          Keymap.GetAsyncKeyState(Keys.D))) return;
-                    var calYaw = plrYaw * ((float)Math.PI / 180f);
-
-                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * (0.25f * c));
-                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, (float)Math.Sin(calYaw) * (0.25f * c));
-                }
-
-            }, new iRGB(198, 175, 124), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 2f);
+            }, new iRGB(198, 175, 124), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 2f, () => { Game.speed = 0.1f; });
         }
 
         private void button7_Click(object sender, EventArgs e)

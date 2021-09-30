@@ -51,7 +51,11 @@
                 0x1140, // fieldOfView
                 0x178, // EffectsClass
                 0x40, // EffectsSubClass
-                0x10 // EffectsColor
+                0x10, // EffectsColor
+                0x490, // SpeedClass
+                0x18, // SpeedSubClass
+                0x2C0, // SpeedSubSubClass
+                0x9C, // SpeedValue
             }),
             // MCBE 1.17.11
             new IVersion(new object[]
@@ -140,6 +144,10 @@
             "EffectsClass+1",
             "EffectsClass+2",
             "EffectsColor",
+            "SpeedClass+1",
+            "SpeedClass+2",
+            "SpeedClass+3",
+            "SpeedValue",
         });
 
         private static IVersion _cv;
