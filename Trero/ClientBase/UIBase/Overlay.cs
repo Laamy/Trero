@@ -832,6 +832,23 @@ namespace Trero.ClientBase.UIBase
 
             }, new iRGB(128, 76, 146), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 1f, () => { Game.stepHeight = 0.5f; });
         }
+
+        private void panel21_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                foreach (Control c in panel22.Controls)
+                    c.Visible = !c.Visible;
+
+                InvalidateCategories();
+            }
+        }
+        private void label11_MouseClick(object sender, MouseEventArgs e) => panel21_MouseClick(sender, e);
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -721,6 +721,7 @@
             this.panel21.Size = new System.Drawing.Size(150, 359);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
+            this.panel21.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseClick);
             this.panel21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseDown);
             this.panel21.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseMove);
             // 
@@ -735,6 +736,7 @@
             this.label11.Size = new System.Drawing.Size(40, 13);
             this.label11.TabIndex = 5;
             this.label11.Text = "Effects";
+            this.label11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label11_MouseClick);
             this.label11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label11_MouseDown);
             this.label11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label11_MouseMove);
             // 
@@ -787,11 +789,6 @@
             this.PotionAmplifier.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PotionAmplifier.Dock = System.Windows.Forms.DockStyle.Right;
             this.PotionAmplifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.PotionAmplifier.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.PotionAmplifier.Location = new System.Drawing.Point(76, 0);
             this.PotionAmplifier.Maximum = new decimal(new int[] {
             256,
@@ -834,6 +831,7 @@
             this.label15.Size = new System.Drawing.Size(60, 16);
             this.label15.TabIndex = 6;
             this.label15.Text = "Diritation";
+            this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // PotionDiritation
             // 
@@ -841,11 +839,6 @@
             this.PotionDiritation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PotionDiritation.Dock = System.Windows.Forms.DockStyle.Right;
             this.PotionDiritation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.PotionDiritation.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.PotionDiritation.Location = new System.Drawing.Point(76, 0);
             this.PotionDiritation.Maximum = new decimal(new int[] {
             99999,
@@ -862,7 +855,7 @@
             this.PotionDiritation.TabIndex = 11;
             this.PotionDiritation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PotionDiritation.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
