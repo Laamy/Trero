@@ -750,7 +750,7 @@ namespace Trero.ClientBase.UIBase
         {
             Faketernal.Potions.RunFakeEffect((i, c) => { // give speed effect
 
-                Game.speed = (c * 0.022f) + 0.1f; // Thanks javajar for this equation ;p
+                Game.speed = (c * 0.0200000009f) + 0.1f; // Thanks javajar for this equation ;p
 
             }, new iRGB(198, 175, 124), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 2f, () => { Game.speed = 0.1f; });
         }
