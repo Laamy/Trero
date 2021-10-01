@@ -122,7 +122,7 @@ namespace Trero
             //Modules.Add(new NoLagBack());
             Modules.Add(new RapidHit());
             Modules.Add(new RapidPlace());
-            //Modules.Add(new HiveFly());
+            // Modules.Add(new HiveFly());
             Modules.Add(new OGMFly());
 
             Console.WriteLine(@"Registered modules!");
