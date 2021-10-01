@@ -407,7 +407,7 @@ namespace Trero.ClientBase.UIBase
                 var btn = (Button)sender;
                 if (btn == null) return;
 
-                if (btn.Parent.Height > 24)
+                if (btn.Parent.Height > 30)
                     btn.Parent.Size = ClonableButton.Size;
                 else
                 {
