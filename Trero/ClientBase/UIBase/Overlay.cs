@@ -849,6 +849,16 @@ namespace Trero.ClientBase.UIBase
         {
 
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel23_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

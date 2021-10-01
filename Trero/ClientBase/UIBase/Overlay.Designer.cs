@@ -718,7 +718,7 @@
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Location = new System.Drawing.Point(946, 10);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(150, 359);
+            this.panel21.Size = new System.Drawing.Size(150, 379);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
             this.panel21.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseClick);
@@ -758,7 +758,7 @@
             this.panel22.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel22.Location = new System.Drawing.Point(0, 24);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(150, 335);
+            this.panel22.Size = new System.Drawing.Size(150, 355);
             this.panel22.TabIndex = 0;
             // 
             // panel23
@@ -767,29 +767,31 @@
             this.panel23.Controls.Add(this.label14);
             this.panel23.Controls.Add(this.PotionAmplifier);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel23.Location = new System.Drawing.Point(0, 301);
+            this.panel23.Location = new System.Drawing.Point(0, 308);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(150, 21);
+            this.panel23.Size = new System.Drawing.Size(150, 28);
             this.panel23.TabIndex = 12;
             this.panel23.Visible = false;
+            this.panel23.Paint += new System.Windows.Forms.PaintEventHandler(this.panel23_Paint);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label14.Location = new System.Drawing.Point(3, 2);
+            this.label14.Location = new System.Drawing.Point(6, 6);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(60, 16);
             this.label14.TabIndex = 6;
             this.label14.Text = "Amplifier";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // PotionAmplifier
             // 
             this.PotionAmplifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.PotionAmplifier.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PotionAmplifier.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PotionAmplifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PotionAmplifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.PotionAmplifier.Location = new System.Drawing.Point(76, 0);
             this.PotionAmplifier.Maximum = new decimal(new int[] {
             256,
@@ -802,7 +804,7 @@
             0,
             0});
             this.PotionAmplifier.Name = "PotionAmplifier";
-            this.PotionAmplifier.Size = new System.Drawing.Size(74, 22);
+            this.PotionAmplifier.Size = new System.Drawing.Size(74, 25);
             this.PotionAmplifier.TabIndex = 11;
             this.PotionAmplifier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PotionAmplifier.Value = new decimal(new int[] {
@@ -819,7 +821,7 @@
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel24.Location = new System.Drawing.Point(0, 280);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(150, 21);
+            this.panel24.Size = new System.Drawing.Size(150, 28);
             this.panel24.TabIndex = 13;
             this.panel24.Visible = false;
             // 
@@ -828,7 +830,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label15.Location = new System.Drawing.Point(3, 2);
+            this.label15.Location = new System.Drawing.Point(6, 6);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 16);
             this.label15.TabIndex = 6;
@@ -840,7 +842,7 @@
             this.PotionDiritation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.PotionDiritation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PotionDiritation.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PotionDiritation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.PotionDiritation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.PotionDiritation.Location = new System.Drawing.Point(76, 0);
             this.PotionDiritation.Maximum = new decimal(new int[] {
             99999,
@@ -853,7 +855,7 @@
             0,
             0});
             this.PotionDiritation.Name = "PotionDiritation";
-            this.PotionDiritation.Size = new System.Drawing.Size(74, 22);
+            this.PotionDiritation.Size = new System.Drawing.Size(74, 25);
             this.PotionDiritation.TabIndex = 11;
             this.PotionDiritation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PotionDiritation.Value = new decimal(new int[] {
