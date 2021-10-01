@@ -119,9 +119,11 @@ namespace Trero
             Modules.Add(new MineplexFlyv2());
             Modules.Add(new RainbowEffects());
             Modules.Add(new Velocity()); // Anti-KB
-            Modules.Add(new NoLagBack());
+            //Modules.Add(new NoLagBack());
             Modules.Add(new RapidHit());
             Modules.Add(new RapidPlace());
+            //Modules.Add(new HiveFly());
+            Modules.Add(new OGMFly());
 
             Console.WriteLine(@"Registered modules!");
 

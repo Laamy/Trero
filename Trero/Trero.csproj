@@ -104,6 +104,8 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\HiveFly.cs" />
+    <Compile Include="Modules\OGMFly.cs" />
     <Compile Include="Modules\RapidPlace.cs" />
     <Compile Include="Modules\RapidHit.cs" />
     <Compile Include="Modules\NoLagBack.cs" />
