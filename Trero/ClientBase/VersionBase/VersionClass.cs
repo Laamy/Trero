@@ -64,6 +64,7 @@
                 0x138, // mouseX
                 0x13A, // mouseY
                 0x13E, // eKeymap
+                0x1D9, // onground2
             }),
         };
 
@@ -127,6 +128,7 @@
             "mouseX",
             "mouseY",
             "eKeymap",
+            "onGround2",
         });
 
         private static IVersion _cv;

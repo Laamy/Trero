@@ -225,14 +225,16 @@ namespace Trero.ClientBase
             }
         } // CompassRotations
 
-        public static bool onGround // might move the version sdk into this game class...
+        public static bool onGround
         {
-            get => MCM.readInt(localPlayer + VersionClass.GetData("onGround")) != 0;
-            set
-            {
-                if (value) MCM.writeInt(localPlayer + VersionClass.GetData("onGround"), 16777473);
-                else MCM.writeInt(localPlayer + VersionClass.GetData("onGround"), 0);
-            }
+            get => MCM.readByte(localPlayer + VersionClass.GetData("onGround")) == 1;
+            set => MCM.writeByte(localPlayer + VersionClass.GetData("onGround"), value ? (byte)0 : (byte)1);
+        } // onGround
+
+        public static bool onGround2
+        {
+            get => MCM.readByte(localPlayer + VersionClass.GetData("onGround2")) == 1;
+            set => MCM.writeByte(localPlayer + VersionClass.GetData("onGround2"), value ? (byte)0 : (byte)1);
         } // onGround
 
         public static byte inMenu // Might use this for clickgui!
@@ -430,6 +432,22 @@ namespace Trero.ClientBase
             MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 12, advancedAxis.upper.x);
             MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 16, advancedAxis.upper.y);
             MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 20, advancedAxis.upper.z);
+        } // Teleportation
+
+        public static void vclip(float y)
+        {
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX"), position.x);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 4, position.y + y);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 8, position.z);
+
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 12, position.x + 0.6f);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 16, position.y + 1.8f + y);
+            MCM.writeFloat(localPlayer + VersionClass.GetData("positionX") + 20, position.z + 0.6f);
+        } // Teleportation
+
+        public static void vflip(float y)
+        {
+            MCM.writeFloat(localPlayer + VersionClass.GetData("velocity") + 4, y);
         } // Teleportation
 
         public static void swing()

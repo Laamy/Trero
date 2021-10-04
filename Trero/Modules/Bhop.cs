@@ -55,7 +55,7 @@ namespace Trero.Modules
             if (bypasses[0].curIndex == 0)
             {
                 MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * 0.7f);
-                if (Game.touchingObject == 1) // jump for bhop
+                if (Game.onGround2) // jump for bhop
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.3f);
                 //Console.WriteLine(Game.onGround2);
                 MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8,
@@ -63,12 +63,12 @@ namespace Trero.Modules
             }
             else // Hive bypass
             {
-                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * 0.5f);
-                if (Game.touchingObject == 1) // jump for bhop
-                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.25f);
+                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * 0.4f);
+                if (Game.onGround2) // jump for bhop
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.15f);
                 //Console.WriteLine(Game.onGround2);
                 MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8,
-                    (float)Math.Sin(calYaw) * 0.5f);
+                    (float)Math.Sin(calYaw) * 0.4f);
             }
         }
     }

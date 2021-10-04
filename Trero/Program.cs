@@ -124,6 +124,8 @@ namespace Trero
             Modules.Add(new RapidPlace());
             // Modules.Add(new HiveFly());
             Modules.Add(new OGMFly());
+            Modules.Add(new InPvPTower()); // Untested
+            //Modules.Add(new Disabler());
 
             Console.WriteLine(@"Registered modules!");
 

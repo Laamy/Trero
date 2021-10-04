@@ -15,6 +15,15 @@ namespace Trero.Modules
         {
         } // 0x07 = no keybind
 
+        public override void OnEnable()
+        {
+            base.OnEnable();
+
+            foreach (var mod in Program.Modules)
+                if (mod.name == "Disabler" && mod.enabled)
+                    Game.vclip(0.5f);
+        }
+
         public override void OnTick()
         {
             if (Game.isNull) return;
@@ -32,9 +41,15 @@ namespace Trero.Modules
             }
 
             if (Keymap.GetAsyncKeyState((char)Keys.Space))
-                newVel.y += 0.6f;
-            if (Keymap.GetAsyncKeyState((char)Keys.LShiftKey)) //Working Fly 
+            {
+                foreach (var mod in Program.Modules)
+                    if (mod.name == "Disabler" && !mod.enabled)
+                        newVel.y += 0.6f;
+            }
+            if (Keymap.GetAsyncKeyState((char)Keys.LShiftKey))
+            {
                 newVel.y -= 0.6f;
+            }
 
             Game.velocity = newVel;
         }

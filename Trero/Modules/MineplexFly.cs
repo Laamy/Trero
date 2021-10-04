@@ -19,7 +19,8 @@ namespace Trero.Modules
 
         public override void OnEnable()
         {
-            MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.5f);
+            Game.vclip(0.5f);
+
             base.OnEnable();
         }
 
@@ -49,7 +50,7 @@ namespace Trero.Modules
             Game.position = pos;
 
             if (Game.touchingObject == 1)
-                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.3f);
+                Game.vflip(0.3f);
         }
     }
 }
