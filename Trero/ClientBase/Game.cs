@@ -55,10 +55,7 @@ namespace Trero.ClientBase
                 return MCM.baseEvaluatePointer(VersionClass.GetData("gameMap+1"), new[]
                 {
                     VersionClass.GetData("gameMap+2"),
-                    VersionClass.GetData("gameMap+3"),
-                    VersionClass.GetData("gameMap+4"),
-                    VersionClass.GetData("gameMap+5"),
-                    VersionClass.GetData("gameMap+6")
+                    VersionClass.GetData("gameMap+3")
                 });
             }
         } // keyInfo
@@ -68,7 +65,7 @@ namespace Trero.ClientBase
             {
                 return MCM.evaluatePointer(keyInfo, new ulong[]
                 {
-                    VersionClass.GetData("gameMap+7"),
+                    VersionClass.GetData("gameMap+4"),
                     0x0
                 });
             }

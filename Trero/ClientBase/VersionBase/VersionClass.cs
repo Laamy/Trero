@@ -7,8 +7,8 @@
             // MCBE 1.17.30
             new IVersion(new object[]
             {
-                "MCBE-1.17.32 / MCBE-1.17.34",
-                0x0411FEC8, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
+                "MCBE-1.17.40",
+                0x04208438, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
                 0x1D8, // onground
                 0x1DC, // onground 2
                 0x238, // stepHeight
@@ -56,7 +56,7 @@
                 0x18, // SpeedSubClass
                 0x2C0, // SpeedSubSubClass
                 0x9C, // SpeedValue
-                0x0410B128, 0x0, 0x28, 0x0, 0x110, 0x2E0, 0x8, // vKeyInfo
+                0x04170078, 0x490, 0x2A0, 0x8, // vKeyInfo
                 0x4B, // inMenu
                 0x50, // Hitting
                 0x51, // Placing
@@ -118,9 +118,6 @@
             "gameMap+2",
             "gameMap+3",
             "gameMap+4",
-            "gameMap+5",
-            "gameMap+6",
-            "gameMap+7",
             "inMenu",
             "Hitting",
             "Placing",
