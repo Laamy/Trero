@@ -72,7 +72,7 @@ namespace Trero
             Modules.Add(new TPAura());
             Modules.Add(new ClosestPlayerDisplay());
             Modules.Add(new PlayerDisplay());
-            Modules.Add(new TriggerBot()); // no longer in accessable lp area
+            //Modules.Add(new TriggerBot()); // no longer in accessable lp area
             Modules.Add(new Hitbox());
             Modules.Add(new FlickerExample());
             Modules.Add(new Phase());
@@ -118,13 +118,13 @@ namespace Trero
             Modules.Add(new Welcome());
             Modules.Add(new MineplexFlyv2());
             Modules.Add(new RainbowEffects());
-            Modules.Add(new Velocity()); // Anti-KB
+            //Modules.Add(new Velocity()); // Anti-KB
             //Modules.Add(new NoLagBack());
-            Modules.Add(new RapidHit());
-            Modules.Add(new RapidPlace());
+            //Modules.Add(new RapidHit());
+            //Modules.Add(new RapidPlace());
             // Modules.Add(new HiveFly());
             Modules.Add(new OGMFly());
-            Modules.Add(new InPvPTower()); // Untested
+            //Modules.Add(new InPvPTower()); // Untested
             //Modules.Add(new Disabler());
 
             Console.WriteLine(@"Registered modules!");

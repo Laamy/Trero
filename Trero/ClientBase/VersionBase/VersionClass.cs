@@ -15,16 +15,16 @@
                 0x2A8, // worldAge
                 0x1E6C, // gamemode
                 0x9A0, // isFlying
-                0x0, // blocksTraveled_Ex
-                0x0, // blocksTraveled
+                0x240, // blocksTraveled_Ex
+                0x258, // blocksTraveled
                 0x2370, // helditemCount
-                0x0, // holdingItem
+                0x236A, // holdingItem
                 0x0, // holdingItemId
-                0x0, // selectedHotbarId
+                0x023D8, // selectedHotbarId
                 0x0, // viewCreativeItems
                 0x0, // viewCreativeItemsSelectedCategory
                 0x400, // entityType
-                0x0, // inInventory
+                0x1230, // inInventory
                 0x900, // username
                 0x360, 0x0, // gameDim
                 0x4C0, // position
@@ -65,6 +65,7 @@
                 0x13A, // mouseY
                 0x13E, // eKeymap
                 0x1D9, // onground2
+                0x2C9, // onground2
             }),
         };
 
@@ -125,7 +126,8 @@
             "mouseX",
             "mouseY",
             "eKeymap",
-            "onGround2",
+            "onGround3",
+            "isInLava",
         });
 
         private static IVersion _cv;

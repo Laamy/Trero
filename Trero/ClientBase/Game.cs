@@ -230,8 +230,8 @@ namespace Trero.ClientBase
 
         public static bool onGround2
         {
-            get => MCM.readByte(localPlayer + VersionClass.GetData("onGround2")) == 1;
-            set => MCM.writeByte(localPlayer + VersionClass.GetData("onGround2"), value ? (byte)0 : (byte)1);
+            get => MCM.readByte(localPlayer + VersionClass.GetData("onGround3")) == 1;
+            set => MCM.writeByte(localPlayer + VersionClass.GetData("onGround3"), value ? (byte)0 : (byte)1);
         } // onGround
 
         public static byte inMenu // Might use this for clickgui!
@@ -278,7 +278,9 @@ namespace Trero.ClientBase
             set => MCM.writeInt(localPlayer + VersionClass.GetData("isFlying"), value ? 0 : 1);
         } // onGround
 
-        public static bool inWater => MCM.readInt(localPlayer + VersionClass.GetData("inWater")) != 0; // inWater
+        public static bool isInWater => MCM.readByte(localPlayer + VersionClass.GetData("inWater")) != 0; // inWater
+        
+        public static bool isInLava => MCM.readByte(localPlayer + VersionClass.GetData("isInLava")) != 0; // isInLava
 
         public static bool inInventory =>
             MCM.readInt(localPlayer + VersionClass.GetData("inInventory")) != 1; // inInventory
@@ -333,7 +335,7 @@ namespace Trero.ClientBase
                 MCM.baseEvaluatePointer(HexHandler.ToULong(VersionClass.GetData("screenT+1")),
                     new[] { VersionClass.GetData("screenT+2") }), 128); // Username
 
-        public static string type => MCM.readString(localPlayer + VersionClass.GetData("entityType"), 32); // Type
+        public static string type => MCM.readString(localPlayer + VersionClass.GetData("entityType"), 64); // Type
 
         public static int heldItemCount
         {

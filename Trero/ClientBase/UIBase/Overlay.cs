@@ -827,7 +827,7 @@ namespace Trero.ClientBase.UIBase
 
                 Game.stepHeight = (0.5f * (c + 1));
                 Game.onGround = true;
-                if (Game.inWater)
+                if (Game.isInWater)
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.01f * c);
 
             }, new iRGB(128, 76, 146), (int)PotionDiritation.Value, (int)PotionAmplifier.Value, 1f, () => { Game.stepHeight = 0.5f; });
