@@ -10,9 +10,10 @@ using Trero.ClientBase.VersionBase;
 
 namespace Trero.Modules
 {
-    internal class HiveFly : Module
+    internal class FastFly : Module
     {
-        public HiveFly() : base("HiveFly", (char)0x07, "Flies")
+        int a = 0;
+        public FastFly() : base("FastFly", (char)0x07, "Flies")
         {
         } // Not defined
 
@@ -25,11 +26,13 @@ namespace Trero.Modules
             Game.position = pos;
         }
 
-        public override void OnTick() // hopefully some people remember this fly
+        public override void OnTick()
         {
             if (Game.isNull) return;
 
-            var speedMod = 0.7f; // 0.7f
+            a++;
+
+            var speedMod = 2f;
             var calcYaw = (Game.bodyRots.y + 90f) * ((float)Math.PI / 180f);
 
             var newVel = Base.Vec3();
@@ -39,6 +42,14 @@ namespace Trero.Modules
             newVel.z = (float)Math.Sin(calcYaw) * speedMod;
 
             Game.velocity = newVel;
+
+            if (a == 30)
+            {
+                a = 0;
+                var pos = Game.position;
+                pos.y -= 1.25f;
+                Game.position = pos;
+            }
         }
 
         public override void OnDisable()

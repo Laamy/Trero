@@ -30,7 +30,7 @@ namespace Trero.ClientBase
                 destroy = false;
             }
 
-            public static void RunFakeEffect(Action<int, int> actionTick, iRGB effectColor, int time = 30, int strength = 1, float fov = 1, Action actionExit = null)
+            public static void CreateAction(Action<int, int> actionTick, iRGB effectColor, int time = 30, int strength = 1, float fov = 1, Action actionExit = null)
             {
                 bool effectActive = true;
                 int timeLeft = time;

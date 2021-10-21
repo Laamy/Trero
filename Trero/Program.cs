@@ -28,6 +28,8 @@ namespace Trero
         public static EventHandler<EventArgs> mainThread;
         public static readonly List<Module> Modules = new List<Module>();
 
+        public static bool debugmode = true;
+
         private static void Main(string[] args)
         {
             try
@@ -54,10 +56,12 @@ namespace Trero
 
             Console.WriteLine("Trero v" + VersionClass.currentVersion.name);
 
-            new Thread(() => { Application.Run(new Overlay()); }).Start(); // UI Application
+            Task.Run(() => {
+                Application.Run(new Overlay());
+            }); // UI Application
 
             // Debug shit here
-            Console.WriteLine(Game.keyInfo.ToString("X"));
+            Console.WriteLine(Game.localPlayer.ToString("X"));
 
             Console.WriteLine(@"Registering modules...");
 
@@ -72,7 +76,6 @@ namespace Trero
             Modules.Add(new TPAura());
             Modules.Add(new ClosestPlayerDisplay());
             Modules.Add(new PlayerDisplay());
-            //Modules.Add(new TriggerBot()); // no longer in accessable lp area
             Modules.Add(new Hitbox());
             Modules.Add(new FlickerExample());
             Modules.Add(new Phase());
@@ -101,8 +104,6 @@ namespace Trero
             Modules.Add(new ClickTP());
             Modules.Add(new Glide());
             Modules.Add(new Killaura());
-            Modules.Add(new AntiImmoblie());
-            //Modules.Add(new Reach());
             Modules.Add(new Limiter()); // CPU saver
             Modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
             Modules.Add(new Friends());
@@ -118,16 +119,30 @@ namespace Trero
             Modules.Add(new Welcome());
             Modules.Add(new MineplexFlyv2());
             Modules.Add(new RainbowEffects());
-            //Modules.Add(new Velocity()); // Anti-KB
-            //Modules.Add(new NoLagBack());
-            //Modules.Add(new RapidHit());
-            //Modules.Add(new RapidPlace());
-            // Modules.Add(new HiveFly());
+            Modules.Add(new RapidHit());
+            Modules.Add(new RapidPlace());
             Modules.Add(new OGMFly());
-            //Modules.Add(new InPvPTower()); // Untested
-            //Modules.Add(new Disabler());
+            Modules.Add(new FastFly());
 
             Console.WriteLine(@"Registered modules!");
+
+            switch (debugmode)
+            {
+                case true:
+                    Console.WriteLine(@"Registering DEBUG_MODULES...");
+
+                    Modules.Add(new HiveFly());
+                    Modules.Add(new InPvPTower());
+                    Modules.Add(new Velocity()); // Anti-KB
+                    Modules.Add(new NoLagBack());
+                    Modules.Add(new Reach());
+                    Modules.Add(new TriggerBot());
+                    Modules.Add(new Disabler());
+                    Modules.Add(new AntiImmoblie());
+
+                    Console.WriteLine(@"Registered DEBUG_MODULES!");
+                    break;
+            }
 
             //Console.WriteLine("LookingEntityID Address: " + (Game.localPlayer + 0x0).ToString("X"));
 

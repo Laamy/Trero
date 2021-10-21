@@ -45,8 +45,10 @@ namespace Trero.ClientBase.UIBase
 
         public Overlay()
         {
+            Console.WriteLine("Initializing components...");
             InitializeComponent();
             handle = this;
+            Console.WriteLine("Initialized components!");
 
             Focus();
 
@@ -55,9 +57,11 @@ namespace Trero.ClientBase.UIBase
 
             overDel = new WinEventDelegate(adjust);
 
+            Console.WriteLine("Initializing window hooks...");
             SetWinEventHook((uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, (uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, IntPtr.Zero, overDel, MCM.mcWinProcId, GetWindowThreadProcessId(MCM.mcWinHandle, IntPtr.Zero), (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
             SetWinEventHook((uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, (uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, overDel, 0, 0, (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
-            
+            Console.WriteLine("Initialized window hooks!");
+
             TopMost = true;
         }
 
@@ -99,6 +103,7 @@ namespace Trero.ClientBase.UIBase
         }
 
         WinEventDelegate overDel;
+        private Font df = new Font("Arial", 24, FontStyle.Bold);
 
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy,
@@ -110,7 +115,7 @@ namespace Trero.ClientBase.UIBase
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var list = "";
+            /*var list = "";
 
             try
             {
@@ -158,7 +163,7 @@ namespace Trero.ClientBase.UIBase
             }
             catch
             {
-            }
+            }*/
         }
 
         private void updateModule(Module mod, Panel c) // fixed a second time ;p
@@ -184,26 +189,7 @@ namespace Trero.ClientBase.UIBase
 
         private void Overlay_Paint(object sender, PaintEventArgs e)
         {
-            /*
-            
-            // e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(255, 22, 22, 44)), new Rectangle(0, Size.Height - 2 - (6 * (int)df.Size + 4 * DrawingUtils.screenSize), (int)e.Graphics.MeasureString("ClientInstance: " + Game.clientInstance.ToString("X"), df).Width + 4, Size.Height - (4 * (int)df.Size + 4 * DrawingUtils.screenSize)));
-
             //e.Graphics.DrawString("Trero Template", df, Brushes.Orange, new PointF(0, 0));
-
-            if (Game.screenData.StartsWith("start_screen"))
-            {
-                e.Graphics.DrawString("Tretard Edition", new Font(FontFamily.GenericSansSerif, 10f * DrawingUtils.screenSize), Brushes.Orange, // Size.Width / 24f
-                    new PointF(DrawingUtils.screenCenter.x - (int)(e.Graphics.MeasureString("Tretard Edition", new Font(FontFamily.GenericSansSerif, 10f * DrawingUtils.screenSize)).Width / 2), DrawingUtils.LogoVCenter.y));
-            }
-
-            e.Graphics.DrawString("screenCenter: " + DrawingUtils.screenCenter, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (6 * 14 * DrawingUtils.screenSize)));
-            e.Graphics.DrawString("screenSize: " + DrawingUtils.screenSize, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (5 * 14 * DrawingUtils.screenSize)));
-            e.Graphics.DrawString("ClientInstance: " + Game.clientInstance.ToString("X"), df, Brushes.Orange, new PointF(0, Size.Height - 6 - (4 * 14 * DrawingUtils.screenSize)));
-            e.Graphics.DrawString("Pos: " + Game.position, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (3 * 14 * DrawingUtils.screenSize)));
-            e.Graphics.DrawString("Players: " + Game.getPlayers().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (2 * 14 * DrawingUtils.screenSize)));
-            e.Graphics.DrawString("Entities: " + Game.getEntites().Count, df, Brushes.Orange, new PointF(0, Size.Height - 6 - (1 * 14 * DrawingUtils.screenSize)));
-
-            */
         }
 
         private void panel2_MouseDown_1(object sender, MouseEventArgs e)
@@ -215,10 +201,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel2_MouseMove_1(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                panel2.Left = e.X + panel2.Left - _mouseDownLocation.X;
-                panel2.Top = e.Y + panel2.Top - _mouseDownLocation.Y;
+                case MouseButtons.Left:
+
+                    panel2.Left = e.X + panel2.Left - _mouseDownLocation.X;
+                    panel2.Top = e.Y + panel2.Top - _mouseDownLocation.Y;
+                    break;
             }
         }
 
@@ -326,17 +315,21 @@ namespace Trero.ClientBase.UIBase
 
         private void actorBind(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                var btn = (Label)sender;
-                if (btn == null) return;
+                case MouseButtons.Left:
 
-                btn.Text = @"Keybind: ...";
+                    var btn = (Label)sender;
+                    if (btn == null) return;
 
-                cMod = btn;
+                    btn.Text = @"Keybind: ...";
 
-                btn.KeyDown += vCatchKeybind;
-                btn.Select();
+                    cMod = btn;
+
+                    btn.KeyDown += vCatchKeybind;
+                    btn.Select();
+
+                    break;
             }
         }
 
@@ -466,10 +459,12 @@ namespace Trero.ClientBase.UIBase
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                _mouseDownLocation = e.Location;
-                panel3.BringToFront();
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
             }
         }
 
@@ -486,9 +481,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel1.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -500,9 +499,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel6_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel6.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel6_MouseMove(object sender, MouseEventArgs e)
@@ -514,10 +517,12 @@ namespace Trero.ClientBase.UIBase
 
         private void panel14_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            switch (e.Button)
             {
-                _mouseDownLocation = e.Location;
-                panel14.BringToFront();
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
             }
         }
 
@@ -530,9 +535,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel8_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel8.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel8_MouseMove(object sender, MouseEventArgs e)
@@ -544,9 +553,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel10_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel10.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel10_MouseMove(object sender, MouseEventArgs e)
@@ -558,9 +571,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel12_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel12.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel12_MouseMove(object sender, MouseEventArgs e)
@@ -572,9 +589,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel16_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel16.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel16_MouseMove(object sender, MouseEventArgs e)
@@ -618,9 +639,8 @@ namespace Trero.ClientBase.UIBase
 
         }
 
-        // not using hooks so this is useless
-        private void Overlay_ResizeBegin(object sender, EventArgs e) { }// => SuspendLayout();
-        private void Overlay_ResizeEnd(object sender, EventArgs e) { }//=> ResumeLayout();
+        private void Overlay_ResizeBegin(object sender, EventArgs e) => SuspendLayout();
+        private void Overlay_ResizeEnd(object sender, EventArgs e) => ResumeLayout();
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -634,9 +654,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel18_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel18.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel18_MouseMove(object sender, MouseEventArgs e)
@@ -669,7 +693,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give slowness effect
+            Faketernal.Potions.CreateAction((i, c) => { // give slowness effect
 
                 if (Game.onGround == true) // Oof...
                 {
@@ -717,7 +741,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give slowfalling effect
+            Faketernal.Potions.CreateAction((i, c) => { // give slowfalling effect
 
                 float speed = -(0.10f / c);
 
@@ -731,9 +755,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel21_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
-            _mouseDownLocation = e.Location;
-            panel21.BringToFront();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    _mouseDownLocation = e.Location;
+                    ((Panel)sender).BringToFront();
+                    break;
+            }
         }
 
         private void panel21_MouseMove(object sender, MouseEventArgs e)
@@ -748,7 +776,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give speed effect
+            Faketernal.Potions.CreateAction((i, c) => { // give speed effect
 
                 Game.speed = (c * 0.0200000009f) + 0.1f; // Thanks javajar for this equation ;p
 
@@ -757,7 +785,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give jumpboost effect
+            Faketernal.Potions.CreateAction((i, c) => { // give jumpboost effect
 
                 if (Game.onGround == true) // Oof...
                 {
@@ -772,7 +800,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give levitation effect
+            Faketernal.Potions.CreateAction((i, c) => { // give levitation effect
 
                 float speed = (0.10f * c);
 
@@ -783,7 +811,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give custom effect
+            Faketernal.Potions.CreateAction((i, c) => { // give custom effect
 
                 float amp = (0.5f * (c + 1));
 
@@ -794,7 +822,7 @@ namespace Trero.ClientBase.UIBase
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give custom effect
+            Faketernal.Potions.CreateAction((i, c) => { // give custom effect
 
                 if (Game.onGround == true)
                 {
@@ -818,12 +846,12 @@ namespace Trero.ClientBase.UIBase
 
             Game.teleport(new AABB(pos, new Vector3(pos.x + skimmedBodyParts, pos.y + 1.8f, pos.z + skimmedBodyParts)));
 
-            Faketernal.Potions.RunFakeEffect((i, c) => {}, new iRGB(169, 202, 207), (int)PotionDiritation.Value, 0, 1f, () => { Game.teleport(Game.position); });
+            Faketernal.Potions.CreateAction((i, c) => {}, new iRGB(169, 202, 207), (int)PotionDiritation.Value, 0, 1f, () => { Game.teleport(Game.position); });
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            Faketernal.Potions.RunFakeEffect((i, c) => { // give custom effect
+            Faketernal.Potions.CreateAction((i, c) => { // give custom effect
 
                 Game.stepHeight = (0.5f * (c + 1));
                 Game.onGround = true;
@@ -835,12 +863,13 @@ namespace Trero.ClientBase.UIBase
 
         private void panel21_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            switch (e.Button)
             {
-                foreach (Control c in panel22.Controls)
-                    c.Visible = !c.Visible;
-
-                InvalidateCategories();
+                case MouseButtons.Right:
+                    foreach (Control c in panel22.Controls)
+                        c.Visible = !c.Visible;
+                    InvalidateCategories();
+                    break;
             }
         }
         private void label11_MouseClick(object sender, MouseEventArgs e) => panel21_MouseClick(sender, e);

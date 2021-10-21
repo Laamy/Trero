@@ -105,6 +105,7 @@
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
     <Compile Include="Modules\Disabler.cs" />
+    <Compile Include="Modules\FastFly.cs" />
     <Compile Include="Modules\InPvPTower.cs" />
     <Compile Include="Modules\HiveFly.cs" />
     <Compile Include="Modules\OGMFly.cs" />

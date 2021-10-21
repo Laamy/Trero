@@ -14,7 +14,7 @@
                 0x238, // stepHeight
                 0x2A8, // worldAge
                 0x1E6C, // gamemode
-                0x9A0, // isFlying
+                0x980, // isFlying
                 0x240, // blocksTraveled_Ex
                 0x258, // blocksTraveled
                 0x2370, // helditemCount
@@ -24,13 +24,13 @@
                 0x0, // viewCreativeItems
                 0x0, // viewCreativeItemsSelectedCategory
                 0x400, // entityType
-                0x1230, // inInventory
-                0x900, // username
+                0x1148, // inInventory
+                0x8E0, // username
                 0x360, 0x0, // gameDim
                 0x4C0, // position
                 0x0, // hitbox - 0x4C0 + 24
                 0x4F8, // veloicty
-                0x7C0, // swingAn
+                0x7C8, // swingAn
                 0x0, // lookingEntityId
                 0x25D, // inWater
                 0x138, // bodyRots
@@ -48,7 +48,7 @@
                 0x0, // Chatbase shit
                 0x0, // Chatbase shit
                 0x0, // Chatbase shit
-                0x1140, // fieldOfView
+                0x1058, // fieldOfView
                 0x178, // EffectsClass
                 0x40, // EffectsSubClass
                 0x10, // EffectsColor
