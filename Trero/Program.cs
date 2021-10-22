@@ -235,14 +235,12 @@ namespace Trero
 
             // TODO: Commands -- i think ill do all the commands in about aweek if i get a good idea on where to put them
             // tp (x) (y) (z)
-            // gm (registeryId)
             // eject
             // bind (module) (key)
             // unbind (module)
             // toggle (module)
             // friend (add/remove) (plr)
             // draw (module) (true/false) - Show or hide module from array list
-            // coords
             // vclip (number)
             // waypoint (add/remove/list/tp) (waypointName)
             // rename (module) (name)
@@ -288,19 +286,32 @@ namespace Trero
                             break;
                         case "gamemode":
 
-                            List<List<string>> reg;
-                            new GamemodeRegistery(out reg);
-
-                            for (int i = 0; i < reg.Count; ++i)
+                            if (arguments.Length >= 1)
                             {
-                                for (int c = 0; c < reg[i].Count; ++c)
+                                List<List<string>> reg;
+                                new GamemodeRegistery(out reg);
+
+                                for (int i = 0; i < reg.Count; ++i)
                                 {
-                                    if (arguments[0] == reg[i][c])
+                                    for (int c = 0; c < reg[i].Count; ++c)
                                     {
-                                        Game.gamemode = i;
-                                        Console.WriteLine("Gamemode changed to " + reg[i][2]);
+                                        if (arguments[0] == reg[i][c])
+                                        {
+                                            Game.gamemode = i;
+                                            Console.WriteLine("Gamemode changed to " + reg[i][2]);
+                                        }
                                     }
                                 }
+                            }
+
+                            Console.WriteLine("");
+                            break;
+                        case "tp":
+
+                            if (arguments.Length >= 3)
+                            {
+                                Game.position = Base.Vec3(arguments[0], arguments[1], arguments[2]);
+                                Console.WriteLine("Teleported to " + Game.position);
                             }
 
                             Console.WriteLine("");

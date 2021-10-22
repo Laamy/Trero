@@ -69,6 +69,11 @@ namespace Trero.ClientBase
             return new Vector3(v);
         }
 
+        public static Vector3 Vec3(string x, string y, string z)
+        {
+            return new Vector3($"{x},{y},{z}");
+        }
+
         public static iVector3 IVec3(int _ = 0, int v = 0, int c = 0)
         {
             return new iVector3(_, v, c);
