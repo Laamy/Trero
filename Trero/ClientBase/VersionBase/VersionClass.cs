@@ -13,7 +13,7 @@
                 0x1DC, // onground 2
                 0x238, // stepHeight
                 0x2A8, // worldAge
-                0x1E6C, // gamemode
+                0x1D84, // gamemode
                 0x980, // isFlying
                 0x240, // blocksTraveled_Ex
                 0x258, // blocksTraveled
