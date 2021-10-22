@@ -240,7 +240,6 @@ namespace Trero
             // toggle (module)
             // friend (add/remove) (plr)
             // draw (module) (true/false) - Show or hide module from array list
-            // vclip (number)
             // waypoint (add/remove/list/tp) (waypointName)
             // rename (module) (name)
             // modules
@@ -280,6 +279,7 @@ namespace Trero
                             Console.WriteLine(".tp (x) (y) (z) - Teleport to any coords you want");
                             Console.WriteLine(".vclip (num) - vclip set amount of blocks");
                             Console.WriteLine(".vflip (num) - vflip set amount of blocks");
+                            Console.WriteLine(".modules - prints list of modules to console");
                             Console.WriteLine("");
                             break;
                         case "coords":
@@ -335,6 +335,18 @@ namespace Trero
                                 Game.vflip(Convert.ToInt32(arguments[0]));
                                 Console.WriteLine("VFlipped " + arguments[0] + " blocks");
                             }
+
+                            Console.WriteLine("");
+                            break;
+
+                        case "modules":
+
+                            Modules.Reverse();
+
+                            for (int i = 0; i < Modules.Count; ++i)
+                                Console.WriteLine((i + 1) + ". " + Modules[i].name);
+
+                            Modules.Reverse();
 
                             Console.WriteLine("");
                             break;
