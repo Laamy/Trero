@@ -19,9 +19,7 @@ namespace Trero.Modules
             Console.Clear();
             Console.WriteLine("--- Links ---\r\n" +
                 "Trero: \r\n" +
-                "discord.gg/wYRM2jwjE5\r\n" +
-                "Modding Communtiy: \r\n" +
-                "discord.gg/DJEVhaWEKz");
+                "discord.gg/wYRM2jwjE5\r\n");
         }
     }
 }
