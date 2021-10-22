@@ -145,7 +145,7 @@
     <Compile Include="Modules\TestModule.cs" />
     <Compile Include="Modules\Teleport.cs" />
     <Compile Include="Modules\Gamemode.cs" />
-    <Compile Include="Modules\SlimeWall.cs" />
+    <Compile Include="Modules\Spider.cs" />
     <Compile Include="Modules\ClickGUI.cs" />
     <Compile Include="Modules\FlickerExample.cs" />
     <Compile Include="Modules\Hitbox.cs" />

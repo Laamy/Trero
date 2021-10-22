@@ -89,7 +89,7 @@ namespace Trero
             Modules.Add(new Eject());
             Modules.Add(new Speed());
             Modules.Add(new Bhop());
-            Modules.Add(new SlimeWall());
+            Modules.Add(new Spider());
             Modules.Add(new LBSH());
             Modules.Add(new Gamemode());
             Modules.Add(new Teleport());

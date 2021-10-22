@@ -10,9 +10,9 @@ using Trero.Modules.vModuleExtra;
 
 namespace Trero.Modules
 {
-    internal class SlimeWall : Module
+    internal class Spider : Module
     {
-        public SlimeWall() : base("SlimeWall", (char)0x07, "Player")
+        public Spider() : base("Spider", (char)0x07, "Player")
         {
         } // Not defined
 
