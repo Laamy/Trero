@@ -123,14 +123,8 @@ namespace Trero
             Modules.Add(new RapidPlace());
             Modules.Add(new OGMFly());
             Modules.Add(new FastFly());
-
-            Modules.Add(new InPvPTower());
             Modules.Add(new Velocity()); // Anti-KB
-            Modules.Add(new NoLagBack());
-            Modules.Add(new Reach());
-            Modules.Add(new TriggerBot());
             Modules.Add(new Disabler());
-            Modules.Add(new AntiImmoblie());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -140,6 +134,11 @@ namespace Trero
                     Console.WriteLine(@"Registering DEBUG_MODULES...");
 
                     Modules.Add(new HiveFly());
+                    Modules.Add(new AntiImmoblie());
+                    Modules.Add(new NoLagBack());
+                    Modules.Add(new TriggerBot());
+                    Modules.Add(new InPvPTower());
+                    Modules.Add(new Reach());
 
                     Console.WriteLine(@"Registered DEBUG_MODULES!");
                     break;
