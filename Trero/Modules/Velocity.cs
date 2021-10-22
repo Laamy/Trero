@@ -19,18 +19,18 @@ namespace Trero.Modules
         {
             base.OnEnable();
 
-            MCM.writeBaseBytes(0x1D6AC72, MCM.ceByte2Bytes("90 90 90 90 90 90"));
-            MCM.writeBaseBytes(0x1D6AC7B, MCM.ceByte2Bytes("90 90 90 90 90 90"));
-            MCM.writeBaseBytes(0x1D6AC84, MCM.ceByte2Bytes("90 90 90 90 90 90"));
+            MCM.writeBaseBytes(0x1DEF472, MCM.ceByte2Bytes("90 90 90 90 90 90"));
+            MCM.writeBaseBytes(0x1DEF47B, MCM.ceByte2Bytes("90 90 90 90 90 90"));
+            MCM.writeBaseBytes(0x1DEF484, MCM.ceByte2Bytes("90 90 90 90 90 90"));
         }
 
         public override void OnDisable()
         {
             base.OnDisable();
 
-            MCM.writeBaseBytes(0x1D6AC72, MCM.ceByte2Bytes("89 81 F8 04 00 00"));
-            MCM.writeBaseBytes(0x1D6AC7B, MCM.ceByte2Bytes("89 81 FC 04 00 00"));
-            MCM.writeBaseBytes(0x1D6AC84, MCM.ceByte2Bytes("89 81 00 05 00 00"));
+            MCM.writeBaseBytes(0x1DEF472, MCM.ceByte2Bytes("89 81 F8 04 00 00"));
+            MCM.writeBaseBytes(0x1DEF47B, MCM.ceByte2Bytes("89 81 FC 04 00 00"));
+            MCM.writeBaseBytes(0x1DEF484, MCM.ceByte2Bytes("89 81 00 05 00 00"));
         }
     }
 }
