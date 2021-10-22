@@ -302,6 +302,12 @@ namespace Trero.ClientBase
             set => MCM.writeFloat(localPlayer + VersionClass.GetData("stepHeight"), value);
         } // stepHeight
 
+        public static float FallDistance
+        {
+            get => MCM.readFloat(localPlayer + VersionClass.GetData("onGround") - 4);
+            set => MCM.writeFloat(localPlayer + VersionClass.GetData("onGround") - 4, value);
+        } // FallDistance
+
         public static float speed
         {
             get => MCM.readFloat(speedSubSubClass + VersionClass.GetData("SpeedValue"));

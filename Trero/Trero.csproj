@@ -104,6 +104,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\FastWater.cs" />
     <Compile Include="Modules\Disabler.cs" />
     <Compile Include="Modules\FastFly.cs" />
     <Compile Include="Modules\InPvPTower.cs" />
@@ -142,7 +143,6 @@
     <Compile Include="Modules\Step.cs" />
     <Compile Include="Modules\PlayerTP.cs" />
     <Compile Include="Modules\Killaura.cs" />
-    <Compile Include="Modules\TestModule.cs" />
     <Compile Include="Modules\Teleport.cs" />
     <Compile Include="Modules\Gamemode.cs" />
     <Compile Include="Modules\Spider.cs" />

@@ -125,6 +125,8 @@ namespace Trero
             Modules.Add(new FastFly());
             Modules.Add(new Velocity()); // Anti-KB
             Modules.Add(new Disabler());
+            Modules.Add(new InPvPTower());
+            Modules.Add(new FastWater());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -137,7 +139,6 @@ namespace Trero
                     Modules.Add(new AntiImmoblie());
                     Modules.Add(new NoLagBack());
                     Modules.Add(new TriggerBot());
-                    Modules.Add(new InPvPTower());
                     Modules.Add(new Reach());
 
                     Console.WriteLine(@"Registered DEBUG_MODULES!");
@@ -145,8 +146,6 @@ namespace Trero
             }
 
             //Console.WriteLine("LookingEntityID Address: " + (Game.localPlayer + 0x0).ToString("X"));
-
-            //modules.Add(new TestModule());
 
             // Recall (Teleportation)
             // Tower (Veloicty & getKey)
@@ -179,7 +178,6 @@ namespace Trero
             // CompassDisplay // when i get around to it i want to add waypoints into this aswell
             // FullBright
             // Fix scaffold
-            // Noknockback
 
             // TreroInternal - Modules List
             // 
