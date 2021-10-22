@@ -234,7 +234,6 @@ namespace Trero
             }, MCM.mcProcHandle);*/
 
             // TODO: Commands -- i think ill do all the commands in about aweek if i get a good idea on where to put them
-            // tp (x) (y) (z)
             // eject
             // bind (module) (key)
             // unbind (module)
@@ -277,7 +276,10 @@ namespace Trero
                             Console.WriteLine("--- Commands ---");
                             Console.WriteLine(".help - List commands");
                             Console.WriteLine(".coords - Display your coords");
-                            Console.WriteLine(".gamemode - Change your gamemode");
+                            Console.WriteLine(".gamemode (id) - Change your gamemode");
+                            Console.WriteLine(".tp (x) (y) (z) - Teleport to any coords you want");
+                            Console.WriteLine(".vclip (num) - vclip set amount of blocks");
+                            Console.WriteLine(".vflip (num) - vflip set amount of blocks");
                             Console.WriteLine("");
                             break;
                         case "coords":
@@ -312,6 +314,26 @@ namespace Trero
                             {
                                 Game.position = Base.Vec3(arguments[0], arguments[1], arguments[2]);
                                 Console.WriteLine("Teleported to " + Game.position);
+                            }
+
+                            Console.WriteLine("");
+                            break;
+                        case "vclip":
+
+                            if (arguments.Length >= 1)
+                            {
+                                Game.vclip(Convert.ToInt32(arguments[0]));
+                                Console.WriteLine("VClipped " + arguments[0] + " blocks");
+                            }
+
+                            Console.WriteLine("");
+                            break;
+                        case "vflip":
+
+                            if (arguments.Length >= 1)
+                            {
+                                Game.vflip(Convert.ToInt32(arguments[0]));
+                                Console.WriteLine("VFlipped " + arguments[0] + " blocks");
                             }
 
                             Console.WriteLine("");
