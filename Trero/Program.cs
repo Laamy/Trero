@@ -160,15 +160,13 @@ namespace Trero
             // Aimbot
             // NoHurtCam
             // InventoryDisplay // need local player inventory proxey
-            // Zoom - Turns out this is also in local player as FieldOfView so i still need fov pointer Oof
             // Fov (FovPointer needed for W2S)
             // WorldToScreen/W2S (GameFunc)
-            // Rader (Already possible btw as we have entitylist) // 100% adding these W2S ones btw
+            // Radar/Rader (Already possible btw as we have entitylist) // 100% adding these W2S ones btw
             // Tracers (W2S Required)
             // Waypoints (W2S Required)
             // ArrowTracers (W2S Required)
             // Reach
-            // FastWater
             // CustomTablist
             // Nuker
             // BlockFly (Cant do this without scaffold so...)
@@ -181,25 +179,6 @@ namespace Trero
 
             // TreroInternal - Modules List
             // 
-
-            // TODO: Commands -- i think ill do all the commands in about aweek if i get a good idea on where to put them
-            // tp (x) (y) (z)
-            // gm (registeryId)
-            // eject
-            // bind (module) (key)
-            // unbind (module)
-            // toggle (module)
-            // friend (add/remove) (plr)
-            // draw (module) (true/false) - Show or hide module from array list
-            // coords
-            // vclip (number)
-            // waypoint (add/remove/list/tp) (waypointName)
-            // rename (module) (name)
-            // modules
-            // block (plr) - ill replace there messages in chat to [Message deleted] x1(etc) using chat pointer
-            // unblock
-            // durability
-            // nametags - if possible add armor and in hand display above their head
 
             Modules.Sort((c1, c2) => string.Compare(c2.name, c1.name, StringComparison.Ordinal)); // ABC Order
 
@@ -254,9 +233,63 @@ namespace Trero
                 g.DrawString("Hello world!", font, Brushes.Blue, new PointF(0, 0)); // new PointF(0, 0)
             }, MCM.mcProcHandle);*/
 
+            // TODO: Commands -- i think ill do all the commands in about aweek if i get a good idea on where to put them
+            // tp (x) (y) (z)
+            // gm (registeryId)
+            // eject
+            // bind (module) (key)
+            // unbind (module)
+            // toggle (module)
+            // friend (add/remove) (plr)
+            // draw (module) (true/false) - Show or hide module from array list
+            // coords
+            // vclip (number)
+            // waypoint (add/remove/list/tp) (waypointName)
+            // rename (module) (name)
+            // modules
+            // block (plr) - ill replace there messages in chat to [Message deleted] x1(etc) using chat pointer
+            // unblock
+            // durability
+            // nametags - if possible add armor and in hand display above their head
+
+            Console.WriteLine(".help for help!");
+
             while (quit == false)
             {
-                Console.ReadKey();
+                string cmd = Console.ReadLine();
+                if (cmd.StartsWith("."))
+                {
+                    string[] arguments;
+                    string command = cmd.Replace(".", "");
+
+                    try
+                    {
+                        arguments = cmd.Split(' ');
+                        command = arguments[0].Replace(".", "");
+                        arguments = arguments.Skip(1).ToArray();
+                    }
+                    catch
+                    {
+                    }
+
+                    switch (command)
+                    {
+                        case "help":
+                            Console.WriteLine("");
+                            Console.WriteLine("--- Commands ---");
+                            Console.WriteLine(".help - List commands");
+                            Console.WriteLine("");
+                            break;
+                        case "coords":
+                            Console.WriteLine(Game.position);
+                            Console.WriteLine("");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid command!");
+                            Console.WriteLine("");
+                            break;
+                    }
+                }
             }
         }
 
