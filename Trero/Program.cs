@@ -259,7 +259,7 @@ namespace Trero
                 string cmd = Console.ReadLine();
                 if (cmd.StartsWith("."))
                 {
-                    string[] arguments;
+                    string[] arguments = "0,0,0,0,0,0,0".Split(',');
                     string command = cmd.Replace(".", "");
 
                     try
@@ -278,10 +278,31 @@ namespace Trero
                             Console.WriteLine("");
                             Console.WriteLine("--- Commands ---");
                             Console.WriteLine(".help - List commands");
+                            Console.WriteLine(".coords - Display your coords");
+                            Console.WriteLine(".gamemode - Change your gamemode");
                             Console.WriteLine("");
                             break;
                         case "coords":
                             Console.WriteLine(Game.position);
+                            Console.WriteLine("");
+                            break;
+                        case "gamemode":
+
+                            List<List<string>> reg;
+                            new GamemodeRegistery(out reg);
+
+                            for (int i = 0; i < reg.Count; ++i)
+                            {
+                                for (int c = 0; c < reg[i].Count; ++c)
+                                {
+                                    if (arguments[0] == reg[i][c])
+                                    {
+                                        Game.gamemode = i;
+                                        Console.WriteLine("Gamemode changed to " + reg[i][2]);
+                                    }
+                                }
+                            }
+
                             Console.WriteLine("");
                             break;
                         default:
