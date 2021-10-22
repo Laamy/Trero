@@ -242,7 +242,6 @@ namespace Trero
             // draw (module) (true/false) - Show or hide module from array list
             // waypoint (add/remove/list/tp) (waypointName)
             // rename (module) (name)
-            // modules
             // block (plr) - ill replace there messages in chat to [Message deleted] x1(etc) using chat pointer
             // unblock
             // durability
@@ -277,9 +276,10 @@ namespace Trero
                             Console.WriteLine(".coords - Display your coords");
                             Console.WriteLine(".gamemode (id) - Change your gamemode");
                             Console.WriteLine(".tp (x) (y) (z) - Teleport to any coords you want");
-                            Console.WriteLine(".vclip (num) - vclip set amount of blocks");
-                            Console.WriteLine(".vflip (num) - vflip set amount of blocks");
-                            Console.WriteLine(".modules - prints list of modules to console");
+                            Console.WriteLine(".vclip (num) - VClip set amount of blocks");
+                            Console.WriteLine(".vflip (num) - VFlip set amount of blocks");
+                            Console.WriteLine(".modules - Prints list of modules to console");
+                            Console.WriteLine(".toggle (module) - Toggles a module");
                             Console.WriteLine("");
                             break;
                         case "coords":
@@ -338,7 +338,6 @@ namespace Trero
 
                             Console.WriteLine("");
                             break;
-
                         case "modules":
 
                             Modules.Reverse();
@@ -347,6 +346,20 @@ namespace Trero
                                 Console.WriteLine((i + 1) + ". " + Modules[i].name);
 
                             Modules.Reverse();
+
+                            Console.WriteLine("");
+                            break;
+                        case "toggle":
+
+                            for (int i = 0; i < Modules.Count; ++i)
+                            {
+                                if (Modules[i].name.ToLower() == arguments[0])
+                                {
+                                    if (Modules[i].enabled) Modules[i].OnDisable();
+                                    else Modules[i].OnEnable();
+                                    Console.WriteLine("[" + Modules[i].enabled + "] " + Modules[i].name);
+                                }
+                            }
 
                             Console.WriteLine("");
                             break;
