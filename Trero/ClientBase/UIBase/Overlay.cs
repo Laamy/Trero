@@ -233,6 +233,7 @@ namespace Trero.ClientBase.UIBase
 
                     var tag = new KeyTags();
                     tag.Add("bypass", mod.bypasses[vI]);
+                    tag.Add("button", tempTab);
                     tag.Add("index", vI);
 
                     tempTab.Tag = tag;
@@ -298,16 +299,16 @@ namespace Trero.ClientBase.UIBase
 
         private void actorPress(object sender, MouseEventArgs e) // did this while upset please ignore
         {
-            ((Label)sender).Text = "test";
+            var lab = sender as Label;
+            KeyTags boxy = lab.Tag as KeyTags;
 
-            BypassBox bypassPressed = (BypassBox)((KeyTags)((Label)sender).Tag).Get("bypass");
+            BypassBox bypassPressed = (BypassBox)boxy.Get("bypass");
 
-            if (bypassPressed.curIndex > bypassPressed.list.Count())
+            if (bypassPressed.curIndex < (bypassPressed.list.Count() - 1))
                 bypassPressed.curIndex++;
-            else if (bypassPressed.curIndex == bypassPressed.list.Count())
+            else if (bypassPressed.curIndex >= (bypassPressed.list.Count() - 1))
                 bypassPressed.curIndex = 0;
-            ((Label)sender).Text = bypassPressed.list[bypassPressed.curIndex];
-
+            lab.Text = bypassPressed.list[bypassPressed.curIndex];
         }
 
         private void actorBind(object sender, MouseEventArgs e)
