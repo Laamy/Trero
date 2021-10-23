@@ -222,28 +222,29 @@ namespace Trero.ClientBase.UIBase
 
                 List<Label> vModules = new List<Label>();
 
-                int index = 0;
-                foreach (var bypass in mod.bypasses)
+                for (int vI = 0; vI < mod.bypasses.Count; ++vI)
                 {
                     Label tempTab = label13.Clone();
 
-                    tempTab.Text = bypass.list[0];
+                    tempTab.Text = mod.bypasses[vI].list[0];
                     tempTab.Visible = true;
                     tempTab.Dock = DockStyle.Top;
-                    tempTab.Name = mod.name + ";"; // so their backcolors aren't updated by timer
-                    tempTab.Tag = index;
+                    tempTab.Name = mod.name + ";";
+
+                    var tag = new KeyTags();
+                    tag.Add("bypass", mod.bypasses[vI]);
+                    tag.Add("index", vI);
+
+                    tempTab.Tag = tag;
                     tempTab.MouseClick += actorPress;
 
                     vModules.Add(tempTab);
-                    index++;
                 }
 
                 moduleButton.Visible = true;
                 btn.Visible = true;
                 btn.Name = mod.name;
                 btn.Text = mod.name;
-                /*if (mod.keybind != 0x07)
-                    btn.Text += @" (" + (Keys)mod.keybind + @")";*/
                 btn.MouseDown += keybindActivated;
                 btn.FlatAppearance.BorderSize = 0;
                 btn.FlatAppearance.BorderColor = TestCategory.BackColor;
@@ -297,20 +298,16 @@ namespace Trero.ClientBase.UIBase
 
         private void actorPress(object sender, MouseEventArgs e) // did this while upset please ignore
         {
-            Module mod = Program.Modules[0]; // things we need to idfk at this point minds gone blank i might do this later
-            BypassBox bypassPressed;
+            ((Label)sender).Text = "test";
 
-            foreach (Module vMod in Program.Modules)
-            {
-                if (vMod.name == ((Button)sender).Name)
-                    mod = vMod;
-            }
+            BypassBox bypassPressed = (BypassBox)((KeyTags)((Label)sender).Tag).Get("bypass");
 
-            foreach (BypassBox vBypass in mod.bypasses)
-            {
-                if (vBypass.curIndex == Convert.ToInt32(((Button)sender).Tag.ToString().Substring(0, 1)))
-                    bypassPressed = vBypass;
-            }
+            if (bypassPressed.curIndex > bypassPressed.list.Count())
+                bypassPressed.curIndex++;
+            else if (bypassPressed.curIndex == bypassPressed.list.Count())
+                bypassPressed.curIndex = 0;
+            ((Label)sender).Text = bypassPressed.list[bypassPressed.curIndex];
+
         }
 
         private void actorBind(object sender, MouseEventArgs e)
@@ -463,7 +460,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel3.BringToFront();
                     break;
             }
         }
@@ -485,7 +482,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel1.BringToFront();
                     break;
             }
         }
@@ -503,7 +500,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel6.BringToFront();
                     break;
             }
         }
@@ -521,7 +518,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel14.BringToFront();
                     break;
             }
         }
@@ -539,7 +536,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel8.BringToFront();
                     break;
             }
         }
@@ -557,7 +554,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel10.BringToFront();
                     break;
             }
         }
@@ -575,7 +572,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel12.BringToFront();
                     break;
             }
         }
@@ -593,7 +590,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel16.BringToFront();
                     break;
             }
         }
@@ -658,7 +655,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel18.BringToFront();
                     break;
             }
         }
@@ -759,7 +756,7 @@ namespace Trero.ClientBase.UIBase
             {
                 case MouseButtons.Left:
                     _mouseDownLocation = e.Location;
-                    ((Panel)sender).BringToFront();
+                    panel21.BringToFront();
                     break;
             }
         }
