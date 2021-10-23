@@ -73,7 +73,7 @@ namespace Trero.Modules
 
             float height = 0.3f;
 
-            switch (bypasses[0].curIndex)
+            switch (bypasses[1].curIndex)
             {
                 case 1:
                     height = 0.2f;
