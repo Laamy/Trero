@@ -17,7 +17,7 @@ namespace Trero.Modules
         public override void OnTick()
         {
             if (!Game.isNull)
-                Game.onGround = (bypasses[0].curIndex == 0);
+                Game.onGround = (bypasses[0].curIndex != 0);
         }
     }
 }
