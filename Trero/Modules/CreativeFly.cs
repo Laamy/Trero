@@ -16,7 +16,7 @@ namespace Trero.Modules
 
         public override void OnTick()
         {
-            Game.isFlying = (bypasses[0].curIndex != 0);
+            Game.isFlying = (bypasses[0].curIndex == 0);
         }
 
         public override void OnDisable()
