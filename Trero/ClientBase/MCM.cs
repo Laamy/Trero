@@ -244,6 +244,7 @@ namespace Trero.ClientBase
         //Write base
         public static void writeBaseByte(int offset, byte value)
         {
+            unprotectMemory(mcMainModule.BaseAddress + offset, 1);
             WriteProcessMemory(mcProcHandle, mcBaseAddress + offset, ref value, sizeof(byte), 0);
         }
 
@@ -251,6 +252,7 @@ namespace Trero.ClientBase
         {
             var intByte = BitConverter.GetBytes(value);
             var inc = 0;
+            unprotectMemory(mcMainModule.BaseAddress + offset, intByte.Length);
             foreach (var b in intByte)
             {
                 writeBaseByte(offset + inc, b);
@@ -261,6 +263,7 @@ namespace Trero.ClientBase
         public static void writeBaseBytes(int offset, byte[] value)
         {
             var inc = 0;
+            unprotectMemory(mcMainModule.BaseAddress + offset, value.Length);
             foreach (var b in value)
             {
                 writeBaseByte(offset + inc, b);
@@ -272,6 +275,7 @@ namespace Trero.ClientBase
         {
             var intByte = BitConverter.GetBytes(value);
             var inc = 0;
+            unprotectMemory(mcMainModule.BaseAddress + offset, intByte.Length);
             foreach (var b in intByte)
             {
                 writeBaseByte(offset + inc, b);
