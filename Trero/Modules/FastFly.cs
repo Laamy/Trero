@@ -92,7 +92,7 @@ namespace Trero.Modules
         {
             base.OnDisable();
 
-            if (bypasses[2].curIndex != 0)
+            if (bypasses[2].curIndex == 0)
                 Game.velocity = Base.Vec3();
         }
     }
