@@ -39,7 +39,7 @@ namespace Trero.Modules
                     break;
             }
 
-            Game.position = pos;
+            Game.teleport(pos);
         }
 
         public override void OnTick()
@@ -84,7 +84,7 @@ namespace Trero.Modules
                 a = 0;
                 var pos = Game.position;
                 pos.y -= 1.25f;
-                Game.position = pos;
+                Game.teleport(pos);
             }
         }
 
