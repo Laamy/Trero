@@ -12,11 +12,22 @@ namespace Trero.Modules
 
         public LongJump() : base("LongJump", (char)0x07, "Player")
         {
-            addBypass(new BypassBox(new string[] { "Default", "Hive" }));
+            addBypass(new BypassBox(new string[] { "Hive", "Large", "Small" }));
         } // Not defined+-/9*9
         public override void OnEnable()
         {
-            MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.5f);
+            switch (bypasses[0].curIndex)
+            {
+                case 0:
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.5f);
+                    break;
+                case 1:
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.7f);
+                    break;
+                case 2:
+                    MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.3f);
+                    break;
+            }
             base.OnEnable();
         }
         public override void OnTick()
