@@ -64,8 +64,9 @@
                 0x138, // mouseX
                 0x13A, // mouseY
                 0x13E, // eKeymap
-                0x1D9, // onground2
-                0x2C9, // onground2
+                0x1D9, // onGround3 
+                0x2C9, // isInLava
+                0x1DA, // walkingIntoBlock
             }),
         };
 
@@ -128,6 +129,7 @@
             "eKeymap",
             "onGround3",
             "isInLava",
+            "walkingIntoBlock",
         });
 
         private static IVersion _cv;

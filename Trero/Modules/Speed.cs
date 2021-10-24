@@ -19,6 +19,13 @@ namespace Trero.Modules
             addBypass(new BypassBox(new string[] { "Speed: 1", "Speed: 2", "Speed: 3" }));
         } // Not defined
 
+        public override void OnDisable()
+        {
+            base.OnDisable();
+
+            Game.speed = 0.1000000015f;
+        }
+
         public override void OnTick()
         {
             if (/* Game.inInventory || */ Game.isNull) return;
@@ -72,10 +79,10 @@ namespace Trero.Modules
 
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * _speed);
                     MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8,
-                        (float)Math.Sin(calYaw) * _speed);
+                        (float)Math.Sin(calYaw) * (_speed / 5));
                     break;
                 case 1:
-                    Game.speed = bypasses[1].curIndex + 1;
+                    Game.speed = (((bypasses[1].curIndex + 1) * 0.0200000009f) + 0.1f) * 2;
                     break;
             }
         }

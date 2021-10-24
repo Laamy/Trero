@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
@@ -21,7 +22,7 @@ namespace Trero.Modules
         {
             float speed = 0.4f;
 
-            if (Game.touchingObject != 1) return;
+            if (Game.walkingIntoBlock != 1) return;
 
             switch (bypasses[0].curIndex)
             {

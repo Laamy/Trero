@@ -128,6 +128,7 @@ namespace Trero
             Modules.Add(new InPvPTower());
             Modules.Add(new FastWater());
             Modules.Add(new FixHitbox());
+            Modules.Add(new MineplexStep());
 
             Console.WriteLine(@"Registered modules!");
 

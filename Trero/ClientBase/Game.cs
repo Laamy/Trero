@@ -295,6 +295,7 @@ namespace Trero.ClientBase
         }
 
         public static int touchingObject => MCM.readInt(localPlayer + VersionClass.GetData("onGround2")); // onGround2
+        public static int walkingIntoBlock => MCM.readByte(localPlayer + VersionClass.GetData("walkingIntoBlock")); // walkingIntoBlock
 
         public static float stepHeight
         {
