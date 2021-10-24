@@ -103,11 +103,11 @@ namespace Trero
             //Modules.Add(new PlayerTP());
             //Modules.Add(new ClickTP());
             Modules.Add(new Glide());
-            Modules.Add(new Killaura());
+            //Modules.Add(new Killaura());
             Modules.Add(new Limiter()); // CPU saver
             Modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
-            Modules.Add(new Friends());
-            Modules.Add(new Nofriends());
+            //Modules.Add(new Friends());
+            //Modules.Add(new Nofriends());
             Modules.Add(new MineplexFly());
             Modules.Add(new LongJump());
             Modules.Add(new Zoom());
