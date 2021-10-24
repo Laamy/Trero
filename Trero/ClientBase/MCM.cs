@@ -234,6 +234,13 @@ namespace Trero.ClientBase
             return (int)buffer;
         }
 
+        public static float readBaseFloat(int offset)
+        {
+            ulong buffer = 0;
+            ReadProcessMemory(mcProcHandle, (ulong)(mcBaseAddress + offset), ref buffer, sizeof(float), 0);
+            return (float)buffer;
+        }
+
         public static ulong readBaseInt64(int offset)
         {
             ulong buffer = 0;
