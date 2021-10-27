@@ -24,7 +24,7 @@ namespace Trero.Modules
             MCM.writeBaseBytes(0x1DEF484, MCM.ceByte2Bytes("90 90 90 90 90 90"));
         }
 
-        public override void OnDisable()
+        public override void OnDisable() // sus
         {
             base.OnDisable();
 
