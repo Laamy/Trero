@@ -20,16 +20,16 @@ namespace Trero.Modules
             switch (bypasses[0].curIndex)
             {
                 case 0:
-                    MCM.writeBaseFloat(0x365C898, 4);
+                    MCM.writeBaseFloat(0x365D848, 4);
                     break;
                 case 1:
-                    MCM.writeBaseFloat(0x365C898, 5);
+                    MCM.writeBaseFloat(0x365D848, 5);
                     break;
                 case 2:
-                    MCM.writeBaseFloat(0x365C898, 6);
+                    MCM.writeBaseFloat(0x365D848, 6);
                     break;
                 case 3:
-                    MCM.writeBaseFloat(0x365C898, 7);
+                    MCM.writeBaseFloat(0x365D848, 7);
                     break;
             }
 
@@ -48,7 +48,7 @@ namespace Trero.Modules
 
         public override void OnDisable()
         {
-            MCM.writeBaseFloat(0x365C898, 3);
+            MCM.writeBaseFloat(0x365D848, 3);
             base.OnDisable();
         }
     }
