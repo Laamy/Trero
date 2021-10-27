@@ -116,6 +116,7 @@
     <Compile Include="Modules\RapidHit.cs" />
     <Compile Include="Modules\NoLagBack.cs" />
     <Compile Include="Modules\MineplexStep.cs" />
+    <Compile Include="Modules\HiveBhop.cs" />
     <Compile Include="Modules\Velocity.cs" />
     <Compile Include="Modules\RainbowEffects.cs" />
     <Compile Include="Modules\MineplexFlyv2.cs" />

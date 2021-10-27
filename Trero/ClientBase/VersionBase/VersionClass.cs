@@ -8,7 +8,7 @@
             new IVersion(new object[]
             {
                 "MCBE-1.17.40",
-                0x04208438, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
+                0x04209468, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
                 0x1D8, // onground
                 0x1DC, // onground 2
                 0x238, // stepHeight
@@ -56,7 +56,7 @@
                 0x18, // SpeedSubClass
                 0x2C0, // SpeedSubSubClass
                 0x9C, // SpeedValue
-                0x04170078, 0x490, 0x2A0, 0x8, // vKeyInfo
+                0x04171058, 0x490, 0x2A0, 0x8, // vKeyInfo
                 0x4B, // inMenu
                 0x50, // Hitting
                 0x51, // Placing
