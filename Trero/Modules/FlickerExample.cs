@@ -21,7 +21,7 @@ namespace Trero.Modules
 
             if (_flicker != 300) return;
             _flicker = 0;
-            Game.onGround = false;
+
         }
     }
 }

@@ -129,6 +129,10 @@ namespace Trero
             Modules.Add(new FastWater());
             Modules.Add(new FixHitbox());
             Modules.Add(new MineplexStep());
+            Modules.Add(new HiveBhop());
+            Modules.Add(new Reach());
+            Modules.Add(new HiveFly());
+            Modules.Add(new AntiImmoblie());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -137,11 +141,8 @@ namespace Trero
                 case true:
                     Console.WriteLine(@"Registering DEBUG_MODULES...");
 
-                    Modules.Add(new HiveFly());
-                    //Modules.Add(new AntiImmoblie());
                     //Modules.Add(new NoLagBack());
                     //Modules.Add(new TriggerBot());
-                    Modules.Add(new Reach());
 
                     Console.WriteLine(@"Registered DEBUG_MODULES!");
                     break;

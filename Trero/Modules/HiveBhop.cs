@@ -15,52 +15,48 @@ namespace Trero.Modules
     {
         public HiveBhop() : base("HiveBhop", (char)0x07, "Player")
         {
-            addBypass(new BypassBox(new string[] { "Speed: 1", "Speed: 2", "Speed: 3" }));
         }
+
+        int jumpDelay = 0;
 
         public override void OnTick()
         {
             if (Game.isNull) return;
 
-            if (Game.onGround2)
+            if (Game.onGround2 == false)
             {
-                var plrYaw = Game.bodyRots.y; // yaw
-                float _speed = 0.7f;
+                var newVel = Game.velocity;
 
-                if (Keymap.GetAsyncKeyState(Keys.W))
+                var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
+
+                if (Keymap.GetAsyncKeyState(Keys.W) || Keymap.GetAsyncKeyState(Keys.A) || Keymap.GetAsyncKeyState(Keys.S) || Keymap.GetAsyncKeyState(Keys.D))
                 {
-                    if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
-                        plrYaw += 90f;
                     if (Keymap.GetAsyncKeyState(Keys.A))
-                        plrYaw += 45f;
-                    else if (Keymap.GetAsyncKeyState(Keys.D))
-                        plrYaw += 135f;
-                }
-                else if (Keymap.GetAsyncKeyState(Keys.S))
-                {
-                    if (!Keymap.GetAsyncKeyState(Keys.A) && !Keymap.GetAsyncKeyState(Keys.D))
-                        plrYaw -= 90f;
-                    if (Keymap.GetAsyncKeyState(Keys.A))
-                        plrYaw -= 45f;
-                    else if (Keymap.GetAsyncKeyState(Keys.D))
-                        plrYaw -= 135f;
-                }
-                else if (!Keymap.GetAsyncKeyState(Keys.W) && !Keymap.GetAsyncKeyState(Keys.S))
-                {
-                    if (!Keymap.GetAsyncKeyState(Keys.A) && Keymap.GetAsyncKeyState(Keys.D))
-                        plrYaw += 180f;
-                }
+                        cy += 55;
+                    if (Keymap.GetAsyncKeyState(Keys.S))
+                        cy += 110;
+                    if (Keymap.GetAsyncKeyState(Keys.D))
+                        cy -= 55;
 
-                if (!(Keymap.GetAsyncKeyState(Keys.W) | Keymap.GetAsyncKeyState(Keys.A) | Keymap.GetAsyncKeyState(Keys.S) |
-                      Keymap.GetAsyncKeyState(Keys.D))) return;
-                var calYaw = plrYaw * ((float)Math.PI / 180f);
+                    int speed = 4;
 
-                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity"), (float)Math.Cos(calYaw) * _speed);
-                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 8, (float)Math.Sin(calYaw) * (_speed / 5));
+                    newVel.z = (float)Math.Sin(cy) * (speed / 9f);
+                    newVel.x = (float)Math.Cos(cy) * (speed / 9f);
+
+                    Game.velocity = newVel;
+
+                    if (jumpDelay != 0)
+                        jumpDelay = 0;
+                }
             }
             else
             {
-                MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.4f);
+                if (Keymap.GetAsyncKeyState(Keys.W) || Keymap.GetAsyncKeyState(Keys.A) || Keymap.GetAsyncKeyState(Keys.S) || Keymap.GetAsyncKeyState(Keys.D))
+                {
+                    jumpDelay++;
+                    if (jumpDelay == 2)
+                        MCM.writeFloat(Game.localPlayer + VersionClass.GetData("velocity") + 4, 0.31f);
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
@@ -15,19 +16,19 @@ namespace Trero.Modules
     {
         public HiveFly() : base("HiveFly", (char)0x07, "Flies")
         {
-            addBypass(new BypassBox(new string[] { "Default", "Fast", "Super Fast", "Super Slow", "Slow" }));
+            addBypass(new BypassBox(new string[] { "Default", "Hive", "Nethergames", "Mineplex" }));
         } // Not defined
 
         public override void OnEnable()
         {
             base.OnEnable();
 
-            var pos = Game.position;
-            pos.y += 0.5f;
-            Game.position = pos;
+            var tempPos = Game.position;
+            tempPos.y += 0.25f;
+            Game.teleport(tempPos);
         }
 
-        public override void OnTick() // hopefully some people remember this fly
+        public override void OnTick()
         {
             if (Game.isNull) return;
 
@@ -39,16 +40,13 @@ namespace Trero.Modules
                     speedMod = 0.7f;
                     break;
                 case 1:
-                    speedMod = 0.9f;
+                    speedMod = 0.2f;
                     break;
                 case 2:
-                    speedMod = 1.2f;
+                    speedMod = 2f;
                     break;
                 case 3:
-                    speedMod = 0.3f;
-                    break;
-                case 4:
-                    speedMod = 1.5f;
+                    speedMod = 1.6f;
                     break;
             }
 
@@ -57,17 +55,14 @@ namespace Trero.Modules
             var newVel = Base.Vec3();
 
             newVel.x = (float)Math.Cos(calcYaw) * speedMod;
-            newVel.y = 0.05f * speedMod;
+            //newVel.y = -0.05f * speedMod;
             newVel.z = (float)Math.Sin(calcYaw) * speedMod;
 
             Game.velocity = newVel;
-        }
 
-        public override void OnDisable()
-        {
-            base.OnDisable();
-
-            Game.velocity = Base.Vec3();
+            var tempPos = Game.position;
+            tempPos.y -= 0.005f;
+            Game.teleport(tempPos);
         }
     }
 }
