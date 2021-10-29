@@ -45,11 +45,9 @@ namespace Trero.Modules
             {
                 case true:
                     OnEnable();
-                    Program.moduleToggled.Invoke(null, new EventArgs());
                     break;
                 case false:
                     OnDisable();
-                    Program.moduleToggled.Invoke(null, new EventArgs());
                     break;
             }
         } // Enable/Disable Handler
@@ -57,11 +55,13 @@ namespace Trero.Modules
         public virtual void OnEnable()
         {
             enabled = true;
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         public virtual void OnDisable()
         {
             enabled = false;
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         public virtual void OnTick()
