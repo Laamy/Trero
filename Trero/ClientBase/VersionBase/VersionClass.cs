@@ -7,7 +7,7 @@
             // MCBE 1.17.30
             new IVersion(new object[]
             {
-                "MCBE-1.17.40",
+                "MCBE-1.17.41",
                 0x04209468, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
                 0x1D8, // onground
                 0x1DC, // onground 2
