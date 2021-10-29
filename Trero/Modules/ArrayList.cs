@@ -16,7 +16,7 @@ namespace Trero.Modules
     {
         public ArrayList() : base("ArrayList", (char)0x07, "Visual")
         {
-            addBypass(new BypassBox(new string[] { "Theme: Trero" }));
+            addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly" }));
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12" }));
         }
 
@@ -34,7 +34,7 @@ namespace Trero.Modules
             Overlay.handle.Paint -= renderArrayList;
         }
 
-        Font df = new Font("Arial", 24, FontStyle.Bold);
+        Font df = new Font("Arial", 24, FontStyle.Regular);
 
         Brush brush1 = new SolidBrush(Color.FromArgb(44, 44, 44));
         Brush brush2 = new SolidBrush(Color.FromArgb(33, 33, 33));
@@ -46,15 +46,15 @@ namespace Trero.Modules
             {
                 case 0:
                     if (df.Size != 24)
-                        df = new Font("Arial", 24, FontStyle.Bold);
+                        df = new Font("Arial", 24, FontStyle.Regular);
                     break;
                 case 1:
                     if (df.Size != 32)
-                        df = new Font("Arial", 32, FontStyle.Bold);
+                        df = new Font("Arial", 32, FontStyle.Regular);
                     break;
                 case 2:
                     if (df.Size != 12)
-                        df = new Font("Arial", 12, FontStyle.Bold);
+                        df = new Font("Arial", 12, FontStyle.Regular);
                     break;
             }
             if (enabled)
@@ -75,6 +75,13 @@ namespace Trero.Modules
                                     e.Graphics.FillRectangle(brush1, Overlay.handle.Width - c.Width - 5 - (df.Size / 4), c.Height * loop, 5 + (df.Size / 4), df.Size * 1.66f);
                                     e.Graphics.FillRectangle(brush2, Overlay.handle.Width - c.Width, c.Height * loop, c.Width, df.Size * 1.66f);
                                     e.Graphics.DrawString(name, df, stringColour, Overlay.handle.Width - c.Width, c.Height * loop);
+                                    break;
+                                case 1:
+                                    string namec = mod.name;
+                                    if (mod.keybind != 0x07)
+                                        namec = mod.name + $" [{mod.keybind}]";
+                                    var cc = e.Graphics.MeasureString(namec, df);
+                                    e.Graphics.DrawString(namec, df, stringColour, Overlay.handle.Width - cc.Width, cc.Height * loop);
                                     break;
                             }
                             loop++;
