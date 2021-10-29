@@ -19,7 +19,7 @@ namespace Trero.Modules
             addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly" }));
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12" }));
             addBypass(new BypassBox(new string[] { "ShowKeybind: True", "ShowKeybind: False" }));
-            addBypass(new BypassBox(new string[] { "Font: Arial", "Font: Impact" }));
+            addBypass(new BypassBox(new string[] { "Font: Arial", "Font: GenericSansSerif", "Font: Impact" }));
         }
 
         public override void OnEnable()
@@ -48,21 +48,20 @@ namespace Trero.Modules
             if (bypasses[3].curIndex == 0)
                 font = "Arial";
             if (bypasses[3].curIndex == 1)
+                font = "GenericSansSerif";
+            if (bypasses[3].curIndex == 2)
                 font = "Impact";
 
             switch (bypasses[1].curIndex)
             {
                 case 0:
-                    if (df.Size != 24)
-                        df = new Font(font, 24, FontStyle.Regular);
+                    df = new Font(font, 24, FontStyle.Regular);
                     break;
                 case 1:
-                    if (df.Size != 32)
-                        df = new Font(font, 32, FontStyle.Regular);
+                    df = new Font(font, 32, FontStyle.Regular);
                     break;
                 case 2:
-                    if (df.Size != 12)
-                        df = new Font(font, 12, FontStyle.Regular);
+                    df = new Font(font, 12, FontStyle.Regular);
                     break;
             }
             if (enabled)
