@@ -26,6 +26,7 @@ namespace Trero
         public static bool limiter;
         public static bool unlimiter;
         public static EventHandler<EventArgs> mainThread;
+        public static EventHandler<EventArgs> moduleToggled;
         public static readonly List<Module> Modules = new List<Module>();
 
         public static bool debugmode = true;
@@ -133,6 +134,7 @@ namespace Trero
             Modules.Add(new Reach());
             Modules.Add(new HiveFly());
             Modules.Add(new AntiImmoblie());
+            Modules.Add(new ArrayList());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -363,6 +365,8 @@ namespace Trero
                                     Console.WriteLine("[" + Modules[i].enabled + "] " + Modules[i].name);
                                 }
                             }
+
+                            moduleToggled.Invoke(null, new EventArgs()); // Updated array list
 
                             Console.WriteLine("");
                             break;

@@ -105,6 +105,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\ArrayList.cs" />
     <Compile Include="Modules\FastWater.cs" />
     <Compile Include="Modules\Disabler.cs" />
     <Compile Include="Modules\FastFly.cs" />

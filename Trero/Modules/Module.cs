@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.UIBase;
@@ -44,9 +45,11 @@ namespace Trero.Modules
             {
                 case true:
                     OnEnable();
+                    Program.moduleToggled.Invoke(null, new EventArgs());
                     break;
                 case false:
                     OnDisable();
+                    Program.moduleToggled.Invoke(null, new EventArgs());
                     break;
             }
         } // Enable/Disable Handler

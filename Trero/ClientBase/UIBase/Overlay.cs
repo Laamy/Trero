@@ -45,9 +45,10 @@ namespace Trero.ClientBase.UIBase
 
         public Overlay()
         {
+            handle = this;
+
             Console.WriteLine("Initializing components...");
             InitializeComponent();
-            handle = this;
             Console.WriteLine("Initialized components!");
 
             Focus();
@@ -57,13 +58,17 @@ namespace Trero.ClientBase.UIBase
 
             overDel = new WinEventDelegate(adjust);
 
-            Console.WriteLine("Initializing window hooks...");
+            Console.WriteLine("Initializing hooks...");
             SetWinEventHook((uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, (uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, IntPtr.Zero, overDel, MCM.mcWinProcId, GetWindowThreadProcessId(MCM.mcWinHandle, IntPtr.Zero), (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
             SetWinEventHook((uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, (uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, overDel, 0, 0, (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
             Console.WriteLine("Initialized window hooks!");
+            Program.moduleToggled += redraw;
+            Console.WriteLine("Initialized arraylist hooks!");
 
             TopMost = true;
         }
+
+        private void redraw(object sender, EventArgs e) => Invalidate();
 
         private void adjust(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
@@ -100,6 +105,7 @@ namespace Trero.ClientBase.UIBase
             {
                 // ignored
             }
+            Invalidate();
         }
 
         WinEventDelegate overDel;
@@ -309,6 +315,8 @@ namespace Trero.ClientBase.UIBase
             else if (bypassPressed.curIndex >= (bypassPressed.list.Count() - 1))
                 bypassPressed.curIndex = 0;
             lab.Text = bypassPressed.list[bypassPressed.curIndex];
+
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         private void actorBind(object sender, MouseEventArgs e)
@@ -329,6 +337,8 @@ namespace Trero.ClientBase.UIBase
 
                     break;
             }
+
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         void InvalidateCategories() // update category sizes depending on moduleList size
@@ -411,6 +421,8 @@ namespace Trero.ClientBase.UIBase
                 }
                 InvalidateCategories();
             }
+
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         private void catchKeybind(object sender, KeyEventArgs e)
@@ -432,6 +444,8 @@ namespace Trero.ClientBase.UIBase
             vMod.Text = vMod.Name + @" (" + e.KeyCode + @")";
 
             vMod.KeyDown -= catchKeybind;
+
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         private void vCatchKeybind(object sender, KeyEventArgs e)
@@ -453,6 +467,8 @@ namespace Trero.ClientBase.UIBase
             cMod.Text = @"Keybind: " + e.KeyCode;
 
             cMod.KeyDown -= vCatchKeybind;
+
+            Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         private void panel3_MouseDown(object sender, MouseEventArgs e)
