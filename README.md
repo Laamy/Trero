@@ -7,7 +7,6 @@ and modify it as you please!!
 there are currently a few bugs with the mods, related to the update(1.17.30)
 so some set utiliies ill list will not be included in 1.17.30 releases
 
-* Antibot
 * AboveAura
 * TPAura
 * ClosestPlayerDisplay
@@ -21,6 +20,3 @@ so some set utiliies ill list will not be included in 1.17.30 releases
 * Friends
 * Nofriends
 * Rapeaura
-* HiveAntibot
-
-- Reach
