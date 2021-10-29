@@ -12,12 +12,14 @@ using Trero.Modules.vModuleExtra;
 
 namespace Trero.Modules
 {
-    internal class ArrayList : Module
+    internal class ArrayList : Module // "@yaami<3 can you code me a dad" - Mew_.IsSpecial 2021
     {
         public ArrayList() : base("ArrayList", (char)0x07, "Visual")
         {
             addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly" }));
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12" }));
+            addBypass(new BypassBox(new string[] { "ShowKeybind: True", "ShowKeybind: False" }));
+            addBypass(new BypassBox(new string[] { "Font: Arial", "Font: Impact" }));
         }
 
         public override void OnEnable()
@@ -42,19 +44,25 @@ namespace Trero.Modules
 
         private void renderArrayList(object sender, PaintEventArgs e)
         {
+            string font = "Arial";
+            if (bypasses[3].curIndex == 0)
+                font = "Arial";
+            if (bypasses[3].curIndex == 1)
+                font = "Impact";
+
             switch (bypasses[1].curIndex)
             {
                 case 0:
                     if (df.Size != 24)
-                        df = new Font("Arial", 24, FontStyle.Regular);
+                        df = new Font(font, 24, FontStyle.Regular);
                     break;
                 case 1:
                     if (df.Size != 32)
-                        df = new Font("Arial", 32, FontStyle.Regular);
+                        df = new Font(font, 32, FontStyle.Regular);
                     break;
                 case 2:
                     if (df.Size != 12)
-                        df = new Font("Arial", 12, FontStyle.Regular);
+                        df = new Font(font, 12, FontStyle.Regular);
                     break;
             }
             if (enabled)
@@ -69,7 +77,7 @@ namespace Trero.Modules
                             {
                                 case 0:
                                     string name = mod.name;
-                                    if (mod.keybind != 0x07)
+                                    if (mod.keybind != 0x07 && bypasses[2].curIndex == 0)
                                         name = mod.name + $" [{mod.keybind}]";
                                     var c = e.Graphics.MeasureString(name, df);
                                     e.Graphics.FillRectangle(brush1, Overlay.handle.Width - c.Width - 5 - (df.Size / 4), c.Height * loop, 5 + (df.Size / 4), df.Size * 1.66f);
@@ -78,7 +86,7 @@ namespace Trero.Modules
                                     break;
                                 case 1:
                                     string namec = mod.name;
-                                    if (mod.keybind != 0x07)
+                                    if (mod.keybind != 0x07 && bypasses[2].curIndex == 0)
                                         namec = mod.name + $" [{mod.keybind}]";
                                     var cc = e.Graphics.MeasureString(namec, df);
                                     e.Graphics.DrawString(namec, df, stringColour, Overlay.handle.Width - cc.Width, cc.Height * loop);
