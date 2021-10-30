@@ -456,6 +456,19 @@ namespace Trero.ClientBase
             MCM.writeFloat(localPlayer + VersionClass.GetData("velocity") + 4, y);
         } // Teleportation
 
+        public static void jumpForwards(float value)
+        {
+            Vector3 dVec = lVector;
+
+            Vector3 tempPos = Base.Vec3();
+
+            tempPos.x = (position.x / 10) + value * dVec.x;
+            tempPos.y = (position.y / 10) + value * dVec.y;
+            tempPos.z = (position.z / 10) + value * dVec.z;
+
+            teleport(tempPos);
+        } // Teleportation
+
         public static void swing()
         {
             swingAn = 1;

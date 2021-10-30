@@ -135,6 +135,7 @@ namespace Trero
             Modules.Add(new HiveFly());
             Modules.Add(new AntiImmoblie());
             Modules.Add(new ArrayList());
+            Modules.Add(new Jump());
 
             Console.WriteLine(@"Registered modules!");
 
