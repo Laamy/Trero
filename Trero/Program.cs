@@ -57,12 +57,7 @@ namespace Trero
 
             Console.WriteLine("Trero v" + VersionClass.currentVersion.name);
 
-            Task.Run(() => {
-                Application.Run(new Overlay());
-            }); // UI Application
-
-            // Debug shit here
-            Console.WriteLine(Game.localPlayer.ToString("X"));
+            Task.Run(() => Application.Run(new Overlay())); // UI Application
 
             Console.WriteLine(@"Registering modules...");
 
@@ -138,6 +133,7 @@ namespace Trero
             Modules.Add(new Jump());
             Modules.Add(new Watermark());
             Modules.Add(new CoordsHud());
+            Modules.Add(new NoLagBack());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -146,7 +142,6 @@ namespace Trero
                 case true:
                     Console.WriteLine(@"Registering DEBUG_MODULES...");
 
-                    //Modules.Add(new NoLagBack());
                     //Modules.Add(new TriggerBot());
 
                     Console.WriteLine(@"Registered DEBUG_MODULES!");

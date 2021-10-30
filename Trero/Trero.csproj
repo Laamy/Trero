@@ -70,6 +70,9 @@
   <PropertyGroup>
     <ApplicationIcon>TreroBackground.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -188,6 +191,7 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="App.config" />
+    <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ClientBase\UIBase\Overlay.resx">
