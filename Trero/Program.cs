@@ -137,6 +137,7 @@ namespace Trero
             Modules.Add(new ArrayList());
             Modules.Add(new Jump());
             Modules.Add(new Watermark());
+            Modules.Add(new CoordsHud());
 
             Console.WriteLine(@"Registered modules!");
 

@@ -18,18 +18,14 @@ namespace Trero.Modules
 
         public override void OnEnable()
         {
+            base.OnEnable(); 
             try
             {
                 Overlay.handle.Invoke((MethodInvoker)delegate
                 {
-
-                    Overlay.handle.SuspendLayout();
-
                     foreach (Control ct in Overlay.handle.Controls)
                         if (Overlay.handle != null && (string)ct.Tag == "CoordsHud")
                             ct.Visible = true;
-
-                    Overlay.handle.ResumeLayout();
                 });
             }
             catch
@@ -39,18 +35,15 @@ namespace Trero.Modules
 
         public override void OnDisable()
         {
+            base.OnDisable(); 
+
             try
             {
                 Overlay.handle.Invoke((MethodInvoker)delegate
                 {
-
-                    Overlay.handle.SuspendLayout();
-
                     foreach (Control ct in Overlay.handle.Controls)
                         if (Overlay.handle != null && (string)ct.Tag == "CoordsHud")
                             ct.Visible = false;
-
-                    Overlay.handle.ResumeLayout();
                 });
             }
             catch
