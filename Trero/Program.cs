@@ -135,6 +135,7 @@ namespace Trero
             Modules.Add(new CoordsHud());
             Modules.Add(new NoLagBack());
             Modules.Add(new CFreecam());
+            Modules.Add(new ElytraFlight());
 
             Console.WriteLine(@"Registered modules!");
 
