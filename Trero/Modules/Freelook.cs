@@ -13,15 +13,6 @@ namespace Trero.Modules
         {
         }
 
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            Vector2 bRots = Game.bodyRots;
-            bRots.y = Game.bodyRots.y;
-            bRots.x = Game.bodyRots.x;
-            Game.bodyRots = bRots;
-        }
-
         public override void OnDisable()
         {
             base.OnDisable();
@@ -33,6 +24,7 @@ namespace Trero.Modules
         public override void OnTick()
         {
             base.OnTick();
+
             OverrideBase.Pitch = false;
             OverrideBase.Yaw = false;
         }
