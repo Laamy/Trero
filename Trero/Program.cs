@@ -134,6 +134,7 @@ namespace Trero
             Modules.Add(new Watermark());
             Modules.Add(new CoordsHud());
             Modules.Add(new NoLagBack());
+            Modules.Add(new CFreecam());
 
             Console.WriteLine(@"Registered modules!");
 

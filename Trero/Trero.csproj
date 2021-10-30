@@ -108,6 +108,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\CFreecam.cs" />
     <Compile Include="Modules\Watermark.cs" />
     <Compile Include="Modules\Jump.cs" />
     <Compile Include="Modules\ArrayList.cs" />
