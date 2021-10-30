@@ -17,7 +17,7 @@ namespace Trero.Modules
         public ArrayList() : base("ArrayList", (char)0x07, "Visual")
         {
             addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly" }));
-            addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12" }));
+            addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12", "Size: 17" }));
             addBypass(new BypassBox(new string[] { "ShowKeybind: True", "ShowKeybind: False" }));
             addBypass(new BypassBox(new string[] { "Font: Arial", "Font: GenericSansSerif", "Font: Impact" }));
         }
@@ -62,6 +62,9 @@ namespace Trero.Modules
                     break;
                 case 2:
                     df = new Font(font, 12, FontStyle.Regular);
+                    break;
+                case 3:
+                    df = new Font(font, 17, FontStyle.Regular);
                     break;
             }
             if (enabled)
