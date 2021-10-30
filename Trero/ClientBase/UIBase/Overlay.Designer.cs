@@ -134,6 +134,7 @@
             label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             label12.Size = new System.Drawing.Size(120, 49);
             label12.TabIndex = 6;
+            label12.Tag = "watermark";
             label12.Text = "Trero";
             label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
             label12.Click += new System.EventHandler(this.label12_Click_1);

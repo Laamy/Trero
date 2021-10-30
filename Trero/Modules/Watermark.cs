@@ -10,9 +10,9 @@ using Trero.ClientBase.UIBase;
 
 namespace Trero.Modules
 {
-    internal class CoordsHud : Module
+    internal class Watermark : Module
     {
-        public CoordsHud() : base("CoordsHud", (char)0x07, "Visual", true)
+        public Watermark() : base("Watermark", (char)0x07, "Visual", true)
         {
         } // Not defined
 
@@ -26,7 +26,7 @@ namespace Trero.Modules
                     Overlay.handle.SuspendLayout();
 
                     foreach (Control ct in Overlay.handle.Controls)
-                        if (Overlay.handle != null && (string)ct.Tag == "CoordsHud")
+                        if (Overlay.handle != null && (string)ct.Tag == "watermark")
                             ct.Visible = true;
 
                     Overlay.handle.ResumeLayout();
