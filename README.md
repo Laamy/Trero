@@ -1,4 +1,4 @@
-External C# Utiliy Mod for Minecraft (Bedrock Edition)
+External C# Utiliy Mod for Minecraft (Bedrock Edition) (Currently supports 1.17.30 - 1.17.41)
 
 Trero is a C# MCBE Utility mod designed to enhance your learning
 experience with clients,it is open source, so you can dive in
