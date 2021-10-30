@@ -136,6 +136,8 @@ namespace Trero
             Modules.Add(new NoLagBack());
             Modules.Add(new CFreecam());
             Modules.Add(new ElytraFlight());
+            Modules.Add(new Tower());
+            Modules.Add(new Freelook());
 
             Console.WriteLine(@"Registered modules!");
 
@@ -197,18 +199,20 @@ namespace Trero
 
             Task.Run(() =>
             {
-                while (quit == false)
+            while (quit == false)
+            {
+                try // fixed any future errors here
                 {
-                    try // fixed any future errors here
-                    {
-                        if (limiter && !unlimiter)
-                            Thread.Sleep(1);
+                    if (limiter && !unlimiter)
+                        Thread.Sleep(1);
 
-                        if (!unlimiter)
-                            Thread.Sleep(1);
-                        Thread.Sleep(5);
+                    if (!unlimiter)
+                        Thread.Sleep(1);
+                    Thread.Sleep(5);
 
-                        mainThread.Invoke(null, new EventArgs());
+                    mainThread.Invoke(null, new EventArgs());
+
+                    //Console.WriteLine(Game.bodyRots);
                     }
                     catch
                     {

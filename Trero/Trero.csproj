@@ -95,6 +95,7 @@
     <Compile Include="ClientBase\KeyBase\Keymap.cs" />
     <Compile Include="ClientBase\KeyBase\Mouse.cs" />
     <Compile Include="ClientBase\MCM.cs" />
+    <Compile Include="ClientBase\OverrideBase.cs" />
     <Compile Include="ClientBase\PipeBase\PipeIO.cs" />
     <Compile Include="ClientBase\UIBase\Overlay.cs">
       <SubType>Form</SubType>
@@ -108,6 +109,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\Freelook.cs" />
     <Compile Include="Modules\CFreecam.cs" />
     <Compile Include="Modules\ElytraFlight.cs" />
     <Compile Include="Modules\Tower.cs" />

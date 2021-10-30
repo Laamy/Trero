@@ -12,15 +12,25 @@ namespace Trero.Modules
 
         private void keyPress(object sender, KeyEvent e)
         {
-            if (e.vkey == vKeyCodes.KeyHeld)
+            if (e.vkey == VKeyCodes.KeyHeld && enabled)
             {
-                if ((char)e.key == (char)0x02 && Game.heldItemCount > 0)
+                if ((char)e.key == (char)0x02)
                 {
-                    if (Game.rotation.x < 80f && Game.isLookingAtBlock == 0)
-                    {
-                        Game.velocity = Base.Vec3(0, 0.5f);
-                    }
+                    OverrideBase.Pitch = false;
+                    OverrideBase.Yaw = false;
+
+                    Vector2 rots = Game.bodyRots;
+                    rots.x = 90f;
+                    rots.y = 0f;
+                    Game.bodyRots = rots;
+
+                    Game.velocity = Base.Vec3(0, 0.32f);
                 }
+            }
+            if (e.vkey == VKeyCodes.KeyUp)
+            {
+                OverrideBase.Pitch = true;
+                OverrideBase.Yaw = true;
             }
         }
     }
