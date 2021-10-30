@@ -408,7 +408,27 @@ namespace Trero.ClientBase
                 MCM.writeInt(level + VersionClass.GetData("SelectedBlock") + 8, value.z);
             }
         } // SelectedBlock
-        
+
+        public static iVector3 exactPos
+        {
+            get
+            {
+                var vec = Base.IVec3();
+
+                vec.x = MCM.readInt(localPlayer + VersionClass.GetData("exactPos"));
+                vec.y = MCM.readInt(localPlayer + VersionClass.GetData("exactPos") + 4);
+                vec.z = MCM.readInt(localPlayer + VersionClass.GetData("exactPos") + 8);
+
+                return vec;
+            }
+            set
+            {
+                MCM.writeInt(localPlayer + VersionClass.GetData("exactPos"), value.x);
+                MCM.writeInt(localPlayer + VersionClass.GetData("exactPos") + 4, value.y);
+                MCM.writeInt(localPlayer + VersionClass.GetData("exactPos") + 8, value.z);
+            }
+        } // exactPos
+
         public static byte SideSelect
         {
             get => MCM.readByte(level + VersionClass.GetData("SideSelect"));

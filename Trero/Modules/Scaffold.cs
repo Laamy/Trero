@@ -31,8 +31,8 @@ namespace Trero.Modules
                 OverrideBase.lookingAtBlock = false;
                 Game.isLookingAtBlock = 0;
 
-                iVector3 scaffoldPos = Base.IVec3((int)Game.position.x, (int)Game.position.y, (int)Game.position.x);
-                scaffoldPos.y -= 1;
+                var scaffoldPos = Game.exactPos;
+                scaffoldPos.y -= 2;
                 Game.SelectedBlock = scaffoldPos;
 
                 Game.SideSelect = 1;

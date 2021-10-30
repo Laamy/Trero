@@ -66,6 +66,7 @@
                 0x1D9, // onGround3 
                 0x2C9, // isInLava
                 0x1DA, // walkingIntoBlock
+                0x214C, // exactPos
             }),
         };
 
@@ -130,6 +131,7 @@
             "onGround3",
             "isInLava",
             "walkingIntoBlock",
+            "exactPos",
         });
 
         private static IVersion _cv;
