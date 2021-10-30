@@ -58,6 +58,20 @@ namespace Trero.ClientBase
                 });
             }
         }
+        
+        public static void GiveEffect(string effect, int duration, int amplifier)//i dont know an more efficient way
+            {
+                switch (effect)
+                {
+                    case "Speed":
+                        Faketernal.Potions.CreateAction((i, c) => { // give speed effect
+
+                            Game.speed = (c * 0.0200000009f) + 0.1f; // Thanks javajar for this equation ;p
+
+                        }, new iRGB(198, 175, 124), duration, amplifier, 2f, () => { Game.speed = 0.1000000015f; });
+                        break;
+                }
+            }
 
         public static class Utils
         {
