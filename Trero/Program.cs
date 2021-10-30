@@ -374,6 +374,42 @@ namespace Trero
 
                             Console.WriteLine("");
                             break;
+                        case "effects":
+                            Console.WriteLine("Effect List (1)");
+                            Console.WriteLine("1. Speed");
+                            break;
+                        case "effect":
+                            if (arguments.Length > 0)
+                            {
+                                if (!Game.isNull)
+                                {
+                                    switch (arguments[0])
+                                    {
+                                        case "speed":
+                                            if (arguments[1] != null)
+                                            {
+                                                if (arguments[2] != null)
+                                                {
+                                                    if (Program.isNumber(arguments[1]) && Program.isNumber(arguments[2]))
+                                                    {
+                                                        //REEEEEEEEEEEEEEEE THERE ARE A MILLION IF STATEMENTS
+                                                        Faketernal.Potions.GiveEffect("Speed", Int32.Parse(arguments[1]), Int32.Parse(arguments[2]));
+                                                        Console.WriteLine("Speed " + Int32.Parse(arguments[1]) + " With a duration of " + Int32.Parse(arguments[2]) + "s Has been given!");
+                                                    }
+                                                    else Console.WriteLine("One of the values is not an int");
+
+                                                }
+                                                else Console.WriteLine("Please Provide an amplifier");
+                                            }
+                                            else Console.WriteLine("Please Provide an duration");
+                                            break;
+                                    }
+                                }
+                                else Console.WriteLine("You have to be ingame to use this command!");
+                            }
+                            else Console.WriteLine("Please Provide an effect!");
+                                
+                            break;
                         default:
                             Console.WriteLine("Invalid command!");
                             Console.WriteLine("");
