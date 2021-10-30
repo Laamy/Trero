@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using System.Drawing;
@@ -14,9 +14,10 @@ namespace Trero.Modules
 {
     internal class ArrayList : Module // "@yaami<3 can you code me a dad" - Mew_.IsSpecial 2021
     {
+
         public ArrayList() : base("ArrayList", (char)0x07, "Visual")
         {
-            addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly" }));
+            addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: Outlined", "Theme: FontOnly" }));
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12", "Size: 17" }));
             addBypass(new BypassBox(new string[] { "ShowKeybind: True", "ShowKeybind: False" }));
             addBypass(new BypassBox(new string[] { "Font: Arial", "Font: GenericSansSerif", "Font: Impact" }));
@@ -42,6 +43,7 @@ namespace Trero.Modules
         Brush brush2 = new SolidBrush(Color.FromArgb(33, 33, 33));
         Brush stringColour = new SolidBrush(Color.FromArgb(200, 200, 200));
 
+       
         private void renderArrayList(object sender, PaintEventArgs e)
         {
             string font = "Arial";
@@ -87,6 +89,17 @@ namespace Trero.Modules
                                     e.Graphics.DrawString(name, df, stringColour, Overlay.handle.Width - c.Width, c.Height * loop);
                                     break;
                                 case 1:
+                                    string name1 = mod.name;
+                                    if (mod.keybind != 0x07 && bypasses[2].curIndex == 0)
+                                        name = mod.name + $" [{mod.keybind}]";
+                                    var c1 = e.Graphics.MeasureString(name1, df);
+                                    e.Graphics.FillRectangle(brush1, Overlay.handle.Width - c1.Width - (df.Size / 4), c1.Height * loop, 5 + (df.Size / 4), df.Size * 1.66f);
+                                    e.Graphics.FillRectangle(brush2, Overlay.handle.Width - c1.Width, c1.Height * loop, c1.Width, df.Size * 1.66f);
+                                    e.Graphics.FillRectangle(brush1, Overlay.handle.Width - c1.Width - 2, c1.Height * loop - 0.3f, c1.Width - 0.4f, df.Size * 0.16f);
+                                    e.Graphics.FillRectangle(brush1, Overlay.handle.Width - c1.Width - 2, c1.Height * loop + 36f, c1.Width - 0.4f, df.Size * 0.16f);
+                                    e.Graphics.DrawString(name1, df, stringColour, Overlay.handle.Width - c1.Width, c1.Height * loop);
+                                    break;
+                                case 2:
                                     string namec = mod.name;
                                     if (mod.keybind != 0x07 && bypasses[2].curIndex == 0)
                                         namec = mod.name + $" [{mod.keybind}]";
