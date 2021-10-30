@@ -124,20 +124,6 @@ namespace Trero.ClientBase
             }
         } // Position
 
-        public static Vector3 lookingAtPosition
-        {
-            get
-            {
-                var vec = Base.Vec3();
-
-                vec.x = MCM.readFloat(localPlayer - VersionClass.GetData("lookingAtBlock"));
-                vec.y = MCM.readFloat(localPlayer - VersionClass.GetData("lookingAtBlock") + 4);
-                vec.z = MCM.readFloat(localPlayer - VersionClass.GetData("lookingAtBlock") + 8);
-
-                return vec;
-            }
-        } // Position
-
         public static int gamemode
         {
             get
@@ -397,10 +383,10 @@ namespace Trero.ClientBase
         } // Current world age
 
         // Level
-        public static int isLookingAtBlock
+        public static byte isLookingAtBlock
         {
-            get => MCM.readInt(level + VersionClass.GetData("LookingAtBlock"));
-            set => MCM.writeInt(level + VersionClass.GetData("LookingAtBlock"), value);
+            get => MCM.readByte(level + VersionClass.GetData("lookingAtBlock"));
+            set => MCM.writeByte(level + VersionClass.GetData("lookingAtBlock"), value);
         } // isLookingAtBlock
 
         public static iVector3 SelectedBlock
@@ -422,11 +408,11 @@ namespace Trero.ClientBase
                 MCM.writeInt(level + VersionClass.GetData("SelectedBlock") + 8, value.z);
             }
         } // SelectedBlock
-
-        public static int SideSelect
+        
+        public static byte SideSelect
         {
-            get => MCM.readInt(level + VersionClass.GetData("SideSelect"));
-            set => MCM.writeInt(level + VersionClass.GetData("SideSelect"), value);
+            get => MCM.readByte(level + VersionClass.GetData("SideSelect"));
+            set => MCM.writeByte(level + VersionClass.GetData("SideSelect"), value);
         } // SideSelect
 
         public static void teleport(AABB advancedAxis)

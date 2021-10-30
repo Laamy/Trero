@@ -34,13 +34,12 @@
                 0x0, // lookingEntityId
                 0x25D, // inWater
                 0x138, // bodyRots
-                0x360, // Level - 0x370
+                0x370, // Level - 0x370
                 0xA8, // entitylist+1 - 0x50
                 0xB0, // entitylist+2 (BROKEN ON 1.17.30 once again!) - 0x68
-                0x0, // lookingAtBlock
-                0x0, // SelectedBlock
-                0x0, // LookingAtBlock
-                0x0, // SideSelect
+                0xA28, // lookingAtBlock
+                0xA30, // SelectedBlock Position
+                0xA9C, // SideSelect
                 0x0, // ScreenT+1
                 0x0, // ScreenT+2
                 0x0, // Chatbase shit
@@ -69,6 +68,8 @@
                 0x1DA, // walkingIntoBlock
             }),
         };
+
+
 
         public static IVersion versionStruct = new IVersion(new object[]
         {
@@ -104,7 +105,6 @@
             "entitylist+2",
             "lookingAtBlock", // why is this defiend two times i wonder...
             "SelectedBlock",
-            "LookingAtBlock",
             "SideSelect",
             "screenT+1", "screenT+2",
             "chatBase", "chatBase+1", "chatBase+2", "chatBase+3", "chatBase+4",

@@ -112,6 +112,7 @@
     <Compile Include="Modules\Freelook.cs" />
     <Compile Include="Modules\CFreecam.cs" />
     <Compile Include="Modules\ElytraFlight.cs" />
+    <Compile Include="Modules\Scaffold.cs" />
     <Compile Include="Modules\Tower.cs" />
     <Compile Include="Modules\Watermark.cs" />
     <Compile Include="Modules\Jump.cs" />

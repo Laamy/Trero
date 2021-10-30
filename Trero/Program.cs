@@ -134,6 +134,7 @@ namespace Trero
             Modules.Add(new Watermark());
             Modules.Add(new CoordsHud());
             Modules.Add(new NoLagBack());
+            Modules.Add(new Scaffold());
             Modules.Add(new CFreecam());
             Modules.Add(new ElytraFlight());
             Modules.Add(new Tower());
