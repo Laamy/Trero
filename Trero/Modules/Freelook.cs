@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using Trero.ClientBase;
 using Trero.Modules.vModuleExtra;
@@ -16,9 +16,10 @@ namespace Trero.Modules
         public override void OnEnable()
         {
             base.OnEnable();
-
-            OverrideBase.Pitch = false;
-            OverrideBase.Yaw = false;
+            Vector2 bRots = Game.bodyRots;
+            bRots.y = Game.bodyRots.y;
+            bRots.x = Game.bodyRots.x;
+            Game.bodyRots = bRots;
         }
 
         public override void OnDisable()
@@ -27,6 +28,13 @@ namespace Trero.Modules
 
             OverrideBase.Pitch = true;
             OverrideBase.Yaw = true;
+        }
+
+        public override void OnTick()
+        {
+            base.OnTick();
+            OverrideBase.Pitch = false;
+            OverrideBase.Yaw = false;
         }
     }
 }
