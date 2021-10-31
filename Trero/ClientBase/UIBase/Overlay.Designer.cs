@@ -129,7 +129,7 @@ namespace Trero.ClientBase.UIBase
             label12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             label12.Font = new System.Drawing.Font("Ink Free", 30F, System.Drawing.FontStyle.Italic);
             label12.ForeColor = System.Drawing.Color.Silver;
-            label12.Location = new System.Drawing.Point(1316, 615);
+            label12.Location = new System.Drawing.Point(1265, 623);
             label12.Name = "label12";
             label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             label12.Size = new System.Drawing.Size(120, 49);
@@ -156,11 +156,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(51, 5);
+            this.label6.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label6.Location = new System.Drawing.Point(46, 2);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.Size = new System.Drawing.Size(40, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "Other";
             this.label6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label6_MouseDown);
@@ -229,7 +229,7 @@ namespace Trero.ClientBase.UIBase
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(1286, 11);
+            this.panel3.Location = new System.Drawing.Point(1235, 10);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(150, 100);
             this.panel3.TabIndex = 2;
@@ -287,7 +287,7 @@ namespace Trero.ClientBase.UIBase
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel1.Controls.Add(this.panel5);
-            this.panel1.Location = new System.Drawing.Point(1286, 116);
+            this.panel1.Location = new System.Drawing.Point(1235, 112);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 200);
             this.panel1.TabIndex = 3;
@@ -333,11 +333,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(50, 5);
+            this.label5.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label5.Location = new System.Drawing.Point(48, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.Size = new System.Drawing.Size(32, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Flies";
             this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label5_MouseDown);
@@ -371,13 +371,14 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(43, 5);
+            this.label4.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label4.Location = new System.Drawing.Point(40, 1);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(41, 17);
             this.label4.TabIndex = 4;
             this.label4.Text = "World";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label4_MouseDown);
             this.label4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label4_MouseMove);
             // 
@@ -407,11 +408,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(43, 5);
+            this.label7.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label7.Location = new System.Drawing.Point(37, 2);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.Size = new System.Drawing.Size(52, 17);
             this.label7.TabIndex = 4;
             this.label7.Text = "Combat";
             this.label7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label7_MouseDown);
@@ -443,11 +444,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(40, 4);
+            this.label8.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label8.Location = new System.Drawing.Point(40, 2);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.Size = new System.Drawing.Size(50, 17);
             this.label8.TabIndex = 4;
             this.label8.Text = "Exploits";
             this.label8.Click += new System.EventHandler(this.label8_Click);
@@ -480,12 +481,12 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(49, 7);
+            this.label9.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label9.Location = new System.Drawing.Point(45, 3);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(41, 17);
             this.label9.TabIndex = 4;
             this.label9.Text = "Visual";
             this.label9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label9_MouseDown);
@@ -517,11 +518,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(46, 5);
+            this.label10.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label10.Location = new System.Drawing.Point(43, 1);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.Size = new System.Drawing.Size(42, 17);
             this.label10.TabIndex = 4;
             this.label10.Text = "Player";
             this.label10.Click += new System.EventHandler(this.label10_Click);
@@ -551,9 +552,9 @@ namespace Trero.ClientBase.UIBase
             // panel18
             // 
             this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel18.Controls.Add(this.panel19);
-            this.panel18.Location = new System.Drawing.Point(1235, 454);
+            this.panel18.Location = new System.Drawing.Point(1184, 453);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(201, 158);
             this.panel18.TabIndex = 9;
@@ -567,7 +568,7 @@ namespace Trero.ClientBase.UIBase
             this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel19.Controls.Add(this.button2);
             this.panel19.Controls.Add(this.button1);
             this.panel19.Controls.Add(this.panel20);
@@ -581,7 +582,8 @@ namespace Trero.ClientBase.UIBase
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.button2.Location = new System.Drawing.Point(122, 107);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -595,7 +597,8 @@ namespace Trero.ClientBase.UIBase
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.button1.Location = new System.Drawing.Point(5, 106);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -620,10 +623,11 @@ namespace Trero.ClientBase.UIBase
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.numericUpDown3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.numericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Top;
             this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.numericUpDown3.Increment = new decimal(new int[] {
             100,
             0,
@@ -647,10 +651,11 @@ namespace Trero.ClientBase.UIBase
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.numericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Top;
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.numericUpDown1.Increment = new decimal(new int[] {
             10,
             0,
@@ -679,10 +684,11 @@ namespace Trero.ClientBase.UIBase
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.numericUpDown2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Top;
             this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.numericUpDown2.Increment = new decimal(new int[] {
             100,
             0,
@@ -736,11 +742,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(45, 7);
+            this.label11.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.label11.Location = new System.Drawing.Point(43, 3);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 13);
+            this.label11.Size = new System.Drawing.Size(45, 17);
             this.label11.TabIndex = 5;
             this.label11.Text = "Effects";
             this.label11.Click += new System.EventHandler(this.label11_Click);
