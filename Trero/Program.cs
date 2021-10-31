@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using System.Collections.Generic;
@@ -55,6 +55,10 @@ namespace Trero
             // ReSharper disable once ObjectCreationAsStatement
             new Keymap();
 
+            Console.WriteLine(" _____                 ");
+            Console.WriteLine("|_   _|___ ___ ___ ___ ");
+            Console.WriteLine("  | | |  _| -_|  _| . |");
+            Console.WriteLine("  |_| |_| |___|_| |___|");
             Console.WriteLine("Trero v" + VersionClass.currentVersion.name);
 
             Task.Run(() => Application.Run(new Overlay())); // UI Application
@@ -193,7 +197,7 @@ namespace Trero
 
             // Keymap.keyEvent += keyParse;
 
-            Console.WriteLine(@"--- Trero Terminal ---");
+            //Console.WriteLine(@"--- Trero Terminal ---");
             Console.WriteLine(@"Welcome to the trero terminal");
             Console.WriteLine(@"");
 
