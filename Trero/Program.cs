@@ -33,6 +33,7 @@ namespace Trero
 
         private static void Main(string[] args)
         {
+            VersionClass.init();
             try
             {
                 Process cProc = Process.GetProcessesByName("Minecraft.Windows")[0];

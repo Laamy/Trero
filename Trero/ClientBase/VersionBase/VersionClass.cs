@@ -1,8 +1,19 @@
-﻿namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
+﻿using System.Collections.Generic;
+using System.IO;
+
+namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
 {
     internal class VersionClass // versions
     {
-        public static IVersion[] versions =
+        public static void init()
+        {
+            foreach (string file in Directory.GetFiles("./patches", "*.trero"))
+            {
+                versions.Add(new IVersion(File.ReadAllLines(file)));
+            }
+        }
+        public static List<IVersion> versions = new List<IVersion>();
+        /*
         {
             // MCBE 1.17.30
             new IVersion(new object[]
@@ -69,8 +80,7 @@
                 0x214C, // exactPos
             }),
         };
-
-
+        */
 
         public static IVersion versionStruct = new IVersion(new object[]
         {
