@@ -55,12 +55,26 @@ namespace Trero.Modules
         public virtual void OnEnable()
         {
             enabled = true;
+            foreach (Module mod in Program.Modules)
+            {
+                if (mod.name == "Notifications" && mod.enabled)
+                {
+                    new Notification("Module " + this.name, "not implemented lol", "ENABLED");
+                }
+            }
             Program.moduleToggled.Invoke(null, new EventArgs());
         }
 
         public virtual void OnDisable()
         {
             enabled = false;
+            foreach (Module mod in Program.Modules)
+            {
+                if (mod.name == "Notifications" && mod.enabled)
+                {
+                    new Notification("Module " + this.name, "not implemented lol", "DISABLED");
+                }
+            }
             try
             {
                 Program.moduleToggled.Invoke(null, new EventArgs());
