@@ -15,6 +15,7 @@ namespace Trero.Modules
     {
         public HiveBhop() : base("HiveBhop", (char)0x07, "Player")
         {
+        addBypass(new BypassBox(new string[] { "Speed: Slow", "Speed: Normal", "Speed: Fast" }));
         }
 
         int jumpDelay = 0;
@@ -38,7 +39,20 @@ namespace Trero.Modules
                     if (Keymap.GetAsyncKeyState(Keys.D))
                         cy -= 55;
 
-                    int speed = 4;
+                    int speed = 3;
+
+                    switch (bypasses[0].curIndex)
+                    {
+                        case 0:
+                            speed = 3;
+                            break;
+                        case 1:
+                            speed = 5;
+                            break;
+                        case 2:
+                            speed = 7;
+                            break;
+                    }
 
                     newVel.z = (float)Math.Sin(cy) * (speed / 9f);
                     newVel.x = (float)Math.Cos(cy) * (speed / 9f);
