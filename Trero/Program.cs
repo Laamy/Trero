@@ -28,6 +28,7 @@ namespace Trero
         public static EventHandler<EventArgs> mainThread;
         public static EventHandler<EventArgs> moduleToggled;
         public static readonly List<Module> Modules = new List<Module>();
+        public static readonly List<Notification> notifications = new List<Notification>();
 
         public static bool debugmode = true;
 
@@ -144,6 +145,7 @@ namespace Trero
             Modules.Add(new ElytraFlight());
             Modules.Add(new Tower());
             Modules.Add(new Freelook());
+            Modules.Add(new Notifications());
             //Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");
@@ -398,6 +400,9 @@ namespace Trero
 
         private static void moduleTick(object sender, EventArgs e)
         {
+            foreach (var notification in notifications.Where(notification => notification.ticking)){
+                notification.OnTick();
+            }
             foreach (var mod in Modules.Where(mod => mod.enabled))
                 mod.OnTick();
         }
