@@ -16,7 +16,7 @@ namespace Trero.Modules
     {
         public ArrayList() : base("ArrayList", (char)0x07, "Visual")
         {
-            addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly" }));
+            addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly", "Theme: Floating" }));
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12", "Size: 17" }));
             addBypass(new BypassBox(new string[] { "ShowKeybind: True", "ShowKeybind: False" }));
             addBypass(new BypassBox(new string[] { "Font: Arial", "Font: GenericSansSerif", "Font: Impact" }));
@@ -114,6 +114,14 @@ namespace Trero.Modules
                                         namec = mod.name + $" [{mod.keybind}]";
                                     var cc = e.Graphics.MeasureString(namec, df);
                                     e.Graphics.DrawString(namec, df, stringColour, Overlay.handle.Width - cc.Width, cc.Height * loop);
+                                    break;
+                                case 2:
+                                    string namex = mod.name;
+                                    if (mod.keybind != 0x07 && bypasses[2].curIndex == 0)
+                                        namex = mod.name + $" [{mod.keybind}]";
+                                    var ca = e.Graphics.MeasureString(namex, df);
+                                    e.Graphics.FillRectangle(brush1, Overlay.handle.Width - 5 - (df.Size / 4), ca.Height * loop, 5 + (df.Size / 4), df.Size * 1.66f);
+                                    e.Graphics.DrawString(namex, df, stringColour, Overlay.handle.Width - ca.Width - (5 + (df.Size / 4)), ca.Height * loop);
                                     break;
                             }
                             loop++;
