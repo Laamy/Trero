@@ -2,7 +2,7 @@
 {
     internal class Unlimiter : Module
     {
-        public Unlimiter() : base("Unlimiter", (char)0x07)
+        public Unlimiter() : base("CPU Unlimiter", (char)0x07)
         {
         }
 
