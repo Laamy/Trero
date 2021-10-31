@@ -483,7 +483,7 @@ namespace Trero.ClientBase.UIBase
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label9.Location = new System.Drawing.Point(45, 3);
+            this.label9.Location = new System.Drawing.Point(45, 1);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label9.Size = new System.Drawing.Size(41, 17);
@@ -744,7 +744,7 @@ namespace Trero.ClientBase.UIBase
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Nirmala UI Semilight", 9.75F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.label11.Location = new System.Drawing.Point(43, 3);
+            this.label11.Location = new System.Drawing.Point(43, 2);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 17);
             this.label11.TabIndex = 5;
