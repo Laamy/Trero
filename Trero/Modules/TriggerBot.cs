@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class TriggerBot : Module
     {
-        public TriggerBot() : base("TriggerBot", (char)0x07, "Combat")
+        public TriggerBot() : base("TriggerBot", (char)0x07, "Combat", "Automatically hit any entity your looking at")
         {
         } // Not defined
 

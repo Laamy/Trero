@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     internal class MineplexFlyv2 : Module
     {
-        public MineplexFlyv2() : base("BhopFlight", (char)0x07, "Flies")
+        public MineplexFlyv2() : base("BhopFlight", (char)0x07, "Flies", "MineplexFlight version 2")
         {
         } // Not defined
 

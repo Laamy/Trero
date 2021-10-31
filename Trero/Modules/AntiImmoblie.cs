@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class AntiImmoblie : Module
     {
-        public AntiImmoblie() : base("AntiImmoblie", (char)0x07, "Exploits")
+        public AntiImmoblie() : base("AntiImmoblie", (char)0x07, "Exploits", "Stop the server from freezing you in place!")
         {
         } // Not defined
 

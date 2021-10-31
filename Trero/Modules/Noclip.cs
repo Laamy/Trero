@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class Noclip : Module
     {
-        public Noclip() : base("Noclip", (char)0x07, "Exploits")
+        public Noclip() : base("Noclip", (char)0x07, "Exploits", "Like phase but also works on the Y axis")
         {
         } // Not defined
 

@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class Sexaura : Module
     {
-        public Sexaura() : base("Sexaura", (char)0x07, "World")
+        public Sexaura() : base("Sexaura", (char)0x07, "World", "Tp around the closest players head")
         {
             addBypass(new BypassBox(new string[] { "Mobaura: False", "Mobaura: True" }));
             addBypass(new BypassBox(new string[] { "Plus 0.3", "Plus 0.5" }));

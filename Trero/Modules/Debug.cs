@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class Debug : Module
     {
-        public Debug() : base("Debug", (char)0x07, "Other", true)
+        public Debug() : base("Debug", (char)0x07, "Other", "Developer console", true)
         {
         } // 0x07 = no keybind
 

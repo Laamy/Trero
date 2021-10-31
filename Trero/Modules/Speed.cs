@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     internal class Speed : Module
     {
-        public Speed() : base("Speed", (char)0x07, "Player")
+        public Speed() : base("Speed", (char)0x07, "Player", "Go super fast!")
         {
             addBypass(new BypassBox(new string[] { "Client: Trero", "Client: Vanilla" }));
             addBypass(new BypassBox(new string[] { "Speed: 1", "Speed: 2", "Speed: 3" }));

@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class Step : Module
     {
-        public Step() : base("Step", (char)0x07, "Player")
+        public Step() : base("Step", (char)0x07, "Player", "Step up full blocks just like its a slab")
         {
             addBypass(new BypassBox(new string[] { "Height: 1f", "Height: 2f" }));
         } // 0x07 = no keybind

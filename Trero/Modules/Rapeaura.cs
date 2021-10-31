@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class Rapeaura : Module
     {
-        public Rapeaura() : base("Rapeaura", (char)0x07, "Combat")
+        public Rapeaura() : base("Rapeaura", (char)0x07, "Combat", "Sexaura + Killaura")
         {
         } // Not defined
 

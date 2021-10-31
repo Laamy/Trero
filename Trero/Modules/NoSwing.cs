@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class NoSwing : Module
     {
-        public NoSwing() : base("NoSwing", (char)0x07, "Visual")
+        public NoSwing() : base("NoSwing", (char)0x07, "Visual", "Remove the swinging animation")
         {
         } // Not defined
 

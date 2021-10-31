@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class Reach : Module
     {
-        public Reach() : base("Reach", (char)0x07, "Combat")
+        public Reach() : base("Reach", (char)0x07, "Combat", "Attack reach distance")
         {
             addBypass(new BypassBox(new string[] { "Distance: 4", "Distance: 5", "Distance: 6", "Distance: 7" }));
         } // Not defined

@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class PhaseDown : Module
     {
-        public PhaseDown() : base("PhaseDown", (char)0x07, "Flies")
+        public PhaseDown() : base("PhaseDown", (char)0x07, "Flies", "Slowly phase downwars")
         {
             addBypass(new BypassBox(new string[] { "Default", "Fast", "Super Fast" }));
         } // Not defined

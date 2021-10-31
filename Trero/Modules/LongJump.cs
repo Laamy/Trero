@@ -10,7 +10,7 @@ namespace Trero.Modules
     internal class LongJump : Module
     {
 
-        public LongJump() : base("LongJump", (char)0x07, "Player")
+        public LongJump() : base("LongJump", (char)0x07, "Player", "Jump longer distances")
         {
             addBypass(new BypassBox(new string[] { "Hive", "Large", "Small" }));
         } // Not defined+-/9*9

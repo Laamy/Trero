@@ -14,7 +14,7 @@ namespace Trero.Modules
 {
     internal class ArrayList : Module // "@yaami<3 can you code me a dad" - Mew_.IsSpecial 2021
     {
-        public ArrayList() : base("ArrayList", (char)0x07, "Visual")
+        public ArrayList() : base("ArrayList", (char)0x07, "Visual", "Display a list of modules on the side of your screen")
         {
             addBypass(new BypassBox(new string[] { "Theme: Trero", "Theme: FontOnly", "Theme: Floating" }));
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12", "Size: 17" }));

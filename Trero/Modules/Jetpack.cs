@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class Jetpack : Module
     {
-        public Jetpack() : base("Jetpack", (char)0x07, "Flies")
+        public Jetpack() : base("Jetpack", (char)0x07, "Flies", "Fly forwards a {x} speed")
         {
             addBypass(new BypassBox(new string[] { "Default", "Fast", "Hyper speed", "Slow" }));
             Keymap.keyEvent += KeyvE;

@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     internal class Bhop : Module
     {
-        public Bhop() : base("Bhop", (char)0x07, "Exploits")
+        public Bhop() : base("Bhop", (char)0x07, "Exploits", "Hop around like a bunny :3")
         {
             addBypass(new BypassBox(new string[] { "Speed: 0.7f", "Speed: 0.5f", "Speed: 0.3f", "Speed: 1.5f", "Speed: 1f" }));
             addBypass(new BypassBox(new string[] { "Height: 0.3f", "Height: 0.2f", "Height: 0.1f", "Height: 0.05f" }));

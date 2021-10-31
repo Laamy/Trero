@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class NoLagBack : Module
     {
-        public NoLagBack() : base("NoLagBack", (char)0x07, "Exploits")
+        public NoLagBack() : base("NoLagBack", (char)0x07, "Exploits", "Useless")
         {
         } // Not defined
 

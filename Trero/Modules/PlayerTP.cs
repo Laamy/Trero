@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class PlayerTP : Module
     {
-        public PlayerTP() : base("PlayerTP", (char)0x07, "Exploits")
+        public PlayerTP() : base("PlayerTP", (char)0x07, "Exploits", "Teleport to a player of your choice")
         {
         } // Not defined
 

@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class Jesus : Module
     {
-        public Jesus() : base("Jesus", (char)0x07, "Player")
+        public Jesus() : base("Jesus", (char)0x07, "Player", "Walk on water like jesus")
         {
         } // Not defined
 

@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class Glide : Module
     {
-        public Glide() : base("Glide", (char)0x07, "Player")
+        public Glide() : base("Glide", (char)0x07, "Player", "Glide down like a bird")
         {
             addBypass(new BypassBox(new string[] { "Trero", "Horion", "None" }));
         } // Not defined

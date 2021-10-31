@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class ClosestPlayerDisplay : Module
     {
-        public ClosestPlayerDisplay() : base("ClosestPlayerDisplay", (char)0x07, "Visual")
+        public ClosestPlayerDisplay() : base("ClosestPlayerDisplay", (char)0x07, "Visual", "Display the closest players information")
         {
         } // Not defined
 

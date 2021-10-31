@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class AutoWalk : Module
     {
-        public AutoWalk() : base("AutoWalk", (char)0x07, "Player")
+        public AutoWalk() : base("AutoWalk", (char)0x07, "Player", "Automatically walk forwards")
         {
             addBypass(new BypassBox(new string[] { "Normal", "Fast", "Slow" }));
         } // Not defined

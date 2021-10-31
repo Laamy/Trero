@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     internal class HiveBhop : Module
     {
-        public HiveBhop() : base("HiveBhop", (char)0x07, "Player")
+        public HiveBhop() : base("HiveBhop", (char)0x07, "Player", "Bhop created for hide")
         {
         addBypass(new BypassBox(new string[] { "Speed: Slow", "Speed: Normal", "Speed: Fast" }));
         }

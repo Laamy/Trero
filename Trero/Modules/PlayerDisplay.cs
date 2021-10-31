@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class PlayerDisplay : Module
     {
-        public PlayerDisplay() : base("PlayerDisplay", (char)0x07, "Visual")
+        public PlayerDisplay() : base("PlayerDisplay", (char)0x07, "Visual", "Display a list of players around you with their positions")
         {
         } // Not defined
 

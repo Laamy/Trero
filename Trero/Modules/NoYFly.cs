@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class NoYFly : Module
     {
-        public NoYFly() : base("NoYFly", (char)0x07, "Flies")
+        public NoYFly() : base("NoYFly", (char)0x07, "Flies", "Fast fly without Y forwarding")
         {
         } // Not defined
 

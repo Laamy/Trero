@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class FixHitbox : Module
     {
-        public FixHitbox() : base("FixHitbox", (char)0x07, "Others")
+        public FixHitbox() : base("FixHitbox", (char)0x07, "Others", "Debug module made to repair LP hitboxes")
         {
         } // 0x07 = no keybind
 

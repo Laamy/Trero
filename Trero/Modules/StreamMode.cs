@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class StreamMode : Module
     {
-        public StreamMode() : base("StreamMode", (char)0x07, "World")
+        public StreamMode() : base("StreamMode", (char)0x07, "World", "Hide your username")
         {
             storedusr = Game.username;
         } // 0x07 = no keybind

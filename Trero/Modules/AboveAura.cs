@@ -10,7 +10,7 @@ namespace Trero.Modules
     {
         private int _flicker;
 
-        public AboveAura() : base("AboveAura", (char)0x07, "Exploits")
+        public AboveAura() : base("AboveAura", (char)0x07, "Exploits", "Teleport above the closest players head")
         {
         } // this module isn't exactly required as sexaura has options to become this
 

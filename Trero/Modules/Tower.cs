@@ -6,7 +6,7 @@ namespace Trero.Modules
 {
     class Tower : Module
     {
-        public Tower() : base("Tower", (char)0x07, "World") {
+        public Tower() : base("Tower", (char)0x07, "World", "Hold right click to automatically build upwards") {
             Keymap.keyEvent += keyPress;
         }
 

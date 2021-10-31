@@ -93,6 +93,7 @@ namespace Trero.ClientBase.UIBase
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.TestCategory.SuspendLayout();
@@ -129,7 +130,7 @@ namespace Trero.ClientBase.UIBase
             label12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             label12.Font = new System.Drawing.Font("Ink Free", 30F, System.Drawing.FontStyle.Italic);
             label12.ForeColor = System.Drawing.Color.Silver;
-            label12.Location = new System.Drawing.Point(1265, 623);
+            label12.Location = new System.Drawing.Point(1265, 479);
             label12.Name = "label12";
             label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             label12.Size = new System.Drawing.Size(120, 49);
@@ -554,7 +555,7 @@ namespace Trero.ClientBase.UIBase
             this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel18.Controls.Add(this.panel19);
-            this.panel18.Location = new System.Drawing.Point(1184, 453);
+            this.panel18.Location = new System.Drawing.Point(1184, 321);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(201, 158);
             this.panel18.TabIndex = 9;
@@ -716,7 +717,7 @@ namespace Trero.ClientBase.UIBase
             this.UpdateLabel.AutoSize = true;
             this.UpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.UpdateLabel.Location = new System.Drawing.Point(12, 639);
+            this.UpdateLabel.Location = new System.Drawing.Point(12, 495);
             this.UpdateLabel.Name = "UpdateLabel";
             this.UpdateLabel.Size = new System.Drawing.Size(125, 25);
             this.UpdateLabel.TabIndex = 6;
@@ -1072,12 +1073,26 @@ namespace Trero.ClientBase.UIBase
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.label16.Location = new System.Drawing.Point(12, 470);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 25);
+            this.label16.TabIndex = 10;
+            this.label16.Tag = "ToolTips";
+            this.label16.Text = "Test";
+            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1386, 673);
+            this.ClientSize = new System.Drawing.Size(1386, 529);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.panel21);
             this.Controls.Add(this.UpdateLabel);
             this.Controls.Add(label12);
@@ -1211,5 +1226,6 @@ namespace Trero.ClientBase.UIBase
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Label label16;
     }
 }

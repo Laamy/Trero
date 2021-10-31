@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     internal class Watermark : Module
     {
-        public Watermark() : base("Watermark", (char)0x07, "Visual", true)
+        public Watermark() : base("Watermark", (char)0x07, "Visual", "Toggle trero's annoying watermark >:c", true)
         {
         } // Not defined
 

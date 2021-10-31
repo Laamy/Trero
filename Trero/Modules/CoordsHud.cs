@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class CoordsHud : Module
     {
-        public CoordsHud() : base("CoordsHud", (char)0x07, "Visual", true)
+        public CoordsHud() : base("CoordsHud", (char)0x07, "Visual", "Display information about your game", true)
         {
         } // Not defined
 

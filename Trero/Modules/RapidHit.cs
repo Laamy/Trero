@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class RapidHit : Module
     {
-        public RapidHit() : base("RapidHit", (char)0x07, "Combat")
+        public RapidHit() : base("RapidHit", (char)0x07, "Combat", "Spam hit packets when mousedown")
         {
         }
 

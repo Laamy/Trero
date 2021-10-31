@@ -10,7 +10,7 @@ namespace Trero.Modules
     {
 
         float savedY = 0f;
-        public Scaffold() : base("Scaffold", (char)0x07, "World") {
+        public Scaffold() : base("Scaffold", (char)0x07, "World", "Place blocks under you automatically") {
             addBypass(new BypassBox(new string[] { "Speed: Default", "Speed: 1", "Speed: 2" }));
             addBypass(new BypassBox(new string[] { "Place Mode: Auto ", "Place Mode: Manual" }));
             addBypass(new BypassBox(new string[] { "AntiFall: true", "AntiFall: false" }));

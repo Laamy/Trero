@@ -13,7 +13,7 @@ namespace Trero.Modules
 {
     internal class MineplexStep : Module
     {
-        public MineplexStep() : base("MineplexStep", (char)0x07, "Player")
+        public MineplexStep() : base("MineplexStep", (char)0x07, "Player", "Step made for mineplex and other servers that block it")
         {
             addBypass(new BypassBox(new string[] { "Default", "Fast", "Super Slow", "Slow" }));
         } // Not defined

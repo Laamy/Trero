@@ -2,7 +2,7 @@
 {
     internal class LBSH : Module
     {
-        public LBSH() : base("LBDF", (char)0x07, "Flies")
+        public LBSH() : base("LBDF", (char)0x07, "Flies", "Useless")
         {
         } // Not defined
 

@@ -12,7 +12,7 @@ namespace Trero.Modules
     internal class Disabler : Module
     {
         private static int _flicker;
-        public Disabler() : base("Disabler", (char)0x07, "World")
+        public Disabler() : base("Disabler", (char)0x07, "World", "Disabler for nethergames and minevile")
         {
             addBypass(new BypassBox(new string[] { "Speed: 0.5f", "Speed: 0.3f", "Speed: 0.7f" }));
             addBypass(new BypassBox(new string[] { "DownFlip: 0.1f", "DownFlip: 0.05f", "DownFlip: 0.2f" }));

@@ -2,7 +2,7 @@
 {
     internal class Limiter : Module
     {
-        public Limiter() : base("CPU Limiter", (char)0x07)
+        public Limiter() : base("CPU Limiter", (char)0x07, "Other", "Limit CPU Usage")
         {
         }
 

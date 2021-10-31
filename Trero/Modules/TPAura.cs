@@ -10,7 +10,7 @@ namespace Trero.Modules
     {
         private int _flicker;
 
-        public TPAura() : base("TPAura", (char)0x07, "Exploits")
+        public TPAura() : base("TPAura", (char)0x07, "Exploits", "Teleport around the closest player")
         {
         } // Not defined
 

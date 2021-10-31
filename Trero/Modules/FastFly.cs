@@ -14,7 +14,7 @@ namespace Trero.Modules
     internal class FastFly : Module
     {
         int a = 0;
-        public FastFly() : base("FastFly", (char)0x07, "Flies") // I'll add more settings to this later
+        public FastFly() : base("FastFly", (char)0x07, "Flies", "Bypassing fly made for mineplex & lifeboat (Speed 4 recm)") // I'll add more settings to this later
         {
             addBypass(new BypassBox(new string[] { "UpTeleport: 0.5f", "UpTeleport: 1f", "UpTeleport: None" }));
             addBypass(new BypassBox(new string[] { "Speed: 2f", "Speed: 3f", "Speed: 4f", "Speed: 5f", "Speed: 1f" }));

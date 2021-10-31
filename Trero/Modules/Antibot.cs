@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class Antibot : Module
     {
-        public Antibot() : base("Antibot", (char)0x07, "Other", true)
+        public Antibot() : base("Antibot", (char)0x07, "Other", "Handles entity list filtering", true)
         {
         }
 

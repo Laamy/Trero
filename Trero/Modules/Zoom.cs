@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class Zoom : Module
     {
-        public Zoom() : base("Zoom", 'C', "Visual")
+        public Zoom() : base("Zoom", 'C', "Visual", "Zoom in when pressing C just like optifine!")
         {
             addBypass(new BypassBox(new string[] { "Minus 0.8", "Minus 1" }));
             Keymap.keyEvent += KeyvE;

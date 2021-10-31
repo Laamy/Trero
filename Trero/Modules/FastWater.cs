@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class FastWater : Module
     {
-        public FastWater() : base("FastWater", (char)0x07, "Player")
+        public FastWater() : base("FastWater", (char)0x07, "Player", "Fly at the speed of light when you touch water")
         {
         } // Not defined
 

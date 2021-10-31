@@ -14,7 +14,7 @@ namespace Trero.Modules
 {
     internal class HiveFly : Module
     {
-        public HiveFly() : base("HiveFly", (char)0x07, "Flies")
+        public HiveFly() : base("HiveFly", (char)0x07, "Flies", "A bypass fly with many server options")
         {
             addBypass(new BypassBox(new string[] { "Default", "Hive", "Nethergames", "Mineplex" }));
         } // Not defined

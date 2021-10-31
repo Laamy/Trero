@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class Velocity : Module
     {
-        public Velocity() : base("Velocity", (char)0x07, "Player", false)
+        public Velocity() : base("Velocity", (char)0x07, "Player", "Anti-Knockback, stop all knockback.", false)
         {
         } // Not defined
 

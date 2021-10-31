@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class Teleport : Module
     {
-        public Teleport() : base("Teleport", (char)0x07, "World")
+        public Teleport() : base("Teleport", (char)0x07, "World", "Bring up the trero teleportation menu")
         {
         } // Not defined
 

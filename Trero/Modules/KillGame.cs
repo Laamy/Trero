@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class KillGame : Module
     {
-        public KillGame() : base("KillGame", (char)0x07)
+        public KillGame() : base("KillGame", (char)0x07, "Other", "Kill minecrafts process")
         {
         } // Not defined
 

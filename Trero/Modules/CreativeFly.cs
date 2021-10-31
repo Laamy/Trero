@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class CreativeFly : Module
     {
-        public CreativeFly() : base("CreativeFly", (char)0x07, "Flies")
+        public CreativeFly() : base("CreativeFly", (char)0x07, "Flies", "Fly like your in creative")
         {
             addBypass(new BypassBox(new string[] { "IsFlying: True", "IsFlying: False" }));
         } // Not defined

@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class ClickTP : Module
     {
-        public ClickTP() : base("ClickTP", (char)0x07, "Exploits")
+        public ClickTP() : base("ClickTP", (char)0x07, "Exploits", "Right click to teleport to the position your looking at")
         {
             Keymap.keyEvent += KeyPress;
         }

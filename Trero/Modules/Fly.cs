@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class Fly : Module
     {
-        public Fly() : base("Fly", (char)0x07, "Flies")
+        public Fly() : base("Fly", (char)0x07, "Flies", "Basic fly that supports minevile's disabler")
         {
         } // 0x07 = no keybind
 

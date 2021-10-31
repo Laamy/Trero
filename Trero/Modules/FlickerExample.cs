@@ -10,7 +10,7 @@ namespace Trero.Modules
     {
         private int _flicker;
 
-        public FlickerExample() : base("FlickerExample", (char)0x07)
+        public FlickerExample() : base("FlickerExample", (char)0x07, "Other", "ExampleModule")
         {
         } // 0x07 = no keybind
 

@@ -15,7 +15,7 @@ namespace Trero.Modules
 
         private static Random ran = new Random(); // dont wanna waste resources on random too much dont we lol
 
-        public Masturbator() : base("Masturbator", (char)0x07, "World") // derp
+        public Masturbator() : base("Masturbator", (char)0x07, "World", ";)") // derp
         {
         } // 0x07 = no keybind
 

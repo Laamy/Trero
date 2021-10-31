@@ -9,7 +9,7 @@ namespace Trero.Modules
     internal class InPvPTower : Module
     {
         int teleportCount = 0;
-        public InPvPTower() : base("InPvPTower", (char)0x07, "World") { }
+        public InPvPTower() : base("InPvPTower", (char)0x07, "World", "Break InPvP records") { }
 
 
         public override void OnTick()

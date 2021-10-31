@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class HiveAntibot : Module
     {
-        public HiveAntibot() : base("HiveAntibot", (char)0x07, "Other", false)
+        public HiveAntibot() : base("HiveAntibot", (char)0x07, "Other", "Antibot made for hive", false)
         {
         }
 

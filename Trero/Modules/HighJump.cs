@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class HighJump : Module
     {
-        public HighJump() : base("HighJump", (char)0x07, "Player")
+        public HighJump() : base("HighJump", (char)0x07, "Player", "Jump higher")
         {
             //addBypass(new BypassBox(new string[] { "Default", "High", "Super Low", "Low" }));
         } // 0x07 = no keybind

@@ -13,7 +13,7 @@ namespace Trero.Modules
     internal class ElytraFlight : Module
     {
         Vector3 savedVel = Base.Vec3();
-        public ElytraFlight() : base("ElytraFlight", (char)0x07, "Flies")
+        public ElytraFlight() : base("ElytraFlight", (char)0x07, "Flies", "ElytraFlight duh")
         {
             addBypass(new BypassBox(new string[] { "Default", "Fast", "Super fast", "Hyper speed" }));
             addBypass(new BypassBox(new string[] { "RestoreVel: False", "RestoreVel: True", }));

@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class ClickGUI : Module
     {
-        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual", true)
+        public ClickGUI() : base("ClickGUI", (char)(int)Keys.Insert, "Visual", "List all categories and their modules in their own little windows", true)
         {
         } // Not defined
 

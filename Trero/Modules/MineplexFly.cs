@@ -13,7 +13,7 @@ namespace Trero.Modules
         private const float Speed = 6.3f; // 5.6f best value
         private static float _flicker;
 
-        public MineplexFly() : base("MineplexFly", (char)0x07, "Flies")
+        public MineplexFly() : base("MineplexFly", (char)0x07, "Flies", "Fly designed for mineplex")
         {
         } // Not defined
 

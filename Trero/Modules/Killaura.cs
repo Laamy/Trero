@@ -10,7 +10,7 @@ namespace Trero.Modules
 {
     internal class Killaura : Module
     {
-        public Killaura() : base("Killaura", (char)0x07, "Combat")
+        public Killaura() : base("Killaura", (char)0x07, "Combat", "Attack entities around you automatically")
         {
             addBypass(new BypassBox(new string[] { "Mobaura: False", "Mobaura: True" }));
         }

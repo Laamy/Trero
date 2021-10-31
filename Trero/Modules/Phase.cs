@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class Phase : Module
     {
-        public Phase() : base("Phase", (char)0x07, "Exploits")
+        public Phase() : base("Phase", (char)0x07, "Exploits", "Move through walls")
         {
         } // Not defined
 

@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class Hitbox : Module
     {
-        public Hitbox() : base("Hitbox", (char)0x07, "Combat")
+        public Hitbox() : base("Hitbox", (char)0x07, "Combat", "Expand every entities hitbox to 7,7")
         {
         } // 0x07 = no keybind
 

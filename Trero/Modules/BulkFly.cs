@@ -14,7 +14,7 @@ namespace Trero.Modules
     {
         private static int _flicker;
 
-        public BulkFly() : base("BulkFly", (char)0x07, "Flies")
+        public BulkFly() : base("BulkFly", (char)0x07, "Flies", "Shitty fly :yawning_face:")
         {
         } // 0x07 = no keybind
 

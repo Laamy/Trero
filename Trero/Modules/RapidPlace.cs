@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class RapidPlace : Module
     {
-        public RapidPlace() : base("RapidPlace", (char)0x07, "Player")
+        public RapidPlace() : base("RapidPlace", (char)0x07, "Player", "Spam place packets when mousedown")
         {
         }
 

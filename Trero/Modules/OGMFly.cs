@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class OGMFly : Module
     {
-        public OGMFly() : base("OGMFly", (char)0x07, "Flies")
+        public OGMFly() : base("OGMFly", (char)0x07, "Flies", "Old version of mineplex fly")
         {
         } // Not defined
 

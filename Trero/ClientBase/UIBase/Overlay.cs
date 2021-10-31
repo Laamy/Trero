@@ -252,9 +252,17 @@ namespace Trero.ClientBase.UIBase
                 btn.Visible = true;
                 btn.Name = mod.name;
                 btn.Text = mod.name;
-                btn.MouseDown += keybindActivated;
                 btn.FlatAppearance.BorderSize = 0;
                 btn.FlatAppearance.BorderColor = TestCategory.BackColor;
+                btn.MouseDown += keybindActivated;
+
+                var tagc = new KeyTags();
+                tagc.Add("desc", mod.desc);
+
+                btn.Tag = tagc;
+
+                btn.MouseEnter += ActivateTooltip;
+                btn.MouseLeave += DeactivateTooltip;
 
                 cLab.Text = "Keybind: None";
                 if (mod.keybind != 0x07)
@@ -937,6 +945,10 @@ namespace Trero.ClientBase.UIBase
         {
 
         }
+
+        private void ActivateTooltip(object sender, EventArgs e) => label16.Text = ((KeyTags)((Button)sender).Tag).Get("desc").ToString();
+
+        private void DeactivateTooltip(object sender, EventArgs e) => label16.Text = "";
     }
 }
 

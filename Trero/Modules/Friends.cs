@@ -11,7 +11,7 @@ namespace Trero.Modules
 {
     internal class Friends : Module
     {
-        public Friends() : base("Friends", (char)0x07)
+        public Friends() : base("Friends", (char)0x07, "Other", "Friend actions")
         {
         } // Not defined
 

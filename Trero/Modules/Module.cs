@@ -14,17 +14,19 @@ namespace Trero.Modules
     {
         public readonly string category;
         public readonly string name;
+        public readonly string desc;
         public bool enabled;
 
         public char keybind;
         public List<BypassBox> bypasses = new List<BypassBox>();
 
-        protected Module(string name, char keybind, string category = "Other", bool enabled = false)
+        protected Module(string name, char keybind, string category, string desc, bool enabled = false)
         {
             this.name = name;
             this.keybind = keybind;
             this.category = category;
             this.enabled = enabled;
+            this.desc = desc;
 
             Keymap.keyEvent += OnKeypress;
         }

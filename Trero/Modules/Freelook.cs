@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class Freelook : Module
     {
-        public Freelook() : base("Freelook", (char)0x07, "Visual")
+        public Freelook() : base("Freelook", (char)0x07, "Visual", "Freeze your pitch and yaw so you can look around freely")
         {
         }
 

@@ -9,7 +9,7 @@ namespace Trero.Modules
 {
     internal class RainbowEffects : Module
     {
-        public RainbowEffects() : base("RainbowEffects", (char)0x07, "Visual", false)
+        public RainbowEffects() : base("RainbowEffects", (char)0x07, "Visual", "Client sided rainbow potion effects", false)
         {
         } // Not defined
 

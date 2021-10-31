@@ -14,7 +14,7 @@ namespace Trero.Modules
     {
         private const float Speed = 0.25f;
 
-        public InventoryMove() : base("InventoryMove", (char)0x07, "Player")
+        public InventoryMove() : base("InventoryMove", (char)0x07, "Player", "Move while in your inventory")
         {
         } // Not defined
 

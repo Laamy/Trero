@@ -12,7 +12,7 @@ namespace Trero.Modules
 {
     internal class Spider : Module
     {
-        public Spider() : base("Spider", (char)0x07, "Player")
+        public Spider() : base("Spider", (char)0x07, "Player", "Climb up walls, just like a spider!")
         {
         } // Not defined
 
