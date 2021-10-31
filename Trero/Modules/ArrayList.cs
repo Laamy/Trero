@@ -20,6 +20,7 @@ namespace Trero.Modules
             addBypass(new BypassBox(new string[] { "Size: 24", "Size: 32", "Size: 12", "Size: 17" }));
             addBypass(new BypassBox(new string[] { "ShowKeybind: True", "ShowKeybind: False" }));
             addBypass(new BypassBox(new string[] { "Font: Arial", "Font: GenericSansSerif", "Font: Impact" }));
+            addBypass(new BypassBox(new string[] { "Sorting: Z-A", "Font: A-Z", "Font: S-B", "Font: B-S", "Font: GDI S-B", "Font: GDI B-S" }));
         }
 
         public override void OnEnable()
@@ -70,6 +71,24 @@ namespace Trero.Modules
             if (enabled)
             {
                 int loop = 0;
+                switch (bypasses[4].curIndex)
+                {
+                    case 1:
+                        Program.Modules.Sort((c1, c2) => string.Compare(c1.name, c2.name, StringComparison.Ordinal)); // ABC Order
+                        break;
+                    case 2:
+                        Program.Modules.Sort((c1, c2) => c1.name.Length.CompareTo(c2.name.Length)); // Size2 Order
+                        break;
+                    case 3:
+                        Program.Modules.Sort((c1, c2) => c2.name.Length.CompareTo(c1.name.Length)); // Size2 Order
+                        break;
+                    case 4:
+                        Program.Modules.Sort((c1, c2) => e.Graphics.MeasureString(c1.name, df).Width.CompareTo(e.Graphics.MeasureString(c2.name, df).Width)); // Size2 Order
+                        break;
+                    case 5:
+                        Program.Modules.Sort((c1, c2) => e.Graphics.MeasureString(c2.name, df).Width.CompareTo(e.Graphics.MeasureString(c1.name, df).Width)); // Size2 Order
+                        break;
+                }
                 foreach (Module mod in Program.Modules) // get all modules
                 {
                     switch (mod.enabled)

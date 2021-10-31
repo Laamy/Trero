@@ -16,21 +16,20 @@ namespace Trero.Modules
             {
                 if ((char)e.key == (char)0x02)
                 {
+                    Game.Placing = 0;
+
                     OverrideBase.Pitch = false;
-                    OverrideBase.Yaw = false;
 
                     Vector2 rots = Game.bodyRots;
                     rots.x = 90f;
-                    rots.y = 0f;
                     Game.bodyRots = rots;
 
-                    Game.velocity = Base.Vec3(0, 0.32f);
+                    Game.velocity = Base.Vec3(0, 0.25f);
                 }
             }
             if (e.vkey == VKeyCodes.KeyUp)
             {
                 OverrideBase.Pitch = true;
-                OverrideBase.Yaw = true;
             }
         }
     }
