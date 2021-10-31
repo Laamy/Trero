@@ -1,4 +1,4 @@
-﻿namespace Trero.ClientBase.UIBase
+namespace Trero.ClientBase.UIBase
 {
     partial class Overlay
     {
@@ -141,7 +141,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.TestCategory);
             this.panel2.Location = new System.Drawing.Point(562, 10);
@@ -156,9 +156,9 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.label6.Location = new System.Drawing.Point(46, 6);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(51, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 5;
@@ -168,7 +168,7 @@
             // 
             // TestCategory
             // 
-            this.TestCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.TestCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.TestCategory.Controls.Add(this.ClonablePanel);
             this.TestCategory.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TestCategory.Location = new System.Drawing.Point(0, 22);
@@ -202,11 +202,12 @@
             // 
             // ClonableButton
             // 
-            this.ClonableButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.ClonableButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.ClonableButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.ClonableButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.ClonableButton.FlatAppearance.BorderSize = 0;
             this.ClonableButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClonableButton.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClonableButton.ForeColor = System.Drawing.SystemColors.Control;
             this.ClonableButton.Location = new System.Drawing.Point(0, 0);
             this.ClonableButton.Name = "ClonableButton";
@@ -226,7 +227,7 @@
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Location = new System.Drawing.Point(1286, 11);
             this.panel3.Name = "panel3";
@@ -238,7 +239,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label1);
@@ -251,40 +252,40 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(10, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 16);
+            this.label3.Size = new System.Drawing.Size(20, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "0b";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.label2.Location = new System.Drawing.Point(10, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 16);
+            this.label2.Size = new System.Drawing.Size(37, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "0, 0, 0";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(92)))), ((int)(((byte)(88)))));
             this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.Size = new System.Drawing.Size(59, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Location = new System.Drawing.Point(1286, 116);
             this.panel1.Name = "panel1";
@@ -296,7 +297,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel5.Controls.Add(this.playerList);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 24);
@@ -307,17 +308,17 @@
             // playerList
             // 
             this.playerList.AutoSize = true;
-            this.playerList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerList.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.playerList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(92)))), ((int)(((byte)(88)))));
             this.playerList.Location = new System.Drawing.Point(10, 10);
             this.playerList.Name = "playerList";
-            this.playerList.Size = new System.Drawing.Size(84, 16);
+            this.playerList.Size = new System.Drawing.Size(68, 15);
             this.playerList.TabIndex = 3;
             this.playerList.Text = "PlayersHere";
             // 
             // panel6
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel6.Controls.Add(this.label5);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Location = new System.Drawing.Point(700, 10);
@@ -332,9 +333,9 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(51, 6);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(50, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 4;
@@ -344,16 +345,17 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(0, 22);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(132, 74);
             this.panel7.TabIndex = 0;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // panel8
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Location = new System.Drawing.Point(10, 10);
@@ -361,6 +363,7 @@
             this.panel8.Size = new System.Drawing.Size(132, 96);
             this.panel8.TabIndex = 5;
             this.panel8.Tag = "Category";
+            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             this.panel8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel8_MouseDown);
             this.panel8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel8_MouseMove);
             // 
@@ -368,9 +371,9 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(46, 6);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(43, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 4;
@@ -380,7 +383,7 @@
             // 
             // panel9
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel9.Location = new System.Drawing.Point(0, 22);
             this.panel9.Name = "panel9";
@@ -389,7 +392,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel10.Controls.Add(this.label7);
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Location = new System.Drawing.Point(148, 10);
@@ -404,9 +407,9 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(45, 6);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(43, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 4;
@@ -416,7 +419,7 @@
             // 
             // panel11
             // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel11.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel11.Location = new System.Drawing.Point(0, 22);
             this.panel11.Name = "panel11";
@@ -425,7 +428,7 @@
             // 
             // panel12
             // 
-            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel12.Controls.Add(this.label8);
             this.panel12.Controls.Add(this.panel13);
             this.panel12.Location = new System.Drawing.Point(424, 10);
@@ -440,19 +443,20 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(186)))), ((int)(((byte)(116)))));
-            this.label8.Location = new System.Drawing.Point(44, 6);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(40, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Exploits";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             this.label8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label8_MouseDown);
             this.label8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label8_MouseMove);
             // 
             // panel13
             // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel13.Location = new System.Drawing.Point(0, 22);
             this.panel13.Name = "panel13";
@@ -461,7 +465,7 @@
             // 
             // panel14
             // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel14.Controls.Add(this.label9);
             this.panel14.Controls.Add(this.panel15);
             this.panel14.Location = new System.Drawing.Point(838, 8);
@@ -476,9 +480,9 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label9.Location = new System.Drawing.Point(47, 6);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(49, 7);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label9.Size = new System.Drawing.Size(35, 13);
@@ -489,7 +493,7 @@
             // 
             // panel15
             // 
-            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel15.Location = new System.Drawing.Point(0, 22);
             this.panel15.Name = "panel15";
@@ -498,7 +502,7 @@
             // 
             // panel16
             // 
-            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel16.Controls.Add(this.label10);
             this.panel16.Controls.Add(this.panel17);
             this.panel16.Location = new System.Drawing.Point(286, 10);
@@ -513,19 +517,20 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.label10.Location = new System.Drawing.Point(48, 6);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(46, 5);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 4;
             this.label10.Text = "Player";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             this.label10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label10_MouseDown);
             this.label10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label10_MouseMove);
             // 
             // panel17
             // 
-            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel17.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel17.Location = new System.Drawing.Point(0, 22);
             this.panel17.Name = "panel17";
@@ -714,7 +719,7 @@
             // 
             // panel21
             // 
-            this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.panel21.Controls.Add(this.label11);
             this.panel21.Controls.Add(this.panel22);
             this.panel21.Location = new System.Drawing.Point(976, 8);
@@ -722,6 +727,7 @@
             this.panel21.Size = new System.Drawing.Size(132, 379);
             this.panel21.TabIndex = 6;
             this.panel21.Tag = "Category";
+            this.panel21.Paint += new System.Windows.Forms.PaintEventHandler(this.panel21_Paint);
             this.panel21.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseClick);
             this.panel21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseDown);
             this.panel21.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel21_MouseMove);
@@ -730,20 +736,21 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(92)))), ((int)(((byte)(150)))));
-            this.label11.Location = new System.Drawing.Point(46, 6);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(45, 7);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(40, 13);
             this.label11.TabIndex = 5;
             this.label11.Text = "Effects";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             this.label11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label11_MouseClick);
             this.label11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label11_MouseDown);
             this.label11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label11_MouseMove);
             // 
             // panel22
             // 
-            this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel22.Controls.Add(this.panel23);
             this.panel22.Controls.Add(this.panel24);
             this.panel22.Controls.Add(this.button12);
@@ -764,7 +771,7 @@
             // 
             // panel23
             // 
-            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel23.Controls.Add(this.label14);
             this.panel23.Controls.Add(this.PotionAmplifier);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Top;
@@ -778,21 +785,23 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
+            this.label14.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label14.Location = new System.Drawing.Point(6, 6);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 16);
+            this.label14.Size = new System.Drawing.Size(55, 15);
             this.label14.TabIndex = 6;
             this.label14.Text = "Amplifier";
             this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // PotionAmplifier
             // 
-            this.PotionAmplifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.PotionAmplifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.PotionAmplifier.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PotionAmplifier.Dock = System.Windows.Forms.DockStyle.Right;
             this.PotionAmplifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.PotionAmplifier.ForeColor = System.Drawing.Color.White;
             this.PotionAmplifier.Location = new System.Drawing.Point(58, 0);
             this.PotionAmplifier.Maximum = new decimal(new int[] {
             256,
@@ -816,7 +825,7 @@
             // 
             // panel24
             // 
-            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.panel24.Controls.Add(this.label15);
             this.panel24.Controls.Add(this.PotionDiritation);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Top;
@@ -829,21 +838,23 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
+            this.label15.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label15.Location = new System.Drawing.Point(6, 6);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 16);
+            this.label15.Size = new System.Drawing.Size(56, 15);
             this.label15.TabIndex = 6;
             this.label15.Text = "Diritation";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // PotionDiritation
             // 
-            this.PotionDiritation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.PotionDiritation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.PotionDiritation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PotionDiritation.Dock = System.Windows.Forms.DockStyle.Right;
             this.PotionDiritation.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.PotionDiritation.ForeColor = System.Drawing.Color.White;
             this.PotionDiritation.Location = new System.Drawing.Point(58, 0);
             this.PotionDiritation.Maximum = new decimal(new int[] {
             99999,
@@ -867,11 +878,12 @@
             // 
             // button12
             // 
-            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button12.Dock = System.Windows.Forms.DockStyle.Top;
             this.button12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button12.ForeColor = System.Drawing.SystemColors.Control;
             this.button12.Location = new System.Drawing.Point(0, 252);
             this.button12.Name = "button12";
@@ -885,11 +897,12 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button11.Dock = System.Windows.Forms.DockStyle.Top;
             this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button11.ForeColor = System.Drawing.SystemColors.Control;
             this.button11.Location = new System.Drawing.Point(0, 224);
             this.button11.Name = "button11";
@@ -903,11 +916,12 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button10.Dock = System.Windows.Forms.DockStyle.Top;
             this.button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button10.FlatAppearance.BorderSize = 0;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button10.ForeColor = System.Drawing.SystemColors.Control;
             this.button10.Location = new System.Drawing.Point(0, 196);
             this.button10.Name = "button10";
@@ -921,11 +935,12 @@
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button9.Dock = System.Windows.Forms.DockStyle.Top;
             this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button9.ForeColor = System.Drawing.SystemColors.Control;
             this.button9.Location = new System.Drawing.Point(0, 168);
             this.button9.Name = "button9";
@@ -939,11 +954,12 @@
             // 
             // button8
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button8.Dock = System.Windows.Forms.DockStyle.Top;
             this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button8.ForeColor = System.Drawing.SystemColors.Control;
             this.button8.Location = new System.Drawing.Point(0, 140);
             this.button8.Name = "button8";
@@ -957,11 +973,12 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button7.Dock = System.Windows.Forms.DockStyle.Top;
             this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button7.ForeColor = System.Drawing.SystemColors.Control;
             this.button7.Location = new System.Drawing.Point(0, 112);
             this.button7.Name = "button7";
@@ -975,11 +992,12 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button6.Dock = System.Windows.Forms.DockStyle.Top;
             this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button6.ForeColor = System.Drawing.SystemColors.Control;
             this.button6.Location = new System.Drawing.Point(0, 84);
             this.button6.Name = "button6";
@@ -993,11 +1011,12 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button5.ForeColor = System.Drawing.SystemColors.Control;
             this.button5.Location = new System.Drawing.Point(0, 56);
             this.button5.Name = "button5";
@@ -1011,11 +1030,12 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button3.Dock = System.Windows.Forms.DockStyle.Top;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button3.ForeColor = System.Drawing.SystemColors.Control;
             this.button3.Location = new System.Drawing.Point(0, 28);
             this.button3.Name = "button3";
@@ -1029,11 +1049,12 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.button4.Dock = System.Windows.Forms.DockStyle.Top;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Nirmala UI Semilight", 9F);
             this.button4.ForeColor = System.Drawing.SystemColors.Control;
             this.button4.Location = new System.Drawing.Point(0, 0);
             this.button4.Name = "button4";
@@ -1050,7 +1071,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1448, 673);
+            this.ClientSize = new System.Drawing.Size(1386, 673);
             this.Controls.Add(this.panel21);
             this.Controls.Add(this.UpdateLabel);
             this.Controls.Add(label12);
