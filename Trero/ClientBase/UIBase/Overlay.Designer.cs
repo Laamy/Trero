@@ -178,7 +178,7 @@ namespace Trero.ClientBase.UIBase
             // 
             // ClonablePanel
             // 
-            this.ClonablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.ClonablePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(71)))), ((int)(((byte)(96)))));
             this.ClonablePanel.Controls.Add(this.label13);
             this.ClonablePanel.Controls.Add(this.ClonableButton);
             this.ClonablePanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -192,11 +192,11 @@ namespace Trero.ClientBase.UIBase
             // 
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label13.ForeColor = System.Drawing.SystemColors.Control;
+            this.label13.Font = new System.Drawing.Font("Nirmala UI Semilight", 10F);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.label13.Location = new System.Drawing.Point(0, 28);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 17);
+            this.label13.Size = new System.Drawing.Size(71, 19);
             this.label13.TabIndex = 6;
             this.label13.Text = "Keybind: ?";
             // 
