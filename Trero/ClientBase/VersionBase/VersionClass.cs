@@ -7,10 +7,76 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
     {
         public static void init()
         {
+			
             foreach (string file in Directory.GetFiles("./patches", "*.trero"))
             {
                 versions.Add(new IVersion(File.ReadAllLines(file)));
             }
+			if(versions.Count == 0)
+			{
+                versions.Add(new IVersion(new object[] {
+                    "MCBE-1.17.41",
+                    0x04209468, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
+                    0x1D8, // onground
+                    0x1DC, // onground 2
+                    0x238, // stepHeight
+                    0x2A8, // worldAge
+                    0x1D84, // gamemode
+                    0x980, // isFlying
+                    0x240, // blocksTraveled_Ex
+                    0x258, // blocksTraveled
+                    0x2370, // helditemCount
+                    0x236A, // holdingItem
+                    0x0, // holdingItemId
+                    0x023D8, // selectedHotbarId
+                    0x0, // viewCreativeItems
+                    0x0, // viewCreativeItemsSelectedCategory
+                    0x400, // entityType
+                    0x1148, // inInventory
+                    0x8E0, // username
+                    0x360, 0x0, // gameDim
+                    0x4C0, // position
+                    0x0, // hitbox - 0x4C0 + 24
+                    0x4F8, // veloicty
+                    0x7C8, // swingAn
+                    0x0, // lookingEntityId
+                    0x25D, // inWater
+                    0x138, // bodyRots
+                    0x370, // Level - 0x370
+                    0xA8, // entitylist+1 - 0x50
+                    0xB0, // entitylist+2 (BROKEN ON 1.17.30 once again!) - 0x68
+                    0xA28, // lookingAtBlock
+                    0xA30, // SelectedBlock Position
+                    0xA9C, // SideSelect
+                    0x0, // ScreenT+1
+                    0x0, // ScreenT+2
+                    0x0, // Chatbase shit
+                    0x0, // Chatbase shit
+                    0x0, // Chatbase shit
+                    0x0, // Chatbase shit
+                    0x0, // Chatbase shit
+                    0x1058, // fieldOfView
+                    0x178, // EffectsClass
+                    0x40, // EffectsSubClass
+                    0x10, // EffectsColor
+                    0x490, // SpeedClass
+                    0x18, // SpeedSubClass
+                    0x2C0, // SpeedSubSubClass
+                    0x9C, // SpeedValue
+                    0x04171058, 0x490, 0x2A0, 0x8, // vKeyInfo
+                    0x4B, // inMenu
+                    0x50, // Hitting
+                    0x51, // Placing
+                    0x52, // Picking
+                    0x138, // mouseX
+                    0x13A, // mouseY
+                    0x13E, // eKeymap
+                    0x1D9, // onGround3 
+                    0x2C9, // isInLava
+                    0x1DA, // walkingIntoBlock
+                    0x214C, // exactPos
+			    }));
+			}
         }
         public static List<IVersion> versions = new List<IVersion>();
         /*
