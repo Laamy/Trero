@@ -7,11 +7,14 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
     {
         public static void init()
         {
-			
-            foreach (string file in Directory.GetFiles("./patches", "*.trero"))
+            try
             {
-                versions.Add(new IVersion(File.ReadAllLines(file)));
+                foreach (string file in Directory.GetFiles("./patches", "*.trero"))
+                {
+                    versions.Add(new IVersion(File.ReadAllLines(file)));
+                }
             }
+            catch { }
 			if(versions.Count == 0)
 			{
                 versions.Add(new IVersion(new object[] {
