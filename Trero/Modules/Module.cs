@@ -61,7 +61,11 @@ namespace Trero.Modules
         public virtual void OnDisable()
         {
             enabled = false;
-            Program.moduleToggled.Invoke(null, new EventArgs());
+            try
+            {
+                Program.moduleToggled.Invoke(null, new EventArgs());
+            }
+            catch { }
         }
 
         public virtual void OnTick()
