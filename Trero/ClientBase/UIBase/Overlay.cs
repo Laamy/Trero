@@ -394,12 +394,12 @@ namespace Trero.ClientBase.UIBase
                     if (mod.enabled)
                     {
                         mod.OnDisable();
-                        btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                        btn.BackColor = Color.FromArgb(255, 0, 103, 255);
                     }
                     else
                     {
                         mod.OnEnable();
-                        btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                        btn.BackColor = Color.FromArgb(255, 54, 71, 96);
                     }
             }
 
