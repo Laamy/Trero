@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using System.Collections.Generic;
@@ -182,11 +182,11 @@ namespace Trero.ClientBase.UIBase
                     if (mod.name != btn.Name) return;
                     switch (mod.enabled)
                     {
-                        case true when btn.BackColor != Color.FromArgb(255, 39, 39, 39):
-                            btn.BackColor = Color.FromArgb(255, 39, 39, 39);
+                        case true when btn.BackColor != Color.FromArgb(255, 0, 103, 255):
+                            btn.BackColor = Color.FromArgb(255, 0, 103, 255);
                             break;
-                        case false when btn.BackColor == Color.FromArgb(255, 39, 39, 39):
-                            btn.BackColor = Color.FromArgb(255, 44, 44, 44);
+                        case false when btn.BackColor == Color.FromArgb(255, 0, 103, 255):
+                            btn.BackColor = Color.FromArgb(255, 54, 71, 96);
                             break;
                     }
                 }
@@ -899,6 +899,36 @@ namespace Trero.ClientBase.UIBase
         }
 
         private void panel23_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel21_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
         {
 
         }
