@@ -139,6 +139,7 @@ namespace Trero
             Modules.Add(new ElytraFlight());
             Modules.Add(new Tower());
             Modules.Add(new Freelook());
+            Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");
 
