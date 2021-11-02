@@ -119,6 +119,7 @@
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
     <Compile Include="Modules\Blink.cs" />
     <Compile Include="Modules\NoPacket.cs" />
+    <Compile Include="Modules\NoWater.cs" />
     <Compile Include="Modules\Timer.cs" />
     <Compile Include="Modules\LoadConfig.cs" />
     <Compile Include="Modules\SaveConfig.cs" />
