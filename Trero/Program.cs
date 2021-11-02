@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
@@ -27,9 +29,9 @@ namespace Trero
         public static bool unlimiter;
         public static EventHandler<EventArgs> mainThread;
         public static EventHandler<EventArgs> moduleToggled;
-        public static readonly List<Module> Modules = new List<Module>();
+        public static List<Module> Modules = new List<Module>();
 
-        public static bool debugmode = true;
+        private static bool debugmode = true;
 
         private static void Main(string[] args)
         {
@@ -106,7 +108,7 @@ namespace Trero
             Modules.Add(new Glide());
             //Modules.Add(new Killaura());
             Modules.Add(new Limiter()); // CPU saver
-            Modules.Add(new Unlimiter()); // Remove safty ill make these a single module soon
+            Modules.Add(new Unlimiter());
             //Modules.Add(new Friends());
             //Modules.Add(new Nofriends());
             Modules.Add(new MineplexFly());
@@ -144,6 +146,8 @@ namespace Trero
             Modules.Add(new ElytraFlight());
             Modules.Add(new Tower());
             Modules.Add(new Freelook());
+            Modules.Add(new SaveConfig());
+            Modules.Add(new LoadConfig());
             //Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");
@@ -159,44 +163,36 @@ namespace Trero
                     break;
             }
 
-            //Console.WriteLine("LookingEntityID Address: " + (Game.localPlayer + 0x0).ToString("X"));
+            Modules.Sort((c1, c2) => string.Compare(c2.name, c1.name, StringComparison.Ordinal));
 
-            // Recall (Teleportation)
-            // Tower (Veloicty & getKey)
+            Console.WriteLine(@"Checking for config...");
+            if (File.Exists("config.json"))
+            {
+                Console.WriteLine(@"Found config!");
 
-            // Note that these are all possible but might not be added/changed just ideas ill slowly filter through over time
-            // also rather do things i can think of ways to actually do externally so dont ask for anything else if you 100% know its impossible :(
-            // for yaammi to do list :penisve:
-            // CubeCraftFly
-            // FastUse (Haven't put much thought into this so idk if its possible externally probs is)
-            // AutoFish (Seems pretty simple and wont need pointers tbh)
-            // Commands
-            // Aimbot
-            // NoHurtCam
-            // InventoryDisplay // need local player inventory proxey
-            // Fov (FovPointer needed for W2S)
-            // WorldToScreen/W2S (GameFunc)
-            // Radar/Rader (Already possible btw as we have entitylist) // 100% adding these W2S ones btw
-            // Tracers (W2S Required)
-            // Waypoints (W2S Required)
-            // ArrowTracers (W2S Required)
-            // Reach
-            // CustomTablist
-            // Nuker
-            // BlockFly (Cant do this without scaffold so...)
-            // Im never doing fightbot so fuck up
-            // BowAimbot
-            // ChestAura
-            // CompassDisplay // when i get around to it i want to add waypoints into this aswell
-            // FullBright
-            // Fix scaffold
+                var config = new JavaScriptSerializer().Deserialize<ConfigIO>(File.ReadAllText("config.json"));
 
-            // TreroInternal - Modules List
-            // 
-
-            Modules.Sort((c1, c2) => string.Compare(c2.name, c1.name, StringComparison.Ordinal)); // ABC Order
-
-            // Keymap.keyEvent += keyParse;
+                foreach (var c in Modules)
+                {
+                    int index = 0;
+                    foreach (var a in config.moduleNames)
+                    {
+                        if (c.name == a)
+                        {
+                            c.enabled = config.enableStates[index];
+                            int index2 = 0;
+                            foreach (var b in c.bypasses)
+                            {
+                                c.bypasses[index2].curIndex = config.moduleBypasses[index][index2];
+                                index2++;
+                            }
+                            c.keybind = config.moduleKeybinds[index];
+                        }
+                        index++;
+                    }
+                }
+            }
+            else Console.WriteLine(@"No config found, ignoring...");
 
             //Console.WriteLine(@"--- Trero Terminal ---");
             Console.WriteLine(@"Welcome to the trero terminal");
@@ -206,20 +202,20 @@ namespace Trero
 
             Task.Run(() =>
             {
-            while (quit == false)
-            {
-                try // fixed any future errors here
+                while (quit == false)
                 {
-                    if (limiter && !unlimiter)
-                        Thread.Sleep(1);
+                    try // fixed any future errors here
+                    {
+                        if (limiter && !unlimiter)
+                            Thread.Sleep(1);
 
-                    if (!unlimiter)
-                        Thread.Sleep(1);
-                    Thread.Sleep(5);
+                        if (!unlimiter)
+                            Thread.Sleep(1);
+                        Thread.Sleep(5);
 
-                    mainThread.Invoke(null, new EventArgs());
+                        mainThread.Invoke(null, new EventArgs());
 
-                    //Console.WriteLine(Game.bodyRots);
+                        //Console.WriteLine(Game.bodyRots);
                     }
                     catch
                     {

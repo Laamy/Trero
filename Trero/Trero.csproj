@@ -78,6 +78,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -92,6 +94,7 @@
     <Compile Include="ClientBase\FaketernalBase\MessageObj.cs" />
     <Compile Include="ClientBase\Game.cs" />
     <Compile Include="ClientBase\Handler.cs" />
+    <Compile Include="ClientBase\ConfigIO.cs" />
     <Compile Include="ClientBase\KeyBase\Keymap.cs" />
     <Compile Include="ClientBase\KeyBase\Mouse.cs" />
     <Compile Include="ClientBase\MCM.cs" />
@@ -109,6 +112,8 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\LoadConfig.cs" />
+    <Compile Include="Modules\SaveConfig.cs" />
     <Compile Include="Modules\Freelook.cs" />
     <Compile Include="Modules\CFreecam.cs" />
     <Compile Include="Modules\ElytraFlight.cs" />
