@@ -14,15 +14,18 @@ namespace Trero.Modules
         Vector3 savedCoords = Base.Vec3();
         Vector3 savedVel = Base.Vec3();
         bool flying = false;
-        public CFreecam() : base("CFreecam", (char)0x07, "Others", "Freecam without nopping") { }
+        public CFreecam() : base("Freecam", (char)0x07, "Others", "Freely move around client sidedly") { }
 
         public override void OnEnable() // just need nopacket lmao
         {
             base.OnEnable();
 
+            OverrideBase.CanSendPackets = false;
+
             savedCoords = Game.position;
             savedVel = Game.velocity;
             flying = Game.isFlying;
+
         }
 
         public override void OnDisable()
@@ -32,6 +35,8 @@ namespace Trero.Modules
             Game.teleport(savedCoords);
             Game.velocity = savedVel;
             Game.isFlying = !flying;
+
+            OverrideBase.CanSendPackets = true;
         }
 
         public override void OnTick()
