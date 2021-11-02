@@ -91,15 +91,20 @@
   <ItemGroup>
     <Compile Include="ClientBase\EntityBase\Actor.cs" />
     <Compile Include="ClientBase\Faketernal.cs" />
-    <Compile Include="ClientBase\FaketernalBase\MessageObj.cs" />
     <Compile Include="ClientBase\Game.cs" />
     <Compile Include="ClientBase\Handler.cs" />
     <Compile Include="ClientBase\ConfigIO.cs" />
     <Compile Include="ClientBase\KeyBase\Keymap.cs" />
     <Compile Include="ClientBase\KeyBase\Mouse.cs" />
     <Compile Include="ClientBase\MCM.cs" />
+    <Compile Include="ClientBase\Memory\Minecraft.cs" />
+    <Compile Include="ClientBase\Memory\SDK\Actor.cs" />
+    <Compile Include="ClientBase\Memory\SDK\TimerClass.cs" />
+    <Compile Include="ClientBase\Memory\SDK\LocalPlayer.cs" />
+    <Compile Include="ClientBase\Memory\SDK\LoopbackSender.cs" />
+    <Compile Include="ClientBase\Memory\SDK\ClientInstance.cs" />
+    <Compile Include="ClientBase\Memory\SDK\SDKObj.cs" />
     <Compile Include="ClientBase\OverrideBase.cs" />
-    <Compile Include="ClientBase\PipeBase\PipeIO.cs" />
     <Compile Include="ClientBase\UIBase\Overlay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,5 +232,6 @@
   <ItemGroup>
     <Content Include="TreroBackground.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

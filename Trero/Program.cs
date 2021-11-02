@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
+using Trero.ClientBase.Memory;
 using Trero.ClientBase.UIBase;
 using Trero.ClientBase.VersionBase;
 using Trero.Modules;
@@ -70,7 +71,11 @@ namespace Trero
             //Console.WriteLine(@"TimerClass1: " + Game.timerClass.ToString("X"));
             //Console.WriteLine(@"TimerClass2: " + Game.timerClass2.ToString("X"));
 
-            Console.WriteLine(@"NoPacketAddr: " + Game.nopacketAddr.ToString("X"));
+            //Console.WriteLine(@"NoPacketAddr: " + Game.nopacketAddr.ToString("X"));
+            Console.WriteLine(@"TimerClassAddr: " + Minecraft.CI.timerClass.addr.ToString("X"));
+            Console.WriteLine(@"TimerValue: " + Minecraft.CI.timerClass.timer);
+            Console.WriteLine(@"LoopbackSenderAddr: " + Minecraft.CI.loopbackSender.addr.ToString("X"));
+            Console.WriteLine(@"LocalPlayerAddr: " + Minecraft.CI.localPlayer.addr.ToString("X"));
 
             Console.WriteLine(@"Registering modules...");
 

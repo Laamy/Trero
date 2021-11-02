@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Trero.ClientBase.FaketernalBase;
 using Trero.ClientBase.KeyBase;
 using Trero.ClientBase.VersionBase;
 
@@ -14,11 +13,6 @@ namespace Trero.ClientBase
 {
     internal class Faketernal
     {
-        public static class ClientObj // most of this has been removed because i need to update the pointers and im to tired rn so
-        {
-            // removed code from here
-        }
-
         public static class Potions
         {
             public static bool destroy = false;
