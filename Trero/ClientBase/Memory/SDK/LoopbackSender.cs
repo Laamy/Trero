@@ -12,7 +12,7 @@ namespace Trero.ClientBase.Memory.SDK
 
         public ulong PacketSenderAddr
         {
-            get => MCM.evaluatePointer(addr, MCM.ceByte2uLong("D0 0 8 0"));
+            get => MCM.evaluatePointer(addr, MCM.ceByte2uLong("0 8 0"));
         }
     }
 }

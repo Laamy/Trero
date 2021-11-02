@@ -68,14 +68,9 @@ namespace Trero
 
             Task.Run(() => Application.Run(new Overlay())); // UI Application
 
-            //Console.WriteLine(@"TimerClass1: " + Game.timerClass.ToString("X"));
-            //Console.WriteLine(@"TimerClass2: " + Game.timerClass2.ToString("X"));
 
-            //Console.WriteLine(@"NoPacketAddr: " + Game.nopacketAddr.ToString("X"));
-            Console.WriteLine(@"TimerClassAddr: " + Minecraft.CI.timerClass.addr.ToString("X"));
-            Console.WriteLine(@"TimerValue: " + Minecraft.CI.timerClass.timer);
             Console.WriteLine(@"LoopbackSenderAddr: " + Minecraft.CI.loopbackSender.addr.ToString("X"));
-            Console.WriteLine(@"LocalPlayerAddr: " + Minecraft.CI.localPlayer.addr.ToString("X"));
+            Console.WriteLine(@"NoPacketAddr: " + Minecraft.CI.loopbackSender.PacketSenderAddr.ToString("X"));
 
             Console.WriteLine(@"Registering modules...");
 
