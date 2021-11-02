@@ -232,7 +232,7 @@ namespace Trero.ClientBase.UIBase
                 {
                     Label tempTab = label13.Clone();
 
-                    tempTab.Text = mod.bypasses[vI].list[0];
+                    tempTab.Text = mod.bypasses[vI].list[mod.bypasses[vI].curIndex];
                     tempTab.Visible = true;
                     tempTab.Dock = DockStyle.Top;
                     tempTab.Name = mod.name + ";";
