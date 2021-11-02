@@ -78,7 +78,8 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                     0x2C9, // isInLava
                     0x1DA, // walkingIntoBlock
                     0x214C, // exactPos
-			    }));
+                    0x041FC2A0, 0x0, 0x50, 0xB0, 0xD0 // timer
+                }));
 			}
         }
         public static List<IVersion> versions = new List<IVersion>();
@@ -211,6 +212,11 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
             "isInLava",
             "walkingIntoBlock",
             "exactPos",
+            "timer1",
+            "timer2",
+            "timer3",
+            "timer4",
+            "timer5",
         });
 
         private static IVersion _cv;
