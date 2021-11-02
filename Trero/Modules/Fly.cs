@@ -13,6 +13,7 @@ namespace Trero.Modules
     internal class Fly : Module
     {
         private int count = 0;//lifeboatfly blink counter
+        private bool isBlinking;
 
         public Fly() : base("Fly", (char)0x07, "Flies", "Basic fly that supports minevile's disabler when on vannila")
         {
@@ -22,6 +23,7 @@ namespace Trero.Modules
         public override void OnEnable()
         {
             base.OnEnable();
+            isBlinking = false;
             if(bypasses[0].curIndex == 1)
             {
                 //tp up
@@ -80,12 +82,14 @@ namespace Trero.Modules
 
                 if(count > 7)
                 {
+                    isBlinking = true;
                     OverrideBase.CanSendPackets = false;
                     count = 0;
                 }
                 else
                 {
                     count++;
+                    isBlinking = false;
                     OverrideBase.CanSendPackets = true;
                 }
                 Game.velocity = newVel;
@@ -96,7 +100,11 @@ namespace Trero.Modules
         {
             base.OnDisable();
             count = 0;
-            OverrideBase.CanSendPackets = true;
+            if (!isBlinking)
+            {
+                OverrideBase.CanSendPackets = true;
+                isBlinking = false;
+            }
         }
     }
 }
