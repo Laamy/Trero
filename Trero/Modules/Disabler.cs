@@ -19,11 +19,35 @@ namespace Trero.Modules
             addBypass(new BypassBox(new string[] { "UpFlip: 0.3f", "UpFlip: 0.2f", "UpFlip: 0.4f" }));
             addBypass(new BypassBox(new string[] { "Flicker: 5", "Flicker: 10", "Flicker: 15" }));
             addBypass(new BypassBox(new string[] { "VClip: 0.36f", "VClip: 0.46f", "VClip: 0.26f" }));
+            addBypass(new BypassBox(new string[] { "Timer: 20f", "Timer: 15f", "Timer: 18f", "Timer: 22f", "Timer: 28f" }));
         }
 
         public override void OnEnable()
         {
             base.OnEnable();
+
+            switch (bypasses[5].curIndex)
+            {
+                case 1:
+                    Game.timer = 15f;
+                    break;
+                case 2:
+                    Game.timer = 18f;
+                    break;
+                case 3:
+                    Game.timer = 22f;
+                    break;
+                case 4:
+                    Game.timer = 28f;
+                    break;
+            }
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+
+            Game.timer = 20f;
         }
 
         public override void OnTick()
