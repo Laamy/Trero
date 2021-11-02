@@ -11,7 +11,7 @@ namespace Trero.Modules
     {
         public Timer() : base("Timer", (char)0x07, "World", "Change the games internal timer")
         {
-            addBypass(new BypassBox(new string[] { "Speed: x2", "Speed: x3", "Speed: x5", "Speed: x0.5" }));
+            addBypass(new BypassBox(new string[] { "Speed: x2", "Speed: x3", "Speed: x5", "Speed: x0.5", "Speed: x0.8", "Speed: x0.9", "Speed: PinPoint" }));
         }
 
         public override void OnEnable()
@@ -31,6 +31,15 @@ namespace Trero.Modules
                     break;
                 case 3:
                     Game.timer = 10;
+                    break;
+                case 4:
+                    Game.timer = 16;
+                    break;
+                case 5:
+                    Game.timer = 18;
+                    break;
+                case 6:
+                    Game.timer = 19;
                     break;
             }
         }

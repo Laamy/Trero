@@ -19,7 +19,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
 			{
                 versions.Add(new IVersion(new object[] {
                     "MCBE-1.17.41",
-                    0x04209468, 0x0, 0x18, 0xB8, // LP > 178 > 40 > 10
+                    0x041FC2A0, 0x0, 0x50, 0x138, // LP > 178 > 40 > 10
                     0x1D8, // onground
                     0x1DC, // onground 2
                     0x238, // stepHeight
