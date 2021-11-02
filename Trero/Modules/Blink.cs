@@ -27,6 +27,11 @@ namespace Trero.Modules
             posList.Clear();
         }
 
+        public override void OnTick()
+        {
+            posList.Add(Game.position);
+        }
+
         public override void OnDisable()
         {
             base.OnDisable();
@@ -35,12 +40,11 @@ namespace Trero.Modules
 
             OverrideBase.CanSendPackets = true;
 
-            Game.timer = 300;
-            foreach (var c in posList)
-            {
-                Game.teleport(c);
-                Thread.Sleep(1);
-            }
+            Game.timer = 60;
+            //posList.Reverse();
+            for (int _timer = 0; _timer < 64; ++_timer)
+                foreach (var c in posList)
+                    Game.teleport(posList[posList.Count - 1]);
             Game.timer = 20;
         }
     }
