@@ -28,6 +28,11 @@ namespace Trero.ClientBase
             }
         } // clientInstance
 
+        public static ulong loopbackSender
+        { get => MCM.evaluatePointer(HexHandler.ToULong(clientInstance), new ulong[] { 0xD0, 0x0 }); } // loopbackSender
+        public static ulong nopacketAddr
+        { get => MCM.evaluatePointer(HexHandler.ToULong(loopbackSender), new ulong[] { 0x8, 0x0 }); } // nopacketAddr
+
         public static ulong timerClass2
         {
             get

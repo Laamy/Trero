@@ -68,7 +68,9 @@ namespace Trero
             Task.Run(() => Application.Run(new Overlay())); // UI Application
 
             //Console.WriteLine(@"TimerClass1: " + Game.timerClass.ToString("X"));
-           // Console.WriteLine(@"TimerClass2: " + Game.timerClass2.ToString("X"));
+            //Console.WriteLine(@"TimerClass2: " + Game.timerClass2.ToString("X"));
+
+            Console.WriteLine(@"NoPacketAddr: " + Game.nopacketAddr.ToString("X"));
 
             Console.WriteLine(@"Registering modules...");
 
@@ -153,6 +155,7 @@ namespace Trero
             Modules.Add(new SaveConfig());
             Modules.Add(new LoadConfig());
             Modules.Add(new Timer());
+            Modules.Add(new NoPacket());
             //Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");

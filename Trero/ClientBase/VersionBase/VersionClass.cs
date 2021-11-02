@@ -78,7 +78,8 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                     0x2C9, // isInLava
                     0x1DA, // walkingIntoBlock
                     0x214C, // exactPos
-                    0xB0, 0xD0 // timer
+                    0xB0, 0xD0, // timer
+                    0xD0 // LoopbackSender
                 }));
 			}
         }
@@ -146,6 +147,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
             "exactPos",
             "timer1",
             "timer2",
+            "loopbackSender",
         });
 
         private static IVersion _cv;
