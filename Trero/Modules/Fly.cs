@@ -78,7 +78,7 @@ namespace Trero.Modules
                 }
                 newVel.y = -0.001f;
 
-                if(count > 5)
+                if(count > 7)
                 {
                     OverrideBase.CanSendPackets = false;
                     count = 0;
