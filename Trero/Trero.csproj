@@ -112,6 +112,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\Blink.cs" />
     <Compile Include="Modules\NoPacket.cs" />
     <Compile Include="Modules\Timer.cs" />
     <Compile Include="Modules\LoadConfig.cs" />

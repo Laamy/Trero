@@ -156,6 +156,7 @@ namespace Trero
             Modules.Add(new LoadConfig());
             Modules.Add(new Timer());
             Modules.Add(new NoPacket());
+            Modules.Add(new Blink());
             //Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");
