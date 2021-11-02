@@ -28,26 +28,14 @@ namespace Trero.ClientBase
             }
         } // clientInstance
 
-        public static ulong timerClass
-        {
-            get
-            {
-                return MCM.baseEvaluatePointer(HexHandler.ToULong(VersionClass.GetData("timer1")), new[]
-                {
-                    VersionClass.GetData("timer2"),
-                    VersionClass.GetData("timer3")
-                });
-            }
-        } // timerClass
-
         public static ulong timerClass2
         {
             get
             {
-                return MCM.evaluatePointer(HexHandler.ToULong(timerClass), new ulong[]
+                return MCM.evaluatePointer(HexHandler.ToULong(clientInstance), new ulong[]
                 {
-                    VersionClass.GetData("timer4"),
-                    VersionClass.GetData("timer5"),
+                    VersionClass.GetData("timer1"),
+                    VersionClass.GetData("timer2"),
                     0x0
                 });
             }
