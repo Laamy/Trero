@@ -38,8 +38,8 @@ namespace Trero.Modules
 
             var newVel = Base.Vec3();
 
-            var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
-            float speed2 = 1f / speed;
+            var cy = (Game.bodyRots.y + 90) * ((float)Math.PI / 180F);
+            float speed2 = 1.25f / speed;
 
             if (Keymap.GetAsyncKeyState(Keys.W))
             {
