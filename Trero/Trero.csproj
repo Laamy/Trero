@@ -201,6 +201,9 @@
     <Compile Include="Modules\Noclip.cs" />
     <Compile Include="Modules\KillGame.cs" />
     <Compile Include="Modules\Rapeaura.cs" />
+    <Compile Include="Modules\FastFall.cs" />
+    <Compile Include="Modules\NoHurtcam.cs" />
+    <Compile Include="Modules\ReverseStep.cs" />
     <Compile Include="Modules\Module.cs" />
     <Compile Include="Modules\vModuleExtra\BypassBox.cs" />
     <Compile Include="Program.cs" />
