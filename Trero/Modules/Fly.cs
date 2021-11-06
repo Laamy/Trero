@@ -15,85 +15,52 @@ namespace Trero.Modules
         private int count = 0;//lifeboatfly blink counter
         private bool isBlinking;
 
-        public Fly() : base("Fly", (char)0x07, "Flies", "Basic fly that supports minevile's disabler when on vannila")
+        public Fly() : base("LifeboatFly", (char)0x07, "Flies", "Basic fly that supports minevile's disabler - Gamerclient28921 (Improved by yaami<3#3731)")
         {
-            addBypass(new BypassBox(new string[] { "Mode: Vannila", "Mode: LifeBoat"}));
         } // 0x07 = no keybind
 
         public override void OnEnable()
         {
             base.OnEnable();
             isBlinking = false;
-            if(bypasses[0].curIndex == 1)
-            {
-                //tp up
-                Game.position = new Vector3(Game.position.x, Game.position.y + 1f, Game.position.z);
-            }
-            foreach (var mod in Program.Modules)
-                if (mod.name == "Disabler" && mod.enabled && bypasses[0].curIndex == 0)
-                    Game.vclip(0.5f);
+            Game.position = new Vector3(Game.position.x, Game.position.y + 1f, Game.position.z);
         }
 
         public override void OnTick()
         {
             if (Game.isNull) return;
 
-            if (bypasses[0].curIndex == 0)
+            float speed = 0.4f;
+
+            Game.timer = 20f * speed;
+
+            Game.onGround = true;
+
+            var newVel = Base.Vec3();
+
+            var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
+            float speed2 = 1f / speed;
+
+            if (Keymap.GetAsyncKeyState(Keys.W))
             {
-                Game.onGround = true;
-
-                var newVel = Base.Vec3();
-
-                var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
-
-                if (Keymap.GetAsyncKeyState(Keys.W))
-                {
-                    newVel.z = (float)Math.Sin(cy) * (12 / 16f);
-                    newVel.x = (float)Math.Cos(cy) * (12 / 16f);
-                }
-
-                if (Keymap.GetAsyncKeyState((char)Keys.Space))
-                {
-                    foreach (var mod in Program.Modules)
-                        if (mod.name == "Disabler" && !mod.enabled)
-                            newVel.y += 0.6f;
-                }
-                if (Keymap.GetAsyncKeyState((char)Keys.LShiftKey))
-                {
-                    newVel.y -= 0.6f;
-                }
-
-                Game.velocity = newVel;
-            }else if (bypasses[0].curIndex == 1)
-            {
-                Game.onGround = true;
-
-                var newVel = Base.Vec3();
-
-                var cy = (Game.bodyRots.y + 89.9f) * ((float)Math.PI / 180F);
-                float speed = 1.0f;
-
-                if (Keymap.GetAsyncKeyState(Keys.W))
-                {
-                    newVel.z = (float)Math.Sin(cy) * speed;
-                    newVel.x = (float)Math.Cos(cy) * speed;
-                }
-                newVel.y = -0.001f;
-
-                if(count > 7)
-                {
-                    isBlinking = true;
-                    OverrideBase.CanSendPackets = false;
-                    count = 0;
-                }
-                else
-                {
-                    count++;
-                    isBlinking = false;
-                    OverrideBase.CanSendPackets = true;
-                }
-                Game.velocity = newVel;
+                newVel.z = (float)Math.Sin(cy) * speed2;
+                newVel.x = (float)Math.Cos(cy) * speed2;
             }
+            newVel.y = -0.001f;
+
+            if (count > 7)
+            {
+                isBlinking = true;
+                OverrideBase.CanSendPackets = false;
+                count = 0;
+            }
+            else
+            {
+                count++;
+                isBlinking = false;
+                OverrideBase.CanSendPackets = true;
+            }
+            Game.velocity = newVel;
         }
 
         public override void OnDisable()
@@ -105,6 +72,8 @@ namespace Trero.Modules
                 OverrideBase.CanSendPackets = true;
                 isBlinking = false;
             }
+            Game.timer = 20f;
+            Game.velocity = Base.Vec3();
         }
     }
 }
