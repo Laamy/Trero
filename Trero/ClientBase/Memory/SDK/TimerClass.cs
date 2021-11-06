@@ -12,8 +12,8 @@ namespace Trero.ClientBase.Memory.SDK
 
         public float timer
         {
-            set => MCM.writeFloat(MCM.evaluatePointer(addr, MCM.ceByte2uLong("D0 0")), value);
-            get => MCM.readFloat(MCM.evaluatePointer(addr, MCM.ceByte2uLong("D0 0")));
+            set => MCM.writeFloat(MCM.readInt64(addr + 0x0), value);
+            get => MCM.readFloat(MCM.readInt64(addr + 0x0));
         }
     }
 }

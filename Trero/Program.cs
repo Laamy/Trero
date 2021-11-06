@@ -69,8 +69,10 @@ namespace Trero
             Task.Run(() => Application.Run(new Overlay())); // UI Application
 
 
-            Console.WriteLine(@"LoopbackSenderAddr: " + Minecraft.CI.loopbackSender.addr.ToString("X"));
-            Console.WriteLine(@"NoPacketAddr: " + Minecraft.CI.loopbackSender.PacketSenderAddr.ToString("X"));
+            Console.WriteLine(@"PacketFuncAddr: " + Minecraft.CI.packetFuncAddr.ToString("X"));
+            Console.WriteLine(@"LocalPlayerAddr: " + Minecraft.CI.localPlayer.addr.ToString("X"));
+            Console.WriteLine(@"PlayerAttributesAddr: " + Minecraft.CI.localPlayer.playerAttributes.addr.ToString("X"));
+            Console.WriteLine(@"Speed: " + Minecraft.CI.localPlayer.playerAttributes.speed);
 
             Console.WriteLine(@"Registering modules...");
 
@@ -157,6 +159,7 @@ namespace Trero
             Modules.Add(new Timer());
             Modules.Add(new NoPacket());
             Modules.Add(new Blink());
+            Modules.Add(new EntityXRay());
             //Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");

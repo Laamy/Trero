@@ -99,9 +99,9 @@
     <Compile Include="ClientBase\MCM.cs" />
     <Compile Include="ClientBase\Memory\Minecraft.cs" />
     <Compile Include="ClientBase\Memory\SDK\Actor.cs" />
+    <Compile Include="ClientBase\Memory\SDK\PlayerAttributes.cs" />
     <Compile Include="ClientBase\Memory\SDK\TimerClass.cs" />
     <Compile Include="ClientBase\Memory\SDK\LocalPlayer.cs" />
-    <Compile Include="ClientBase\Memory\SDK\LoopbackSender.cs" />
     <Compile Include="ClientBase\Memory\SDK\ClientInstance.cs" />
     <Compile Include="ClientBase\Memory\SDK\SDKObj.cs" />
     <Compile Include="ClientBase\OverrideBase.cs" />
@@ -117,6 +117,7 @@
     <Compile Include="ClientBase\UIBase\WinHooks.cs" />
     <Compile Include="ClientBase\VersionBase\IVerson.cs" />
     <Compile Include="ClientBase\VersionBase\VersionClass.cs" />
+    <Compile Include="Modules\EntityXRay.cs" />
     <Compile Include="Modules\Blink.cs" />
     <Compile Include="Modules\NoPacket.cs" />
     <Compile Include="Modules\Timer.cs" />
