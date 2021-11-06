@@ -157,6 +157,9 @@ namespace Trero
             Modules.Add(new Timer());
             Modules.Add(new NoPacket());
             Modules.Add(new Blink());
+            Modules.Add(new NoHurtcam());
+            Modules.Add(new FastFall());
+            Modules.Add(new ReverseStep());
             //Modules.Add(new SurroundTest());
 
             Console.WriteLine(@"Registered modules!");
