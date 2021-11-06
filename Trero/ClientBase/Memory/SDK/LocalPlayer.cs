@@ -10,5 +10,7 @@ namespace Trero.ClientBase.Memory.SDK
     {
         public LocalPlayer(ulong addr) : base(addr) { }
 
+        public PlayerAttributes playerAttributes
+        { get => new PlayerAttributes(MCM.evaluatePointer(addr + 490, MCM.ceByte2uLong("18 2C0 0"))); }
     }
 }
