@@ -7,17 +7,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
     {
         public static void init()
         {
-            try
-            {
-                foreach (string file in Directory.GetFiles("./patches", "*.trero"))
-                {
-                    versions.Add(new IVersion(File.ReadAllLines(file)));
-                }
-            }
-            catch { }
-			if(versions.Count == 0)
-			{
-                versions.Add(new IVersion(new object[] {
+            versions.Add(new IVersion(new object[] {
                     "MCBE-1.17.41",
                     0x041FC2A0, 0x0, 0x50, 0x138, // LP > 178 > 40 > 10
                     0x1D8, // onground
@@ -81,7 +71,6 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                     0xB0, 0xD0, // timer
                     0xD0 // LoopbackSender
                 }));
-			}
         }
         public static List<IVersion> versions = new List<IVersion>();
 

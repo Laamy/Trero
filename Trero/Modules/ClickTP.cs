@@ -1,5 +1,6 @@
 ﻿#region
 
+using System.Windows.Forms;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
 
@@ -16,11 +17,14 @@ namespace Trero.Modules
 
         private void KeyPress(object sender, KeyEvent e)
         {
-            if (e.vkey != VKeyCodes.KeyDown) return;
-            if (!enabled) return;
-            if (e.key.ToString() != "MButton") return;
+            if (e.vkey != VKeyCodes.KeyDown || !enabled || e.key != (Keys)0x02) return;
+
             var ivec = Game.SelectedBlock;
+
+            if (ivec.x == 0 || ivec.y == 0 || ivec.z == 0) return;
+
             var newPos = Base.Vec3(ivec.x, ivec.y + 1, ivec.z);
+
             Game.position = newPos;
         }
     }

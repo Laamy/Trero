@@ -38,6 +38,7 @@ namespace Trero
         private static void Main(string[] args)
         {
             VersionClass.init();
+
             try
             {
                 Process cProc = Process.GetProcessesByName("Minecraft.Windows")[0];
@@ -95,7 +96,7 @@ namespace Trero
             Modules.Add(new PhaseDown());
             Modules.Add(new PhaseUp());
             //Modules.Add(new Sexaura());
-            Modules.Add(new Fly());
+            //Modules.Add(new Fly());
             Modules.Add(new Jetpack());
             Modules.Add(new Eject());
             Modules.Add(new Speed());
@@ -112,7 +113,7 @@ namespace Trero
             Modules.Add(new NoSwing());
             Modules.Add(new CreativeFly());
             //Modules.Add(new PlayerTP());
-            //Modules.Add(new ClickTP());
+            Modules.Add(new ClickTP());
             Modules.Add(new Glide());
             //Modules.Add(new Killaura());
             Modules.Add(new Limiter()); // CPU saver
