@@ -94,6 +94,7 @@ namespace Trero.ClientBase.UIBase
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.TestCategory.SuspendLayout();
@@ -1086,6 +1087,11 @@ namespace Trero.ClientBase.UIBase
             this.label16.Tag = "ToolTips";
             this.label16.Text = "Test";
             // 
+            // timer4
+            // 
+            this.timer4.Enabled = true;
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1227,5 +1233,6 @@ namespace Trero.ClientBase.UIBase
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Timer timer4;
     }
 }

@@ -35,6 +35,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
                     0x0, // lookingEntityId
                     0x25D, // inWater
                     0x138, // bodyRots
+                    0x368, // Dimension - 0x368
                     0x370, // Level - 0x370
                     0xA8, // entitylist+1 - 0x50
                     0xB0, // entitylist+2 (BROKEN ON 1.17.30 once again!) - 0x68
@@ -103,6 +104,7 @@ namespace Trero.ClientBase.VersionBase // Just about finished this part tbh
             "lookingEntityId",
             "inWater",
             "bodyRots",
+            "dimension",
             "level",
             "entitylist+1",
             "entitylist+2",

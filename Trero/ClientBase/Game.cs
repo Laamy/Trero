@@ -65,6 +65,7 @@ namespace Trero.ClientBase
         } // localPlayer
 
         public static ulong level => MCM.readInt64(localPlayer + VersionClass.GetData("level")); // level
+        public static ulong dimension => MCM.readInt64(localPlayer + VersionClass.GetData("dimension")); // dimension
         public static ulong vEffectsClass => MCM.readInt64(localPlayer + VersionClass.GetData("EffectsClass+1"));
         public static ulong effectsClass => MCM.readInt64(vEffectsClass + VersionClass.GetData("EffectsClass+2"));
 
@@ -96,10 +97,10 @@ namespace Trero.ClientBase
         } // keyInfo
 
         public static ulong EntityListStart =>
-            MCM.readInt64(level + VersionClass.GetData("entitylist+1")); // entityliststart
+            MCM.readInt64(dimension + VersionClass.GetData("entitylist+1")); // entityliststart
 
         public static ulong EntityListEnd =>
-            MCM.readInt64(level + VersionClass.GetData("entitylist+2")); // entitylistend
+            MCM.readInt64(dimension + VersionClass.GetData("entitylist+2")); // entitylistend
 
         public static bool isNull
         {

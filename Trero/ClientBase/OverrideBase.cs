@@ -30,8 +30,16 @@ namespace Trero.ClientBase
         {
             set
             {
-                if (value) MCM.writeBytes(Game.nopacketAddr, MCM.ceByte2Bytes("48 89 5C 24 08"));
-                else MCM.writeBytes(Game.nopacketAddr, MCM.ceByte2Bytes("C3 C3 C3 C3 C3"));
+                if (value)
+                {
+                    if (MCM.readByte(Game.nopacketAddr) != 0x48)
+                        MCM.writeBytes(Game.nopacketAddr, MCM.ceByte2Bytes("48 89 5C 24 08"));
+                }
+                else
+                {
+                    if (MCM.readByte(Game.nopacketAddr) == 0x48)
+                        MCM.writeBytes(Game.nopacketAddr, MCM.ceByte2Bytes("C3 C3 C3 C3 C3"));
+                }
             }
         }
         public static bool lookingAtBlock

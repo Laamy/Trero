@@ -133,43 +133,20 @@ namespace Trero.ClientBase.UIBase
             }
             catch
             {
-                // ignored
             }
-
-            if (list == "")
-                list = "No players";
 
             var calclist = TextRenderer.MeasureText(list, playerList.Font);
 
-            if (panel5.Size != new Size(calclist.Width, calclist.Height + 20))
+            var size1 = new Size(calclist.Width + 20, calclist.Height);
+            var size2 = new Size(calclist.Width + 20, calclist.Height + 24);
+
+            if (panel5.Size != size1)
             {
-                panel1.Size = new Size(calclist.Width + 20, calclist.Height + 24);
-                panel5.Size = new Size(calclist.Width + 20, calclist.Height);
+                panel1.Size = size2;
+                panel5.Size = size1;
             }
 
-            playerList.Text = list;
-
-            try
-            {
-                var ent = Game.getClosestPlayer();
-
-                if (ent == null)
-                {
-                    label2.Text = "None";
-                    label2.Text = "";
-                    label3.Text = "";
-                    return;
-                }
-
-                var vec = Base.Vec3((int)ent.position.x, (int)ent.position.y, (int)ent.position.z);
-
-                label1.Text = ent.username;
-                label2.Text = vec.ToString();
-                label3.Text = Game.position.Distance(vec) + "b";
-            }
-            catch
-            {
-            }*/
+            playerList.Text = list;*/
         }
 
         private void updateModule(Module mod, Panel c) // fixed a second time ;p
@@ -949,6 +926,33 @@ namespace Trero.ClientBase.UIBase
         private void ActivateTooltip(object sender, EventArgs e) => label16.Text = ((KeyTags)((Button)sender).Tag).Get("desc").ToString();
 
         private void DeactivateTooltip(object sender, EventArgs e) => label16.Text = "";
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+
+            /*try
+            {
+                var ent = Game.getClosestPlayer();
+
+                if (ent == null)
+                {
+                    label2.Text = "None";
+                    label2.Text = "";
+                    label3.Text = "";
+                }
+                else
+                {
+                    var vec = Base.Vec3((int)ent.position.x, (int)ent.position.y, (int)ent.position.z);
+
+                    label1.Text = ent.username;
+                    label2.Text = vec.ToString();
+                    label3.Text = Game.position.Distance(vec) + "b";
+                }
+            }
+            catch
+            {
+            }*/
+        }
     }
 }
 
