@@ -68,14 +68,11 @@ namespace Trero
 
             Task.Run(() => Application.Run(new Overlay())); // UI Application
 
-            //Console.WriteLine(@"TimerClass1: " + Game.timerClass.ToString("X"));
-            //Console.WriteLine(@"TimerClass2: " + Game.timerClass2.ToString("X"));
 
-            //Console.WriteLine(@"NoPacketAddr: " + Game.nopacketAddr.ToString("X"));
-            Console.WriteLine(@"TimerClassAddr: " + Minecraft.CI.timerClass.addr.ToString("X"));
-            Console.WriteLine(@"TimerValue: " + Minecraft.CI.timerClass.timer);
-            Console.WriteLine(@"LoopbackSenderAddr: " + Minecraft.CI.loopbackSender.addr.ToString("X"));
+            Console.WriteLine(@"PacketFuncAddr: " + Minecraft.CI.packetFuncAddr.ToString("X"));
             Console.WriteLine(@"LocalPlayerAddr: " + Minecraft.CI.localPlayer.addr.ToString("X"));
+            Console.WriteLine(@"PlayerAttributesAddr: " + Minecraft.CI.localPlayer.playerAttributes.addr.ToString("X"));
+            Console.WriteLine(@"Speed: " + Minecraft.CI.localPlayer.playerAttributes.speed);
 
             Console.WriteLine(@"Registering modules...");
 
@@ -164,6 +161,10 @@ namespace Trero
             Modules.Add(new Blink());
             Modules.Add(new NoWater());
             //Modules.Add(new SurroundTest());
+            Modules.Add(new NoHurtcam());
+            Modules.Add(new FastFall());
+            Modules.Add(new ReverseStep());
+            Modules.Add(new EntityXRay());
 
             Console.WriteLine(@"Registered modules!");
 
