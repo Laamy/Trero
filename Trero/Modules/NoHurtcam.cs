@@ -8,7 +8,7 @@ namespace Trero.Modules
 {
     internal class NoHurtcam : Module
     {
-        public AntiImmoblie() : base("NoHurtcam", (char)0x07, "Visual", "Disable Hurttime - Xello!")
+        public NoHurtcam() : base("NoHurtcam", (char)0x07, "Visual", "Disable Hurttime - Xello!")
         {
         } // Not defined
 

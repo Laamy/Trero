@@ -160,7 +160,7 @@ namespace Trero
             Modules.Add(new NoPacket());
             Modules.Add(new Blink());
             Modules.Add(new NoHurtcam());
-            Modules.Add(new FastFall());
+            //Modules.Add(new FastFall());
             Modules.Add(new ReverseStep());
             Modules.Add(new EntityXRay());
 

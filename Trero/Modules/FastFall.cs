@@ -6,9 +6,9 @@ using Trero.ClientBase;
 
 namespace Trero.Modules
 {
-    internal class FastFall : Module
+    internal class FastFall : Module // doesnt work sorry xello
     {
-        public AntiImmoblie() : base("FastFall", (char)0x07, "Movement", "Fall Faster - Xello!")
+        public FastFall() : base("FastFall", (char)0x07, "Movement", "Fall Faster - Xello!")
         {
         } // Not defined
 
