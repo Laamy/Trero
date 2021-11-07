@@ -3,11 +3,12 @@
  <p align="center">External C# Utiliy Mod for Minecraft (Bedrock Edition) (Currently supports 1.17.30 - 1.17.41)</p>
 
 [![Download](https://img.shields.io/badge/download-utility-brightgreen?style=for-the-badge "Download")](https://github.com/Laamy/Trero/releases/latest&response-content-type=application%2Foctet-stream "Download")
-[Discord server](https://discord.gg/Zr6RDAJp9F)
 ![Total Downloads](https://img.shields.io/github/downloads/Laamy/Trero/total?style=for-the-badge)
 [![Code Issues](https://img.shields.io/github/issues/Laamy/Trero?color=red&label=Code%20Issues&style=for-the-badge)](https://google.com)
 ![Last Commit](https://img.shields.io/github/last-commit/Laamy/Trero?style=for-the-badge)
 </p>
+
+https://discord.gg/Zr6RDAJp9F Why not join our discord?
 
 Trero is a C# MCBE Utility mod designed to enhance your learning
 experience with clients,it is open source, so you can dive in
