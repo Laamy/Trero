@@ -177,6 +177,7 @@ namespace Trero
             //Modules.Add(new FastFall());
             Modules.Add(new ReverseStep());
             Modules.Add(new EntityXRay());
+            Modules.Add(new PaperMC());
 
             Console.WriteLine(@"Registered modules!");
 

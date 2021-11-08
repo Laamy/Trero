@@ -13,7 +13,7 @@ namespace Trero.Modules
     internal class Fly : Module
     {
         private int count = 0;//lifeboatfly blink counter
-        private bool isBlinking;
+        private bool isBlinking = false;
 
         public Fly() : base("LifeboatFly", (char)0x07, "Flies", "Basic fly that supports minevile's disabler - Gamerclient28921 (Improved by yaami<3#3731)")
         {
@@ -22,8 +22,9 @@ namespace Trero.Modules
         public override void OnEnable()
         {
             base.OnEnable();
+
             isBlinking = false;
-            Game.position = new Vector3(Game.position.x, Game.position.y + 1f, Game.position.z);
+            Game.position = new Vector3(Game.position.x, Game.position.y + 1, Game.position.z);
         }
 
         public override void OnTick()
@@ -42,11 +43,7 @@ namespace Trero.Modules
             float speed2 = 1.25f / speed;
 
             if (Keymap.GetAsyncKeyState(Keys.W))
-            {
-                newVel.z = (float)Math.Sin(cy) * speed2;
-                newVel.x = (float)Math.Cos(cy) * speed2;
-            }
-            newVel.y = -0.001f;
+                MoveCharacter(cy, speed2, out newVel);
 
             if (count > 7)
             {
@@ -63,11 +60,19 @@ namespace Trero.Modules
             Game.velocity = newVel;
         }
 
+        public void MoveCharacter(float cy, float speed, out Vector3 vec)
+        {
+            Vector3 newVel = Base.Vec3(0, -0.001f);
+            newVel.z = (float)Math.Sin(cy) * speed;
+            newVel.x = (float)Math.Cos(cy) * speed;
+            vec = newVel;
+        }
+
         public override void OnDisable()
         {
             base.OnDisable();
             count = 0;
-            if (!isBlinking)
+            if (isBlinking)
             {
                 OverrideBase.CanSendPackets = true;
                 isBlinking = false;
