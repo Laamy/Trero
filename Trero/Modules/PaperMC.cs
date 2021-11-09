@@ -14,14 +14,16 @@ namespace Trero.Modules
 
         public override void OnEnable()
         {
-            MCM.writeBaseBytes(0x1CB4C08, MCM.ceByte2Bytes("90 90 90 90 90 90"));
             base.OnEnable();
+
+            OverrideBase.entityModel.allowModelScalingX = false;
         }
 
         public override void OnDisable()
         {
-            MCM.writeBaseBytes(0x1CB4C08, MCM.ceByte2Bytes("8B 81 28 01 00 00")); // 0x1CB4C08 - 8B 81 28 01 00 00 (Nop)
             base.OnDisable();
+
+            OverrideBase.entityModel.allowModelScalingX = true;
         }
     }
 }

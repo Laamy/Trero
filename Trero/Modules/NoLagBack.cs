@@ -8,20 +8,22 @@ namespace Trero.Modules
 {
     internal class NoLagBack : Module
     {
-        public NoLagBack() : base("NoLagBack", (char)0x07, "Exploits", "Useless")
+        public NoLagBack() : base("NoLagBack", (char)0x07, "Exploits", "half done")
         {
         } // Not defined
-        public override void OnTick()
+
+        public override void OnEnable()
         {
-            base.OnTick();
+            base.OnEnable();
 
-            var pos = Game.position;
+            OverrideBase.ServerCanTeleportClient = false;
+        }
 
-            pos.y += 0.001f;
-            pos.x += 0.001f;
-            pos.z += 0.001f;
+        public override void OnDisable()
+        {
+            base.OnDisable();
 
-            Game.teleport(pos);
+            OverrideBase.ServerCanTeleportClient = true;
         }
     }
 }

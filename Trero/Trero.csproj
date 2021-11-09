@@ -105,6 +105,7 @@
     <Compile Include="ClientBase\Memory\SDK\ClientInstance.cs" />
     <Compile Include="ClientBase\Memory\SDK\SDKObj.cs" />
     <Compile Include="ClientBase\OverrideBase.cs" />
+    <Compile Include="ClientBase\PlayerModel.cs" />
     <Compile Include="ClientBase\UIBase\Overlay.cs">
       <SubType>Form</SubType>
     </Compile>

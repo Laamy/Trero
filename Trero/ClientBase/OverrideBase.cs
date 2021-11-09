@@ -8,6 +8,7 @@ namespace Trero.ClientBase
 {
     internal class OverrideBase
     {
+        public static PlayerModel entityModel = new PlayerModel(0x1CB4BC0);
         public static bool Pitch
         {
             set
@@ -39,6 +40,42 @@ namespace Trero.ClientBase
                 {
                     if (MCM.readByte(Game.nopacketAddr) == 0x48)
                         MCM.writeBytes(Game.nopacketAddr, MCM.ceByte2Bytes("C3 C3 C3 C3 C3"));
+                }
+            }
+        }
+        public static bool ServerCanTeleportClient
+        {
+            /*
+            0x1DE9EB9 - F3 0F 11 81 C0 04 00 00
+            0x1DE9EC8 - F3 0F 11 A1 CC 04 00 00
+            0x1DE9ED4 - F3 0F 11 99 C4 04 00 00
+
+            0x1DE9EDC - F3 0F 11 81 C8 04 00 00
+            0x1DE9EEC - F3 0F 11 89 D4 04 00 00
+            0x1DE9EF4 - F3 0F 11 99 D0 04 00 00
+            90 90 90 90 90 90 90 90
+           */
+            set
+            {
+                if (value)
+                {
+                    MCM.writeBaseBytes(0x1DE9EB9, MCM.ceByte2Bytes("F3 0F 11 81 C0 04 00 00")); // This is only 1/3 pieces for NoLagBack
+                    MCM.writeBaseBytes(0x1DE9EC8, MCM.ceByte2Bytes("F3 0F 11 A1 CC 04 00 00"));
+                    MCM.writeBaseBytes(0x1DE9ED4, MCM.ceByte2Bytes("F3 0F 11 99 C4 04 00 00"));
+
+                    MCM.writeBaseBytes(0x1DE9EDC, MCM.ceByte2Bytes("F3 0F 11 81 C8 04 00 00"));
+                    MCM.writeBaseBytes(0x1DE9EEC, MCM.ceByte2Bytes("F3 0F 11 89 D4 04 00 00"));
+                    MCM.writeBaseBytes(0x1DE9EF4, MCM.ceByte2Bytes("F3 0F 11 99 D0 04 00 00"));
+                }
+                else
+                {
+                    MCM.writeBaseBytes(0x1DE9EB9, MCM.ceByte2Bytes("90 90 90 90 90 90 90 90"));
+                    MCM.writeBaseBytes(0x1DE9EC8, MCM.ceByte2Bytes("90 90 90 90 90 90 90 90"));
+                    MCM.writeBaseBytes(0x1DE9ED4, MCM.ceByte2Bytes("90 90 90 90 90 90 90 90"));
+
+                    MCM.writeBaseBytes(0x1DE9EDC, MCM.ceByte2Bytes("90 90 90 90 90 90 90 90"));
+                    MCM.writeBaseBytes(0x1DE9EEC, MCM.ceByte2Bytes("90 90 90 90 90 90 90 90"));
+                    MCM.writeBaseBytes(0x1DE9EF4, MCM.ceByte2Bytes("90 90 90 90 90 90 90 90"));
                 }
             }
         }
