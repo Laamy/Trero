@@ -225,7 +225,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x004E
+        public bool _4dScalingX
         {
             set
             {
@@ -258,7 +258,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x005A
+        public bool _4dScalingY
         {
             set
             {
@@ -291,7 +291,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x0066
+        public bool _4dScalingZ
         {
             set
             {
