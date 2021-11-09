@@ -27,7 +27,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x0006
+        public bool visualHandRenderX
         {
             set
             {
@@ -60,7 +60,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x0012
+        public bool visualHandRenderY
         {
             set
             {
@@ -93,7 +93,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x001E
+        public bool visualHandRenderZ
         {
             set
             {
@@ -110,7 +110,7 @@ namespace Trero.ClientBase
             }
         }
 
-        private bool pad_0x0024
+        public bool f5RenderX
         {
             set
             {
@@ -126,7 +126,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        public bool headSpinningY
+        public bool bodySpinningX
         {
             set
             {
@@ -143,7 +143,7 @@ namespace Trero.ClientBase
             }
         }
 
-        private bool pad_0x0030
+        public bool f5RenderY
         {
             set
             {
@@ -159,7 +159,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        public bool headSpinningX
+        public bool bodySpinningY
         {
             set
             {
@@ -176,7 +176,7 @@ namespace Trero.ClientBase
             }
         }
 
-        private bool pad_0x003C
+        public bool f5RenderZ
         {
             set
             {
@@ -192,7 +192,7 @@ namespace Trero.ClientBase
                 }
             }
         }
-        private bool softPad_0x0042
+        public bool bodySpinningZ
         {
             set
             {
