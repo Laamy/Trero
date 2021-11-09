@@ -74,13 +74,6 @@ namespace Trero
             //Console.WriteLine(@"PlayerAttributesAddr: " + Minecraft.CI.localPlayer.playerAttributes.addr.ToString("X"));
             //Console.WriteLine(@"Speed: " + Minecraft.CI.localPlayer.playerAttributes.speed);
 
-            Console.WriteLine(@"Trying to list entities");
-            foreach (var ent in Game.getPlayers())
-            {
-                Console.WriteLine((int)Game.position.Distance(ent.position) + "b " + ent.username + "\r\n");
-            }
-            Console.WriteLine(@"Listed entities!");
-
             Console.WriteLine(@"Registering modules...");
 
             Modules.Add(new ClickGUI());
@@ -174,10 +167,10 @@ namespace Trero
             Modules.Add(new NoWater());
             //Modules.Add(new SurroundTest());
             Modules.Add(new NoHurtcam());
+            Modules.Add(new PaperMC());
             //Modules.Add(new FastFall());
             Modules.Add(new ReverseStep());
             Modules.Add(new EntityXRay());
-            Modules.Add(new PaperMC());
 
             Console.WriteLine(@"Registered modules!");
 
