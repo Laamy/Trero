@@ -242,7 +242,7 @@ namespace Trero.ClientBase
             }
         }
 
-        private bool pad_0x0054
+        public bool allowModelScalingY
         {
             set
             {
@@ -275,7 +275,7 @@ namespace Trero.ClientBase
             }
         }
 
-        private bool pad_0x0060
+        public bool allowModelScalingZ
         {
             set
             {

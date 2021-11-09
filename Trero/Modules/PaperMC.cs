@@ -17,6 +17,8 @@ namespace Trero.Modules
             base.OnEnable();
 
             OverrideBase.entityModel.allowModelScalingX = false;
+
+            OverrideBase.entityModel.
         }
 
         public override void OnDisable()
