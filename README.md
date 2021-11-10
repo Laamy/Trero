@@ -8,7 +8,7 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Laamy/Trero?style=for-the-badge)
 </p>
 
-https://discord.gg/Zr6RDAJp9F Why not join our discord?
+https://discord.gg/CpDyHeEy8p Why not join our discord?
 
 Trero is a C# MCBE Utility mod designed to enhance your learning
 experience with clients,it is open source, so you can dive in
