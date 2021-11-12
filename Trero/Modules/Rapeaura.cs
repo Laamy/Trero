@@ -21,7 +21,7 @@ namespace Trero.Modules
             if (Game.position.Distance(plr.position) < 6f)
                 Game.SexActor(plr);
 
-            if (Game.isLookingAtEntity && MCM.isMinecraftFocused())
+            if (Game.isLookingAtEntity && MCM.isGameFocused())
                 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
         }
     }

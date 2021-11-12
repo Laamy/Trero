@@ -39,7 +39,7 @@ namespace Trero.Modules
         {
             base.OnTick();
 
-            if (MCM.isMinecraftFocused())
+            if (MCM.isGameFocused())
             {
                 Game.isLookingAtBlock = 0;
 
@@ -94,7 +94,7 @@ namespace Trero.Modules
                 switch (bypasses[1].curIndex)
                 {
                     case 0:
-                        if (MCM.isMinecraftFocused())
+                        if (MCM.isGameFocused())
                         {
                             Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_RIGHTDOWN);
                         }

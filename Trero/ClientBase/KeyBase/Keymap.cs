@@ -51,7 +51,7 @@ namespace Trero.ClientBase.KeyBase
                     if (GetAsyncKeyState(c))
                     {
                         if (keyEvent != null)
-                            if (MCM.isMinecraftFocused())
+                            if (MCM.isGameFocused())
                                 keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyHeld));
                         //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyHeld));
                         // ++e;
@@ -62,7 +62,7 @@ namespace Trero.ClientBase.KeyBase
                         try
                         {
                             if (keyEvent != null)
-                                if (MCM.isMinecraftFocused())
+                                if (MCM.isGameFocused())
                                     keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyDown));
                             //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyDown));
                             // ++e;
@@ -80,7 +80,7 @@ namespace Trero.ClientBase.KeyBase
                         try
                         {
                             if (keyEvent != null)
-                                if (MCM.isMinecraftFocused())
+                                if (MCM.isGameFocused())
                                     keyEvent.Invoke(this, new KeyEvent(c, VKeyCodes.KeyUp));
                             //globalKeyEvent.Invoke(this, new KeyEvent(c, vKeyCodes.KeyUp));
                             // ++e;

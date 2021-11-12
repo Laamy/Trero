@@ -59,7 +59,7 @@ namespace Trero.ClientBase.UIBase
             overDel = new WinEventDelegate(adjust);
 
             Console.WriteLine("Initializing hooks...");
-            SetWinEventHook((uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, (uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, IntPtr.Zero, overDel, MCM.mcWinProcId, GetWindowThreadProcessId(MCM.mcWinHandle, IntPtr.Zero), (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
+            SetWinEventHook((uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, (uint)SWEH_Events.EVENT_OBJECT_LOCATIONCHANGE, IntPtr.Zero, overDel, MCM.procHandleId, GetWindowThreadProcessId(MCM.procHandle, IntPtr.Zero), (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
             SetWinEventHook((uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, (uint)SWEH_Events.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, overDel, 0, 0, (uint)SWEH_dwFlags.WINEVENT_OUTOFCONTEXT | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNPROCESS | (uint)SWEH_dwFlags.WINEVENT_SKIPOWNTHREAD);
             Console.WriteLine("Initialized window hooks!");
             Program.moduleToggled += redraw;
@@ -72,10 +72,10 @@ namespace Trero.ClientBase.UIBase
 
         private void adjust(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
-            var rect = MCM.getMinecraftRect();
+            var rect = MCM.getGameRect();
 
             var cvE = new Placement();
-            GetWindowPlacement(MCM.mcWinHandle,
+            GetWindowPlacement(MCM.procHandle,
                 ref cvE); // Change window size if fullscreen to match extra offsets
             var vE = 0;
             var vA = 0;
@@ -89,13 +89,19 @@ namespace Trero.ClientBase.UIBase
             int y = rect.Top + 35 + vE;
             int width = rect.Right - rect.Left - 18 - vA;
             int height = rect.Bottom - rect.Top - 44 - vE;
-            SetWindowPos(Handle, MCM.isMinecraftFocusedInsert(), x, y, width, height, 0x0040);
+
+            // Left, Top,
+            // Right, Bottom
+            // X, X - X,
+            // Y, Y - Y
+
+            SetWindowPos(Handle, MCM.isGameFocusedInsert(), x, y, width, height, 0x0040);
 
             try // fixed
             {
-                if (MCM.isMinecraftFocused() && TopMost == false)
+                if (MCM.isGameFocused() && TopMost == false)
                     TopMost = true;
-                if (MCM.isMinecraftFocused() || !TopMost) return;
+                if (MCM.isGameFocused() || !TopMost) return;
                 if (ActiveForm == this) return;
                 Opacity = 1;
                 TopMost = false;

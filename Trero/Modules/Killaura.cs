@@ -25,7 +25,7 @@ namespace Trero.Modules
                     ent.hitbox = Base.Vec2(7f, 7f);
                 else ent.hitbox = Base.Vec2(0.6f, 1.8f);
 
-            if (Game.isLookingAtEntity && MCM.isMinecraftFocused())
+            if (Game.isLookingAtEntity && MCM.isGameFocused())
                 Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
         }
     }

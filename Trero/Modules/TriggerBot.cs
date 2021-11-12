@@ -18,7 +18,7 @@ namespace Trero.Modules
         {
             if (Game.isNull) return;
 
-            if (!MCM.isMinecraftFocused() || !Game.isLookingAtEntity) return;
+            if (!MCM.isGameFocused() || !Game.isLookingAtEntity) return;
             if (Game.position.Distance(Game.getClosestPlayer().position) < 7f)
                 new Thread(() => Mouse.MouseEvent(Mouse.MouseEventFlags.MOUSEEVENTF_LEFTDOWN)).Start();
         }

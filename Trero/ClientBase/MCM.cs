@@ -17,6 +17,24 @@ namespace Trero.ClientBase
 {
     public class MCM
     {
+        private static string mainProcName = "";
+
+        public static uint gameProcId;
+        public static Process gameProc;
+        public static IntPtr gameHandle;
+        public static IntPtr gameBaseAddr;
+        public static ProcessModule gameMainModule;
+
+        public static ProcessModule selectedModule;
+        public static IntPtr selectedHandle;
+        public static IntPtr selectedModuleAddr;
+
+        public static uint procHandleId;
+        public static IntPtr procHandle;
+
+        public static List<AddressBox> frozenBytes = new List<AddressBox>();
+
+        #region Flags
         [Flags]
         public enum AllocationType
         {
@@ -46,17 +64,9 @@ namespace Trero.ClientBase
             NoCacheModifierflag = 0x200,
             WriteCombineModifierflag = 0x400
         }
+        #endregion
 
-        public static IntPtr mcProcHandle;
-        public static ProcessModule mcMainModule;
-        public static IntPtr mcBaseAddress;
-        public static IntPtr mcWinHandle;
-        public static uint mcProcId;
-        public static uint mcWinProcId;
-        public static Process mcProc;
-
-        public static List<AddressBox> frozenBytes = new List<AddressBox> ();
-
+        #region Imports
         [DllImport("user32.dll")]
         public static extern bool GetAsyncKeyState(char vKey);
 
@@ -83,7 +93,7 @@ namespace Trero.ClientBase
         private static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+        private static extern bool GetWindowRect(IntPtr hWnd, out ProcessRectangle lpRect);
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool GetWindowRect(IntPtr hWnd, out Rectangle lpRect);
@@ -107,69 +117,109 @@ namespace Trero.ClientBase
 
         [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
         public static extern bool VirtualFreeEx(IntPtr hProcess, IntPtr lpAddress, UIntPtr dwSize, uint dwFreeType);
+        #endregion
 
-        public static void openGame()
+        #region InitUtils
+        public static void openGame(string procByName)
         {
-            var procs = Process.GetProcessesByName("Minecraft.Windows");
-            var mcw10 = procs[0];
-            var proc = OpenProcess(0x1F0FFF, false, mcw10.Id);
-            mcProcId = (uint)mcw10.Id;
-            mcProcHandle = proc;
-            mcMainModule = mcw10.MainModule;
-            mcBaseAddress = mcMainModule.BaseAddress;
-            mcProc = mcw10;
+            var procs = Process.GetProcessesByName(procByName); // Minecraft.Windows
+            var w10 = procs[0];
+            var proc = OpenProcess(0x1F0FFF, false, w10.Id);
+            gameProcId = (uint)w10.Id;
+            gameHandle = proc;
+            gameMainModule = w10.MainModule;
+            gameBaseAddr = gameMainModule.BaseAddress;
+            gameProc = w10;
+
+            selectModule(gameMainModule);
         }
 
-        public static void openWindowHost()
+        public static void selectModule(ProcessModule module)
         {
-            var procs = Process.GetProcessesByName("ApplicationFrameHost");
-            mcWinHandle = procs[0].MainWindowHandle;
-            mcWinProcId = (uint)procs[0].Id;
+            selectedModule = module;
+            selectedHandle = gameHandle;
+            selectedModuleAddr = module.BaseAddress;
         }
 
-        public static RECT getMinecraftRect()
+        public static void selectModule(string moduleName, bool noLower = false)
         {
-            var rectMC = new RECT();
-            GetWindowRect(mcWinHandle, out rectMC);
-            return rectMC;
+            foreach (ProcessModule module in gameProc.Modules)
+            {
+                switch (noLower)
+                {
+                    case true:
+                        if (module.ModuleName == moduleName)
+                            selectModule(module);
+                        break;
+                    case false:
+                        if (module.ModuleName.ToLower() == moduleName.ToLower())
+                            selectModule(module);
+                        break;
+                }
+            }
         }
 
-        public static Rectangle getMinecraftvRect()
+        public static void selectBaseModule() => selectModule(gameMainModule);
+
+        public static void openWindowHost(string processWindowHost, string processWindowHostName)
         {
-            var rectMC = new Rectangle();
-            GetWindowRect(mcWinHandle, out rectMC);
-            return rectMC;
+            var procs = Process.GetProcessesByName(processWindowHost); // ApplicationFrameHost
+            procHandle = procs[0].MainWindowHandle;
+            procHandleId = (uint)procs[0].Id;
+            mainProcName = processWindowHostName;
+        }
+        #endregion
+
+        #region WindowInformation
+        public static ProcessRectangle getGameRect()
+        {
+            var winRect = new ProcessRectangle();
+            GetWindowRect(procHandle, out winRect);
+            return winRect;
         }
 
-        public static bool isMinecraftFocused()
+        public static Rectangle getGameDrawingRect()
         {
-            var sb = new StringBuilder("Minecraft".Length + 1);
-            GetWindowText(GetForegroundWindow(), sb, "Minecraft".Length + 1);
-            return sb.ToString().CompareTo("Minecraft") == 0;
+            var winRect = new Rectangle();
+            GetWindowRect(procHandle, out winRect);
+            return winRect;
         }
 
-        public static IntPtr isMinecraftFocusedInsert()
+        public static void focusedStr(string winName) => mainProcName = winName;
+        public static string getFocusedStr() => mainProcName;
+
+        public static bool isGameFocused()
         {
-            var sb = new StringBuilder("Minecraft".Length + 1);
-            GetWindowText(GetForegroundWindow(), sb, "Minecraft".Length + 1);
-            if (sb.ToString() == "Minecraft")
+            var sb = new StringBuilder(mainProcName.Length + 1);
+            GetWindowText(GetForegroundWindow(), sb, mainProcName.Length + 1);
+            return sb.ToString().CompareTo(mainProcName) == 0;
+        }
+
+        public static IntPtr isGameFocusedInsert()
+        {
+            var sb = new StringBuilder(mainProcName.Length + 1);
+            GetWindowText(GetForegroundWindow(), sb, mainProcName.Length + 1);
+            if (sb.ToString() == mainProcName)
                 return (IntPtr)(-1);
             return (IntPtr)(-2);
         }
+        #endregion
 
+        #region Memory Protection
         public static void unprotectMemory(IntPtr address, int bytesToUnprotect)
         {
             long receiver = 0;
-            VirtualProtectEx(mcProcHandle, address, bytesToUnprotect, 0x40, ref receiver);
+            VirtualProtectEx(selectedHandle, address, bytesToUnprotect, 0x40, ref receiver);
         }
 
         public static void protectMemory(IntPtr address, int bytesToUnprotect)
         {
             long receiver = 0;
-            VirtualProtectEx(mcProcHandle, address, bytesToUnprotect, 0x2, ref receiver);
+            VirtualProtectEx(selectedHandle, address, bytesToUnprotect, 0x2, ref receiver);
         }
+        #endregion
 
-        //CE bytes to real bytes for ease
+        #region CEObj 2 Obj
         public static byte[] ceByte2Bytes(string byteString)
         {
             var byteStr = byteString.Split(' ');
@@ -211,66 +261,70 @@ namespace Trero.ClientBase
 
             return longs;
         }
+        #endregion
 
+        #region MultiLevelPointers
         public static ulong baseEvaluatePointer(ulong offset, ulong[] offsets)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, (ulong)mcBaseAddress + offset, ref buffer, sizeof(ulong), 0);
+            ReadProcessMemory(selectedHandle, (ulong)selectedModuleAddr + offset, ref buffer, sizeof(ulong), 0);
             for (var i = 0; i < offsets.Length - 1; i++)
-                ReadProcessMemory(mcProcHandle, buffer + offsets[i], ref buffer, sizeof(ulong), 0);
+                ReadProcessMemory(selectedHandle, buffer + offsets[i], ref buffer, sizeof(ulong), 0);
             return buffer + offsets[offsets.Length - 1];
         }
 
         public static ulong evaluatePointer(ulong addr, ulong[] offsets)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, addr, ref buffer, sizeof(ulong), 0);
+            ReadProcessMemory(selectedHandle, addr, ref buffer, sizeof(ulong), 0);
             for (var i = 0; i < offsets.Length - 1; i++)
-                ReadProcessMemory(mcProcHandle, buffer + offsets[i], ref buffer, sizeof(ulong), 0);
+                ReadProcessMemory(selectedHandle, buffer + offsets[i], ref buffer, sizeof(ulong), 0);
             return buffer + offsets[offsets.Length - 1];
         }
+        #endregion
 
-        //Read base
+        #region BaseRead
         public static int readBaseByte(int offset)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, (ulong)(mcBaseAddress + offset), ref buffer, sizeof(byte), 0);
+            ReadProcessMemory(selectedHandle, (ulong)(selectedModuleAddr + offset), ref buffer, sizeof(byte), 0);
             return (byte)buffer;
         }
 
         public static int readBaseInt(int offset)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, (ulong)(mcBaseAddress + offset), ref buffer, sizeof(int), 0);
+            ReadProcessMemory(selectedHandle, (ulong)(selectedModuleAddr + offset), ref buffer, sizeof(int), 0);
             return (int)buffer;
         }
 
         public static float readBaseFloat(int offset)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, (ulong)(mcBaseAddress + offset), ref buffer, sizeof(float), 0);
+            ReadProcessMemory(selectedHandle, (ulong)(selectedModuleAddr + offset), ref buffer, sizeof(float), 0);
             return (float)buffer;
         }
 
         public static ulong readBaseInt64(int offset)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, (ulong)(mcBaseAddress + offset), ref buffer, sizeof(long), 0);
+            ReadProcessMemory(selectedHandle, (ulong)(selectedModuleAddr + offset), ref buffer, sizeof(long), 0);
             return buffer;
         }
+        #endregion
 
-        //Write base
+        #region BaseWrite
         public static void writeBaseByte(int offset, byte value)
         {
-            unprotectMemory(mcMainModule.BaseAddress + offset, 1);
-            WriteProcessMemory(mcProcHandle, mcBaseAddress + offset, ref value, sizeof(byte), 0);
+            unprotectMemory(selectedModuleAddr + offset, 1);
+            WriteProcessMemory(selectedHandle, selectedModuleAddr + offset, ref value, sizeof(byte), 0);
         }
 
         public static void writeBaseInt(int offset, int value)
         {
             var intByte = BitConverter.GetBytes(value);
             var inc = 0;
-            unprotectMemory(mcMainModule.BaseAddress + offset, intByte.Length);
+            unprotectMemory(selectedModuleAddr + offset, intByte.Length);
             foreach (var b in intByte)
             {
                 writeBaseByte(offset + inc, b);
@@ -281,7 +335,7 @@ namespace Trero.ClientBase
         public static void writeBaseBytes(int offset, byte[] value)
         {
             var inc = 0;
-            unprotectMemory(mcMainModule.BaseAddress + offset, value.Length);
+            unprotectMemory(selectedModuleAddr + offset, value.Length);
             foreach (var b in value)
             {
                 writeBaseByte(offset + inc, b);
@@ -293,7 +347,7 @@ namespace Trero.ClientBase
         {
             var intByte = BitConverter.GetBytes(value);
             var inc = 0;
-            unprotectMemory(mcMainModule.BaseAddress + offset, intByte.Length);
+            unprotectMemory(selectedModuleAddr + offset, intByte.Length);
             foreach (var b in intByte)
             {
                 writeBaseByte(offset + inc, b);
@@ -305,39 +359,41 @@ namespace Trero.ClientBase
         {
             var intByte = BitConverter.GetBytes(value);
             var inc = 0;
+            unprotectMemory(selectedModuleAddr + offset, sizeof(long));
             foreach (var b in intByte)
             {
                 writeBaseByte(offset + inc, b);
                 inc++;
             }
         }
+        #endregion
 
-        //Read direct
+        #region DirectRead
         public static byte readByte(ulong address)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, address, ref buffer, sizeof(byte), 0);
+            ReadProcessMemory(selectedHandle, address, ref buffer, sizeof(byte), 0);
             return (byte)buffer;
         }
 
         public static int readInt(ulong address)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, address, ref buffer, sizeof(int), 0);
+            ReadProcessMemory(selectedHandle, address, ref buffer, sizeof(int), 0);
             return (int)buffer;
         }
 
         public static short readInt16(ulong address)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, address, ref buffer, sizeof(short), 0);
+            ReadProcessMemory(selectedHandle, address, ref buffer, sizeof(short), 0);
             return (short)buffer;
         }
 
         public static float readFloat(ulong address)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, address, ref buffer, sizeof(float), 0);
+            ReadProcessMemory(selectedHandle, address, ref buffer, sizeof(float), 0);
             var raw = BitConverter.GetBytes(buffer);
             return BitConverter.ToSingle(raw, 0);
         }
@@ -345,7 +401,7 @@ namespace Trero.ClientBase
         public static ulong readInt64(ulong address)
         {
             ulong buffer = 0;
-            ReadProcessMemory(mcProcHandle, address, ref buffer, sizeof(ulong), 0);
+            ReadProcessMemory(selectedHandle, address, ref buffer, sizeof(ulong), 0);
             return buffer;
         }
 
@@ -364,11 +420,12 @@ namespace Trero.ClientBase
 
             return new string(Encoding.Default.GetString(strByte).Take(inc).ToArray());
         }
+        #endregion
 
-        //Write direct
+        #region DirectWrite
         public static void writeByte(ulong address, byte value)
         {
-            WriteProcessMemory(mcProcHandle, (IntPtr)address, ref value, sizeof(byte), 0);
+            WriteProcessMemory(selectedHandle, (IntPtr)address, ref value, sizeof(byte), 0);
         }
 
         public static void writeBytes(ulong address, byte[] value)
@@ -435,8 +492,14 @@ namespace Trero.ClientBase
                 inc++;
             }
         }
+        #endregion
 
-        // Freeze
+        #region Freeze
+        /// <summary>
+        /// Constantly overwrite an address
+        /// </summary>
+        /// <param name="addr">Address</param>
+        /// <param name="value">Bytes to write</param>
         public static void freezeBytes(ulong addr, byte[] value)
         {
             unfreezeBytes(addr);
@@ -450,11 +513,38 @@ namespace Trero.ClientBase
                 {
                     if (readByte(addr) != value[0])
                         writeBytes(addr, value);
+                    Thread.Sleep(1);
                     //protectMemory((IntPtr)addr, value.Length); // crashes
                 }
             }));
         }
 
+        /// <summary>
+        /// Like MCM.freezeBytes(...) but no speed limitations
+        /// </summary>
+        /// <param name="addr">Address</param>
+        /// <param name="value">Bytes to write</param>
+        public static void factoryFreezeBytes(ulong addr, byte[] value)
+        {
+            unfreezeBytes(addr);
+
+            var drci = new AddressBox(addr, value);
+            frozenBytes.Add(drci);
+
+            Task.Factory.StartNew((() =>
+            {
+                while (frozenBytes.Contains(drci))
+                {
+                    if (readByte(addr) != value[0])
+                        writeBytes(addr, value);
+                }
+            }));
+        }
+
+        /// <summary>
+        /// Unfreeze area of memory
+        /// </summary>
+        /// <param name="addr">Address</param>
         public static void unfreezeBytes(ulong addr)
         {
             foreach (AddressBox addrBox in frozenBytes)
@@ -466,43 +556,85 @@ namespace Trero.ClientBase
                 }
             }
         }
+        #endregion
 
-        // Convert
+        #region Covert
+        /// <summary>
+        /// Covert float to bytes array
+        /// </summary>
+        /// <param name="value">float to bytes input</param>
+        /// <returns>Bytes array depending on {value}</returns>
         public static byte[] float2Bytes(float value)
         {
             var intByte = BitConverter.GetBytes(value);
             return intByte;
         }
 
+        /// <summary>
+        /// Covert int to bytes array
+        /// </summary>
+        /// <param name="value">int to bytes input</param>
+        /// <returns>Bytes array depending on {value}</returns>
         public static byte[] int2Bytes(int value)
         {
             var intByte = BitConverter.GetBytes(value);
             return intByte;
         }
 
+        /// <summary>
+        /// Covert bool to bytes array
+        /// </summary>
+        /// <param name="value">bool to bytes input</param>
+        /// <returns>Bytes array depending on {value}</returns>
         public static byte[] bool2Bytes(bool value)
         {
             var intByte = BitConverter.GetBytes(value);
             return intByte;
         }
 
+        /// <summary>
+        /// Covert short to bytes array
+        /// </summary>
+        /// <param name="value">short to bytes input</param>
+        /// <returns>Bytes array depending on {value}</returns>
         public static byte[] short2Bytes(short value)
         {
             var intByte = BitConverter.GetBytes(value);
             return intByte;
         }
+        #endregion
 
-        // structs
-
+        #region Structs
+        /// <summary>
+        /// Window Rectangle
+        /// </summary>
         [StructLayout(LayoutKind.Sequential)]
-        public struct RECT
+        public struct ProcessRectangle
         {
             public int Left;
             public int Top;
             public int Right;
             public int Bottom;
+            public ProcessRectangle(Point position, Point size) // this is most likely wrong
+            {
+                this.Left = position.X;
+                this.Top = position.X + size.X;
+                this.Right = position.Y;
+                this.Bottom = position.Y + size.Y;
+
+                // Left, Top, Right, Bottom
+                // X, X - X, Y, Y - Y
+
+                // Left, Top,
+                // Right, Bottom
+                // X, X - X,
+                // Y, Y - Y
+            }
         }
 
+        /// <summary>
+        /// Structor used for freezing and unfreezing addresses
+        /// </summary>
         public struct AddressBox
         {
             public ulong addr;
@@ -513,5 +645,6 @@ namespace Trero.ClientBase
                 this.newBytes = newBytes;
             }
         }
+        #endregion
     }
 }

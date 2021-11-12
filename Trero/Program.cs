@@ -55,8 +55,8 @@ namespace Trero
 
             Process.Start("minecraft://");
 
-            MCM.openGame();
-            MCM.openWindowHost();
+            MCM.openGame("Minecraft.Windows");
+            MCM.openWindowHost("ApplicationFrameHost", "Minecraft");
 
             // ReSharper disable once ObjectCreationAsStatement
             new Keymap();
