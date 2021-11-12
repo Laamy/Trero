@@ -62,7 +62,11 @@ namespace Trero.Modules
 
         public void MoveCharacter(float cy, float speed, out Vector3 vec)
         {
-            Vector3 newVel = Base.Vec3(0, -0.001f);
+            var newPos = Game.position;
+            newPos.y -= 0.003f;
+            Game.teleport(newPos);
+
+            Vector3 newVel = Base.Vec3(0, 0);
             newVel.z = (float)Math.Sin(cy) * speed;
             newVel.x = (float)Math.Cos(cy) * speed;
             vec = newVel;

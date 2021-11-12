@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trero.ClientBase.VersionBase;
 
 namespace Trero.ClientBase
 {
@@ -83,17 +84,20 @@ namespace Trero.ClientBase
         {
             set
             {
-                const int offset = 0x96CCE5;
-                const int offset2 = 0x971C17;
+                //const int offset = 0x96CCE5; //v1.17.41
+                //const int offset2 = 0x971C17; //v1.17.41
+                ulong labOffset = Game.level + VersionClass.GetData("lookingAtBlock"); // this is a better method!
                 if (value)
                 {
-                    MCM.writeBaseBytes(offset, MCM.ceByte2Bytes("89 41 18"));
-                    MCM.writeBaseBytes(offset2, MCM.ceByte2Bytes("C7 40 18 03 00 00 00"));
+                    //MCM.writeBaseBytes(offset, MCM.ceByte2Bytes("89 41 18"));
+                    //MCM.writeBaseBytes(offset2, MCM.ceByte2Bytes("C7 40 18 03 00 00 00"));
+                    MCM.freezeBytes(labOffset, MCM.int2Bytes(0));
                 }
                 else
                 {
-                    MCM.writeBaseBytes(offset, MCM.ceByte2Bytes("90 90 90"));
-                    MCM.writeBaseBytes(offset2, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
+                    //MCM.writeBaseBytes(offset, MCM.ceByte2Bytes("90 90 90"));
+                    //MCM.writeBaseBytes(offset2, MCM.ceByte2Bytes("90 90 90 90 90 90 90"));
+                    MCM.unfreezeBytes(labOffset);
                 }
             }
         }

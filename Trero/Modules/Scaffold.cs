@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Trero.ClientBase;
 using Trero.ClientBase.KeyBase;
+using Trero.ClientBase.VersionBase;
 using Trero.Modules.vModuleExtra;
 
 namespace Trero.Modules
@@ -23,6 +24,7 @@ namespace Trero.Modules
             base.OnEnable();
 
             savedY = Game.position.y;
+            MCM.freezeBytes(Game.level + VersionClass.GetData("SelectedBlock") + 4, MCM.int2Bytes((int)Game.position.y - 1));// this is just to stop annoying messages >:c
         }
 
         public override void OnDisable()
@@ -30,6 +32,7 @@ namespace Trero.Modules
             base.OnDisable();
 
             OverrideBase.lookingAtBlock = true;
+            MCM.unfreezeBytes(Game.level + VersionClass.GetData("SelectedBlock") + 4);
         }
 
         public override void OnTick()

@@ -1,12 +1,15 @@
 ﻿#region
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -51,6 +54,8 @@ namespace Trero.ClientBase
         public static uint mcProcId;
         public static uint mcWinProcId;
         public static Process mcProc;
+
+        public static List<AddressBox> frozenBytes = new List<AddressBox> ();
 
         [DllImport("user32.dll")]
         public static extern bool GetAsyncKeyState(char vKey);
@@ -156,6 +161,12 @@ namespace Trero.ClientBase
         {
             long receiver = 0;
             VirtualProtectEx(mcProcHandle, address, bytesToUnprotect, 0x40, ref receiver);
+        }
+
+        public static void protectMemory(IntPtr address, int bytesToUnprotect)
+        {
+            long receiver = 0;
+            VirtualProtectEx(mcProcHandle, address, bytesToUnprotect, 0x2, ref receiver);
         }
 
         //CE bytes to real bytes for ease
@@ -425,6 +436,64 @@ namespace Trero.ClientBase
             }
         }
 
+        // Freeze
+        public static void freezeBytes(ulong addr, byte[] value)
+        {
+            unfreezeBytes(addr);
+
+            var drci = new AddressBox(addr, value);
+            frozenBytes.Add(drci);
+
+            Task.Factory.StartNew((() =>
+            {
+                while (frozenBytes.Contains(drci))
+                {
+                    if (readByte(addr) != value[0])
+                        writeBytes(addr, value);
+                    //protectMemory((IntPtr)addr, value.Length); // crashes
+                }
+            }));
+        }
+
+        public static void unfreezeBytes(ulong addr)
+        {
+            foreach (AddressBox addrBox in frozenBytes)
+            {
+                if (addrBox.addr == addr)
+                {
+                    frozenBytes.Remove(addrBox);
+                    //unprotectMemory((IntPtr)addrBox.addr, addrBox.newBytes.Length);
+                }
+            }
+        }
+
+        // Convert
+        public static byte[] float2Bytes(float value)
+        {
+            var intByte = BitConverter.GetBytes(value);
+            return intByte;
+        }
+
+        public static byte[] int2Bytes(int value)
+        {
+            var intByte = BitConverter.GetBytes(value);
+            return intByte;
+        }
+
+        public static byte[] bool2Bytes(bool value)
+        {
+            var intByte = BitConverter.GetBytes(value);
+            return intByte;
+        }
+
+        public static byte[] short2Bytes(short value)
+        {
+            var intByte = BitConverter.GetBytes(value);
+            return intByte;
+        }
+
+        // structs
+
         [StructLayout(LayoutKind.Sequential)]
         public struct RECT
         {
@@ -432,6 +501,17 @@ namespace Trero.ClientBase
             public int Top;
             public int Right;
             public int Bottom;
+        }
+
+        public struct AddressBox
+        {
+            public ulong addr;
+            public byte[] newBytes;
+            public AddressBox(ulong addr, byte[] newBytes)
+            {
+                this.addr = addr;
+                this.newBytes = newBytes;
+            }
         }
     }
 }
